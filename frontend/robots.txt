@@ -1,0 +1,77 @@
+# robots.txt - converter.hqmx.net
+# Multi-format File Converter Service
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap locations
+Sitemap: https://converter.hqmx.net/sitemap-index.xml
+Sitemap: https://converter.hqmx.net/sitemap.xml
+Sitemap: https://converter.hqmx.net/sitemap-naver.xml
+
+# Exclude paths
+Disallow: /*.backup$
+Disallow: /_scripts/
+Disallow: /_templates/
+Disallow: /test-*.html
+Disallow: /components/
+Disallow: /lib/ffmpeg/
+Disallow: /*.bak
+Disallow: /*.log
+Disallow: /server.log
+
+# Search engine specific settings
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Yeti
+Allow: /
+Crawl-delay: 0
+
+# Prioritize popular conversion pages
+Allow: /jpg-to-png.html
+Allow: /png-to-jpg.html
+Allow: /jpg-to-pdf.html
+Allow: /pdf-to-jpg.html
+Allow: /webp-to-jpg.html
+Allow: /heic-to-jpg.html
+Allow: /mp4-to-mp3.html
+Allow: /mp4-to-gif.html
+Allow: /gif-to-mp4.html
+Allow: /wav-to-mp3.html
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SEMrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# API and backend paths (if exposed)
+Disallow: /api/
+Disallow: /backend/
+Disallow: /downloads/
+Disallow: /uploads/
+
+# Cache control hint
+# Cache-Control: public, max-age=86400

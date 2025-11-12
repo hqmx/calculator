@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HQMX Converter - Universal File Converter</title>
+    <meta name="description" content="Convert any file format to any other format. Support for video, audio, image, document, and archive conversions with high quality results.">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=20251101blur2">
+
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Sitemap Component Styles -->
+    <link rel="stylesheet" href="/components/sitemap.css?v=20251104">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation Header -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <a href="/" class="converter-logo-link">
+                    <div class="converter-logo">
+                        <span class="converter-text"><span class="converter-c">C</span><span class="converter-rest">ONVERTER</span></span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="nav-center">
+                <!-- 햄버거 메뉴 버튼 (모바일용) -->
+                <button class="hamburger-menu" id="hamburgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="nav-menu">
+                    <a href="#" class="nav-link active" data-section="convert" data-i18n-key="navigation.navConvert">Convert</a>
+                    <a href="/how-to-use" class="nav-link" data-i18n-key="navigation.navHowToUse">How to Use</a>
+                    <a href="/faq" class="nav-link" data-i18n-key="navigation.navFAQ">FAQ</a>
+                    <a href="https://converter.hqmx.net/api.html" class="nav-link" data-i18n-key="navigation.navAPI">API</a>
+                </div>
+
+                <!-- 모바일 메뉴 오버레이 -->
+                <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+                    <div class="mobile-menu-box">
+                        <!-- 메인 링크들 -->
+                        <nav class="mobile-menu-links">
+                            <a href="#" class="mobile-nav-link active" data-section="convert" data-i18n-key="navigation.navConvert">Convert</a>
+                            <a href="/how-to-use" class="mobile-nav-link" data-i18n-key="navigation.navHowToUse">How to Use</a>
+                            <a href="/faq" class="mobile-nav-link" data-i18n-key="navigation.navFAQ">FAQ</a>
+                            <a href="https://converter.hqmx.net/api.html" class="mobile-nav-link" data-i18n-key="navigation.navAPI">API</a>
+                        </nav>
+
+                        <!-- 구분선 -->
+                        <div class="mobile-menu-divider"></div>
+
+                        <!-- 컨트롤 영역 -->
+                        <div class="mobile-menu-controls">
+                            <!-- 테마 토글 -->
+                            <button id="mobileThemeToggleBtn" class="mobile-control-btn" aria-label="Toggle theme">
+                                <i class="fas fa-sun"></i>
+                                <i class="fas fa-moon"></i>
+                            </button>
+
+                            <!-- 언어 선택 -->
+                            <div class="mobile-language-wrapper">
+                                <button id="mobileLanguageSelectorBtn" class="mobile-control-btn" aria-label="Select language">
+                                    <i class="fas fa-globe"></i>
+                                    <span id="mobileCurrentLanguage">EN</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div id="mobileLanguageOptions" class="mobile-language-dropdown">
+                                    <a href="#" data-lang="en">English</a>
+                                    <a href="#" data-lang="de">Deutsch</a>
+                                    <a href="#" data-lang="es">Español</a>
+                                    <a href="#" data-lang="fr">Français</a>
+                                    <a href="#" data-lang="hi">हिन्दी / Hindī</a>
+                                    <a href="#" data-lang="id">Bahasa Indonesia</a>
+                                    <a href="#" data-lang="it">Italiano</a>
+                                    <a href="#" data-lang="ko">한국어</a>
+                                    <a href="#" data-lang="ja">日本語</a>
+                                    <a href="#" data-lang="my">Myanmar (မြန်မာ)</a>
+                                    <a href="#" data-lang="ms">Malay</a>
+                                    <a href="#" data-lang="fil">Filipino</a>
+                                    <a href="#" data-lang="pt">Português</a>
+                                    <a href="#" data-lang="ru">Русский</a>
+                                    <a href="#" data-lang="th">ไทย</a>
+                                    <a href="#" data-lang="tr">Türkçe</a>
+                                    <a href="#" data-lang="vi">Tiếng Việt</a>
+                                    <a href="#" data-lang="zh-CN">简体中文</a>
+                                    <a href="#" data-lang="zh-TW">繁體中文</a>
+                                    <a href="#" data-lang="ar">عربي</a>
+                                    <a href="#" data-lang="bn">বাঙালি</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <button id="themeToggleBtn" class="theme-toggle-btn">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="language-switcher">
+                    <button id="language-selector-btn" class="language-selector-btn">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">English</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="language-options" class="language-options">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="de">Deutsch</a>
+                        <a href="#" data-lang="es">Español</a>
+                        <a href="#" data-lang="fr">Français</a>
+                        <a href="#" data-lang="hi">हिन्दी / Hindī</a>
+                        <a href="#" data-lang="id">Bahasa Indonesia</a>
+                        <a href="#" data-lang="it">Italiano</a>
+                        <a href="#" data-lang="ko">한국어</a>
+                        <a href="#" data-lang="ja">日本語</a>
+                        <a href="#" data-lang="my">Myanmar (မြန်မာ)</a>
+                        <a href="#" data-lang="ms">Malay</a>
+                        <a href="#" data-lang="fil">Filipino</a>
+                        <a href="#" data-lang="pt">Português</a>
+                        <a href="#" data-lang="ru">Русский</a>
+                        <a href="#" data-lang="th">ไทย</a>
+                        <a href="#" data-lang="tr">Türkçe</a>
+                        <a href="#" data-lang="vi">Tiếng Việt</a>
+                        <a href="#" data-lang="zh-CN">简体中文</a>
+                        <a href="#" data-lang="zh-TW">繁體中文</a>
+                        <a href="#" data-lang="ar">عربي</a>
+                        <a href="#" data-lang="bn">বাঙালি</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <header class="header">
+            <p class="tagline">Universal File Converter</p>
+        </header>
+
+        <main class="main-content">
+
+            <!-- File Upload Section -->
+            <section class="upload-section">
+                <div class="upload-container">
+                    <h4 data-i18n-key="uploadSectionTitle">Convert any file to any format</h4>
+                    <div class="upload-zone" id="uploadZone">
+                        <div class="upload-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <div class="upload-text">
+                            <p class="main-text" data-i18n-key="uploadMainText">Drop files here or click to upload</p>
+                            <p class="sub-text" data-i18n-key="uploadSubText">• Support for 300+ file formats •</p>
+                        </div>
+                        <div class="upload-buttons">
+                            <div class="upload-btn" id="uploadBtn" style="cursor: pointer; display: inline-flex; align-items: center; gap: 0.5rem; position: relative;">
+                                <input type="file" id="fileInput" multiple accept="*" style="position: absolute; inset: 0; opacity: 0; cursor: pointer; z-index: 1;">
+                                <i class="fas fa-plus" style="pointer-events: none; z-index: 0;"></i>
+                                <span data-i18n-key="selectFiles" style="pointer-events: none; z-index: 0;">Select Files</span>
+                            </div>
+                            <button class="cloud-btn dropbox-btn" id="dropboxBtn">
+                                <i class="fab fa-dropbox"></i>
+                                <span>Dropbox</span>
+                            </button>
+                            <button class="cloud-btn gdrive-btn" id="gdriveBtn">
+                                <i class="fab fa-google-drive"></i>
+                                <span>Google Drive</span>
+                            </button>
+                        </div>
+                    </div>
+                    <p class="terms-notice" id="terms-notice">
+                        By using our service you accept our
+                        <a href="terms.html" target="_blank">Terms of Service</a> and
+                        <a href="privacy.html" target="_blank">Privacy Policy</a>.
+                    </p>
+                </div>
+            </section>
+
+            <!-- File List Section -->
+            <section id="fileListSection" class="file-list-section" style="display: none;">
+                <h3 data-i18n-key="yourFiles">Your Files</h3>
+                <div id="fileList" class="file-list"></div>
+                <div class="batch-actions">
+                    <button id="clearAllBtn" class="clear-all-btn">
+                        <i class="fas fa-trash"></i>
+                        <span data-i18n-key="clearAll">Clear All</span>
+                    </button>
+                    <button id="convertAllBtn" class="convert-all-btn">
+                        <i class="fas fa-magic"></i>
+                        <span data-i18n-key="convertAll">Convert All</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Conversion Settings Modal -->
+            <div id="conversionModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 data-i18n-key="conversionSettings">Conversion Settings</h3>
+                        <button class="modal-close" id="modalCloseBtn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="file-info">
+                            <div class="file-preview" id="singleFilePreview">
+                                <i id="fileIcon" class="fas fa-file"></i>
+                                <div class="file-details">
+                                    <p id="fileName" class="file-name">filename.ext</p>
+                                    <p id="fileSize" class="file-size">0 MB</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="format-selection">
+                            <h4 data-i18n-key="convertTo">Convert to</h4>
+                            <div class="format-categories">
+                                <button class="format-category active" data-category="video">
+                                    <i class="fas fa-video"></i>
+                                    <span data-i18n-key="video">Video</span>
+                                </button>
+                                <button class="format-category" data-category="audio">
+                                    <i class="fas fa-music"></i>
+                                    <span data-i18n-key="audio">Audio</span>
+                                </button>
+                                <button class="format-category" data-category="image">
+                                    <i class="fas fa-image"></i>
+                                    <span data-i18n-key="image">Image</span>
+                                </button>
+                                <button class="format-category" data-category="document">
+                                    <i class="fas fa-file-alt"></i>
+                                    <span data-i18n-key="document">Document</span>
+                                </button>
+                                <button class="format-category" data-category="archive">
+                                    <i class="fas fa-file-archive"></i>
+                                    <span data-i18n-key="archive">Archive</span>
+                                </button>
+                                <!-- Social 카테고리 숨김 처리 (feature-flags.js에서 SOCIAL_MEDIA: false) -->
+                                <button id="socialCategoryBtn" class="format-category" data-category="social" style="display: none;">
+                                    <i class="fas fa-share-alt"></i>
+                                    <span data-i18n-key="social">Social</span>
+                                </button>
+                            </div>
+                            
+                            <div class="format-options" id="formatOptions">
+                                <!-- Format options will be populated by JavaScript -->
+                            </div>
+                        </div>
+
+                        <div class="advanced-settings" id="advancedSettings" style="display: none;">
+                            <h4 data-i18n-key="advancedSettings">Advanced Settings</h4>
+                            <div class="settings-grid" id="settingsGrid">
+                                <!-- Advanced settings will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="advancedToggle" class="advanced-toggle">
+                            <i class="fas fa-cog"></i>
+                            <span data-i18n-key="advancedOptions">Advanced Options</span>
+                        </button>
+                        <button id="startConversionBtn" class="start-conversion-btn">
+                            <i class="fas fa-play"></i>
+                            <span data-i18n-key="startConversion">Start Conversion</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <section class="feature-section">
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-exchange-alt feature-icon-text"></i>
+                    </div>
+                    <h4 data-i18n-key="featureUniversalTitle">Universal Converter</h4>
+                    <p data-i18n-key="featureUniversalDesc">Convert between 300+ file formats including video, audio, images, documents, and archives.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-bolt feature-icon-text"></i>
+                    </div>
+                    <h4 data-i18n-key="featureSpeedTitle">Lightning Fast</h4>
+                    <p data-i18n-key="featureSpeedDesc">Cloud-based processing ensures quick conversions without using your device resources.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-shield-alt feature-icon-text"></i>
+                    </div>
+                    <h4 data-i18n-key="featureSecurityTitle">Secure & Private</h4>
+                    <p data-i18n-key="featureSecurityDesc">Files are automatically deleted after 24 hours. Your privacy is guaranteed.</p>
+                </div>
+            </section>
+
+            <!-- Supported Formats Section -->
+            <section class="formats-section">
+                <h3 data-i18n-key="supportedFormatsTitle">Supported File Formats</h3>
+                <p class="formats-subtitle">Supported File Formats +300 more</p>
+                <div class="format-grid">
+                    <div class="format-group">
+                        <h4><i class="fas fa-video"></i> <span data-i18n-key="videoFormats">Video</span></h4>
+                        <div class="format-badges">
+                            <span class="supported-format-badge video">MP4</span>
+                            <span class="supported-format-badge video">MOV</span>
+                            <span class="supported-format-badge video">AVI</span>
+                            <span class="supported-format-badge video">MKV</span>
+                            <span class="supported-format-badge video">WebM</span>
+                            <span class="supported-format-badge video">3GP</span>
+                            <span class="supported-format-badge video">FLV</span>
+                            <span class="supported-format-badge video">WMV</span>
+                        </div>
+                        <div class="format-badges-extended video-extended" style="display: none;">
+                            <span class="supported-format-badge video">MPG</span>
+                            <span class="supported-format-badge video">OGV</span>
+                            <span class="supported-format-badge video">M4V</span>
+                            <span class="supported-format-badge video">VOB</span>
+                            <span class="supported-format-badge video">ASF</span>
+                            <span class="supported-format-badge video">MPEG</span>
+                            <span class="supported-format-badge video">RM</span>
+                            <span class="supported-format-badge video">DIVX</span>
+                            <span class="supported-format-badge video">XVID</span>
+                            <span class="supported-format-badge video">H264</span>
+                            <span class="supported-format-badge video">M2TS</span>
+                        </div>
+                        <button class="expand-formats-btn" data-category="video">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <div class="format-group">
+                        <h4><i class="fas fa-music"></i> <span data-i18n-key="audioFormats">Audio</span></h4>
+                        <div class="format-badges">
+                            <span class="supported-format-badge audio">MP3</span>
+                            <span class="supported-format-badge audio">WAV</span>
+                            <span class="supported-format-badge audio">FLAC</span>
+                            <span class="supported-format-badge audio">M4A</span>
+                            <span class="supported-format-badge audio">AAC</span>
+                            <span class="supported-format-badge audio">OGG</span>
+                            <span class="supported-format-badge audio">WMA</span>
+                            <span class="supported-format-badge audio">AIFF</span>
+                        </div>
+                        <div class="format-badges-extended audio-extended" style="display: none;">
+                            <span class="supported-format-badge audio">AC3</span>
+                            <span class="supported-format-badge audio">OPUS</span>
+                            <span class="supported-format-badge audio">AMR</span>
+                            <span class="supported-format-badge audio">AU</span>
+                            <span class="supported-format-badge audio">RA</span>
+                            <span class="supported-format-badge audio">DTS</span>
+                            <span class="supported-format-badge audio">MP2</span>
+                            <span class="supported-format-badge audio">CAF</span>
+                        </div>
+                        <button class="expand-formats-btn" data-category="audio">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <div class="format-group">
+                        <h4><i class="fas fa-image"></i> <span data-i18n-key="imageFormats">Image</span></h4>
+                        <div class="format-badges">
+                            <span class="supported-format-badge image">JPG</span>
+                            <span class="supported-format-badge image">PNG</span>
+                            <span class="supported-format-badge image">WebP</span>
+                            <span class="supported-format-badge image">HEIC</span>
+                            <span class="supported-format-badge image">AVIF</span>
+                            <span class="supported-format-badge image">SVG</span>
+                            <span class="supported-format-badge image">GIF</span>
+                            <span class="supported-format-badge image">TIFF</span>
+                        </div>
+                        <div class="format-badges-extended image-extended" style="display: none;">
+                            <span class="supported-format-badge image">BMP</span>
+                            <span class="supported-format-badge image">JPEG</span>
+                            <span class="supported-format-badge image">TGA</span>
+                            <span class="supported-format-badge image">ICO</span>
+                            <span class="supported-format-badge image">PSD</span>
+                            <span class="supported-format-badge image">CR2</span>
+                            <span class="supported-format-badge image">CR3</span>
+                            <span class="supported-format-badge image">NEF</span>
+                            <span class="supported-format-badge image">ARW</span>
+                            <span class="supported-format-badge image">DNG</span>
+                            <span class="supported-format-badge image">RAF</span>
+                            <span class="supported-format-badge image">ORF</span>
+                            <span class="supported-format-badge image">RW2</span>
+                        </div>
+                        <button class="expand-formats-btn" data-category="image">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <div class="format-group">
+                        <h4><i class="fas fa-file-alt"></i> <span data-i18n-key="documentFormats">Document</span></h4>
+                        <div class="format-badges">
+                            <span class="supported-format-badge document">PDF</span>
+                            <span class="supported-format-badge document">DOCX</span>
+                            <span class="supported-format-badge document">DOC</span>
+                            <span class="supported-format-badge document">PPTX</span>
+                            <span class="supported-format-badge document">PPT</span>
+                            <span class="supported-format-badge document">EPUB</span>
+                            <span class="supported-format-badge document">MOBI</span>
+                            <span class="supported-format-badge document">TXT</span>
+                        </div>
+                        <div class="format-badges-extended document-extended" style="display: none;">
+                            <span class="supported-format-badge document">RTF</span>
+                            <span class="supported-format-badge document">ODT</span>
+                            <span class="supported-format-badge document">ODP</span>
+                            <span class="supported-format-badge document">AZW</span>
+                            <span class="supported-format-badge document">AZW3</span>
+                            <span class="supported-format-badge document">FB2</span>
+                        </div>
+                        <button class="expand-formats-btn" data-category="document">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <div class="format-group">
+                        <h4><i class="fas fa-table"></i> <span>Data</span></h4>
+                        <div class="format-badges">
+                            <span class="supported-format-badge data">XLSX</span>
+                            <span class="supported-format-badge data">CSV</span>
+                            <span class="supported-format-badge data">JSON</span>
+                            <span class="supported-format-badge data">XML</span>
+                            <span class="supported-format-badge data">XLS</span>
+                            <span class="supported-format-badge data">TSV</span>
+                            <span class="supported-format-badge data">ODS</span>
+                            <span class="supported-format-badge data">SQL</span>
+                        </div>
+                        <div class="format-badges-extended data-extended" style="display: none;">
+                            <span class="supported-format-badge data">Numbers</span>
+                        </div>
+                        <button class="expand-formats-btn" data-category="data">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <div class="format-group">
+                        <h4><i class="fas fa-file-archive"></i> <span>Archive</span></h4>
+                        <div class="format-badges">
+                            <span class="supported-format-badge archive">ZIP</span>
+                            <span class="supported-format-badge archive">RAR</span>
+                            <span class="supported-format-badge archive">7Z</span>
+                            <span class="supported-format-badge archive">TAR</span>
+                            <span class="supported-format-badge archive">TAR.GZ</span>
+                            <span class="supported-format-badge archive">GZ</span>
+                            <span class="supported-format-badge archive">BZ2</span>
+                            <span class="supported-format-badge archive">XZ</span>
+                        </div>
+                        <div class="format-badges-extended archive-extended" style="display: none;">
+                            <span class="supported-format-badge archive">TAR.BZ2</span>
+                            <span class="supported-format-badge archive">TAR.XZ</span>
+                        </div>
+                        <button class="expand-formats-btn" data-category="archive">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <div id="socialMediaSection" class="format-group">
+                        <h4><i class="fas fa-share-alt"></i> <span>Social Media</span></h4>
+                        <div class="format-badges">
+                            <span class="supported-format-badge social">YouTube</span>
+                            <span class="supported-format-badge social">TikTok</span>
+                            <span class="supported-format-badge social">Instagram</span>
+                            <span class="supported-format-badge social">Facebook</span>
+                            <span class="supported-format-badge social">Twitter</span>
+                            <span class="supported-format-badge social">Twitch</span>
+                            <span class="supported-format-badge social">Reddit</span>
+                            <span class="supported-format-badge social">SoundCloud</span>
+                        </div>
+                        <div class="format-badges-extended social-extended" style="display: none;">
+                            <span class="supported-format-badge social">Vimeo</span>
+                            <span class="supported-format-badge social">Dailymotion</span>
+                            <span class="supported-format-badge social">LinkedIn</span>
+                            <span class="supported-format-badge social">Pinterest</span>
+                        </div>
+                        <button class="expand-formats-btn" data-category="social">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Usage Guide Section -->
+            <section class="usage-guide-section">
+                <h3 data-i18n-key="usageGuideTitle">How to Use</h3>
+                <p class="section-description" data-i18n-key="usageGuideDesc">Follow these simple steps to convert your files quickly and easily.</p>
+                <div class="guide-steps">
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">1</span>
+                            <h4 data-i18n-key="step1Title">Upload Files</h4>
+                        </div>
+                        <div class="step-image-container">
+                            <div class="step-illustration step-upload">
+                                <div class="upload-area">
+                                    <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                                    <div class="file-icons">
+                                        <i class="fas fa-file-image file-icon"></i>
+                                        <i class="fas fa-file-video file-icon"></i>
+                                        <i class="fas fa-file-audio file-icon"></i>
+                                    </div>
+                                    <p class="upload-text" data-i18n-key="illustrationUploadText">Drag & Drop Files</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p data-i18n-key="step1Desc">Drag and drop your files into the upload area or click to select files from your device.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">2</span>
+                            <h4 data-i18n-key="step2Title">Choose Format</h4>
+                        </div>
+                        <div class="step-image-container">
+                            <div class="step-illustration step-format">
+                                <div class="format-modal">
+                                    <div class="format-buttons">
+                                        <button class="format-btn active">MP4</button>
+                                        <button class="format-btn">AVI</button>
+                                        <button class="format-btn">MOV</button>
+                                        <button class="format-btn">WEBM</button>
+                                        <button class="format-btn">FLV</button>
+                                        <button class="format-btn">WMV</button>
+                                    </div>
+                                    <p class="format-text" data-i18n-key="illustrationFormatText">Choose Format</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p data-i18n-key="step2Desc">Select the desired output format from our extensive list of supported formats.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">3</span>
+                            <h4 data-i18n-key="step3Title">Download</h4>
+                        </div>
+                        <div class="step-image-container">
+                            <div class="step-illustration step-download">
+                                <div class="progress-container">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill"></div>
+                                    </div>
+                                    <p class="progress-text">Converting... 80%</p>
+                                </div>
+                                <button class="download-btn">
+                                    <i class="fas fa-download"></i>
+                                    Download
+                                </button>
+                                <p class="download-text" data-i18n-key="illustrationDownloadText">Download Ready!</p>
+                            </div>
+                        </div>
+                        <p data-i18n-key="step3Desc">Wait for the conversion to complete and download your converted files.</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!--# include file="/components/sitemap.html" -->
+
+        <footer>
+            <div class="footer-social">
+                <a href="https://x.com/8hqmx" target="_blank" rel="noopener noreferrer" class="footer-twitter" aria-label="Follow us on X (Twitter)">
+                    <img src="/assets/x-twitter-footer.svg" alt="X (Twitter)" class="footer-social-icon">
+                </a>
+            </div>
+            <p>
+                <span>&copy; 2024 HQMX Converter. All Rights Reserved.</span>
+                <span class="footer-contact"> • support@hqmx.net</span>
+            </p>
+        </footer>
+    </div>
+    <script src="/feature-flags.js?v=20251009"></script>
+    <script src="/i18n.js?v=20251101fix"></script>
+    <script src="/url-router.js?v=20251008"></script>
+    <script src="/converter-engine.js?v=20251031fix"></script>
+    <script src="/script.js?v=20251101blur"></script>
+
+    <!-- Batch Conversion System (Phase 2 + Phase 3) -->
+    <!-- 주의: manager를 가장 먼저 로드해야 다른 모듈이 초기화 가능 -->
+    <script src="/batch-conversion-manager.js"></script>
+    <script src="/batch-conversion-storage.js"></script>
+    <script src="/batch-conversion-network-recovery.js"></script>
+    <script src="/batch-conversion-ui.js"></script>
+    <!-- Phase 3: Advanced Features -->
+    <script src="/batch-conversion-presets.js"></script>
+    <script src="/batch-conversion-analytics.js"></script>
+
+    <!-- Cloud Storage APIs (로드 순서: script.js 다음, 초기화 이전) -->
+    <!-- Dropbox Chooser API -->
+    <script type="text/javascript"
+            src="https://www.dropbox.com/static/api/2/dropins.js?v=20251018"
+            id="dropboxjs"
+            data-app-key="xfuwomiskcrr8by"
+            crossorigin="anonymous"></script>
+
+    <!-- Google Drive Picker API -->
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <!-- Service Worker 등록 -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then((registration) => {
+                        console.log('SW 등록 성공:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('SW 등록 실패:', error);
+                    });
+            });
+        }
+    </script>
+
+    <!-- ExoClick Video Slider - 페이지 로드 후 35초 후 로드 -->
+    <script>
+        // 35초 지연 후 ExoClick 비디오 슬라이더 광고 로드
+        setTimeout(function() {
+            // ad-provider.js 스크립트 로드
+            var adScript = document.createElement('script');
+            adScript.type = 'application/javascript';
+            adScript.async = true;
+            adScript.src = 'https://a.magsrv.com/ad-provider.js';
+
+            // ins 요소 생성 및 추가
+            var insElement = document.createElement('ins');
+            insElement.className = 'eas6a97888e31';
+            insElement.setAttribute('data-zoneid', '5760302');
+
+            // body에 요소들 추가
+            document.body.appendChild(adScript);
+            document.body.appendChild(insElement);
+
+            // AdProvider 초기화 (스크립트 로드 완료 후)
+            adScript.onload = function() {
+                (window.AdProvider = window.AdProvider || []).push({"serve": {}});
+            };
+        }, 35000); // 35초 = 35000ms
+    </script>
+
+    <!-- ExoClick Vignette는 다운로드 완료 시 script.js의 showAdsOnDownloadComplete()에서 로드됨 -->
+
+    <!-- Sitemap Component Scripts -->
+    <script src="/components/sitemap.js?v=20251104"></script>
+</body>
+</html>
