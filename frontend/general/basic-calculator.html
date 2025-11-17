@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Basic Calculator - Free Online Calculator | HQMX</title>
+    <meta name="description" content="Free online basic calculator. Perform addition, subtraction, multiplication, and division. Simple, fast, and easy to use calculator for everyday math.">
+    <meta name="keywords" content="calculator, basic calculator, online calculator, simple calculator, math calculator, 계산기, 기본 계산기">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Basic Calculator - Free Online Calculator | HQMX">
+    <meta property="og:description" content="Simple and fast online calculator for everyday calculations.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calculator.hqmx.net/general/basic-calculator.html">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://calculator.hqmx.net/general/basic-calculator.html">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css?v=20251101blur2">
+    <link rel="stylesheet" href="/category.css">
+    <link rel="stylesheet" href="/css/calculator.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <style>
+        .calc-display-wrapper {
+            background: var(--input-bg);
+            border: 2px solid var(--input-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .calc-display {
+            background: var(--bg-primary);
+            border: 1px solid var(--input-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: right;
+            font-size: 2.5rem;
+            font-family: 'Courier New', monospace;
+            min-height: 80px;
+            overflow-x: auto;
+            white-space: nowrap;
+            color: var(--text-primary);
+        }
+
+        .calc-expression {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            min-height: 1.5rem;
+        }
+
+        .calc-buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.75rem;
+        }
+
+        .calc-btn {
+            padding: 1.5rem;
+            font-size: 1.5rem;
+            border: 2px solid var(--input-border);
+            border-radius: 8px;
+            background: var(--input-bg);
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-weight: 500;
+        }
+
+        .calc-btn:hover {
+            background: var(--hover-bg);
+            border-color: var(--primary);
+        }
+
+        .calc-btn:active {
+            transform: scale(0.95);
+        }
+
+        .calc-btn.operator {
+            background: var(--primary-light);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .calc-btn.operator:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .calc-btn.equals {
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+        }
+
+        .calc-btn.equals:hover {
+            opacity: 0.9;
+        }
+
+        .calc-btn.function {
+            background: var(--secondary-bg);
+            color: var(--text-secondary);
+        }
+
+        .calc-btn.zero {
+            grid-column: span 2;
+        }
+
+        .memory-display {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .calc-display {
+                font-size: 2rem;
+                padding: 1rem;
+            }
+
+            .calc-btn {
+                padding: 1.25rem;
+                font-size: 1.25rem;
+            }
+
+            .calc-buttons-grid {
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .calc-display {
+                font-size: 1.75rem;
+            }
+
+            .calc-btn {
+                padding: 1rem;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation Header -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <a href="/" class="converter-logo-link">
+                    <div class="converter-logo">
+                        <span class="converter-text"><span class="converter-c">C</span><span class="converter-rest">ALCULATOR</span></span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="nav-center">
+                <button class="hamburger-menu" id="hamburgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="nav-menu">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/how-to-use" class="nav-link">How to Use</a>
+                    <a href="/faq" class="nav-link">FAQ</a>
+                    <a href="/api.html" class="nav-link">API</a>
+                </div>
+
+                <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+                    <div class="mobile-menu-box">
+                        <div class="mobile-menu-links">
+                            <a href="/" class="mobile-menu-link">Home</a>
+                            <a href="/how-to-use" class="mobile-menu-link">How to Use</a>
+                            <a href="/faq" class="mobile-menu-link">FAQ</a>
+                            <a href="/api.html" class="mobile-menu-link">API</a>
+                        </div>
+
+                        <div class="mobile-menu-controls">
+                            <div class="mobile-control-item menu-divider">
+                                <button id="mobileThemeToggleBtn" class="mobile-theme-toggle-btn">
+                                    <i class="fas fa-sun"></i>
+                                    <i class="fas fa-moon"></i>
+                                </button>
+                                <button id="mobileLanguageSelectorBtn" class="mobile-language-selector-btn">
+                                    <i class="fas fa-globe"></i>
+                                    <span id="mobileCurrentLanguage">EN</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="mobile-control-item">
+                                <div id="mobileLanguageOptions" class="mobile-language-options">
+                                    <a href="#" data-lang="en">English</a>
+                                    <a href="#" data-lang="ko">한국어</a>
+                                    <a href="#" data-lang="es">Español</a>
+                                    <a href="#" data-lang="fr">Français</a>
+                                    <a href="#" data-lang="de">Deutsch</a>
+                                    <a href="#" data-lang="ja">日本語</a>
+                                    <a href="#" data-lang="zh-CN">简体中文</a>
+                                    <a href="#" data-lang="pt">Português</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <button id="themeToggleBtn" class="icon-btn">
+                    <i class="fas fa-sun sun-icon"></i>
+                    <i class="fas fa-moon moon-icon"></i>
+                </button>
+
+                <div class="language-selector">
+                    <button id="languageSelectorBtn" class="icon-btn">
+                        <i class="fas fa-globe"></i>
+                        <span id="currentLanguage">EN</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="languageOptions" class="language-options">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="ko">한국어</a>
+                        <a href="#" data-lang="es">Español</a>
+                        <a href="#" data-lang="fr">Français</a>
+                        <a href="#" data-lang="de">Deutsch</a>
+                        <a href="#" data-lang="ja">日本語</a>
+                        <a href="#" data-lang="zh-CN">简体中文</a>
+                        <a href="#" data-lang="pt">Português</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Calculator Header -->
+            <header class="calculator-header">
+                <h1>Basic Calculator</h1>
+                <p class="tagline">Simple and Fast Online Calculator</p>
+            </header>
+
+            <!-- Calculator -->
+            <div style="max-width: 500px; margin: 0 auto;">
+                <!-- Display -->
+                <div class="calc-display-wrapper">
+                    <div id="memoryIndicator" class="memory-display" style="display: none;">M</div>
+                    <div id="expression" class="calc-expression"></div>
+                    <div id="display" class="calc-display">0</div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="calc-buttons-grid">
+                    <!-- Row 1: Memory and Clear -->
+                    <button class="calc-btn function" data-action="mc">MC</button>
+                    <button class="calc-btn function" data-action="mr">MR</button>
+                    <button class="calc-btn function" data-action="m+">M+</button>
+                    <button class="calc-btn function" data-action="m-">M-</button>
+
+                    <!-- Row 2: Clear and Operations -->
+                    <button class="calc-btn function" data-action="clear">C</button>
+                    <button class="calc-btn function" data-action="backspace"><i class="fas fa-backspace"></i></button>
+                    <button class="calc-btn function" data-action="%">%</button>
+                    <button class="calc-btn operator" data-action="/">÷</button>
+
+                    <!-- Row 3: 7, 8, 9, × -->
+                    <button class="calc-btn" data-number="7">7</button>
+                    <button class="calc-btn" data-number="8">8</button>
+                    <button class="calc-btn" data-number="9">9</button>
+                    <button class="calc-btn operator" data-action="*">×</button>
+
+                    <!-- Row 4: 4, 5, 6, - -->
+                    <button class="calc-btn" data-number="4">4</button>
+                    <button class="calc-btn" data-number="5">5</button>
+                    <button class="calc-btn" data-number="6">6</button>
+                    <button class="calc-btn operator" data-action="-">−</button>
+
+                    <!-- Row 5: 1, 2, 3, + -->
+                    <button class="calc-btn" data-number="1">1</button>
+                    <button class="calc-btn" data-number="2">2</button>
+                    <button class="calc-btn" data-number="3">3</button>
+                    <button class="calc-btn operator" data-action="+">+</button>
+
+                    <!-- Row 6: 0, ., = -->
+                    <button class="calc-btn zero" data-number="0">0</button>
+                    <button class="calc-btn" data-action=".">.</button>
+                    <button class="calc-btn equals" data-action="=">=</button>
+                </div>
+
+                <!-- Keyboard hint -->
+                <div style="margin-top: 1rem; text-align: center; color: var(--text-secondary); font-size: 0.9rem;">
+                    <i class="fas fa-keyboard"></i> Keyboard supported: 0-9, +, -, *, /, Enter, Escape, Backspace
+                </div>
+            </div>
+
+            <!-- How to Use Section -->
+            <section class="info-section">
+                <h2><i class="fas fa-question-circle"></i> How to Use</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Enter Numbers</h3>
+                        <p>Click number buttons (0-9) or use your keyboard to enter numbers. Supports decimal points for precise calculations.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Choose Operation</h3>
+                        <p>Click an operation button (+, −, ×, ÷) or use keyboard shortcuts. The calculator follows standard order of operations.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Get Result</h3>
+                        <p>Press the equals (=) button or Enter key to calculate. Use C to clear or backspace to delete last digit.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Examples Section -->
+            <section class="info-section">
+                <h2><i class="fas fa-lightbulb"></i> Examples</h2>
+                <div class="examples-grid">
+                    <div class="example-card">
+                        <h3>Simple Addition</h3>
+                        <div class="example-problem">
+                            125 + 376
+                        </div>
+                        <div class="example-solution">
+                            <strong>Result:</strong> 501
+                        </div>
+                    </div>
+                    <div class="example-card">
+                        <h3>Multiplication</h3>
+                        <div class="example-problem">
+                            45 × 23
+                        </div>
+                        <div class="example-solution">
+                            <strong>Result:</strong> 1,035
+                        </div>
+                    </div>
+                    <div class="example-card">
+                        <h3>Mixed Operations</h3>
+                        <div class="example-problem">
+                            (150 + 50) × 2
+                        </div>
+                        <div class="example-solution">
+                            <strong>Result:</strong> 400
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="info-section">
+                <h2><i class="fas fa-comments"></i> Frequently Asked Questions</h2>
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary>Does it follow order of operations (PEMDAS)?</summary>
+                        <p>Yes! The calculator follows standard mathematical order of operations (Parentheses, Exponents, Multiplication/Division, Addition/Subtraction).</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Can I use my keyboard?</summary>
+                        <p>Absolutely! All number keys (0-9) and operation keys (+, -, *, /) work. Press Enter for equals, Escape to clear, and Backspace to delete.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>What are the memory functions?</summary>
+                        <p>MC (Memory Clear) clears memory, MR (Memory Recall) shows stored value, M+ adds to memory, M- subtracts from memory. Great for running totals!</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Is there a calculation limit?</summary>
+                        <p>The calculator can handle very large numbers (up to JavaScript's Number.MAX_SAFE_INTEGER, about 9 quadrillion).</p>
+                    </details>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="info-section">
+                <h2><i class="fas fa-star"></i> Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-keyboard"></i></div>
+                        <h3>Keyboard Support</h3>
+                        <p>Full keyboard support for faster calculations. Use number keys, operators, Enter, and Escape.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-memory"></i></div>
+                        <h3>Memory Functions</h3>
+                        <p>Store and recall values with M+, M-, MR, and MC for complex multi-step calculations.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <h3>Mobile Friendly</h3>
+                        <p>Large, touch-friendly buttons optimized for smartphones and tablets.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Related Calculators -->
+            <section class="info-section">
+                <h2><i class="fas fa-link"></i> Related Calculators</h2>
+                <div class="related-grid">
+                    <a href="/general/scientific-calculator.html" class="related-card">
+                        <i class="fas fa-square-root-alt"></i>
+                        <h3>Scientific Calculator</h3>
+                        <p>Advanced functions</p>
+                    </a>
+                    <a href="/general/percentage-calculator.html" class="related-card">
+                        <i class="fas fa-percent"></i>
+                        <h3>Percentage Calculator</h3>
+                        <p>Calculate percentages</p>
+                    </a>
+                    <a href="/general/fraction-calculator.html" class="related-card">
+                        <i class="fas fa-divide"></i>
+                        <h3>Fraction Calculator</h3>
+                        <p>Work with fractions</p>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CALCULATOR</h3>
+                    <p>Free online calculators for all your needs</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="/general/">General</a></li>
+                        <li><a href="/finance/">Finance</a></li>
+                        <li><a href="/health/">Health</a></li>
+                        <li><a href="/conversion/">Conversions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/how-to-use">How to Use</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                        <li><a href="/api.html">API</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 HQMX. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/js/calculators/basic.js"></script>
+    <script src="/category.js"></script>
+</body>
+</html>

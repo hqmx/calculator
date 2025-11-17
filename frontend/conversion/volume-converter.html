@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volume Converter - Free Online Volume Unit Conversion | CALCULATOR</title>
+    <meta name="description" content="Convert between volume units instantly. Free volume converter supporting liters, gallons, cubic meters, milliliters and more. Fast and accurate.">
+    <meta name="keywords" content="volume converter, liter, gallon, cubic meter, milliliter, volume conversion, unit converter">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/calculator.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+<!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="/index.html" class="logo">
+                    <span class="logo-c">C</span><span class="logo-rest">ALCULATOR</span>
+                </a>
+            </div>
+
+            <div class="nav-center">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search calculators...">
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <span class="logo">
+                <span class="logo-c">C</span><span class="logo-rest">ALCULATOR</span>
+            </span>
+            <button class="mobile-menu-close" id="mobileMenuClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mobile-menu-content">
+            <a href="/category/general.html"><i class="fas fa-calculator"></i> General</a>
+            <a href="/category/finance.html"><i class="fas fa-dollar-sign"></i> Finance</a>
+            <a href="/category/health.html"><i class="fas fa-heartbeat"></i> Health</a>
+            <a href="/category/conversion.html" class="active"><i class="fas fa-exchange-alt"></i> Conversion</a>
+            <a href="/category/date-time.html"><i class="fas fa-clock"></i> Date & Time</a>
+            <a href="/category/math.html"><i class="fas fa-square-root-alt"></i> Math</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="/index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="/category/conversion.html">Conversion</a>
+                <i class="fas fa-chevron-right"></i>
+                <span>Volume Converter</span>
+            </div>
+
+            <!-- Calculator Header -->
+            <div class="calc-header">
+                <h1><i class="fas fa-cube"></i> Volume Converter</h1>
+                <p class="calc-description">Convert between different volume units instantly and accurately</p>
+            </div>
+
+            <!-- Converter Interface -->
+            <div class="calculator-card">
+                <div class="converter-grid">
+                    <!-- From Section -->
+                    <div class="converter-box">
+                        <div class="converter-label">From</div>
+                        <input type="number" id="fromValue" class="converter-input" value="1" step="any" autofocus>
+                        <select id="fromUnit" class="converter-select">
+                            <optgroup label="Metric">
+                                <option value="ml">Milliliter (mL)</option>
+                                <option value="l" selected>Liter (L)</option>
+                                <option value="m3">Cubic Meter (m³)</option>
+                            </optgroup>
+                            <optgroup label="Imperial">
+                                <option value="tsp">Teaspoon (tsp)</option>
+                                <option value="tbsp">Tablespoon (tbsp)</option>
+                                <option value="fl-oz">Fluid Ounce (fl oz)</option>
+                                <option value="cup">Cup (cup)</option>
+                                <option value="pt">Pint (pt)</option>
+                                <option value="qt">Quart (qt)</option>
+                                <option value="gal">Gallon (gal)</option>
+                                <option value="ft3">Cubic Foot (ft³)</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <!-- Swap Button -->
+                    <button id="swapBtn" class="swap-btn" title="Swap units">
+                        <i class="fas fa-exchange-alt"></i>
+                    </button>
+
+                    <!-- To Section -->
+                    <div class="converter-box">
+                        <div class="converter-label">To</div>
+                        <input type="text" id="toValue" class="converter-input" readonly>
+                        <select id="toUnit" class="converter-select">
+                            <optgroup label="Metric">
+                                <option value="ml">Milliliter (mL)</option>
+                                <option value="l">Liter (L)</option>
+                                <option value="m3">Cubic Meter (m³)</option>
+                            </optgroup>
+                            <optgroup label="Imperial">
+                                <option value="tsp">Teaspoon (tsp)</option>
+                                <option value="tbsp">Tablespoon (tbsp)</option>
+                                <option value="fl-oz">Fluid Ounce (fl oz)</option>
+                                <option value="cup">Cup (cup)</option>
+                                <option value="pt">Pint (pt)</option>
+                                <option value="qt">Quart (qt)</option>
+                                <option value="gal" selected>Gallon (gal)</option>
+                                <option value="ft3">Cubic Foot (ft³)</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Quick Reference -->
+                <div class="converter-reference">
+                    <h3>Quick Reference</h3>
+                    <div class="reference-grid">
+                        <div class="reference-item">
+                            <strong>1 L</strong>
+                            <span>= 0.264 gal</span>
+                        </div>
+                        <div class="reference-item">
+                            <strong>1 gal</strong>
+                            <span>= 3.785 L</span>
+                        </div>
+                        <div class="reference-item">
+                            <strong>1 cup</strong>
+                            <span>= 237 mL</span>
+                        </div>
+                        <div class="reference-item">
+                            <strong>1 m³</strong>
+                            <span>= 1,000 L</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Common Conversions -->
+            <div class="info-section">
+                <h2>Common Volume Conversions</h2>
+                <div class="conversion-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1 L</td>
+                                <td>Gallons</td>
+                                <td>0.264 gal</td>
+                            </tr>
+                            <tr>
+                                <td>1 gal</td>
+                                <td>Liters</td>
+                                <td>3.785 L</td>
+                            </tr>
+                            <tr>
+                                <td>1 cup</td>
+                                <td>Milliliters</td>
+                                <td>237 mL</td>
+                            </tr>
+                            <tr>
+                                <td>1 fl oz</td>
+                                <td>Milliliters</td>
+                                <td>29.574 mL</td>
+                            </tr>
+                            <tr>
+                                <td>1 tbsp</td>
+                                <td>Milliliters</td>
+                                <td>14.787 mL</td>
+                            </tr>
+                            <tr>
+                                <td>1 m³</td>
+                                <td>Liters</td>
+                                <td>1,000 L</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Cooking Measurements -->
+            <div class="info-section">
+                <h2>Cooking Measurements</h2>
+                <div class="example-grid">
+                    <div class="example-card">
+                        <i class="fas fa-utensils"></i>
+                        <h3>1 Teaspoon</h3>
+                        <p>5 mL</p>
+                    </div>
+                    <div class="example-card">
+                        <i class="fas fa-coffee"></i>
+                        <h3>1 Tablespoon</h3>
+                        <p>15 mL = 3 tsp</p>
+                    </div>
+                    <div class="example-card">
+                        <i class="fas fa-mug-hot"></i>
+                        <h3>1 Cup</h3>
+                        <p>237 mL = 16 tbsp</p>
+                    </div>
+                    <div class="example-card">
+                        <i class="fas fa-glass-whiskey"></i>
+                        <h3>1 Fluid Ounce</h3>
+                        <p>30 mL = 2 tbsp</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Section -->
+            <div class="info-section">
+                <h2>About Volume Conversion</h2>
+                <p>
+                    Volume is a measure of the amount of three-dimensional space occupied by a substance, container,
+                    or object. It's commonly used in cooking, chemistry, engineering, and everyday life. Different
+                    countries and industries use different volume measurement systems.
+                </p>
+
+                <h3>Metric Units</h3>
+                <ul>
+                    <li><strong>Milliliter (mL):</strong> Small volumes, medicine, cooking (1 mL = 1 cm³)</li>
+                    <li><strong>Liter (L):</strong> Beverages, containers, fuel (1 L = 1,000 mL)</li>
+                    <li><strong>Cubic Meter (m³):</strong> Large volumes, shipping, construction (1 m³ = 1,000 L)</li>
+                </ul>
+
+                <h3>Imperial Units</h3>
+                <ul>
+                    <li><strong>Teaspoon/Tablespoon:</strong> Cooking measurements, medicine</li>
+                    <li><strong>Fluid Ounce (fl oz):</strong> Beverages, cosmetics (1 fl oz ≈ 30 mL)</li>
+                    <li><strong>Cup:</strong> Cooking, baking (1 cup = 8 fl oz = 237 mL)</li>
+                    <li><strong>Pint (pt):</strong> Beverages, milk (1 pt = 2 cups = 473 mL)</li>
+                    <li><strong>Quart (qt):</strong> Larger containers (1 qt = 2 pt = 946 mL)</li>
+                    <li><strong>Gallon (gal):</strong> Fuel, large containers (1 gal = 4 qt = 3.785 L)</li>
+                    <li><strong>Cubic Foot (ft³):</strong> Large volumes (1 ft³ = 28.317 L)</li>
+                </ul>
+
+                <h3>US vs UK Gallons</h3>
+                <p>
+                    Note: This converter uses US gallons. UK (Imperial) gallons are larger:
+                    <br>• 1 US gallon = 3.785 L
+                    <br>• 1 UK gallon = 4.546 L
+                </p>
+            </div>
+
+            <!-- Conversion Formulas -->
+            <div class="info-section">
+                <h2>Conversion Formulas</h2>
+                <div class="formula-grid">
+                    <div class="formula-card">
+                        <h4>Metric System</h4>
+                        <p>1 L = 1,000 mL</p>
+                        <p>1 m³ = 1,000 L</p>
+                    </div>
+                    <div class="formula-card">
+                        <h4>Liters ↔ Gallons</h4>
+                        <p>1 L = 0.264 gal (US)</p>
+                        <p>1 gal (US) = 3.785 L</p>
+                    </div>
+                    <div class="formula-card">
+                        <h4>Cooking Measurements</h4>
+                        <p>1 cup = 16 tbsp</p>
+                        <p>1 tbsp = 3 tsp</p>
+                    </div>
+                    <div class="formula-card">
+                        <h4>Volume Scaling</h4>
+                        <p>Volume = L × W × H</p>
+                        <p>If dimensions double, volume increases 8×</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="info-section">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <h3><i class="fas fa-question-circle"></i> How many liters are in a gallon?</h3>
+                        <p>1 US gallon equals 3.785 liters. For UK (Imperial) gallons, 1 gallon equals 4.546 liters.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3><i class="fas fa-question-circle"></i> What's the difference between ml and L?</h3>
+                        <p>Milliliter (mL) and liter (L) are both metric volume units. 1 liter = 1,000 milliliters. mL is used for small amounts, L for larger volumes.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3><i class="fas fa-question-circle"></i> How many cups in a liter?</h3>
+                        <p>1 liter equals approximately 4.23 cups (US). This is useful for converting cooking recipes.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3><i class="fas fa-question-circle"></i> Is a fluid ounce the same as an ounce?</h3>
+                        <p>No. A fluid ounce (fl oz) measures volume, while an ounce (oz) measures weight. 1 fl oz = 30 mL, but the weight varies by substance.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3><i class="fas fa-question-circle"></i> Why do volume units cube when converting?</h3>
+                        <p>Because volume is three-dimensional, you must cube the conversion factor. For example: 1 m = 3.28 ft, so 1 m³ = (3.28)³ = 35.31 ft³.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Related Calculators -->
+            <div class="info-section">
+                <h2>Related Calculators</h2>
+                <div class="related-grid">
+                    <a href="/conversion/length-converter.html" class="related-card">
+                        <i class="fas fa-ruler"></i>
+                        <h3>Length Converter</h3>
+                        <p>Convert length units</p>
+                    </a>
+                    <a href="/conversion/area-converter.html" class="related-card">
+                        <i class="fas fa-vector-square"></i>
+                        <h3>Area Converter</h3>
+                        <p>Convert area units</p>
+                    </a>
+                    <a href="/conversion/weight-converter.html" class="related-card">
+                        <i class="fas fa-weight"></i>
+                        <h3>Weight Converter</h3>
+                        <p>Convert weight/mass units</p>
+                    </a>
+                    <a href="/general/recipe-converter.html" class="related-card">
+                        <i class="fas fa-utensils"></i>
+                        <h3>Recipe Converter</h3>
+                        <p>Scale recipe quantities</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CALCULATOR</h3>
+                    <p>Free online calculators for all your needs</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="/category/general.html">General</a></li>
+                        <li><a href="/category/finance.html">Finance</a></li>
+                        <li><a href="/category/health.html">Health</a></li>
+                        <li><a href="/category/conversion.html">Conversion</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                        <li><a href="/privacy.html">Privacy Policy</a></li>
+                        <li><a href="/terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CALCULATOR by HQMX. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/js/main.js"></script>
+<script src="/js/utils/unit-converter.js"></script>
+    <script src="/js/calculators/volume.js"></script>
+    </div>
+
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

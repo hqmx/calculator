@@ -1,0 +1,55 @@
+{
+  "navigation": {
+    "home": "홈",
+    "navHowToUse": "사용 방법",
+    "navFAQ": "자주 묻는 질문",
+    "navAPI": "API"
+  },
+  "home": {
+    "tagline": "범용 웹 계산기"
+  },
+  "bmi": {
+    "tagline": "BMI 계산기",
+    "subtitle": "체질량지수를 즉시 계산하세요",
+    "weight": "체중",
+    "height": "키",
+    "age": "나이",
+    "gender": "성별",
+    "male": "남성",
+    "female": "여성",
+    "calculateBtn": "BMI 계산하기",
+    "recalculateBtn": "다시 계산하기",
+    "yourBMI": "BMI 결과",
+    "category": "BMI 범주",
+    "healthStatus": "건강 상태",
+    "recommendations": "권장 사항"
+  },
+  "age": {
+    "tagline": "정확한 나이를 즉시 계산하세요",
+    "title": "나이 계산기",
+    "birthDate": "생년월일",
+    "calculateBtn": "나이 계산하기",
+    "recalculateBtn": "다시 계산하기",
+    "yourAge": "당신의 나이",
+    "years": "년",
+    "months": "개월",
+    "days": "일",
+    "totalDays": "총 일수",
+    "totalHours": "총 시간",
+    "totalMinutes": "총 분",
+    "nextBirthday": "다음 생일",
+    "bornOn": "태어난 요일"
+  },
+  "percentage": {
+    "tagline": "퍼센트 계산",
+    "title": "퍼센트 계산기",
+    "whatIsPercentOf": "X의 Y%는?",
+    "isWhatPercentOf": "X는 Y의 몇 %?",
+    "percentageIncrease": "퍼센트 증가",
+    "percentageDecrease": "퍼센트 감소",
+    "addPercentTo": "Y에 X% 더하기",
+    "subtractPercentFrom": "Y에서 X% 빼기",
+    "calculateBtn": "계산하기",
+    "result": "결과"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "navigation": {
+    "home": "ホーム",
+    "navHowToUse": "使い方",
+    "navFAQ": "FAQ",
+    "navAPI": "API"
+  },
+  "home": {
+    "tagline": "ユニバーサルWeb計算機"
+  },
+  "bmi": {
+    "tagline": "BMI計算機",
+    "subtitle": "体格指数を瞬時に計算",
+    "weight": "体重",
+    "height": "身長",
+    "age": "年齢",
+    "gender": "性別",
+    "male": "男性",
+    "female": "女性",
+    "calculateBtn": "BMIを計算",
+    "recalculateBtn": "再計算",
+    "yourBMI": "あなたのBMI結果",
+    "category": "BMIカテゴリー",
+    "healthStatus": "健康状態",
+    "recommendations": "推奨事項"
+  },
+  "age": {
+    "tagline": "正確な年齢を瞬時に計算",
+    "title": "年齢計算機",
+    "birthDate": "生年月日",
+    "calculateBtn": "年齢を計算",
+    "recalculateBtn": "再計算",
+    "yourAge": "あなたの年齢",
+    "years": "年",
+    "months": "ヶ月",
+    "days": "日",
+    "totalDays": "合計日数",
+    "totalHours": "合計時間",
+    "totalMinutes": "合計分",
+    "nextBirthday": "次の誕生日",
+    "bornOn": "生まれた日"
+  },
+  "percentage": {
+    "tagline": "パーセンテージを計算",
+    "title": "パーセント計算機",
+    "whatIsPercentOf": "YのX%は？",
+    "isWhatPercentOf": "XはYの何%？",
+    "percentageIncrease": "パーセント増加",
+    "percentageDecrease": "パーセント減少",
+    "addPercentTo": "YにX%を追加",
+    "subtractPercentFrom": "YからX%を引く",
+    "calculateBtn": "計算",
+    "result": "結果"
+  }
+}

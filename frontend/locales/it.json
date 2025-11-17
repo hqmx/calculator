@@ -1,0 +1,55 @@
+{
+  "navigation": {
+    "home": "Home",
+    "navHowToUse": "Come usare",
+    "navFAQ": "FAQ",
+    "navAPI": "API"
+  },
+  "home": {
+    "tagline": "Calcolatrice Web Universale"
+  },
+  "bmi": {
+    "tagline": "Calcolatore BMI",
+    "subtitle": "Calcola il tuo Indice di Massa Corporea istantaneamente",
+    "weight": "Peso",
+    "height": "Altezza",
+    "age": "Età",
+    "gender": "Sesso",
+    "male": "Maschio",
+    "female": "Femmina",
+    "calculateBtn": "Calcola BMI",
+    "recalculateBtn": "Ricalcola",
+    "yourBMI": "Il tuo risultato BMI",
+    "category": "Categoria BMI",
+    "healthStatus": "Stato di salute",
+    "recommendations": "Raccomandazioni"
+  },
+  "age": {
+    "tagline": "Calcola la tua età esatta istantaneamente",
+    "title": "Calcolatore di Età",
+    "birthDate": "Data di nascita",
+    "calculateBtn": "Calcola età",
+    "recalculateBtn": "Ricalcola",
+    "yourAge": "La tua età",
+    "years": "Anni",
+    "months": "Mesi",
+    "days": "Giorni",
+    "totalDays": "Giorni totali",
+    "totalHours": "Ore totali",
+    "totalMinutes": "Minuti totali",
+    "nextBirthday": "Prossimo compleanno",
+    "bornOn": "Nato il"
+  },
+  "percentage": {
+    "tagline": "Calcola percentuali",
+    "title": "Calcolatore di Percentuali",
+    "whatIsPercentOf": "Quanto è X% di Y?",
+    "isWhatPercentOf": "X è quale % di Y?",
+    "percentageIncrease": "Aumento percentuale",
+    "percentageDecrease": "Diminuzione percentuale",
+    "addPercentTo": "Aggiungi X% a Y",
+    "subtractPercentFrom": "Sottrai X% da Y",
+    "calculateBtn": "Calcola",
+    "result": "Risultato"
+  }
+}

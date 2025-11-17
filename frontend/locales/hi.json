@@ -1,0 +1,55 @@
+{
+  "navigation": {
+    "home": "होम",
+    "navHowToUse": "उपयोग कैसे करें",
+    "navFAQ": "FAQ",
+    "navAPI": "API"
+  },
+  "home": {
+    "tagline": "यूनिवर्सल वेब कैलकुलेटर"
+  },
+  "bmi": {
+    "tagline": "BMI कैलकुलेटर",
+    "subtitle": "अपने बॉडी मास इंडेक्स की तुरंत गणना करें",
+    "weight": "वजन",
+    "height": "लंबाई",
+    "age": "उम्र",
+    "gender": "लिंग",
+    "male": "पुरुष",
+    "female": "महिला",
+    "calculateBtn": "BMI की गणना करें",
+    "recalculateBtn": "फिर से गणना करें",
+    "yourBMI": "आपका BMI परिणाम",
+    "category": "BMI श्रेणी",
+    "healthStatus": "स्वास्थ्य स्थिति",
+    "recommendations": "सिफारिशें"
+  },
+  "age": {
+    "tagline": "अपनी सटीक आयु तुरंत गणना करें",
+    "title": "आयु कैलकुलेटर",
+    "birthDate": "जन्म तिथि",
+    "calculateBtn": "आयु की गणना करें",
+    "recalculateBtn": "फिर से गणना करें",
+    "yourAge": "आपकी आयु",
+    "years": "वर्ष",
+    "months": "महीने",
+    "days": "दिन",
+    "totalDays": "कुल दिन",
+    "totalHours": "कुल घंटे",
+    "totalMinutes": "कुल मिनट",
+    "nextBirthday": "अगला जन्मदिन",
+    "bornOn": "जन्म तिथि"
+  },
+  "percentage": {
+    "tagline": "प्रतिशत की गणना करें",
+    "title": "प्रतिशत कैलकुलेटर",
+    "whatIsPercentOf": "Y का X% क्या है?",
+    "isWhatPercentOf": "X, Y का कितना % है?",
+    "percentageIncrease": "प्रतिशत वृद्धि",
+    "percentageDecrease": "प्रतिशत कमी",
+    "addPercentTo": "Y में X% जोड़ें",
+    "subtractPercentFrom": "Y से X% घटाएं",
+    "calculateBtn": "गणना करें",
+    "result": "परिणाम"
+  }
+}

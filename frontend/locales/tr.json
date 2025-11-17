@@ -1,0 +1,55 @@
+{
+  "navigation": {
+    "home": "Ana Sayfa",
+    "navHowToUse": "Nasıl Kullanılır",
+    "navFAQ": "SSS",
+    "navAPI": "API"
+  },
+  "home": {
+    "tagline": "Evrensel Web Hesap Makinesi"
+  },
+  "bmi": {
+    "tagline": "VKİ Hesaplayıcı",
+    "subtitle": "Vücut Kitle İndeksinizi Anında Hesaplayın",
+    "weight": "Kilo",
+    "height": "Boy",
+    "age": "Yaş",
+    "gender": "Cinsiyet",
+    "male": "Erkek",
+    "female": "Kadın",
+    "calculateBtn": "VKİ Hesapla",
+    "recalculateBtn": "Tekrar Hesapla",
+    "yourBMI": "VKİ Sonucunuz",
+    "category": "VKİ Kategorisi",
+    "healthStatus": "Sağlık Durumu",
+    "recommendations": "Öneriler"
+  },
+  "age": {
+    "tagline": "Tam Yaşınızı Anında Hesaplayın",
+    "title": "Yaş Hesaplayıcı",
+    "birthDate": "Doğum Tarihi",
+    "calculateBtn": "Yaş Hesapla",
+    "recalculateBtn": "Tekrar Hesapla",
+    "yourAge": "Yaşınız",
+    "years": "Yıl",
+    "months": "Ay",
+    "days": "Gün",
+    "totalDays": "Toplam Gün",
+    "totalHours": "Toplam Saat",
+    "totalMinutes": "Toplam Dakika",
+    "nextBirthday": "Bir Sonraki Doğum Günü",
+    "bornOn": "Doğum Tarihi"
+  },
+  "percentage": {
+    "tagline": "Yüzde Hesapla",
+    "title": "Yüzde Hesaplayıcı",
+    "whatIsPercentOf": "Y'nin %X'i nedir?",
+    "isWhatPercentOf": "X, Y'nin yüzde kaçıdır?",
+    "percentageIncrease": "Yüzde Artış",
+    "percentageDecrease": "Yüzde Azalış",
+    "addPercentTo": "Y'ye %X ekle",
+    "subtractPercentFrom": "Y'den %X çıkar",
+    "calculateBtn": "Hesapla",
+    "result": "Sonuç"
+  }
+}

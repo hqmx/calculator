@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter - Celsius, Fahrenheit, Kelvin | CALCULATOR</title>
+    <meta name="description" content="Free online temperature converter. Convert between Celsius, Fahrenheit, and Kelvin instantly. Accurate temperature conversion calculator.">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css?v=20251101blur2">
+    <link rel="stylesheet" href="/css/calculator.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation Header (CONVERTER 구조 동일) -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <a href="/" class="converter-logo-link">
+                    <div class="converter-logo">
+                        <span class="converter-text"><span class="converter-c">C</span><span class="converter-rest">ALCULATOR</span></span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="nav-center">
+                <!-- 햄버거 메뉴 버튼 (모바일용) -->
+                <button class="hamburger-menu" id="hamburgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="nav-menu">
+                    <a href="/category/general.html" class="nav-link">General</a>
+                    <a href="/category/finance.html" class="nav-link">Finance</a>
+                    <a href="/category/health.html" class="nav-link">Health</a>
+                    <a href="/category/conversion.html" class="nav-link active">Conversion</a>
+                    <a href="/category/date-time.html" class="nav-link">Date & Time</a>
+                </div>
+
+                <!-- 모바일 메뉴 오버레이 -->
+                <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+                    <div class="mobile-menu-box">
+                        <div class="mobile-menu-links">
+                            <a href="/category/general.html" class="mobile-menu-link">General</a>
+                            <a href="/category/finance.html" class="mobile-menu-link">Finance</a>
+                            <a href="/category/health.html" class="mobile-menu-link">Health</a>
+                            <a href="/category/conversion.html" class="mobile-menu-link active">Conversion</a>
+                            <a href="/category/date-time.html" class="mobile-menu-link">Date & Time</a>
+                        </div>
+
+                        <div class="mobile-menu-controls">
+                            <div class="mobile-control-item">
+                                <button id="mobileThemeToggleBtn" class="mobile-theme-toggle-btn">
+                                    <i class="fas fa-sun"></i>
+                                    <i class="fas fa-moon"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <button id="themeToggleBtn" class="theme-toggle-btn">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1 class="page-title">Temperature Converter</h1>
+            <p class="page-description">Convert between Celsius, Fahrenheit, and Kelvin</p>
+
+            <!-- Converter Card -->
+            <div class="calculator-card">
+                <div class="converter-grid">
+                    <div class="converter-box">
+                        <div class="converter-label">From</div>
+                        <input type="number" id="fromValue" class="converter-input" value="0" step="any" autofocus>
+                        <select id="fromUnit" class="converter-select">
+                            <option value="C" selected>Celsius (°C)</option>
+                            <option value="F">Fahrenheit (°F)</option>
+                            <option value="K">Kelvin (K)</option>
+                        </select>
+                    </div>
+
+                    <button id="swapBtn" class="swap-btn" title="Swap units">
+                        <i class="fas fa-exchange-alt"></i>
+                    </button>
+
+                    <div class="converter-box">
+                        <div class="converter-label">To</div>
+                        <input type="text" id="toValue" class="converter-input" readonly>
+                        <select id="toUnit" class="converter-select">
+                            <option value="C">Celsius (°C)</option>
+                            <option value="F" selected>Fahrenheit (°F)</option>
+                            <option value="K">Kelvin (K)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reference Table -->
+            <div class="info-card">
+                <h2>Temperature Reference Points</h2>
+                <table class="reference-table">
+                    <thead>
+                        <tr>
+                            <th>Event</th>
+                            <th>Celsius</th>
+                            <th>Fahrenheit</th>
+                            <th>Kelvin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Absolute Zero</td>
+                            <td>-273.15°C</td>
+                            <td>-459.67°F</td>
+                            <td>0 K</td>
+                        </tr>
+                        <tr>
+                            <td>Water Freezes</td>
+                            <td>0°C</td>
+                            <td>32°F</td>
+                            <td>273.15 K</td>
+                        </tr>
+                        <tr>
+                            <td>Room Temperature</td>
+                            <td>20°C</td>
+                            <td>68°F</td>
+                            <td>293.15 K</td>
+                        </tr>
+                        <tr>
+                            <td>Body Temperature</td>
+                            <td>37°C</td>
+                            <td>98.6°F</td>
+                            <td>310.15 K</td>
+                        </tr>
+                        <tr>
+                            <td>Water Boils</td>
+                            <td>100°C</td>
+                            <td>212°F</td>
+                            <td>373.15 K</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/js/main.js"></script>
+    <script src="/js/utils/unit-converter.js"></script>
+    <script src="/js/calculators/temperature.js"></script>
+</body>
+</html>

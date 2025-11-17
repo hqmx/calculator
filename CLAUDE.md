@@ -8,6 +8,7 @@
 **EC2 탄력적 IP**: 3.213.100.223
 **EC2 키**: hqmx-ec2.pem
 **언어**: 에이전트는 개발자와 한글로 소통
+- **병렬 에이전트 작업을 필요할때마다 자주 사용하도록한다**
 
 ---
 
@@ -71,6 +72,86 @@ CONVERTER 레이아웃 그대로 사용:
 변경 가능:
 - 컨테이너 내부의 텍스트 및 콘텐츠만 변경 가능
 - 계산기 입력 필드 및 버튼
+```
+
+#### 📊 Results Section 레이아웃 규칙 (중요)
+
+**태그라인 (Tagline)**
+- 작은 글자 한 줄만 사용 가능
+- 예: "Calculate Your Daily Calorie Needs"
+- 추가 설명이나 긴 텍스트 금지
+- 나머지 내용은 메인 컨테이너에 표시
+
+**Results Section 그리드 레이아웃**
+
+1. **패널 3개인 경우** (예: Daily Calories, BMR, TDEE)
+   ```css
+   /* 웹 화면 (Desktop) */
+   grid-template-columns: repeat(3, 1fr);  /* 1행 3열, 한 줄에 3개 */
+   gap: 1.5rem;
+
+   /* 모바일 화면 */
+   grid-template-columns: 1fr;  /* 1열, 세로로 쌓기 */
+   gap: 1rem;
+   ```
+   - Desktop: 한 줄에 3개 모두 표시
+   - Mobile: 세로로 하나씩 표시
+
+2. **패널 4개 이상인 경우** (예: 4개, 6개, 8개)
+   ```css
+   /* 웹 화면 (Desktop) */
+   grid-template-columns: repeat(2, 1fr);  /* 1행 2열, 한 줄에 2개씩 */
+   gap: 1.5rem;
+
+   /* 모바일 화면 */
+   grid-template-columns: 1fr;  /* 1열, 세로로 쌓기 */
+   gap: 1rem;
+   ```
+   - Desktop: 한 줄에 2개씩 표시 (2행 또는 3행)
+   - Mobile: 세로로 하나씩 표시
+
+**적용 예시**
+```html
+<!-- 3개 패널 예시 (Calorie Calculator) -->
+<div class="result-cards-grid">  <!-- 3열 그리드 -->
+    <div class="result-card">Daily Calories</div>
+    <div class="result-card">BMR</div>
+    <div class="result-card">TDEE</div>
+</div>
+
+<!-- 4개 패널 예시 (가상) -->
+<div class="result-cards-grid">  <!-- 2열 그리드 -->
+    <div class="result-card">Result 1</div>
+    <div class="result-card">Result 2</div>
+    <div class="result-card">Result 3</div>
+    <div class="result-card">Result 4</div>
+</div>
+```
+
+**CSS 구현**
+```css
+/* 3개 패널 */
+.result-cards-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+/* 4개 이상 패널 */
+.result-cards-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+/* 모바일 공통 */
+@media (max-width: 768px) {
+    .result-cards-grid-3,
+    .result-cards-grid-4 {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
 ```
 
 #### 3. 색상 시스템

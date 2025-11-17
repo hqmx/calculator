@@ -1,0 +1,55 @@
+{
+  "navigation": {
+    "home": "首页",
+    "navHowToUse": "使用方法",
+    "navFAQ": "常见问题",
+    "navAPI": "API"
+  },
+  "home": {
+    "tagline": "通用网络计算器"
+  },
+  "bmi": {
+    "tagline": "BMI计算器",
+    "subtitle": "即刻计算您的身体质量指数",
+    "weight": "体重",
+    "height": "身高",
+    "age": "年龄",
+    "gender": "性别",
+    "male": "男",
+    "female": "女",
+    "calculateBtn": "计算BMI",
+    "recalculateBtn": "重新计算",
+    "yourBMI": "您的BMI结果",
+    "category": "BMI类别",
+    "healthStatus": "健康状态",
+    "recommendations": "建议"
+  },
+  "age": {
+    "tagline": "即刻计算您的准确年龄",
+    "title": "年龄计算器",
+    "birthDate": "出生日期",
+    "calculateBtn": "计算年龄",
+    "recalculateBtn": "重新计算",
+    "yourAge": "您的年龄",
+    "years": "年",
+    "months": "月",
+    "days": "日",
+    "totalDays": "总天数",
+    "totalHours": "总小时数",
+    "totalMinutes": "总分钟数",
+    "nextBirthday": "下次生日",
+    "bornOn": "出生于"
+  },
+  "percentage": {
+    "tagline": "计算百分比",
+    "title": "百分比计算器",
+    "whatIsPercentOf": "Y的X%是多少？",
+    "isWhatPercentOf": "X是Y的百分之几？",
+    "percentageIncrease": "百分比增加",
+    "percentageDecrease": "百分比减少",
+    "addPercentTo": "将X%加到Y",
+    "subtractPercentFrom": "从Y减去X%",
+    "calculateBtn": "计算",
+    "result": "结果"
+  }
+}

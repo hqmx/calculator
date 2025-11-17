@@ -1,0 +1,55 @@
+{
+  "navigation": {
+    "home": "Laman Utama",
+    "navHowToUse": "Cara Menggunakan",
+    "navFAQ": "FAQ",
+    "navAPI": "API"
+  },
+  "home": {
+    "tagline": "Kalkulator Web Sejagat"
+  },
+  "bmi": {
+    "tagline": "Kalkulator BMI",
+    "subtitle": "Kira Indeks Jisim Badan Anda Dengan Serta-merta",
+    "weight": "Berat Badan",
+    "height": "Tinggi Badan",
+    "age": "Umur",
+    "gender": "Jantina",
+    "male": "Lelaki",
+    "female": "Perempuan",
+    "calculateBtn": "Kira BMI",
+    "recalculateBtn": "Kira Semula",
+    "yourBMI": "Keputusan BMI Anda",
+    "category": "Kategori BMI",
+    "healthStatus": "Status Kesihatan",
+    "recommendations": "Cadangan"
+  },
+  "age": {
+    "tagline": "Kira Umur Anda Dengan Tepat Secara Serta-merta",
+    "title": "Kalkulator Umur",
+    "birthDate": "Tarikh Lahir",
+    "calculateBtn": "Kira Umur",
+    "recalculateBtn": "Kira Semula",
+    "yourAge": "Umur Anda",
+    "years": "Tahun",
+    "months": "Bulan",
+    "days": "Hari",
+    "totalDays": "Jumlah Hari",
+    "totalHours": "Jumlah Jam",
+    "totalMinutes": "Jumlah Minit",
+    "nextBirthday": "Hari Jadi Seterusnya",
+    "bornOn": "Dilahirkan Pada"
+  },
+  "percentage": {
+    "tagline": "Kira Peratusan",
+    "title": "Kalkulator Peratusan",
+    "whatIsPercentOf": "Berapakah X% daripada Y?",
+    "isWhatPercentOf": "X ialah berapa % daripada Y?",
+    "percentageIncrease": "Peningkatan Peratusan",
+    "percentageDecrease": "Penurunan Peratusan",
+    "addPercentTo": "Tambah X% kepada Y",
+    "subtractPercentFrom": "Tolak X% daripada Y",
+    "calculateBtn": "Kira",
+    "result": "Keputusan"
+  }
+}

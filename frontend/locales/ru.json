@@ -1,0 +1,55 @@
+{
+  "navigation": {
+    "home": "Главная",
+    "navHowToUse": "Как использовать",
+    "navFAQ": "FAQ",
+    "navAPI": "API"
+  },
+  "home": {
+    "tagline": "Универсальный веб-калькулятор"
+  },
+  "bmi": {
+    "tagline": "Калькулятор ИМТ",
+    "subtitle": "Рассчитайте свой индекс массы тела мгновенно",
+    "weight": "Вес",
+    "height": "Рост",
+    "age": "Возраст",
+    "gender": "Пол",
+    "male": "Мужской",
+    "female": "Женский",
+    "calculateBtn": "Рассчитать ИМТ",
+    "recalculateBtn": "Рассчитать снова",
+    "yourBMI": "Ваш результат ИМТ",
+    "category": "Категория ИМТ",
+    "healthStatus": "Состояние здоровья",
+    "recommendations": "Рекомендации"
+  },
+  "age": {
+    "tagline": "Рассчитайте свой точный возраст мгновенно",
+    "title": "Калькулятор возраста",
+    "birthDate": "Дата рождения",
+    "calculateBtn": "Рассчитать возраст",
+    "recalculateBtn": "Рассчитать снова",
+    "yourAge": "Ваш возраст",
+    "years": "Лет",
+    "months": "Месяцев",
+    "days": "Дней",
+    "totalDays": "Всего дней",
+    "totalHours": "Всего часов",
+    "totalMinutes": "Всего минут",
+    "nextBirthday": "Следующий день рождения",
+    "bornOn": "Дата рождения"
+  },
+  "percentage": {
+    "tagline": "Рассчитайте проценты",
+    "title": "Калькулятор процентов",
+    "whatIsPercentOf": "Сколько составляет X% от Y?",
+    "isWhatPercentOf": "X - это сколько % от Y?",
+    "percentageIncrease": "Процентное увеличение",
+    "percentageDecrease": "Процентное уменьшение",
+    "addPercentTo": "Добавить X% к Y",
+    "subtractPercentFrom": "Вычесть X% из Y",
+    "calculateBtn": "Рассчитать",
+    "result": "Результат"
+  }
+}

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>BMI Calculator - Calculate Your Body Mass Index | HQMX</title>
+    <meta name="description" content="Free online BMI calculator. Calculate your Body Mass Index quickly and accurately with personalized health recommendations based on WHO standards.">
+    <meta name="keywords" content="BMI calculator, body mass index, BMI 계산기, 체질량지수, health calculator, weight calculator">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="BMI Calculator - Free Online Calculator | HQMX">
+    <meta property="og:description" content="Calculate your Body Mass Index quickly and accurately with personalized recommendations.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calculator.hqmx.net/health/bmi-calculator.html">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://calculator.hqmx.net/health/bmi-calculator.html">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css?v=20251101blur2">
+    <link rel="stylesheet" href="/css/calculator.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation Header -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <a href="/" class="converter-logo-link">
+                    <div class="converter-logo">
+                        <span class="converter-text"><span class="converter-c">C</span><span class="converter-rest">ALCULATOR</span></span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="nav-center">
+                <!-- 햄버거 메뉴 버튼 (모바일용) -->
+                <button class="hamburger-menu" id="hamburgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="nav-menu">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/how-to-use.html" class="nav-link">How to Use</a>
+                    <a href="/faq.html" class="nav-link">FAQ</a>
+                    <a href="/sitemap.html" class="nav-link">Site Map</a>
+                    <a href="/api.html" class="nav-link">API</a>
+                </div>
+
+                <!-- 모바일 메뉴 오버레이 -->
+                <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+                    <div class="mobile-menu-box">
+                        <div class="mobile-menu-links">
+                            <a href="/" class="mobile-menu-link">Home</a>
+                            <a href="/how-to-use.html" class="mobile-menu-link">How to Use</a>
+                            <a href="/faq.html" class="mobile-menu-link">FAQ</a>
+                            <a href="/sitemap.html" class="mobile-menu-link">Site Map</a>
+                            <a href="/api.html" class="mobile-menu-link">API</a>
+                        </div>
+
+                        <div class="mobile-menu-controls">
+                            <div class="mobile-control-item menu-divider">
+                                <button id="mobileThemeToggleBtn" class="mobile-theme-toggle-btn">
+                                    <i class="fas fa-sun"></i>
+                                    <i class="fas fa-moon"></i>
+                                </button>
+                                <button id="mobileLanguageSelectorBtn" class="mobile-language-selector-btn">
+                                    <i class="fas fa-globe"></i>
+                                    <span id="mobileCurrentLanguage">EN</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="mobile-control-item">
+                                <div id="mobileLanguageOptions" class="mobile-language-options">
+                                    <a href="#" data-lang="en">English</a>
+                                    <a href="#" data-lang="ko">한국어</a>
+                                    <a href="#" data-lang="es">Español</a>
+                                    <a href="#" data-lang="fr">Français</a>
+                                    <a href="#" data-lang="de">Deutsch</a>
+                                    <a href="#" data-lang="ja">日本語</a>
+                                    <a href="#" data-lang="zh-CN">简体中文</a>
+                                    <a href="#" data-lang="zh-TW">繁體中文</a>
+                                    <a href="#" data-lang="pt">Português</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <button id="themeToggleBtn" class="theme-toggle-btn">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="language-switcher">
+                    <button id="language-selector-btn" class="language-selector-btn">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">English</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="language-options" class="language-options">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="ko">한국어</a>
+                        <a href="#" data-lang="es">Español</a>
+                        <a href="#" data-lang="fr">Français</a>
+                        <a href="#" data-lang="de">Deutsch</a>
+                        <a href="#" data-lang="ja">日本語</a>
+                        <a href="#" data-lang="zh-CN">简体中文</a>
+                        <a href="#" data-lang="zh-TW">繁體中文</a>
+                        <a href="#" data-lang="pt">Português</a>
+                        <a href="#" data-lang="ru">Русский</a>
+                        <a href="#" data-lang="ar">عربي</a>
+                        <a href="#" data-lang="hi">हिन्दी</a>
+                        <a href="#" data-lang="th">ไทย</a>
+                        <a href="#" data-lang="vi">Tiếng Việt</a>
+                        <a href="#" data-lang="id">Bahasa Indonesia</a>
+                        <a href="#" data-lang="it">Italiano</a>
+                        <a href="#" data-lang="tr">Türkçe</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <header class="header">
+            <p class="tagline">BMI Calculator</p>
+        </header>
+
+        <main class="main-content">
+            <!-- BMI Calculator Section -->
+            <section class="upload-section">
+                <div class="upload-container">
+                    <h4>Calculate Your Body Mass Index Instantly</h4>
+
+                    <div class="calculator-inputs">
+                        <!-- Weight Input -->
+                        <div class="input-group">
+                            <label for="weight">
+                                <i class="fas fa-weight"></i>
+                                Weight
+                            </label>
+                            <div class="input-with-unit">
+                                <input type="number" id="weight" placeholder="Enter your weight" min="20" max="300" step="0.1">
+                                <div class="unit-toggle">
+                                    <button class="unit-btn active" data-unit="kg">kg</button>
+                                    <button class="unit-btn" data-unit="lb">lb</button>
+                                </div>
+                            </div>
+                            <span class="input-hint">Range: 20-300 kg (44-660 lb)</span>
+                        </div>
+
+                        <!-- Height Input -->
+                        <div class="input-group">
+                            <label for="height">
+                                <i class="fas fa-ruler-vertical"></i>
+                                Height
+                            </label>
+                            <div class="input-with-unit">
+                                <input type="number" id="height" placeholder="Enter your height" min="100" max="250" step="0.1">
+                                <div class="unit-toggle">
+                                    <button class="unit-btn active" data-unit="cm">cm</button>
+                                    <button class="unit-btn" data-unit="ft">ft/in</button>
+                                </div>
+                            </div>
+                            <span class="input-hint">Range: 100-250 cm (3'3"-8'2")</span>
+                        </div>
+
+                        <!-- Optional: Age -->
+                        <div class="input-group optional">
+                            <label for="age">
+                                <i class="fas fa-calendar"></i>
+                                Age <span class="optional-badge">Optional</span>
+                            </label>
+                            <input type="number" id="age" placeholder="Enter your age" min="2" max="120">
+                            <span class="input-hint">For personalized insights</span>
+                        </div>
+
+                        <!-- Optional: Gender -->
+                        <div class="input-group optional">
+                            <label>
+                                <i class="fas fa-user"></i>
+                                Gender <span class="optional-badge">Optional</span>
+                            </label>
+                            <div class="gender-toggle">
+                                <button class="gender-btn" data-gender="male">
+                                    <i class="fas fa-mars"></i> Male
+                                </button>
+                                <button class="gender-btn" data-gender="female">
+                                    <i class="fas fa-venus"></i> Female
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Calculate Button -->
+                        <button class="calculate-btn" id="calculateBtn">
+                            <i class="fas fa-calculator"></i>
+                            Calculate BMI
+                        </button>
+
+                        <!-- Error Message -->
+                        <div class="error-message" id="errorMessage" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span id="errorText"></span>
+                        </div>
+                    </div>
+
+                    <!-- Results Display -->
+                    <div class="calculator-results" id="resultsSection" style="display: none;">
+                        <div class="result-card">
+                            <h3>Your BMI Result</h3>
+                            <div class="bmi-value-display">
+                                <span class="bmi-number" id="bmiValue">0.0</span>
+                            </div>
+
+                            <div class="bmi-category-display">
+                                <div class="category-badge" id="categoryBadge">
+                                    <span class="category-icon" id="categoryIcon"></span>
+                                    <span class="category-name" id="categoryName"></span>
+                                </div>
+                                <div class="category-bar" id="categoryBar"></div>
+                            </div>
+
+                            <div class="health-status">
+                                <h4>Health Status</h4>
+                                <p id="healthStatus"></p>
+                            </div>
+
+                            <div class="recommendations">
+                                <h4>Recommendations</h4>
+                                <ul id="recommendationsList"></ul>
+                            </div>
+
+                            <button class="recalculate-btn" id="recalculateBtn">
+                                <i class="fas fa-redo"></i>
+                                Calculate Again
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How to Use Section -->
+            <section class="usage-guide-section">
+                <h3>How to Use This BMI Calculator</h3>
+                <p class="section-description">Follow these simple steps to calculate your BMI quickly and easily.</p>
+                <div class="guide-steps">
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">1</span>
+                            <h4>Enter Your Weight</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>Input your current weight and choose between kilograms (kg) or pounds (lb). Make sure to use accurate measurements for best results.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">2</span>
+                            <h4>Enter Your Height</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>Input your height and choose between centimeters (cm) or feet/inches (ft/in). Stand straight when measuring for accuracy.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">3</span>
+                            <h4>Add Optional Information</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>Enter your age and select your gender for more personalized insights and recommendations. This helps provide more accurate health guidance.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">4</span>
+                            <h4>Review Your Results</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>Click "Calculate BMI" to get instant results. Review your BMI value, category, health status, and personalized recommendations.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Examples Section -->
+            <section class="examples-section">
+                <h3>BMI Calculation Examples</h3>
+                <div class="example-grid">
+                    <div class="example-card example-normal">
+                        <div class="example-header">
+                            <span class="example-icon">✅</span>
+                            <h4>Normal Weight Adult</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label">Weight:</span>
+                                <span class="value">70 kg (154 lb)</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">Height:</span>
+                                <span class="value">175 cm (5'9")</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">BMI:</span>
+                                <span class="value bmi-highlight">22.9</span>
+                            </div>
+                            <div class="example-category">
+                                <span class="category-badge normal">Normal weight</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-card example-overweight">
+                        <div class="example-header">
+                            <span class="example-icon">⚠️</span>
+                            <h4>Overweight Adult</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label">Weight:</span>
+                                <span class="value">85 kg (187 lb)</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">Height:</span>
+                                <span class="value">170 cm (5'7")</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">BMI:</span>
+                                <span class="value bmi-highlight">29.4</span>
+                            </div>
+                            <div class="example-category">
+                                <span class="category-badge overweight">Overweight</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-card example-underweight">
+                        <div class="example-header">
+                            <span class="example-icon">⬇️</span>
+                            <h4>Underweight Adult</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label">Weight:</span>
+                                <span class="value">50 kg (110 lb)</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">Height:</span>
+                                <span class="value">170 cm (5'7")</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">BMI:</span>
+                                <span class="value bmi-highlight">17.3</span>
+                            </div>
+                            <div class="example-category">
+                                <span class="category-badge underweight">Underweight</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- What is BMI Section -->
+            <section class="info-section">
+                <h3>What is Body Mass Index (BMI)?</h3>
+                <div class="info-content">
+                    <p>Body Mass Index (BMI) is a simple calculation using a person's height and weight. The formula is:</p>
+                    <div class="formula-box">
+                        <span class="formula"><strong>BMI = weight (kg) / [height (m)]²</strong></span>
+                    </div>
+                    <p>BMI is used as a screening tool to identify potential weight problems in adults. It's a quick and easy method, but it doesn't directly measure body fat.</p>
+
+                    <div class="important-notes">
+                        <h4>Important Notes:</h4>
+                        <ul>
+                            <li>BMI is not a diagnostic tool</li>
+                            <li>It may not be accurate for athletes with high muscle mass</li>
+                            <li>Different standards may apply for children and teens</li>
+                            <li>Consult healthcare providers for comprehensive health assessment</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="faq-section">
+                <h3>Frequently Asked Questions About BMI</h3>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> Is BMI an accurate measure of health?</h4>
+                        <p>BMI is a useful screening tool, but it's not perfect. It doesn't account for muscle mass, bone density, overall body composition, or racial and sex differences. Always consult healthcare professionals for comprehensive health assessment.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> How often should I calculate my BMI?</h4>
+                        <p>It's recommended to check your BMI every 3-6 months if you're monitoring weight changes, or annually as part of regular health checkups.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> Does BMI apply to everyone?</h4>
+                        <p>BMI calculations may not be accurate for pregnant women, competitive athletes and bodybuilders, people over 65 years old, and children and teenagers (who require age and sex-specific BMI charts).</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> What should I do if my BMI is outside the normal range?</h4>
+                        <p>If your BMI indicates you're underweight or overweight, consult a healthcare provider or dietitian, consider lifestyle changes (diet and exercise), and get a comprehensive health assessment. Don't rely solely on BMI for health decisions.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> Can I use BMI to track fitness progress?</h4>
+                        <p>BMI can be one metric, but it's better combined with other measurements like body fat percentage, waist circumference, muscle mass measurements, and overall fitness levels.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> Why does my BMI differ from online calculators?</h4>
+                        <p>If using the same units (metric or imperial), all calculators should give the same result. Differences may occur if units are mixed, there are rounding differences, or measurement errors.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="feature-section">
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-bolt feature-icon-text"></i>
+                    </div>
+                    <h4>Lightning Fast Results</h4>
+                    <p>Get your BMI calculated instantly with our optimized algorithm. No waiting, no delays—just accurate results in milliseconds.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-hospital feature-icon-text"></i>
+                    </div>
+                    <h4>WHO Verified Categories</h4>
+                    <p>Our BMI categories follow World Health Organization standards, ensuring you get accurate and medically recognized classifications.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-bullseye feature-icon-text"></i>
+                    </div>
+                    <h4>Customized Recommendations</h4>
+                    <p>Receive personalized health recommendations based on your BMI category, age, and gender for actionable insights.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-sync-alt feature-icon-text"></i>
+                    </div>
+                    <h4>Multiple Unit Support</h4>
+                    <p>Switch between metric (kg/cm) and imperial (lb/ft-in) units seamlessly. No conversion needed—we handle it all.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-lock feature-icon-text"></i>
+                    </div>
+                    <h4>100% Private & Secure</h4>
+                    <p>All calculations happen in your browser. We don't store or transmit any of your personal health data.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-mobile-alt feature-icon-text"></i>
+                    </div>
+                    <h4>Mobile Optimized</h4>
+                    <p>Calculate your BMI on any device. Our responsive design works perfectly on smartphones, tablets, and desktops.</p>
+                </div>
+            </section>
+
+            <!-- Related Calculators Section -->
+            <section class="related-section">
+                <h3>Related Health Calculators</h3>
+                <div class="related-grid">
+                    <a href="/health/calorie-calculator.html" class="related-card">
+                        <i class="fas fa-fire"></i>
+                        <h4>Calorie Calculator</h4>
+                        <p>Calculate daily calorie needs</p>
+                    </a>
+                    <a href="/health/weight-loss-calculator.html" class="related-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Weight Loss Calculator</h4>
+                        <p>Plan your weight loss journey</p>
+                    </a>
+                    <a href="/health/protein-calculator.html" class="related-card">
+                        <i class="fas fa-drumstick-bite"></i>
+                        <h4>Protein Calculator</h4>
+                        <p>Calculate protein requirements</p>
+                    </a>
+                    <a href="/" class="related-card">
+                        <i class="fas fa-calculator"></i>
+                        <h4>More Calculators</h4>
+                        <p>Explore all 65+ calculators</p>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-social">
+                <a href="https://x.com/8hqmx" target="_blank" rel="noopener noreferrer" class="footer-twitter" aria-label="Follow us on X (Twitter)">
+                    <img src="/assets/x-twitter-footer.svg" alt="X (Twitter)" class="footer-social-icon">
+                </a>
+            </div>
+            <p>
+                <span>&copy; 2024 HQMX Calculator. All Rights Reserved.</span>
+                <span class="footer-contact"> • support@hqmx.net</span>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/i18n.js?v=20251101fix"></script>
+    <script src="/nav-common.js"></script>
+    <script src="/js/calculators/bmi.js"></script>
+</body>
+</html>

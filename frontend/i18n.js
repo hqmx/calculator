@@ -129,49 +129,48 @@ class I18n {
     applyTranslations() {
         // 성능 최적화: DOM을 일시적으로 숨겨서 reflow를 한 번만 발생시킴
         // 177개+ 요소 변경 시 177회 reflow → 1회 reflow로 감소
-        const originalDisplay = document.body.style.display;
-        document.body.style.display = 'none';
+        // ⚠️ DISABLED: 브라우저 프리즈 문제로 인해 비활성화
+        // const originalDisplay = document.body.style.display;
+        // document.body.style.display = 'none';
 
-        try {
-            // Translate elements with data-i18n-key attribute
-            const elements = document.querySelectorAll('[data-i18n-key]');
-            elements.forEach(element => {
-                const key = element.getAttribute('data-i18n-key');
-                const translation = this.t(key);
+        // Translate elements with data-i18n-key attribute
+        const elements = document.querySelectorAll('[data-i18n-key]');
+        elements.forEach(element => {
+            const key = element.getAttribute('data-i18n-key');
+            const translation = this.t(key);
 
-                if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-                    element.placeholder = translation;
-                } else {
-                    element.textContent = translation;
-                }
-            });
+            if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
+                element.placeholder = translation;
+            } else {
+                element.textContent = translation;
+            }
+        });
 
-            // Translate elements with data-i18n-html attribute (allows HTML tags)
-            const htmlElements = document.querySelectorAll('[data-i18n-html]');
-            htmlElements.forEach(element => {
-                const key = element.getAttribute('data-i18n-html');
-                const translation = this.t(key);
-                element.innerHTML = translation;
-            });
+        // Translate elements with data-i18n-html attribute (allows HTML tags)
+        const htmlElements = document.querySelectorAll('[data-i18n-html]');
+        htmlElements.forEach(element => {
+            const key = element.getAttribute('data-i18n-html');
+            const translation = this.t(key);
+            element.innerHTML = translation;
+        });
 
-            // Translate elements with data-i18n-placeholder attribute
-            const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
-            placeholderElements.forEach(element => {
-                const key = element.getAttribute('data-i18n-placeholder');
-                element.placeholder = this.t(key);
-            });
+        // Translate elements with data-i18n-placeholder attribute
+        const placeholderElements = document.querySelectorAll('[data-i18n-placeholder]');
+        placeholderElements.forEach(element => {
+            const key = element.getAttribute('data-i18n-placeholder');
+            element.placeholder = this.t(key);
+        });
 
-            // Translate elements with data-i18n-title attribute
-            const titleElements = document.querySelectorAll('[data-i18n-title]');
-            titleElements.forEach(element => {
-                const key = element.getAttribute('data-i18n-title');
-                element.title = this.t(key);
-            });
-        } finally {
-            // 강제 reflow 후 다시 표시 (항상 실행되도록 finally 블록 사용)
-            document.body.offsetHeight; // Force reflow
-            document.body.style.display = originalDisplay;
-        }
+        // Translate elements with data-i18n-title attribute
+        const titleElements = document.querySelectorAll('[data-i18n-title]');
+        titleElements.forEach(element => {
+            const key = element.getAttribute('data-i18n-title');
+            element.title = this.t(key);
+        });
+
+        // ⚠️ DISABLED: 브라우저 프리즈 문제로 인해 비활성화
+        // document.body.offsetHeight; // Force reflow
+        // document.body.style.display = originalDisplay;
     }
 
     updateDirection() {

@@ -1,0 +1,390 @@
+/* ========================================
+   카테고리 페이지 전용 스타일
+   CONVERTER 디자인 시스템 기반
+   ======================================== */
+
+/* 헤더 스타일 */
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+
+
+/* 카테고리 그리드 섹션 */
+.category-grid-section {
+    margin-bottom: 3rem;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* 카테고리 카드 */
+.category-card {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 카테고리별 배경 아이콘 */
+.category-card::before {
+    content: '';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%) translateX(-3rem) scale(1.25);
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 10rem;
+    opacity: 0.28;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.category-card[data-category="general"]::before {
+    content: '\f295'; /* fa-percent */
+    color: #60a5fa; /* 밝은 블루 */
+}
+
+.category-card[data-category="date-time"]::before {
+    content: '\f017'; /* fa-clock */
+    color: #34d399; /* 밝은 그린 */
+}
+
+.category-card[data-category="finance"]::before {
+    content: '\f155'; /* fa-dollar-sign */
+    color: #fbbf24; /* 밝은 앰버 */
+}
+
+.category-card[data-category="health"]::before {
+    content: '\f004'; /* fa-heart */
+    color: #f472b6; /* 밝은 핑크 */
+}
+
+.category-card[data-category="conversion"]::before {
+    content: '\f363'; /* fa-repeat */
+    color: #3b82f6; /* 밝은 남색 */
+}
+
+.category-card[data-category="math"]::before {
+    content: '\f1ec'; /* fa-calculator */
+    color: #a78bfa; /* 밝은 보라 */
+}
+
+.category-card[data-category="media"]::before {
+    content: '\f144'; /* fa-play-circle */
+    color: #fb923c; /* 밝은 오렌지 */
+}
+
+.category-card[data-category="construction"]::before {
+    content: '\f0ad'; /* fa-wrench */
+    color: #22d3ee; /* 밝은 시안 */
+}
+
+/* 카드 내부 요소들은 배경 위에 표시 */
+.category-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* 카테고리 헤더 */
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.category-title-area {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.category-count {
+    font-size: 0.8rem;
+    color: var(--light-text-color);
+    font-weight: 500;
+}
+
+body[data-theme="dark"] .category-card {
+    background: rgba(30, 30, 30, 0.5);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 호버 시 상단 그라데이션 라인 (::after 사용) */
+.category-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg,
+        var(--icon-color, #2563eb),
+        transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    border-color: var(--icon-color, #2563eb);
+}
+
+body[data-theme="dark"] .category-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.category-card:hover::after {
+    opacity: 1;
+}
+
+/* 카테고리 아이콘 */
+.category-icon-wrapper {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg,
+        var(--icon-color, #2563eb) 0%,
+        color-mix(in srgb, var(--icon-color, #2563eb) 70%, white) 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+body[data-theme="dark"] .category-icon-wrapper {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.category-card:hover .category-icon-wrapper {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* 카테고리 정보 */
+.category-info {
+    flex: 1;
+}
+
+.category-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 0.3rem;
+}
+
+.category-description {
+    font-size: 0.9rem;
+    color: var(--light-text-color);
+    margin-bottom: 1rem;
+}
+
+/* 계산기 뱃지 컨테이너 */
+.calculator-badges {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+/* 개별 계산기 뱃지 */
+.calc-badge {
+    padding: 0.5rem 0.75rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    min-width: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.calc-badge:hover {
+    transform: translateY(-2px);
+}
+
+/* 카테고리별 뱃지 색상 - General (블루 계열) */
+.category-card[data-category="general"] .calc-badge {
+    background-color: rgba(37, 99, 235, 0.15);
+    color: #2563eb; /* 진한 블루 */
+}
+
+.category-card[data-category="general"] .calc-badge:hover {
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+}
+
+/* Date & Time (그린 계열) */
+.category-card[data-category="date-time"] .calc-badge {
+    background-color: rgba(5, 150, 105, 0.15);
+    color: #059669; /* 진한 그린 */
+}
+
+.category-card[data-category="date-time"] .calc-badge:hover {
+    box-shadow: 0 2px 8px rgba(5, 150, 105, 0.3);
+}
+
+/* Finance (골드 계열) */
+.category-card[data-category="finance"] .calc-badge {
+    background-color: rgba(217, 119, 6, 0.15);
+    color: #d97706; /* 진한 앰버 */
+}
+
+.category-card[data-category="finance"] .calc-badge:hover {
+    box-shadow: 0 2px 8px rgba(217, 119, 6, 0.3);
+}
+
+/* Health (핑크 계열) */
+.category-card[data-category="health"] .calc-badge {
+    background-color: rgba(219, 39, 119, 0.15);
+    color: #db2777; /* 진한 핑크 */
+}
+
+.category-card[data-category="health"] .calc-badge:hover {
+    box-shadow: 0 2px 8px rgba(219, 39, 119, 0.3);
+}
+
+/* Unit Conversion (남색 계열) */
+.category-card[data-category="conversion"] .calc-badge {
+    background-color: rgba(30, 64, 175, 0.15);
+    color: #1e40af; /* 진한 남색 */
+}
+
+.category-card[data-category="conversion"] .calc-badge:hover {
+    box-shadow: 0 2px 8px rgba(30, 64, 175, 0.3);
+}
+
+/* Math (보라 계열 - Conversion과 동일 계열) */
+.category-card[data-category="math"] .calc-badge {
+    background-color: rgba(124, 58, 237, 0.15);
+    color: #7c3aed; /* 진한 보라 */
+}
+
+.category-card[data-category="math"] .calc-badge:hover {
+    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
+}
+
+/* Media & Technology (오렌지 계열) */
+.category-card[data-category="media"] .calc-badge {
+    background-color: rgba(234, 88, 12, 0.15);
+    color: #ea580c; /* 진한 오렌지 */
+}
+
+.category-card[data-category="media"] .calc-badge:hover {
+    box-shadow: 0 2px 8px rgba(234, 88, 12, 0.3);
+}
+
+/* Construction (시안 계열) */
+.category-card[data-category="construction"] .calc-badge {
+    background-color: rgba(8, 145, 178, 0.15);
+    color: #0891b2; /* 진한 시안 */
+}
+
+.category-card[data-category="construction"] .calc-badge:hover {
+    box-shadow: 0 2px 8px rgba(8, 145, 178, 0.3);
+}
+
+/* 다크 모드 - 라이트 모드보다 밝은 색상 사용 */
+body[data-theme="dark"] .category-card[data-category="general"] .calc-badge {
+    background-color: rgba(96, 165, 250, 0.15);
+    color: #60a5fa; /* 밝은 블루 */
+}
+
+body[data-theme="dark"] .category-card[data-category="date-time"] .calc-badge {
+    background-color: rgba(52, 211, 153, 0.15);
+    color: #34d399; /* 밝은 그린 */
+}
+
+body[data-theme="dark"] .category-card[data-category="finance"] .calc-badge {
+    background-color: rgba(251, 191, 36, 0.15);
+    color: #fbbf24; /* 밝은 앰버 */
+}
+
+body[data-theme="dark"] .category-card[data-category="health"] .calc-badge {
+    background-color: rgba(244, 114, 182, 0.15);
+    color: #f472b6; /* 밝은 핑크 */
+}
+
+body[data-theme="dark"] .category-card[data-category="conversion"] .calc-badge {
+    background-color: rgba(59, 130, 246, 0.15);
+    color: #3b82f6; /* 밝은 남색 */
+}
+
+body[data-theme="dark"] .category-card[data-category="math"] .calc-badge {
+    background-color: rgba(167, 139, 250, 0.15);
+    color: #a78bfa; /* 밝은 보라 */
+}
+
+body[data-theme="dark"] .category-card[data-category="media"] .calc-badge {
+    background-color: rgba(251, 146, 60, 0.15);
+    color: #fb923c; /* 밝은 오렌지 */
+}
+
+body[data-theme="dark"] .category-card[data-category="construction"] .calc-badge {
+    background-color: rgba(34, 211, 238, 0.15);
+    color: #22d3ee; /* 밝은 시안 */
+}
+
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .category-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .category-card {
+        padding: 1.2rem;
+    }
+
+    .category-icon-wrapper {
+        width: 48px;
+        height: 48px;
+        font-size: 1.5rem;
+    }
+
+    .category-name {
+        font-size: 1.1rem;
+    }
+
+    .calculator-badges {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-card {
+        padding: 1rem;
+    }
+
+    .calc-badge {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.6rem;
+    }
+}

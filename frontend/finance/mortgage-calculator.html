@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주택담보대출 계산기 - Mortgage Calculator | HQMX</title>
+    <meta name="description" content="무료 주택담보대출 계산기. 원리금균등상환과 원금균등상환 방식을 비교하고 월 상환액을 정확하게 계산하세요.">
+    <meta name="keywords" content="mortgage calculator, 주택담보대출 계산기, 대출 계산기, 이자 계산, 원리금균등상환, 원금균등상환, loan calculator">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css?v=20251101blur2">
+    <link rel="stylesheet" href="/css/calculator.css?v=20251115blue">
+
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="주택담보대출 계산기 - Mortgage Calculator">
+    <meta property="og:description" content="원리금균등상환과 원금균등상환 방식을 비교하고 월 상환액을 계산하세요.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calculator.hqmx.net/finance/mortgage-calculator.html">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://calculator.hqmx.net/finance/mortgage-calculator.html">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation Header -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <a href="/" class="converter-logo-link">
+                    <div class="converter-logo">
+                        <span class="converter-text"><span class="converter-c">C</span><span class="converter-rest">ALCULATOR</span></span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="nav-center">
+                <!-- 햄버거 메뉴 버튼 (모바일용) -->
+                <button class="hamburger-menu" id="hamburgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="nav-menu">
+                    <a href="/" class="nav-link active">Home</a>
+                    <a href="/how-to-use" class="nav-link">How to Use</a>
+                    <a href="/faq" class="nav-link">FAQ</a>
+                    <a href="/sitemap" class="nav-link">Site Map</a>
+                    <a href="/api.html" class="nav-link">API</a>
+                </div>
+
+                <!-- 모바일 메뉴 오버레이 -->
+                <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+                    <div class="mobile-menu-box">
+                        <!-- 모바일 메뉴 페이지 링크 -->
+                        <div class="mobile-menu-links">
+                            <a href="/" class="mobile-menu-link active">Home</a>
+                            <a href="/how-to-use" class="mobile-menu-link">How to Use</a>
+                            <a href="/faq" class="mobile-menu-link">FAQ</a>
+                            <a href="/sitemap" class="mobile-menu-link">Site Map</a>
+                            <a href="/api.html" class="mobile-menu-link">API</a>
+                        </div>
+
+                        <div class="mobile-menu-controls">
+                            <div class="mobile-control-item menu-divider">
+                                <button id="mobileThemeToggleBtn" class="mobile-theme-toggle-btn">
+                                    <i class="fas fa-sun"></i>
+                                    <i class="fas fa-moon"></i>
+                                </button>
+                                <button id="mobileLanguageSelectorBtn" class="mobile-language-selector-btn">
+                                    <i class="fas fa-globe"></i>
+                                    <span id="mobileCurrentLanguage">KO</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="mobile-control-item">
+                                <div id="mobileLanguageOptions" class="mobile-language-options">
+                                    <a href="#" data-lang="ko">한국어</a>
+                                    <a href="#" data-lang="en">English</a>
+                                    <a href="#" data-lang="de">Deutsch</a>
+                                    <a href="#" data-lang="es">Español</a>
+                                    <a href="#" data-lang="fr">Français</a>
+                                    <a href="#" data-lang="hi">हिन्दी / Hindī</a>
+                                    <a href="#" data-lang="id">Bahasa Indonesia</a>
+                                    <a href="#" data-lang="it">Italiano</a>
+                                    <a href="#" data-lang="ja">日本語</a>
+                                    <a href="#" data-lang="my">Myanmar (မြန်မာ)</a>
+                                    <a href="#" data-lang="ms">Malay</a>
+                                    <a href="#" data-lang="fil">Filipino</a>
+                                    <a href="#" data-lang="pt">Português</a>
+                                    <a href="#" data-lang="ru">Русский</a>
+                                    <a href="#" data-lang="th">ไทย</a>
+                                    <a href="#" data-lang="tr">Türkçe</a>
+                                    <a href="#" data-lang="vi">Tiếng Việt</a>
+                                    <a href="#" data-lang="zh-CN">简体中文</a>
+                                    <a href="#" data-lang="zh-TW">繁體中文</a>
+                                    <a href="#" data-lang="ar">عربي</a>
+                                    <a href="#" data-lang="bn">বাঙালি</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <button id="themeToggleBtn" class="theme-toggle-btn">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="language-switcher">
+                    <button id="language-selector-btn" class="language-selector-btn">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">한국어</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="language-options" class="language-options">
+                        <a href="#" data-lang="ko">한국어</a>
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="de">Deutsch</a>
+                        <a href="#" data-lang="es">Español</a>
+                        <a href="#" data-lang="fr">Français</a>
+                        <a href="#" data-lang="hi">हिन्दी / Hindī</a>
+                        <a href="#" data-lang="id">Bahasa Indonesia</a>
+                        <a href="#" data-lang="it">Italiano</a>
+                        <a href="#" data-lang="ja">日本語</a>
+                        <a href="#" data-lang="my">Myanmar (မြန်မာ)</a>
+                        <a href="#" data-lang="ms">Malay</a>
+                        <a href="#" data-lang="fil">Filipino</a>
+                        <a href="#" data-lang="pt">Português</a>
+                        <a href="#" data-lang="ru">Русский</a>
+                        <a href="#" data-lang="th">ไทย</a>
+                        <a href="#" data-lang="tr">Türkçe</a>
+                        <a href="#" data-lang="vi">Tiếng Việt</a>
+                        <a href="#" data-lang="zh-CN">简体中文</a>
+                        <a href="#" data-lang="zh-TW">繁體中文</a>
+                        <a href="#" data-lang="ar">عربي</a>
+                        <a href="#" data-lang="bn">বাঙালি</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <header class="header">
+            <p class="tagline">주택담보대출 계산기 (Mortgage Calculator)</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Mortgage Calculator Section -->
+            <section class="upload-section">
+                <div class="upload-container">
+                    <h4>월 상환액과 총 이자를 즉시 계산하세요</h4>
+
+                    <div class="calculator-inputs">
+                        <!-- Loan Amount Input -->
+                        <div class="input-group">
+                            <label for="loanAmount">
+                                <i class="fas fa-won-sign"></i>
+                                대출 금액
+                            </label>
+                            <div class="input-with-unit">
+                                <input type="number" id="loanAmount" placeholder="대출 금액을 입력하세요" min="10000000" max="10000000000" step="1000000">
+                                <span class="unit-label">원</span>
+                            </div>
+                            <span class="input-hint">범위: 1천만원 ~ 100억원</span>
+                        </div>
+
+                        <!-- Interest Rate Input -->
+                        <div class="input-group">
+                            <label for="interestRate">
+                                <i class="fas fa-percentage"></i>
+                                연 이자율
+                            </label>
+                            <div class="input-with-unit">
+                                <input type="number" id="interestRate" placeholder="연 이자율을 입력하세요" min="0.1" max="20" step="0.1">
+                                <span class="unit-label">%</span>
+                            </div>
+                            <span class="input-hint">범위: 0.1% ~ 20%</span>
+                        </div>
+
+                        <!-- Loan Term Input -->
+                        <div class="input-group">
+                            <label for="loanTerm">
+                                <i class="fas fa-calendar-alt"></i>
+                                대출 기간
+                            </label>
+                            <div class="input-with-unit">
+                                <input type="number" id="loanTerm" placeholder="대출 기간을 입력하세요" min="1" max="50" step="1">
+                                <span class="unit-label">년</span>
+                            </div>
+                            <span class="input-hint">범위: 1년 ~ 50년</span>
+                        </div>
+
+                        <!-- Repayment Type -->
+                        <div class="input-group">
+                            <label>
+                                <i class="fas fa-exchange-alt"></i>
+                                상환 방식
+                            </label>
+                            <div class="gender-toggle">
+                                <button class="gender-btn active" data-type="equal-payment">
+                                    <i class="fas fa-equals"></i> 원리금균등상환
+                                </button>
+                                <button class="gender-btn" data-type="equal-principal">
+                                    <i class="fas fa-chart-line"></i> 원금균등상환
+                                </button>
+                            </div>
+                            <span class="input-hint">상환 방식에 따라 월 상환액이 달라집니다</span>
+                        </div>
+
+                        <!-- Calculate Button -->
+                        <button class="calculate-btn" id="calculateBtn">
+                            <i class="fas fa-calculator"></i>
+                            대출 상환액 계산하기
+                        </button>
+
+                        <!-- Error Message -->
+                        <div class="error-message" id="errorMessage" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span id="errorText"></span>
+                        </div>
+                    </div>
+
+                    <!-- Results Display -->
+                    <div class="calculator-results" id="resultsSection" style="display: none; margin-top: 3rem !important;">
+                        <div class="result-card">
+                            <h3>대출 상환 계산 결과</h3>
+
+                            <div class="mortgage-summary">
+                                <div class="summary-item">
+                                    <span class="summary-label">상환 방식</span>
+                                    <span class="summary-value" id="repaymentTypeDisplay"></span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">대출 금액</span>
+                                    <span class="summary-value" id="loanAmountDisplay"></span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">대출 기간</span>
+                                    <span class="summary-value" id="loanTermDisplay"></span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">연 이자율</span>
+                                    <span class="summary-value" id="interestRateDisplay"></span>
+                                </div>
+                            </div>
+
+                            <div class="bmi-value-display" style="margin-top: 2rem;">
+                                <div style="font-size: 1rem; color: var(--text-secondary); margin-bottom: 0.5rem;">
+                                    <span id="monthlyPaymentLabel">월 상환액</span>
+                                </div>
+                                <span class="bmi-number" id="monthlyPayment" style="color: var(--primary-color);">0원</span>
+                            </div>
+
+                            <div class="health-status">
+                                <h4>상환 요약</h4>
+                                <div class="repayment-summary">
+                                    <div class="summary-row">
+                                        <span class="label">총 이자</span>
+                                        <span class="value" id="totalInterest">0원</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span class="label">총 상환액</span>
+                                        <span class="value primary" id="totalPayment">0원</span>
+                                    </div>
+                                    <div class="summary-row" id="firstMonthPaymentRow" style="display: none;">
+                                        <span class="label">첫 달 상환액</span>
+                                        <span class="value" id="firstMonthPayment">0원</span>
+                                    </div>
+                                    <div class="summary-row" id="lastMonthPaymentRow" style="display: none;">
+                                        <span class="label">마지막 달 상환액</span>
+                                        <span class="value" id="lastMonthPayment">0원</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="recommendations">
+                                <h4>상환 방식 특징</h4>
+                                <ul id="recommendationsList"></ul>
+                            </div>
+
+                            <button class="recalculate-btn" id="recalculateBtn">
+                                <i class="fas fa-redo"></i>
+                                다시 계산하기
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How to Use Section -->
+            <section class="usage-guide-section">
+                <h3>주택담보대출 계산기 사용 방법</h3>
+                <p class="section-description">아래 단계를 따라 대출 상환액을 쉽고 빠르게 계산하세요.</p>
+                <div class="guide-steps">
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">1</span>
+                            <h4>대출 금액 입력</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>필요한 대출 금액을 입력하세요. 일반적으로 주택 가격의 40~80% 범위에서 대출이 가능합니다. 정확한 금액을 입력할수록 더 정확한 계산 결과를 얻을 수 있습니다.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">2</span>
+                            <h4>이자율과 기간 설정</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>은행에서 제시한 연 이자율과 대출 기간을 입력하세요. 현재 시중 금리는 보통 3~5% 범위이며, 대출 기간은 10년, 20년, 30년 등이 일반적입니다.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">3</span>
+                            <h4>상환 방식 선택</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>원리금균등상환과 원금균등상환 중 하나를 선택하세요. 원리금균등상환은 매월 같은 금액을 상환하고, 원금균등상환은 처음에 많이 갚고 나중에 적게 갚는 방식입니다.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">4</span>
+                            <h4>결과 확인 및 비교</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>"계산하기" 버튼을 클릭하면 월 상환액, 총 이자, 총 상환액을 즉시 확인할 수 있습니다. 두 가지 상환 방식을 번갈아 계산해보며 자신에게 유리한 방식을 선택하세요.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Examples Section -->
+            <section class="examples-section">
+                <h3>주택담보대출 계산 예시</h3>
+                <div class="example-grid">
+                    <div class="example-card example-normal">
+                        <div class="example-header">
+                            <span class="example-icon">🏠</span>
+                            <h4>3억원 20년 대출</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label">대출 금액:</span>
+                                <span class="value">3억원</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">이자율:</span>
+                                <span class="value">4.5% (연)</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">대출 기간:</span>
+                                <span class="value">20년</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">월 상환액:</span>
+                                <span class="value bmi-highlight">약 190만원</span>
+                            </div>
+                            <div class="example-category">
+                                <span class="category-badge normal">원리금균등상환</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-card example-overweight">
+                        <div class="example-header">
+                            <span class="example-icon">🏢</span>
+                            <h4>5억원 30년 대출</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label">대출 금액:</span>
+                                <span class="value">5억원</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">이자율:</span>
+                                <span class="value">3.8% (연)</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">대출 기간:</span>
+                                <span class="value">30년</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">월 상환액:</span>
+                                <span class="value bmi-highlight">약 233만원</span>
+                            </div>
+                            <div class="example-category">
+                                <span class="category-badge overweight">원리금균등상환</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-card example-underweight">
+                        <div class="example-header">
+                            <span class="example-icon">🏘️</span>
+                            <h4>10억원 15년 대출</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label">대출 금액:</span>
+                                <span class="value">10억원</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">이자율:</span>
+                                <span class="label">5.2% (연)</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">대출 기간:</span>
+                                <span class="value">15년</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">월 상환액:</span>
+                                <span class="value bmi-highlight">약 800만원</span>
+                            </div>
+                            <div class="example-category">
+                                <span class="category-badge underweight">원리금균등상환</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- What is Mortgage Section -->
+            <section class="info-section">
+                <h3>주택담보대출이란?</h3>
+                <div class="info-content">
+                    <p>주택담보대출은 주택을 담보로 제공하고 금융기관으로부터 자금을 빌리는 대출 상품입니다. 대출금은 매월 원금과 이자를 포함하여 상환해야 하며, 상환 방식에 따라 월 상환액이 달라집니다.</p>
+
+                    <div class="formula-box" style="margin: 2rem 0;">
+                        <h4 style="margin-bottom: 1rem;">원리금균등상환 계산식</h4>
+                        <span class="formula"><strong>월 상환액 = P × [r(1+r)ⁿ] / [(1+r)ⁿ-1]</strong></span>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary);">
+                            P = 대출원금, r = 월 이자율, n = 상환 개월 수
+                        </p>
+                    </div>
+
+                    <div class="important-notes">
+                        <h4>상환 방식 비교</h4>
+                        <div style="margin-top: 1rem;">
+                            <div style="margin-bottom: 1.5rem;">
+                                <h5 style="color: var(--primary-color); margin-bottom: 0.5rem;">
+                                    <i class="fas fa-equals"></i> 원리금균등상환
+                                </h5>
+                                <ul>
+                                    <li><strong>특징:</strong> 매월 같은 금액 상환 (원금 + 이자)</li>
+                                    <li><strong>장점:</strong> 상환액이 일정하여 재무 계획 수립 용이</li>
+                                    <li><strong>단점:</strong> 초기에 이자 비중이 높아 원금 상환 속도 느림</li>
+                                    <li><strong>적합한 경우:</strong> 안정적인 소득이 있는 직장인, 장기 대출</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h5 style="color: var(--primary-color); margin-bottom: 0.5rem;">
+                                    <i class="fas fa-chart-line"></i> 원금균등상환
+                                </h5>
+                                <ul>
+                                    <li><strong>특징:</strong> 매월 같은 원금 + 잔액에 대한 이자 상환</li>
+                                    <li><strong>장점:</strong> 총 이자 부담이 적고, 시간이 지날수록 상환액 감소</li>
+                                    <li><strong>단점:</strong> 초기 상환액 부담이 크고, 상환액이 매월 변동</li>
+                                    <li><strong>적합한 경우:</strong> 초기 자금 여력이 있는 경우, 단기간 상환 계획</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Comparison Section -->
+            <section class="info-section">
+                <h3>상환 방식 심층 비교</h3>
+                <div class="info-content">
+                    <div class="comparison-table">
+                        <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                            <thead>
+                                <tr style="background: var(--card-background); border-bottom: 2px solid var(--border-color);">
+                                    <th style="padding: 1rem; text-align: left;">비교 항목</th>
+                                    <th style="padding: 1rem; text-align: center;">원리금균등상환</th>
+                                    <th style="padding: 1rem; text-align: center;">원금균등상환</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid var(--border-color);">
+                                    <td style="padding: 1rem;"><strong>월 상환액</strong></td>
+                                    <td style="padding: 1rem; text-align: center;">일정함 ✅</td>
+                                    <td style="padding: 1rem; text-align: center;">감소함 📉</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border-color);">
+                                    <td style="padding: 1rem;"><strong>초기 부담</strong></td>
+                                    <td style="padding: 1rem; text-align: center;">중간 수준</td>
+                                    <td style="padding: 1rem; text-align: center;">높음 ⚠️</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border-color);">
+                                    <td style="padding: 1rem;"><strong>총 이자</strong></td>
+                                    <td style="padding: 1rem; text-align: center;">많음</td>
+                                    <td style="padding: 1rem; text-align: center;">적음 💰</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid var(--border-color);">
+                                    <td style="padding: 1rem;"><strong>재무 계획</strong></td>
+                                    <td style="padding: 1rem; text-align: center;">쉬움 ✅</td>
+                                    <td style="padding: 1rem; text-align: center;">복잡함</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 1rem;"><strong>추천 대상</strong></td>
+                                    <td style="padding: 1rem; text-align: center;">일반 직장인</td>
+                                    <td style="padding: 1rem; text-align: center;">자금 여력 있는 분</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="important-notes" style="margin-top: 2rem;">
+                        <h4>💡 선택 가이드</h4>
+                        <ul>
+                            <li><strong>원리금균등상환 선택 시:</strong> 매월 일정한 금액으로 장기간 안정적으로 상환하고 싶은 경우</li>
+                            <li><strong>원금균등상환 선택 시:</strong> 초기에는 부담이 크더라도 총 이자를 줄이고 싶은 경우</li>
+                            <li><strong>주의사항:</strong> 본인의 소득 수준, 현금 흐름, 향후 재무 계획을 종합적으로 고려하여 선택</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="faq-section">
+                <h3>주택담보대출 자주 묻는 질문 (FAQ)</h3>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 원리금균등상환과 원금균등상환 중 어떤 것이 유리한가요?</h4>
+                        <p>일반적으로 총 이자 부담은 원금균등상환이 적지만, 초기 상환액이 큽니다. 안정적인 소득이 있고 장기 대출인 경우 원리금균등상환이, 초기 자금 여력이 있다면 원금균등상환이 유리할 수 있습니다. 본인의 재무 상황에 맞춰 선택하세요.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 중도상환수수료는 얼마나 되나요?</h4>
+                        <p>중도상환수수료는 금융기관과 대출 상품에 따라 다릅니다. 일반적으로 대출 잔액의 1~3% 범위이며, 대출 후 3년 이내 중도상환 시 부과됩니다. 최근에는 중도상환수수료 면제 상품도 많으니 대출 전 확인하세요.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 주택담보대출 한도는 어떻게 정해지나요?</h4>
+                        <p>주택담보대출 한도는 주택 가격, 담보인정비율(LTV), 총부채상환비율(DTI), 소득 수준 등을 종합적으로 고려하여 결정됩니다. 일반적으로 주택 가격의 40~80% 범위에서 대출이 가능하며, 규제지역인 경우 더 낮을 수 있습니다.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 변동금리와 고정금리 중 어떤 것을 선택해야 하나요?</h4>
+                        <p>변동금리는 시장 금리에 따라 변동하며, 고정금리는 대출 기간 동안 금리가 고정됩니다. 현재 금리가 낮고 향후 금리 상승이 예상되면 고정금리가, 금리 하락이 예상되거나 단기 대출이라면 변동금리가 유리할 수 있습니다.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 대출 상환 중 이자율을 낮출 수 있나요?</h4>
+                        <p>네, 가능합니다. 신용등급이 향상되거나 시장 금리가 하락한 경우 금융기관에 금리 인하를 요청할 수 있습니다. 또는 대환대출을 통해 더 낮은 금리의 상품으로 갈아탈 수도 있습니다. 수수료 등을 비교 후 결정하세요.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 조기 상환하는 것이 유리한가요?</h4>
+                        <p>조기 상환은 총 이자 부담을 줄일 수 있어 유리합니다. 하지만 중도상환수수료와 다른 투자 기회를 고려해야 합니다. 대출 금리보다 높은 수익률을 기대할 수 있는 투자처가 있다면 조기 상환보다 투자가 더 유리할 수 있습니다.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="feature-section">
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-bolt feature-icon-text"></i>
+                    </div>
+                    <h4>실시간 계산</h4>
+                    <p>복잡한 대출 계산을 즉시 처리합니다. 원리금균등상환과 원금균등상환 방식을 실시간으로 비교하여 최적의 상환 방법을 선택하세요.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-chart-line feature-icon-text"></i>
+                    </div>
+                    <h4>정확한 금융 계산식</h4>
+                    <p>은행에서 사용하는 표준 금융 계산식을 적용하여 정확한 월 상환액, 총 이자, 총 상환액을 계산합니다. 신뢰할 수 있는 결과를 제공합니다.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-exchange-alt feature-icon-text"></i>
+                    </div>
+                    <h4>상환 방식 비교</h4>
+                    <p>원리금균등상환과 원금균등상환 두 가지 방식을 손쉽게 비교할 수 있습니다. 각 방식의 장단점을 파악하고 본인에게 맞는 방식을 선택하세요.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-won-sign feature-icon-text"></i>
+                    </div>
+                    <h4>다양한 금액 지원</h4>
+                    <p>소액 대출부터 고액 대출까지 다양한 금액을 계산할 수 있습니다. 1천만원부터 100억원까지 폭넓은 범위를 지원합니다.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-lock feature-icon-text"></i>
+                    </div>
+                    <h4>100% 개인정보 보호</h4>
+                    <p>모든 계산은 브라우저 내에서 처리됩니다. 입력한 대출 정보는 서버로 전송되지 않으며, 완벽하게 보호됩니다.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-mobile-alt feature-icon-text"></i>
+                    </div>
+                    <h4>모바일 최적화</h4>
+                    <p>스마트폰, 태블릿, PC 어디서든 편리하게 대출 계산을 할 수 있습니다. 반응형 디자인으로 모든 기기에서 완벽하게 작동합니다.</p>
+                </div>
+            </section>
+
+            <!-- Related Calculators Section -->
+            <section class="related-section">
+                <h3>관련 금융 계산기</h3>
+                <div class="related-grid">
+                    <a href="/finance/loan-calculator.html" class="related-card">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <h4>대출 계산기</h4>
+                        <p>일반 대출 상환액 계산</p>
+                    </a>
+                    <a href="/finance/interest-calculator.html" class="related-card">
+                        <i class="fas fa-percentage"></i>
+                        <h4>이자 계산기</h4>
+                        <p>단리/복리 이자 계산</p>
+                    </a>
+                    <a href="/finance/tax-calculator.html" class="related-card">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <h4>세금 계산기</h4>
+                        <p>취득세/양도세 계산</p>
+                    </a>
+                    <a href="/" class="related-card">
+                        <i class="fas fa-calculator"></i>
+                        <h4>더 많은 계산기</h4>
+                        <p>65개 이상의 계산기 탐색</p>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-social">
+                <a href="https://x.com/8hqmx" target="_blank" rel="noopener noreferrer" class="footer-twitter" aria-label="Follow us on X (Twitter)">
+                    <img src="/assets/x-twitter-footer.svg" alt="X (Twitter)" class="footer-social-icon">
+                </a>
+            </div>
+            <p>
+                <span>&copy; 2024 HQMX Calculator. All Rights Reserved.</span>
+                <span class="footer-contact"> • support@hqmx.net</span>
+            </p>
+        </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="/i18n.js?v=20251101fix"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/calculators/mortgage.js"></script>
+</body>
+</html>

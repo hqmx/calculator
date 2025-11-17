@@ -1,0 +1,55 @@
+{
+  "navigation": {
+    "home": "হোম",
+    "navHowToUse": "কীভাবে ব্যবহার করবেন",
+    "navFAQ": "FAQ",
+    "navAPI": "API"
+  },
+  "home": {
+    "tagline": "ইউনিভার্সাল ওয়েব ক্যালকুলেটর"
+  },
+  "bmi": {
+    "tagline": "BMI ক্যালকুলেটর",
+    "subtitle": "আপনার বডি মাস ইনডেক্স তৎক্ষণাৎ গণনা করুন",
+    "weight": "ওজন",
+    "height": "উচ্চতা",
+    "age": "বয়স",
+    "gender": "লিঙ্গ",
+    "male": "পুরুষ",
+    "female": "মহিলা",
+    "calculateBtn": "BMI গণনা করুন",
+    "recalculateBtn": "আবার গণনা করুন",
+    "yourBMI": "আপনার BMI ফলাফল",
+    "category": "BMI বিভাগ",
+    "healthStatus": "স্বাস্থ্য অবস্থা",
+    "recommendations": "সুপারিশসমূহ"
+  },
+  "age": {
+    "tagline": "আপনার সঠিক বয়স তৎক্ষণাৎ গণনা করুন",
+    "title": "বয়স ক্যালকুলেটর",
+    "birthDate": "জন্ম তারিখ",
+    "calculateBtn": "বয়স গণনা করুন",
+    "recalculateBtn": "আবার গণনা করুন",
+    "yourAge": "আপনার বয়স",
+    "years": "বছর",
+    "months": "মাস",
+    "days": "দিন",
+    "totalDays": "মোট দিন",
+    "totalHours": "মোট ঘণ্টা",
+    "totalMinutes": "মোট মিনিট",
+    "nextBirthday": "পরবর্তী জন্মদিন",
+    "bornOn": "জন্ম তারিখ"
+  },
+  "percentage": {
+    "tagline": "শতাংশ গণনা করুন",
+    "title": "শতাংশ ক্যালকুলেটর",
+    "whatIsPercentOf": "Y এর X% কত?",
+    "isWhatPercentOf": "X হল Y এর কত %?",
+    "percentageIncrease": "শতাংশ বৃদ্ধি",
+    "percentageDecrease": "শতাংশ হ্রাস",
+    "addPercentTo": "Y এর সাথে X% যোগ করুন",
+    "subtractPercentFrom": "Y থেকে X% বিয়োগ করুন",
+    "calculateBtn": "গণনা করুন",
+    "result": "ফলাফল"
+  }
+}

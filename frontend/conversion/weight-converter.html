@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Weight Converter - Convert Between Weight Units | HQMX</title>
+    <meta name="description" content="Free online weight converter. Convert between kilograms, pounds, ounces, grams, tons, and more. Accurate mass and weight conversion.">
+    <meta name="keywords" content="weight converter, mass converter, kg to lbs, pounds to kg, grams to ounces, 무게 변환, weight conversion">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Weight Converter - Free Unit Conversion | HQMX">
+    <meta property="og:description" content="Convert weights and masses between metric and imperial units instantly.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calculator.hqmx.net/conversion/weight-converter.html">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://calculator.hqmx.net/conversion/weight-converter.html">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css?v=20251101blur2">
+    <link rel="stylesheet" href="/category.css">
+    <link rel="stylesheet" href="/css/calculator.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <style>
+        .converter-grid {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 1.5rem;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .converter-box {
+            background: var(--input-bg);
+            border: 2px solid var(--input-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .converter-label {
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .converter-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--input-border);
+            border-radius: 8px;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+
+        .converter-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--input-border);
+            border-radius: 8px;
+            font-size: 1rem;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+
+        .swap-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .swap-btn:hover {
+            background: var(--primary);
+            color: white;
+            transform: rotate(180deg);
+        }
+
+        .conversion-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+
+        .conversion-table th,
+        .conversion-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--input-border);
+        }
+
+        .conversion-table th {
+            background: var(--secondary-bg);
+            font-weight: 600;
+        }
+
+        .conversion-table tr:hover {
+            background: var(--hover-bg);
+        }
+
+        @media (max-width: 768px) {
+            .converter-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .swap-btn {
+                margin: 0 auto;
+                transform: rotate(90deg);
+            }
+
+            .swap-btn:hover {
+                transform: rotate(270deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation Header -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <a href="/" class="converter-logo-link">
+                    <div class="converter-logo">
+                        <span class="converter-text"><span class="converter-c">C</span><span class="converter-rest">ALCULATOR</span></span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="nav-center">
+                <button class="hamburger-menu" id="hamburgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="nav-menu">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/how-to-use" class="nav-link">How to Use</a>
+                    <a href="/faq" class="nav-link">FAQ</a>
+                    <a href="/api.html" class="nav-link">API</a>
+                </div>
+
+                <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+                    <div class="mobile-menu-box">
+                        <div class="mobile-menu-links">
+                            <a href="/" class="mobile-menu-link">Home</a>
+                            <a href="/how-to-use" class="mobile-menu-link">How to Use</a>
+                            <a href="/faq" class="mobile-menu-link">FAQ</a>
+                            <a href="/api.html" class="mobile-menu-link">API</a>
+                        </div>
+
+                        <div class="mobile-menu-controls">
+                            <div class="mobile-control-item menu-divider">
+                                <button id="mobileThemeToggleBtn" class="mobile-theme-toggle-btn">
+                                    <i class="fas fa-sun"></i>
+                                    <i class="fas fa-moon"></i>
+                                </button>
+                                <button id="mobileLanguageSelectorBtn" class="mobile-language-selector-btn">
+                                    <i class="fas fa-globe"></i>
+                                    <span id="mobileCurrentLanguage">EN</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="mobile-control-item">
+                                <div id="mobileLanguageOptions" class="mobile-language-options">
+                                    <a href="#" data-lang="en">English</a>
+                                    <a href="#" data-lang="ko">한국어</a>
+                                    <a href="#" data-lang="es">Español</a>
+                                    <a href="#" data-lang="fr">Français</a>
+                                    <a href="#" data-lang="de">Deutsch</a>
+                                    <a href="#" data-lang="ja">日本語</a>
+                                    <a href="#" data-lang="zh-CN">简体中文</a>
+                                    <a href="#" data-lang="pt">Português</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <button id="themeToggleBtn" class="icon-btn">
+                    <i class="fas fa-sun sun-icon"></i>
+                    <i class="fas fa-moon moon-icon"></i>
+                </button>
+
+                <div class="language-selector">
+                    <button id="languageSelectorBtn" class="icon-btn">
+                        <i class="fas fa-globe"></i>
+                        <span id="currentLanguage">EN</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="languageOptions" class="language-options">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="ko">한국어</a>
+                        <a href="#" data-lang="es">Español</a>
+                        <a href="#" data-lang="fr">Français</a>
+                        <a href="#" data-lang="de">Deutsch</a>
+                        <a href="#" data-lang="ja">日本語</a>
+                        <a href="#" data-lang="zh-CN">简体中文</a>
+                        <a href="#" data-lang="pt">Português</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Calculator Header -->
+            <header class="calculator-header">
+                <h1>Weight Converter</h1>
+                <p class="tagline">Convert Between Weight and Mass Units</p>
+            </header>
+
+            <!-- Converter Grid -->
+            <div class="converter-grid">
+                <!-- From -->
+                <div class="converter-box">
+                    <div class="converter-label">From</div>
+                    <input
+                        type="number"
+                        id="fromValue"
+                        class="converter-input"
+                        placeholder="Enter value"
+                        value="1"
+                        step="any"
+                    >
+                    <select id="fromUnit" class="converter-select">
+                        <optgroup label="Metric">
+                            <option value="mg">Milligram (mg)</option>
+                            <option value="g">Gram (g)</option>
+                            <option value="kg" selected>Kilogram (kg)</option>
+                            <option value="ton">Metric Ton (t)</option>
+                        </optgroup>
+                        <optgroup label="Imperial">
+                            <option value="oz">Ounce (oz)</option>
+                            <option value="lb">Pound (lb)</option>
+                            <option value="stone">Stone (st)</option>
+                            <option value="ton-us">US Ton</option>
+                            <option value="ton-uk">UK Ton</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <!-- Swap Button -->
+                <button id="swapBtn" class="swap-btn" title="Swap units">
+                    <i class="fas fa-exchange-alt"></i>
+                </button>
+
+                <!-- To -->
+                <div class="converter-box">
+                    <div class="converter-label">To</div>
+                    <input
+                        type="number"
+                        id="toValue"
+                        class="converter-input"
+                        placeholder="Result"
+                        readonly
+                    >
+                    <select id="toUnit" class="converter-select">
+                        <optgroup label="Metric">
+                            <option value="mg">Milligram (mg)</option>
+                            <option value="g">Gram (g)</option>
+                            <option value="kg">Kilogram (kg)</option>
+                            <option value="ton">Metric Ton (t)</option>
+                        </optgroup>
+                        <optgroup label="Imperial">
+                            <option value="oz">Ounce (oz)</option>
+                            <option value="lb" selected>Pound (lb)</option>
+                            <option value="stone">Stone (st)</option>
+                            <option value="ton-us">US Ton</option>
+                            <option value="ton-uk">UK Ton</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Quick Conversion Table -->
+            <section class="info-section">
+                <h2><i class="fas fa-table"></i> Quick Reference Table</h2>
+                <p>Common weight conversions from 1 kilogram:</p>
+                <table class="conversion-table">
+                    <thead>
+                        <tr>
+                            <th>Unit</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Milligram</td><td>1,000,000 mg</td></tr>
+                        <tr><td>Gram</td><td>1,000 g</td></tr>
+                        <tr><td>Kilogram</td><td>1 kg</td></tr>
+                        <tr><td>Metric Ton</td><td>0.001 t</td></tr>
+                        <tr><td>Ounce</td><td>35.27 oz</td></tr>
+                        <tr><td>Pound</td><td>2.20 lb</td></tr>
+                        <tr><td>Stone</td><td>0.157 st</td></tr>
+                        <tr><td>US Ton</td><td>0.0011 ton</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- How to Use Section -->
+            <section class="info-section">
+                <h2><i class="fas fa-question-circle"></i> How to Use</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Select Source Unit</h3>
+                        <p>Choose the weight unit you're converting from. Options include metric (mg, g, kg, ton) and imperial (oz, lb, stone) units.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Enter Weight</h3>
+                        <p>Type the weight value you want to convert. The conversion happens instantly as you type.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>View Result</h3>
+                        <p>See the converted value immediately. Use the swap button to reverse the conversion direction.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Examples Section -->
+            <section class="info-section">
+                <h2><i class="fas fa-lightbulb"></i> Common Examples</h2>
+                <div class="examples-grid">
+                    <div class="example-card">
+                        <h3>Cooking</h3>
+                        <div class="example-problem">
+                            Weight: 500 grams
+                        </div>
+                        <div class="example-solution">
+                            <strong>In Pounds:</strong> 1.10 lb<br>
+                            <strong>In Ounces:</strong> 17.64 oz<br>
+                            <strong>In Kilograms:</strong> 0.5 kg
+                        </div>
+                    </div>
+                    <div class="example-card">
+                        <h3>Body Weight</h3>
+                        <div class="example-problem">
+                            Weight: 70 kg
+                        </div>
+                        <div class="example-solution">
+                            <strong>In Pounds:</strong> 154.32 lb<br>
+                            <strong>In Stone:</strong> 11.02 st<br>
+                            <strong>In Grams:</strong> 70,000 g
+                        </div>
+                    </div>
+                    <div class="example-card">
+                        <h3>Shipping</h3>
+                        <div class="example-problem">
+                            Weight: 5 pounds
+                        </div>
+                        <div class="example-solution">
+                            <strong>In Kilograms:</strong> 2.27 kg<br>
+                            <strong>In Grams:</strong> 2,268 g<br>
+                            <strong>In Ounces:</strong> 80 oz
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="info-section">
+                <h2><i class="fas fa-comments"></i> Frequently Asked Questions</h2>
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary>What's the difference between US ton and UK ton?</summary>
+                        <p>A US ton (also called short ton) equals 2,000 pounds or 907.185 kg. A UK ton (also called Imperial ton or long ton) equals 2,240 pounds or 1,016.05 kg. The UK ton is about 12% heavier than the US ton.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>How many grams in a pound?</summary>
+                        <p>1 pound equals exactly 453.592 grams. This is a defined conversion factor.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>What is a stone in weight?</summary>
+                        <p>A stone is a British unit of weight equal to 14 pounds or about 6.35 kilograms. It's still commonly used for measuring body weight in the United Kingdom and Ireland.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Is weight the same as mass?</summary>
+                        <p>Technically, mass is the amount of matter in an object (measured in kg), while weight is the force of gravity on that mass (measured in Newtons). However, for everyday purposes on Earth, we use these terms interchangeably. Our converter handles both.</p>
+                    </details>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="info-section">
+                <h2><i class="fas fa-star"></i> Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                        <h3>Real-Time Conversion</h3>
+                        <p>See results instantly as you type. No need to click calculate - conversions happen automatically.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-exchange-alt"></i></div>
+                        <h3>Bidirectional</h3>
+                        <p>Easily swap between units with one click. Convert both ways without re-entering values.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-balance-scale"></i></div>
+                        <h3>Multiple Systems</h3>
+                        <p>Support for metric and imperial measurement systems including US and UK tons.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Related Converters -->
+            <section class="info-section">
+                <h2><i class="fas fa-link"></i> Related Converters</h2>
+                <div class="related-grid">
+                    <a href="/conversion/length-converter.html" class="related-card">
+                        <i class="fas fa-ruler"></i>
+                        <h3>Length Converter</h3>
+                        <p>Convert length units</p>
+                    </a>
+                    <a href="/conversion/temperature-converter.html" class="related-card">
+                        <i class="fas fa-thermometer-half"></i>
+                        <h3>Temperature Converter</h3>
+                        <p>Convert temperatures</p>
+                    </a>
+                    <a href="/health/bmi-calculator.html" class="related-card">
+                        <i class="fas fa-heartbeat"></i>
+                        <h3>BMI Calculator</h3>
+                        <p>Calculate BMI</p>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CALCULATOR</h3>
+                    <p>Free online calculators for all your needs</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="/general/">General</a></li>
+                        <li><a href="/finance/">Finance</a></li>
+                        <li><a href="/health/">Health</a></li>
+                        <li><a href="/conversion/">Conversions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/how-to-use">How to Use</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                        <li><a href="/api.html">API</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 HQMX. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/js/utils/unit-converter.js"></script>
+    <script src="/js/calculators/weight.js"></script>
+    <script src="/category.js"></script>
+</body>
+</html>

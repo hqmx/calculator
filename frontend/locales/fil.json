@@ -1,0 +1,55 @@
+{
+  "navigation": {
+    "home": "Home",
+    "navHowToUse": "Paano Gamitin",
+    "navFAQ": "FAQ",
+    "navAPI": "API"
+  },
+  "home": {
+    "tagline": "Pandaigdigang Calculator sa Web"
+  },
+  "bmi": {
+    "tagline": "BMI Calculator",
+    "subtitle": "Kalkulahin ang Iyong Body Mass Index sa Sandali",
+    "weight": "Timbang",
+    "height": "Taas",
+    "age": "Edad",
+    "gender": "Kasarian",
+    "male": "Lalaki",
+    "female": "Babae",
+    "calculateBtn": "Kalkulahin ang BMI",
+    "recalculateBtn": "Kalkulahin Muli",
+    "yourBMI": "Ang Iyong Resulta ng BMI",
+    "category": "Kategorya ng BMI",
+    "healthStatus": "Kalagayan ng Kalusugan",
+    "recommendations": "Mga Rekomendasyon"
+  },
+  "age": {
+    "tagline": "Kalkulahin ang Iyong Eksaktong Edad sa Sandali",
+    "title": "Calculator ng Edad",
+    "birthDate": "Petsa ng Kapanganakan",
+    "calculateBtn": "Kalkulahin ang Edad",
+    "recalculateBtn": "Kalkulahin Muli",
+    "yourAge": "Ang Iyong Edad",
+    "years": "Taon",
+    "months": "Buwan",
+    "days": "Araw",
+    "totalDays": "Kabuuang Araw",
+    "totalHours": "Kabuuang Oras",
+    "totalMinutes": "Kabuuang Minuto",
+    "nextBirthday": "Susunod na Kaarawan",
+    "bornOn": "Ipinanganak Noong"
+  },
+  "percentage": {
+    "tagline": "Kalkulahin ang Porsyento",
+    "title": "Calculator ng Porsyento",
+    "whatIsPercentOf": "Ano ang X% ng Y?",
+    "isWhatPercentOf": "Ang X ay ilang % ng Y?",
+    "percentageIncrease": "Pagtaas ng Porsyento",
+    "percentageDecrease": "Pagbaba ng Porsyento",
+    "addPercentTo": "Idagdag ang X% sa Y",
+    "subtractPercentFrom": "Bawasan ang X% mula sa Y",
+    "calculateBtn": "Kalkulahin",
+    "result": "Resulta"
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "navigation": {
+    "home": "Accueil",
+    "navHowToUse": "Mode d'emploi",
+    "navFAQ": "FAQ",
+    "navAPI": "API"
+  },
+  "home": {
+    "tagline": "Calculatrice Web Universelle"
+  },
+  "bmi": {
+    "tagline": "Calculateur d'IMC",
+    "subtitle": "Calculez votre Indice de Masse Corporelle instantanément",
+    "weight": "Poids",
+    "height": "Taille",
+    "age": "Âge",
+    "gender": "Sexe",
+    "male": "Homme",
+    "female": "Femme",
+    "calculateBtn": "Calculer l'IMC",
+    "recalculateBtn": "Recalculer",
+    "yourBMI": "Votre résultat d'IMC",
+    "category": "Catégorie d'IMC",
+    "healthStatus": "État de santé",
+    "recommendations": "Recommandations"
+  },
+  "age": {
+    "tagline": "Calculez votre âge exact instantanément",
+    "title": "Calculateur d'Âge",
+    "birthDate": "Date de naissance",
+    "calculateBtn": "Calculer l'âge",
+    "recalculateBtn": "Recalculer",
+    "yourAge": "Votre âge",
+    "years": "Ans",
+    "months": "Mois",
+    "days": "Jours",
+    "totalDays": "Jours totaux",
+    "totalHours": "Heures totales",
+    "totalMinutes": "Minutes totales",
+    "nextBirthday": "Prochain anniversaire",
+    "bornOn": "Né(e) le"
+  },
+  "percentage": {
+    "tagline": "Calculer des pourcentages",
+    "title": "Calculateur de Pourcentages",
+    "whatIsPercentOf": "Combien fait X% de Y ?",
+    "isWhatPercentOf": "X représente quel % de Y ?",
+    "percentageIncrease": "Augmentation en pourcentage",
+    "percentageDecrease": "Diminution en pourcentage",
+    "addPercentTo": "Ajouter X% à Y",
+    "subtractPercentFrom": "Soustraire X% de Y",
+    "calculateBtn": "Calculer",
+    "result": "Résultat"
+  }
+}

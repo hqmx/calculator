@@ -1,0 +1,55 @@
+{
+  "navigation": {
+    "home": "ပင်မစာမျက်နှာ",
+    "navHowToUse": "အသုံးပြုနည်း",
+    "navFAQ": "မေးလေ့ရှိသောမေးခွန်းများ",
+    "navAPI": "API"
+  },
+  "home": {
+    "tagline": "တစ်ကမ္ဘာလုံး ဝက်ဘ်တွက်စက်"
+  },
+  "bmi": {
+    "tagline": "BMI တွက်စက်",
+    "subtitle": "သင့်ခန္ဓာကိုယ်အလေးချိန်ညွှန်းကိန်းကို ချက်ချင်းတွက်ချက်ပါ",
+    "weight": "အလေးချိန်",
+    "height": "အရပ်",
+    "age": "အသက်",
+    "gender": "လိင်",
+    "male": "ကျား",
+    "female": "မ",
+    "calculateBtn": "BMI တွက်ချက်ရန်",
+    "recalculateBtn": "ပြန်လည်တွက်ချက်ရန်",
+    "yourBMI": "သင့် BMI ရလဒ်",
+    "category": "BMI အမျိုးအစား",
+    "healthStatus": "ကျန်းမာရေးအခြေအနေ",
+    "recommendations": "အကြံပြုချက်များ"
+  },
+  "age": {
+    "tagline": "သင့်အသက်အတိအကျကို ချက်ချင်းတွက်ချက်ပါ",
+    "title": "အသက်တွက်စက်",
+    "birthDate": "မွေးနေ့",
+    "calculateBtn": "အသက်တွက်ချက်ရန်",
+    "recalculateBtn": "ပြန်လည်တွက်ချက်ရန်",
+    "yourAge": "သင့်အသက်",
+    "years": "နှစ်",
+    "months": "လ",
+    "days": "ရက်",
+    "totalDays": "စုစုပေါင်းရက်",
+    "totalHours": "စုစုပေါင်းနာရီ",
+    "totalMinutes": "စုစုပေါင်းမိနစ်",
+    "nextBirthday": "နောက်မွေးနေ့",
+    "bornOn": "မွေးဖွားသည့်နေ့"
+  },
+  "percentage": {
+    "tagline": "ရာခိုင်နှုန်းများတွက်ချက်ပါ",
+    "title": "ရာခိုင်နှုန်းတွက်စက်",
+    "whatIsPercentOf": "Y ၏ X% သည် ဘယ်လောက်လဲ?",
+    "isWhatPercentOf": "X သည် Y ၏ ရာခိုင်နှုန်းဘယ်လောက်လဲ?",
+    "percentageIncrease": "ရာခိုင်နှုန်းတိုးလာမှု",
+    "percentageDecrease": "ရာခိုင်နှုန်းလျော့ကျမှု",
+    "addPercentTo": "Y သို့ X% ထည့်ပါ",
+    "subtractPercentFrom": "Y မှ X% နုတ်ပါ",
+    "calculateBtn": "တွက်ချက်ရန်",
+    "result": "ရလဒ်"
+  }
+}

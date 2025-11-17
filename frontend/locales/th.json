@@ -1,0 +1,55 @@
+{
+  "navigation": {
+    "home": "หน้าแรก",
+    "navHowToUse": "วิธีใช้งาน",
+    "navFAQ": "คำถามที่พบบ่อย",
+    "navAPI": "API"
+  },
+  "home": {
+    "tagline": "เครื่องคำนวณเว็บสากล"
+  },
+  "bmi": {
+    "tagline": "เครื่องคำนวณ BMI",
+    "subtitle": "คำนวณดัชนีมวลกายของคุณได้ทันที",
+    "weight": "น้ำหนัก",
+    "height": "ส่วนสูง",
+    "age": "อายุ",
+    "gender": "เพศ",
+    "male": "ชาย",
+    "female": "หญิง",
+    "calculateBtn": "คำนวณ BMI",
+    "recalculateBtn": "คำนวณอีกครั้ง",
+    "yourBMI": "ผลลัพธ์ BMI ของคุณ",
+    "category": "หมวดหมู่ BMI",
+    "healthStatus": "สถานะสุขภาพ",
+    "recommendations": "คำแนะนำ"
+  },
+  "age": {
+    "tagline": "คำนวณอายุที่แม่นยำของคุณได้ทันที",
+    "title": "เครื่องคำนวณอายุ",
+    "birthDate": "วันเกิด",
+    "calculateBtn": "คำนวณอายุ",
+    "recalculateBtn": "คำนวณอีกครั้ง",
+    "yourAge": "อายุของคุณ",
+    "years": "ปี",
+    "months": "เดือน",
+    "days": "วัน",
+    "totalDays": "จำนวนวันทั้งหมด",
+    "totalHours": "จำนวนชั่วโมงทั้งหมด",
+    "totalMinutes": "จำนวนนาทีทั้งหมด",
+    "nextBirthday": "วันเกิดครั้งถัดไป",
+    "bornOn": "เกิดเมื่อ"
+  },
+  "percentage": {
+    "tagline": "คำนวณเปอร์เซ็นต์",
+    "title": "เครื่องคำนวณเปอร์เซ็นต์",
+    "whatIsPercentOf": "X% ของ Y คือเท่าไหร่?",
+    "isWhatPercentOf": "X คือ % เท่าไหร่ของ Y?",
+    "percentageIncrease": "เปอร์เซ็นต์เพิ่มขึ้น",
+    "percentageDecrease": "เปอร์เซ็นต์ลดลง",
+    "addPercentTo": "เพิ่ม X% ให้กับ Y",
+    "subtractPercentFrom": "ลบ X% จาก Y",
+    "calculateBtn": "คำนวณ",
+    "result": "ผลลัพธ์"
+  }
+}

@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Age Calculator - Calculate Your Exact Age | HQMX</title>
+    <meta name="description" content="Free online age calculator. Calculate your exact age in years, months, and days. Find out how old you are with precision.">
+    <meta name="keywords" content="age calculator, calculate age, how old am I, age in days, 나이 계산기">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Age Calculator - Free Online Calculator | HQMX">
+    <meta property="og:description" content="Calculate your exact age in years, months, and days instantly.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calculator.hqmx.net/date-time/age-calculator.html">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://calculator.hqmx.net/date-time/age-calculator.html">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css?v=20251101blur2">
+    <link rel="stylesheet" href="/category.css">
+    <link rel="stylesheet" href="/css/calculator.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation Header -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <a href="/" class="converter-logo-link">
+                    <div class="converter-logo" dir="ltr">
+                        <span class="converter-text"><span class="converter-c">C</span><span class="converter-rest">ALCULATOR</span></span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="nav-center">
+                <button class="hamburger-menu" id="hamburgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="nav-menu">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/how-to-use" class="nav-link">How to Use</a>
+                    <a href="/faq" class="nav-link">FAQ</a>
+                    <a href="/api.html" class="nav-link">API</a>
+                </div>
+
+                <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+                    <div class="mobile-menu-box">
+                        <div class="mobile-menu-links">
+                            <a href="/" class="mobile-menu-link">Home</a>
+                            <a href="/how-to-use" class="mobile-menu-link">How to Use</a>
+                            <a href="/faq" class="mobile-menu-link">FAQ</a>
+                            <a href="/api.html" class="mobile-menu-link">API</a>
+                        </div>
+
+                        <div class="mobile-menu-controls">
+                            <div class="mobile-control-item menu-divider">
+                                <button id="mobileThemeToggleBtn" class="mobile-theme-toggle-btn">
+                                    <i class="fas fa-sun"></i>
+                                    <i class="fas fa-moon"></i>
+                                </button>
+                                <button id="mobileLanguageSelectorBtn" class="mobile-language-selector-btn">
+                                    <i class="fas fa-globe"></i>
+                                    <span id="mobileCurrentLanguage">EN</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="mobile-control-item">
+                                <div id="mobileLanguageOptions" class="mobile-language-options">
+                                    <a href="#" data-lang="en">English</a>
+                                    <a href="#" data-lang="de">Deutsch</a>
+                                    <a href="#" data-lang="es">Español</a>
+                                    <a href="#" data-lang="fr">Français</a>
+                                    <a href="#" data-lang="hi">हिन्दी / Hindī</a>
+                                    <a href="#" data-lang="id">Bahasa Indonesia</a>
+                                    <a href="#" data-lang="it">Italiano</a>
+                                    <a href="#" data-lang="ko">한국어</a>
+                                    <a href="#" data-lang="ja">日本語</a>
+                                    <a href="#" data-lang="my">Myanmar (မြန်မာ)</a>
+                                    <a href="#" data-lang="ms">Malay</a>
+                                    <a href="#" data-lang="fil">Filipino</a>
+                                    <a href="#" data-lang="pt">Português</a>
+                                    <a href="#" data-lang="ru">Русский</a>
+                                    <a href="#" data-lang="th">ไทย</a>
+                                    <a href="#" data-lang="tr">Türkçe</a>
+                                    <a href="#" data-lang="vi">Tiếng Việt</a>
+                                    <a href="#" data-lang="zh-CN">简体中文</a>
+                                    <a href="#" data-lang="zh-TW">繁體中文</a>
+                                    <a href="#" data-lang="ar">عربي</a>
+                                    <a href="#" data-lang="bn">বাঙালি</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <button id="themeToggleBtn" class="theme-toggle-btn">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="language-switcher">
+                    <button id="language-selector-btn" class="language-selector-btn">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">English</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="language-options" class="language-options">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="de">Deutsch</a>
+                        <a href="#" data-lang="es">Español</a>
+                        <a href="#" data-lang="fr">Français</a>
+                        <a href="#" data-lang="hi">हिन्दी / Hindī</a>
+                        <a href="#" data-lang="id">Bahasa Indonesia</a>
+                        <a href="#" data-lang="it">Italiano</a>
+                        <a href="#" data-lang="ko">한국어</a>
+                        <a href="#" data-lang="ja">日本語</a>
+                        <a href="#" data-lang="my">Myanmar (မြန်မာ)</a>
+                        <a href="#" data-lang="ms">Malay</a>
+                        <a href="#" data-lang="fil">Filipino</a>
+                        <a href="#" data-lang="pt">Português</a>
+                        <a href="#" data-lang="ru">Русский</a>
+                        <a href="#" data-lang="th">ไทย</a>
+                        <a href="#" data-lang="tr">Türkçe</a>
+                        <a href="#" data-lang="vi">Tiếng Việt</a>
+                        <a href="#" data-lang="zh-CN">简体中文</a>
+                        <a href="#" data-lang="zh-TW">繁體中文</a>
+                        <a href="#" data-lang="ar">عربي</a>
+                        <a href="#" data-lang="bn">বাঙালি</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <header class="header">
+            <p class="tagline" data-i18n-key="age.tagline">Calculate Your Exact Age Instantly</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Age Calculator Section -->
+            <section class="calculator-section">
+                <div class="calculator-container">
+                    <!-- Calculator Title -->
+                    <div class="calculator-header">
+                        <h2 data-i18n-key="age.title">Age Calculator</h2>
+                    </div>
+
+                    <div class="calculator-inputs">
+                        <!-- Birth Date Input -->
+                        <div class="input-group">
+                            <label for="birthdate">
+                                Birth Date
+                            </label>
+                            <input type="date" id="birthdate" max="" placeholder="Select your birth date">
+                            <span class="input-hint">Select your date of birth</span>
+                        </div>
+
+                        <!-- Calculate Button -->
+                        <button class="calculate-btn" id="calculateBtn">
+                            <i class="fas fa-calculator"></i>
+                            <span data-i18n-key="age.calculateBtn">Calculate Age</span>
+                        </button>
+
+                        <!-- Error Message -->
+                        <div class="error-message" id="errorMessage" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span id="errorText"></span>
+                        </div>
+                    </div>
+
+                    <!-- Results Display -->
+                    <div class="calculator-results" id="resultsSection" style="display: none; margin-top: 3rem !important;">
+                        <!-- Main Age Display -->
+                        <div class="result-card" style="margin-bottom: 2rem;">
+                            <h3>Your Age</h3>
+                            <div class="age-display" id="ageDisplay">
+                                <div class="age-component">
+                                    <span class="age-number" id="yearsValue">0</span>
+                                    <span class="age-label">Years</span>
+                                </div>
+                                <div class="age-separator">:</div>
+                                <div class="age-component">
+                                    <span class="age-number" id="monthsValue">0</span>
+                                    <span class="age-label">Months</span>
+                                </div>
+                                <div class="age-separator">:</div>
+                                <div class="age-component">
+                                    <span class="age-number" id="daysValue">0</span>
+                                    <span class="age-label">Days</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Detailed Information Grid (5 panels = 2 columns on desktop) -->
+                        <div class="result-cards-grid" style="grid-template-columns: repeat(2, 1fr); margin-bottom: 2rem;">
+                            <div class="result-card">
+                                <div class="result-label">
+                                    <i class="fas fa-calendar-day" style="margin-right: 0.5rem; color: #3b82f6;"></i>
+                                    Total Days
+                                </div>
+                                <div class="result-value" id="totalDaysValue">0</div>
+                                <div class="result-sublabel">Days you've lived</div>
+                            </div>
+
+                            <div class="result-card">
+                                <div class="result-label">
+                                    <i class="fas fa-hourglass-half" style="margin-right: 0.5rem; color: #3b82f6;"></i>
+                                    Total Hours
+                                </div>
+                                <div class="result-value" id="totalHoursValue">0</div>
+                                <div class="result-sublabel">Hours you've lived</div>
+                            </div>
+
+                            <div class="result-card">
+                                <div class="result-label">
+                                    <i class="fas fa-clock" style="margin-right: 0.5rem; color: #3b82f6;"></i>
+                                    Total Minutes
+                                </div>
+                                <div class="result-value" id="totalMinutesValue">0</div>
+                                <div class="result-sublabel">Minutes you've lived</div>
+                            </div>
+
+                            <div class="result-card">
+                                <div class="result-label">
+                                    <i class="fas fa-birthday-cake" style="margin-right: 0.5rem; color: #3b82f6;"></i>
+                                    Next Birthday
+                                </div>
+                                <div class="result-value" id="nextBirthdayValue" style="font-size: 1.5rem;">-</div>
+                                <div class="result-sublabel">Days until birthday</div>
+                            </div>
+
+                            <div class="result-card" style="grid-column: 1 / -1;">
+                                <div class="result-label">
+                                    <i class="fas fa-calendar-check" style="margin-right: 0.5rem; color: #3b82f6;"></i>
+                                    Born On
+                                </div>
+                                <div class="result-value" id="dayOfWeekValue" style="font-size: 1.5rem;">-</div>
+                                <div class="result-sublabel">Day of the week</div>
+                            </div>
+                        </div>
+
+                        <!-- Recalculate Button -->
+                        <button class="recalculate-btn" id="recalculateBtn">
+                            <i class="fas fa-redo"></i>
+                            <span data-i18n-key="age.recalculateBtn">Calculate Again</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How to Use Section -->
+            <section class="usage-guide-section">
+                <h3>사용 방법 (How to Use This Age Calculator)</h3>
+                <p class="section-description">간단한 3단계로 정확한 나이를 계산하세요.</p>
+                <div class="guide-steps">
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">1</span>
+                            <h4>생년월일 입력</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>날짜 입력 필드를 클릭하여 달력에서 생년월일을 선택하세요. 직접 날짜를 입력할 수도 있습니다. 정확한 생년월일을 입력할수록 더 정밀한 결과를 얻을 수 있습니다.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">2</span>
+                            <h4>계산 버튼 클릭</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>"나이 계산하기" 버튼을 클릭하면 즉시 정확한 나이가 계산됩니다. 윤년과 월별 일수를 자동으로 고려하여 정밀한 계산을 제공합니다.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">3</span>
+                            <h4>결과 확인</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>나이를 연, 월, 일로 세분화하여 확인하세요. 총 생존 일수, 시간, 분은 물론 다음 생일까지 남은 일수와 태어난 요일까지 상세한 정보를 제공합니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Examples Section -->
+            <section class="examples-section">
+                <h3>실전 예제 (Age Calculation Examples)</h3>
+                <div class="example-grid">
+                    <div class="example-card example-normal">
+                        <div class="example-header">
+                            <span class="example-icon">👨‍💼</span>
+                            <h4>예제 1: 성인 나이 계산</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label">생년월일:</span>
+                                <span class="value">1990년 1월 15일</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">만 나이:</span>
+                                <span class="value">35세 0개월 0일</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">총 생존 일수:</span>
+                                <span class="value bmi-highlight">12,784일</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">다음 생일:</span>
+                                <span class="value">2026년 1월 15일 (365일 후)</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">태어난 요일:</span>
+                                <span class="value">월요일</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-card example-overweight">
+                        <div class="example-header">
+                            <span class="example-icon">👶</span>
+                            <h4>예제 2: 아동 나이 계산</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label">생년월일:</span>
+                                <span class="value">2020년 3월 20일</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">만 나이:</span>
+                                <span class="value">4세 9개월 26일</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">총 생존 일수:</span>
+                                <span class="value bmi-highlight">1,761일</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">다음 생일:</span>
+                                <span class="value">2025년 3월 20일 (64일 후)</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">태어난 요일:</span>
+                                <span class="value">금요일</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-card example-underweight">
+                        <div class="example-header">
+                            <span class="example-icon">👼</span>
+                            <h4>예제 3: 갓 태어난 아기</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label">생년월일:</span>
+                                <span class="value">2024년 6월 1일</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">만 나이:</span>
+                                <span class="value">0세 7개월 14일</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">총 생존 일수:</span>
+                                <span class="value bmi-highlight">228일</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">다음 생일:</span>
+                                <span class="value">2025년 6월 1일 (137일 후)</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">태어난 요일:</span>
+                                <span class="value">토요일</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Understanding Age Calculation Section -->
+            <section class="info-section">
+                <h3>나이 계산의 이해 (Understanding Age Calculation)</h3>
+                <div class="info-content">
+                    <p>나이 계산에는 여러 가지 방식이 있으며, 문화와 상황에 따라 다르게 적용됩니다. 가장 일반적인 방식들을 알아보겠습니다.</p>
+
+                    <div class="formula-box">
+                        <h4>만 나이 (International Age)</h4>
+                        <p><strong>만 나이 = 현재 년도 - 출생 년도 (생일이 지나지 않았으면 -1)</strong></p>
+                    </div>
+
+                    <p>이 계산기는 <strong>만 나이</strong>를 기준으로 정확한 연, 월, 일을 계산합니다. 만 나이는 국제적으로 가장 널리 사용되는 나이 계산 방식입니다.</p>
+
+                    <div class="important-notes">
+                        <h4>나이 계산 방식의 종류:</h4>
+                        <ul>
+                            <li><strong>만 나이 (International Age):</strong> 태어난 날을 0세로 하고, 생일이 지날 때마다 1세씩 증가. 전 세계적으로 사용되는 표준 방식입니다.</li>
+                            <li><strong>세는 나이 (Korean Age):</strong> 태어나자마자 1세, 1월 1일마다 1세씩 증가. 한국의 전통적인 나이 계산 방식이었습니다.</li>
+                            <li><strong>연 나이 (Year Age):</strong> 현재 년도에서 출생 년도를 뺀 값. 생일과 관계없이 계산합니다.</li>
+                        </ul>
+                    </div>
+
+                    <div class="important-notes" style="margin-top: 1.5rem;">
+                        <h4>중요한 사항:</h4>
+                        <ul>
+                            <li>2023년 6월부터 한국에서도 공식적으로 만 나이를 사용합니다</li>
+                            <li>윤년(2월 29일)에 태어난 경우도 정확하게 계산됩니다</li>
+                            <li>법적 연령 계산은 각 국가의 법률을 따라야 합니다</li>
+                            <li>이 계산기는 그레고리력을 기준으로 합니다</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="faq-section">
+                <h3>자주 묻는 질문 (Frequently Asked Questions)</h3>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 나이는 어떻게 계산되나요?</h4>
+                        <p>나이는 생년월일과 현재 날짜의 차이를 연, 월, 일로 세분화하여 계산됩니다. 이 계산기는 윤년과 각 월의 일수를 정확하게 고려하여 정밀한 만 나이를 제공합니다.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 이 계산기는 정확한가요?</h4>
+                        <p>네! 우리 계산기는 윤년과 월별 일수 변화를 모두 고려하여 100% 정확한 나이를 계산합니다. 그레고리력을 기준으로 하며, 1초 단위까지 정밀하게 계산됩니다.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 만 나이와 세는 나이의 차이는?</h4>
+                        <p>만 나이는 태어난 날을 0세로 시작하여 생일마다 1세씩 증가합니다. 세는 나이는 태어나자마자 1세이고 1월 1일마다 증가했습니다. 2023년 6월부터 한국에서도 공식적으로 만 나이를 사용합니다.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 다른 사람의 나이도 계산할 수 있나요?</h4>
+                        <p>물론입니다! 친구, 가족, 유명인, 심지어 역사적 인물의 나이도 계산할 수 있습니다. 생년월일만 입력하면 현재 기준으로 정확한 나이를 확인할 수 있습니다.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 윤년에 태어난 경우는 어떻게 되나요?</h4>
+                        <p>2월 29일에 태어난 경우에도 정확하게 계산됩니다. 윤년이 아닌 해에는 2월 28일을 기준으로 나이를 계산하며, 다음 생일도 정확하게 표시됩니다.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> "총 생존 일수"는 무엇을 의미하나요?</h4>
+                        <p>총 생존 일수는 태어난 날부터 현재까지 살아온 전체 일수를 의미합니다. 이 수치는 인생의 이정표를 추적하거나 특별한 날(예: 10,000일째 되는 날)을 계산할 때 유용합니다.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="feature-section">
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-bolt feature-icon-text"></i>
+                    </div>
+                    <h4>초고속 계산</h4>
+                    <p>최적화된 알고리즘으로 밀리초 단위의 즉각적인 나이 계산. 대기 시간 없이 정확한 결과를 즉시 확인하세요.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-calendar-check feature-icon-text"></i>
+                    </div>
+                    <h4>완벽한 정확도</h4>
+                    <p>윤년과 월별 일수 변화를 완벽하게 고려하여 100% 정확한 나이를 계산합니다. 그레고리력 기준 정밀 계산을 제공합니다.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-chart-line feature-icon-text"></i>
+                    </div>
+                    <h4>상세한 정보 제공</h4>
+                    <p>연, 월, 일은 물론 시간, 분 단위까지 세분화된 나이 정보를 제공합니다. 완전한 통찰력을 위한 포괄적인 데이터를 확인하세요.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-birthday-cake feature-icon-text"></i>
+                    </div>
+                    <h4>다음 생일 카운트다운</h4>
+                    <p>다음 생일까지 남은 정확한 일수를 확인하세요. 특별한 날을 위한 계획을 미리 세울 수 있습니다.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-lock feature-icon-text"></i>
+                    </div>
+                    <h4>100% 개인정보 보호</h4>
+                    <p>모든 계산은 브라우저에서 이루어집니다. 어떠한 개인 정보도 저장하거나 전송하지 않아 완벽하게 안전합니다.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-mobile-alt feature-icon-text"></i>
+                    </div>
+                    <h4>모바일 최적화</h4>
+                    <p>모든 기기에서 완벽하게 작동합니다. 스마트폰, 태블릿, 데스크톱 어디서나 편리하게 나이를 계산하세요.</p>
+                </div>
+            </section>
+
+            <!-- Related Calculators Section -->
+            <section class="related-section">
+                <h3>관련 도구 (Related Date & Time Calculators)</h3>
+                <div class="related-grid">
+                    <a href="/date-time/date-calculator.html" class="related-card">
+                        <i class="fas fa-calendar-plus"></i>
+                        <h4>날짜 계산기</h4>
+                        <p>날짜 더하기/빼기 계산</p>
+                    </a>
+                    <a href="/date-time/date-difference-calculator.html" class="related-card">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h4>날짜 차이 계산기</h4>
+                        <p>두 날짜 사이의 기간 계산</p>
+                    </a>
+                    <a href="/date-time/work-hours-calculator.html" class="related-card">
+                        <i class="fas fa-business-time"></i>
+                        <h4>근무 시간 계산기</h4>
+                        <p>업무 시간 및 급여 계산</p>
+                    </a>
+                    <a href="/" class="related-card">
+                        <i class="fas fa-calculator"></i>
+                        <h4>더 많은 계산기</h4>
+                        <p>65개 이상의 계산기 탐색</p>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-social">
+                <a href="https://x.com/8hqmx" target="_blank" rel="noopener noreferrer" class="footer-twitter">
+                    <img src="/assets/x-twitter-footer.svg" alt="X (Twitter)" class="footer-social-icon">
+                </a>
+            </div>
+            <p>
+                <span>&copy; 2024 HQMX Calculator. All Rights Reserved.</span>
+                <span class="footer-contact"> • support@hqmx.net</span>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/i18n.js?v=20251101fix"></script>
+    <script src="/nav-common.js"></script>
+    <script src="/js/utils/calculator-base.js"></script>
+    <script src="/js/calculators/age.js"></script>
+
+    <style>
+        /* Age-specific styles */
+        .age-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .age-component {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(59, 130, 246, 0.1);
+            border-radius: 12px;
+            min-width: 80px;
+        }
+
+        [data-theme="dark"] .age-component {
+            background: rgba(59, 130, 246, 0.15);
+        }
+
+        .age-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .age-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary, #666);
+            margin-top: 0.25rem;
+        }
+
+        [data-theme="dark"] .age-label {
+            color: #999;
+        }
+
+        .age-separator {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-secondary, #999);
+        }
+
+        /* Mobile responsive for age display */
+        @media (max-width: 768px) {
+            .age-display {
+                gap: 0.5rem;
+            }
+
+            .age-component {
+                min-width: 70px;
+                padding: 0.75rem 0.5rem;
+            }
+
+            .age-number {
+                font-size: 2rem;
+            }
+
+            .age-separator {
+                font-size: 1.5rem;
+            }
+
+            /* Adjust result-cards-grid for mobile */
+            .result-cards-grid {
+                grid-template-columns: 1fr !important;
+            }
+
+            .result-cards-grid .result-card {
+                grid-column: 1 !important;
+            }
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter - Celsius, Fahrenheit, Kelvin | CALCULATOR</title>
+    <meta name="description" content="Free online temperature converter. Convert between Celsius, Fahrenheit, and Kelvin instantly.">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css?v=20251101blur2">
+    <link rel="stylesheet" href="/css/calculator.css">
+
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation Header -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <a href="/" class="converter-logo-link">
+                    <div class="converter-logo">
+                        <span class="converter-text"><span class="converter-c">C</span><span class="converter-rest">ALCULATOR</span></span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="nav-center">
+                <!-- 햄버거 메뉴 버튼 (모바일용) -->
+                <button class="hamburger-menu" id="hamburgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="nav-menu">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/how-to-use.html" class="nav-link">How to Use</a>
+                    <a href="/faq.html" class="nav-link">FAQ</a>
+                    <a href="/sitemap.html" class="nav-link">Site Map</a>
+                    <a href="/api.html" class="nav-link">API</a>
+                </div>
+
+                <!-- 모바일 메뉴 오버레이 -->
+                <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+                    <div class="mobile-menu-box">
+                        <div class="mobile-menu-links">
+                            <a href="/" class="mobile-menu-link">Home</a>
+                            <a href="/how-to-use.html" class="mobile-menu-link">How to Use</a>
+                            <a href="/faq.html" class="mobile-menu-link">FAQ</a>
+                            <a href="/sitemap.html" class="mobile-menu-link">Site Map</a>
+                            <a href="/api.html" class="mobile-menu-link">API</a>
+                        </div>
+
+                        <div class="mobile-menu-controls">
+                            <div class="mobile-control-item menu-divider">
+                                <button id="mobileThemeToggleBtn" class="mobile-theme-toggle-btn">
+                                    <i class="fas fa-sun"></i>
+                                    <i class="fas fa-moon"></i>
+                                </button>
+                                <button id="mobileLanguageSelectorBtn" class="mobile-language-selector-btn">
+                                    <i class="fas fa-globe"></i>
+                                    <span id="mobileCurrentLanguage">EN</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="mobile-control-item">
+                                <div id="mobileLanguageOptions" class="mobile-language-options">
+                                    <a href="#" data-lang="en">English</a>
+                                    <a href="#" data-lang="ko">한국어</a>
+                                    <a href="#" data-lang="es">Español</a>
+                                    <a href="#" data-lang="fr">Français</a>
+                                    <a href="#" data-lang="de">Deutsch</a>
+                                    <a href="#" data-lang="ja">日本語</a>
+                                    <a href="#" data-lang="zh-CN">简体中文</a>
+                                    <a href="#" data-lang="zh-TW">繁體中文</a>
+                                    <a href="#" data-lang="pt">Português</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <button id="themeToggleBtn" class="theme-toggle-btn">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="language-switcher">
+                    <button id="language-selector-btn" class="language-selector-btn">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">English</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="language-options" class="language-options">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="ko">한국어</a>
+                        <a href="#" data-lang="es">Español</a>
+                        <a href="#" data-lang="fr">Français</a>
+                        <a href="#" data-lang="de">Deutsch</a>
+                        <a href="#" data-lang="ja">日本語</a>
+                        <a href="#" data-lang="zh-CN">简体中文</a>
+                        <a href="#" data-lang="zh-TW">繁體中文</a>
+                        <a href="#" data-lang="pt">Português</a>
+                        <a href="#" data-lang="ru">Русский</a>
+                        <a href="#" data-lang="ar">عربي</a>
+                        <a href="#" data-lang="hi">हिन्दी</a>
+                        <a href="#" data-lang="th">ไทย</a>
+                        <a href="#" data-lang="vi">Tiếng Việt</a>
+                        <a href="#" data-lang="id">Bahasa Indonesia</a>
+                        <a href="#" data-lang="it">Italiano</a>
+                        <a href="#" data-lang="tr">Türkçe</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <header class="header">
+            <p class="tagline">Temperature Converter</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Converter Section -->
+            <section class="upload-section">
+                <div class="upload-container">
+                    <h4>Convert between Celsius, Fahrenheit, and Kelvin</h4>
+
+                    <div class="converter-grid">
+                        <div class="converter-box">
+                            <div class="converter-label">From</div>
+                            <input type="number" id="fromValue" class="converter-input" value="0" step="any" autofocus>
+                            <select id="fromUnit" class="converter-select">
+                                <option value="C" selected>Celsius (°C)</option>
+                                <option value="F">Fahrenheit (°F)</option>
+                                <option value="K">Kelvin (K)</option>
+                            </select>
+                        </div>
+
+                        <button id="swapBtn" class="swap-btn" title="Swap units">
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+
+                        <div class="converter-box">
+                            <div class="converter-label">To</div>
+                            <input type="text" id="toValue" class="converter-input" readonly>
+                            <select id="toUnit" class="converter-select">
+                                <option value="C">Celsius (°C)</option>
+                                <option value="F" selected>Fahrenheit (°F)</option>
+                                <option value="K">Kelvin (K)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How to Use Section -->
+            <section class="usage-guide-section">
+                <h3>온도 변환기 사용 방법</h3>
+                <p class="section-description">간단한 3단계로 섭씨, 화씨, 켈빈 간 온도를 빠르게 변환하세요.</p>
+                <div class="guide-steps">
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">1</span>
+                            <h4>변환할 온도 입력</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>변환하고자 하는 온도 값을 입력하세요. 소수점 이하 값도 입력 가능하며, 실시간으로 변환 결과가 표시됩니다.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">2</span>
+                            <h4>온도 단위 선택</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>변환할 원본 단위(섭씨/화씨/켈빈)와 변환될 목표 단위를 선택하세요. 교환 버튼을 사용하면 단위를 빠르게 바꿀 수 있습니다.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">3</span>
+                            <h4>결과 확인</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>변환된 온도가 즉시 표시됩니다. 정확한 공식을 사용하여 계산되며, 과학적 정밀도를 보장합니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Examples Section -->
+            <section class="examples-section">
+                <h3>온도 변환 실전 예제</h3>
+                <div class="example-grid">
+                    <div class="example-card example-normal">
+                        <div class="example-header">
+                            <span class="example-icon">☀️</span>
+                            <h4>날씨 온도 변환</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label">원본 온도:</span>
+                                <span class="value">25°C</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">화씨:</span>
+                                <span class="value bmi-highlight">77°F</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">켈빈:</span>
+                                <span class="value bmi-highlight">298.15 K</span>
+                            </div>
+                            <p class="example-note">쾌적한 봄/가을 날씨 온도입니다.</p>
+                        </div>
+                    </div>
+
+                    <div class="example-card example-overweight">
+                        <div class="example-header">
+                            <span class="example-icon">🍳</span>
+                            <h4>요리 온도 변환</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label">레시피 온도:</span>
+                                <span class="value">350°F</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">섭씨:</span>
+                                <span class="value bmi-highlight">176.67°C</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">켈빈:</span>
+                                <span class="value bmi-highlight">449.82 K</span>
+                            </div>
+                            <p class="example-note">오븐 베이킹의 표준 온도입니다.</p>
+                        </div>
+                    </div>
+
+                    <div class="example-card example-underweight">
+                        <div class="example-header">
+                            <span class="example-icon">🧪</span>
+                            <h4>과학 실험 온도</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label">실험실 온도:</span>
+                                <span class="value">273.15 K</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">섭씨:</span>
+                                <span class="value bmi-highlight">0°C</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">화씨:</span>
+                                <span class="value bmi-highlight">32°F</span>
+                            </div>
+                            <p class="example-note">물의 어는점(빙점) 온도입니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- What is Temperature Section -->
+            <section class="info-section">
+                <h3>온도 단위의 이해</h3>
+                <div class="info-content">
+                    <p>온도는 물질의 열에너지 정도를 나타내는 물리량입니다. 전 세계적으로 세 가지 주요 온도 단위가 사용됩니다.</p>
+
+                    <div class="temperature-units-explanation">
+                        <div class="unit-explanation">
+                            <h4><i class="fas fa-thermometer-half"></i> 섭씨 (Celsius, °C)</h4>
+                            <p><strong>가장 널리 사용되는 온도 단위</strong>로, 물의 어는점을 0°C, 끓는점을 100°C로 정의합니다. 전 세계 대부분의 국가에서 일상생활과 과학 연구에 사용됩니다.</p>
+                            <ul>
+                                <li>기준점: 물의 어는점(0°C)과 끓는점(100°C)</li>
+                                <li>사용 지역: 전 세계 대부분 (미국 제외)</li>
+                                <li>주요 용도: 날씨, 일상생활, 과학</li>
+                            </ul>
+                        </div>
+
+                        <div class="unit-explanation">
+                            <h4><i class="fas fa-thermometer-three-quarters"></i> 화씨 (Fahrenheit, °F)</h4>
+                            <p>주로 <strong>미국에서 사용</strong>되는 온도 단위로, 물의 어는점을 32°F, 끓는점을 212°F로 정의합니다. 일상 온도 범위에서 더 세밀한 표현이 가능합니다.</p>
+                            <ul>
+                                <li>기준점: 물의 어는점(32°F)과 끓는점(212°F)</li>
+                                <li>사용 지역: 미국, 바하마, 벨리즈, 케이맨 제도</li>
+                                <li>특징: 일상 온도를 음수 없이 표현 가능</li>
+                            </ul>
+                        </div>
+
+                        <div class="unit-explanation">
+                            <h4><i class="fas fa-atom"></i> 켈빈 (Kelvin, K)</h4>
+                            <p><strong>절대 온도 단위</strong>로, 이론상 가장 낮은 온도인 절대영도(0K, -273.15°C)를 기준으로 합니다. 과학 연구와 공학에서 필수적으로 사용됩니다.</p>
+                            <ul>
+                                <li>기준점: 절대영도(0K = -273.15°C)</li>
+                                <li>사용 분야: 물리학, 화학, 천문학, 공학</li>
+                                <li>특징: 음수 온도가 존재하지 않음</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="formula-box">
+                        <h4>온도 변환 공식</h4>
+                        <div class="formula-grid">
+                            <div class="formula-item">
+                                <strong>섭씨 → 화씨:</strong>
+                                <span class="formula">°F = (°C × 9/5) + 32</span>
+                            </div>
+                            <div class="formula-item">
+                                <strong>화씨 → 섭씨:</strong>
+                                <span class="formula">°C = (°F - 32) × 5/9</span>
+                            </div>
+                            <div class="formula-item">
+                                <strong>섭씨 → 켈빈:</strong>
+                                <span class="formula">K = °C + 273.15</span>
+                            </div>
+                            <div class="formula-item">
+                                <strong>켈빈 → 섭씨:</strong>
+                                <span class="formula">°C = K - 273.15</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="important-notes">
+                        <h4>중요한 온도 기준점</h4>
+                        <table class="reference-table">
+                            <thead>
+                                <tr>
+                                    <th>현상</th>
+                                    <th>섭씨 (°C)</th>
+                                    <th>화씨 (°F)</th>
+                                    <th>켈빈 (K)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>절대영도</strong></td>
+                                    <td>-273.15°C</td>
+                                    <td>-459.67°F</td>
+                                    <td>0 K</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>물의 어는점</strong></td>
+                                    <td>0°C</td>
+                                    <td>32°F</td>
+                                    <td>273.15 K</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>실내 온도</strong></td>
+                                    <td>20-22°C</td>
+                                    <td>68-72°F</td>
+                                    <td>293-295 K</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>체온</strong></td>
+                                    <td>36.5-37.5°C</td>
+                                    <td>97.7-99.5°F</td>
+                                    <td>309.65-310.65 K</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>물의 끓는점</strong></td>
+                                    <td>100°C</td>
+                                    <td>212°F</td>
+                                    <td>373.15 K</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="faq-section">
+                <h3>온도 변환 자주 묻는 질문</h3>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 왜 물의 어는점이 섭씨 0도, 화씨 32도인가요?</h4>
+                        <p>섭씨는 물의 어는점을 0도로, 끓는점을 100도로 정의하여 만들어졌습니다. 화씨는 다른 기준을 사용했는데, 당시 측정 가능한 가장 낮은 온도(염수 혼합물)를 0도로 정했고, 그 결과 물의 어는점이 32도가 되었습니다.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 켈빈은 언제 사용하나요?</h4>
+                        <p>켈빈은 주로 과학 연구에서 사용됩니다. 물리학, 화학, 천문학, 열역학 등에서 필수적이며, 절대영도를 기준으로 하기 때문에 음수 값이 없어 계산이 편리합니다. 일상생활에서는 거의 사용하지 않습니다.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 섭씨와 화씨가 같아지는 온도가 있나요?</h4>
+                        <p>네, 있습니다! -40도에서 섭씨와 화씨가 같습니다. 즉, -40°C = -40°F입니다. 이는 두 온도 단위의 변환 공식에서 수학적으로 도출되는 특별한 지점입니다.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 미국은 왜 화씨를 사용하나요?</h4>
+                        <p>역사적인 이유 때문입니다. 미국이 독립할 당시 화씨가 표준이었고, 이후 전 세계가 섭씨로 통일되는 과정에서 미국은 기존 시스템을 유지했습니다. 현재 미국도 과학 분야에서는 섭씨와 켈빈을 사용합니다.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 요리 레시피의 온도를 어떻게 변환하나요?</h4>
+                        <p>미국 레시피의 오븐 온도는 보통 화씨로 표시됩니다. 예를 들어, 350°F는 약 177°C, 400°F는 약 204°C입니다. 오븐마다 차이가 있을 수 있으니 처음에는 확인하면서 조리하는 것이 좋습니다.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 온도 변환기의 정확도는 어느 정도인가요?</h4>
+                        <p>이 변환기는 공인된 변환 공식을 사용하며, 소수점 이하 여러 자리까지 정확한 결과를 제공합니다. 과학 실험, 요리, 날씨 확인 등 모든 일상적 용도와 전문적 용도에 충분한 정밀도를 보장합니다.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="feature-section">
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-bolt feature-icon-text"></i>
+                    </div>
+                    <h4>실시간 즉시 변환</h4>
+                    <p>온도 값을 입력하는 즉시 실시간으로 변환 결과가 표시됩니다. 대기 시간 없이 정확한 결과를 밀리초 단위로 확인할 수 있습니다.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-check-circle feature-icon-text"></i>
+                    </div>
+                    <h4>공인된 변환 공식</h4>
+                    <p>국제적으로 표준화된 온도 변환 공식을 사용합니다. 과학적으로 검증된 계산 방식으로 신뢰할 수 있는 결과를 제공합니다.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-exchange-alt feature-icon-text"></i>
+                    </div>
+                    <h4>양방향 변환</h4>
+                    <p>섭씨, 화씨, 켈빈 간 모든 조합의 변환이 가능합니다. 교환 버튼을 클릭하면 원본과 목표 단위를 즉시 바꿀 수 있습니다.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-globe feature-icon-text"></i>
+                    </div>
+                    <h4>국제 표준 지원</h4>
+                    <p>전 세계에서 사용되는 세 가지 주요 온도 단위를 모두 지원합니다. 여행, 요리, 과학 연구 등 다양한 상황에서 활용할 수 있습니다.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-lock feature-icon-text"></i>
+                    </div>
+                    <h4>완전한 개인정보 보호</h4>
+                    <p>모든 계산은 브라우저에서 이루어집니다. 입력한 데이터를 서버로 전송하거나 저장하지 않아 개인정보가 완벽하게 보호됩니다.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-mobile-alt feature-icon-text"></i>
+                    </div>
+                    <h4>모바일 최적화</h4>
+                    <p>스마트폰, 태블릿, 데스크톱 모든 기기에서 완벽하게 작동합니다. 반응형 디자인으로 어디서나 편리하게 사용할 수 있습니다.</p>
+                </div>
+            </section>
+
+            <!-- Related Calculators Section -->
+            <section class="related-section">
+                <h3>관련 변환 도구</h3>
+                <div class="related-grid">
+                    <a href="/conversion/length-converter.html" class="related-card">
+                        <i class="fas fa-ruler"></i>
+                        <h4>길이 변환기</h4>
+                        <p>미터, 피트, 인치 등 길이 단위 변환</p>
+                    </a>
+                    <a href="/conversion/weight-converter.html" class="related-card">
+                        <i class="fas fa-weight"></i>
+                        <h4>무게 변환기</h4>
+                        <p>킬로그램, 파운드 등 무게 단위 변환</p>
+                    </a>
+                    <a href="/conversion/volume-converter.html" class="related-card">
+                        <i class="fas fa-flask"></i>
+                        <h4>부피 변환기</h4>
+                        <p>리터, 갤런, 컵 등 부피 단위 변환</p>
+                    </a>
+                    <a href="/" class="related-card">
+                        <i class="fas fa-calculator"></i>
+                        <h4>더 많은 계산기</h4>
+                        <p>65개 이상의 다양한 계산기 탐색</p>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-social">
+                <a href="https://x.com/8hqmx" target="_blank" rel="noopener noreferrer" class="footer-twitter" aria-label="Follow us on X (Twitter)">
+                    <img src="/assets/x-twitter-footer.svg" alt="X (Twitter)" class="footer-social-icon">
+                </a>
+            </div>
+            <p>
+                <span>&copy; 2025 HQMX Calculator. All Rights Reserved.</span>
+                <span class="footer-contact"> • support@hqmx.net</span>
+            </p>
+        </footer>
+    </div>
+
+    <script src="/js/main.js"></script>
+    <script src="/js/utils/unit-converter.js"></script>
+    <script src="/js/calculators/temperature.js"></script>
+</body>
+</html>

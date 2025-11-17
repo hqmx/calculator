@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calorie Calculator - Calculate Daily Calorie Needs | CALCULATOR</title>
+    <meta name="description" content="Calculate your daily calorie needs based on age, gender, weight, height, and activity level. Free calorie calculator with BMR and TDEE calculations.">
+    <meta name="keywords" content="calorie calculator, daily calorie needs, BMR calculator, TDEE calculator, calories per day, weight loss calculator">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css?v=20251101blur2">
+    <link rel="stylesheet" href="/css/calculator.css?v=20251115blue">
+
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+</head>
+<body>
+
+    <div class="container">
+        <!-- Navigation Header -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <a href="/" class="converter-logo-link">
+                    <div class="converter-logo">
+                        <span class="converter-text"><span class="converter-c">C</span><span class="converter-rest">ALCULATOR</span></span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="nav-center">
+                <!-- 햄버거 메뉴 버튼 (모바일용) -->
+                <button class="hamburger-menu" id="hamburgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="nav-menu">
+                    <a href="/" class="nav-link active">Home</a>
+                    <a href="/how-to-use" class="nav-link">How to Use</a>
+                    <a href="/faq" class="nav-link">FAQ</a>
+                    <a href="/sitemap" class="nav-link">Site Map</a>
+                    <a href="/api.html" class="nav-link">API</a>
+                </div>
+
+                <!-- 모바일 메뉴 오버레이 -->
+                <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+                    <div class="mobile-menu-box">
+                        <!-- 모바일 메뉴 페이지 링크 -->
+                        <div class="mobile-menu-links">
+                            <a href="/" class="mobile-menu-link active">Home</a>
+                            <a href="/how-to-use" class="mobile-menu-link">How to Use</a>
+                            <a href="/faq" class="mobile-menu-link">FAQ</a>
+                            <a href="/sitemap" class="mobile-menu-link">Site Map</a>
+                            <a href="/api.html" class="mobile-menu-link">API</a>
+                        </div>
+
+                        <div class="mobile-menu-controls">
+                            <div class="mobile-control-item menu-divider">
+                                <button id="mobileThemeToggleBtn" class="mobile-theme-toggle-btn">
+                                    <i class="fas fa-sun"></i>
+                                    <i class="fas fa-moon"></i>
+                                </button>
+                                <button id="mobileLanguageSelectorBtn" class="mobile-language-selector-btn">
+                                    <i class="fas fa-globe"></i>
+                                    <span id="mobileCurrentLanguage">EN</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="mobile-control-item">
+                                <div id="mobileLanguageOptions" class="mobile-language-options">
+                                    <a href="#" data-lang="en">English</a>
+                                    <a href="#" data-lang="de">Deutsch</a>
+                                    <a href="#" data-lang="es">Español</a>
+                                    <a href="#" data-lang="fr">Français</a>
+                                    <a href="#" data-lang="hi">हिन्दी / Hindī</a>
+                                    <a href="#" data-lang="id">Bahasa Indonesia</a>
+                                    <a href="#" data-lang="it">Italiano</a>
+                                    <a href="#" data-lang="ko">한국어</a>
+                                    <a href="#" data-lang="ja">日本語</a>
+                                    <a href="#" data-lang="my">Myanmar (မြန်မာ)</a>
+                                    <a href="#" data-lang="ms">Malay</a>
+                                    <a href="#" data-lang="fil">Filipino</a>
+                                    <a href="#" data-lang="pt">Português</a>
+                                    <a href="#" data-lang="ru">Русский</a>
+                                    <a href="#" data-lang="th">ไทย</a>
+                                    <a href="#" data-lang="tr">Türkçe</a>
+                                    <a href="#" data-lang="vi">Tiếng Việt</a>
+                                    <a href="#" data-lang="zh-CN">简体中文</a>
+                                    <a href="#" data-lang="zh-TW">繁體中文</a>
+                                    <a href="#" data-lang="ar">عربي</a>
+                                    <a href="#" data-lang="bn">বাঙালি</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <button id="themeToggleBtn" class="theme-toggle-btn">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="language-switcher">
+                    <button id="language-selector-btn" class="language-selector-btn">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">English</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="language-options" class="language-options">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="de">Deutsch</a>
+                        <a href="#" data-lang="es">Español</a>
+                        <a href="#" data-lang="fr">Français</a>
+                        <a href="#" data-lang="hi">हिन्दी / Hindī</a>
+                        <a href="#" data-lang="id">Bahasa Indonesia</a>
+                        <a href="#" data-lang="it">Italiano</a>
+                        <a href="#" data-lang="ko">한국어</a>
+                        <a href="#" data-lang="ja">日本語</a>
+                        <a href="#" data-lang="my">Myanmar (မြန်မာ)</a>
+                        <a href="#" data-lang="ms">Malay</a>
+                        <a href="#" data-lang="fil">Filipino</a>
+                        <a href="#" data-lang="pt">Português</a>
+                        <a href="#" data-lang="ru">Русский</a>
+                        <a href="#" data-lang="th">ไทย</a>
+                        <a href="#" data-lang="tr">Türkçe</a>
+                        <a href="#" data-lang="vi">Tiếng Việt</a>
+                        <a href="#" data-lang="zh-CN">简体中文</a>
+                        <a href="#" data-lang="zh-TW">繁體中文</a>
+                        <a href="#" data-lang="ar">عربي</a>
+                        <a href="#" data-lang="bn">বাঙালি</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <p class="tagline">Calculate Your Daily Calorie Needs</p>
+    </header>
+
+    <main class="main-content">
+        <!-- Calorie Calculator Section -->
+        <section class="upload-section">
+            <div class="upload-container">
+                <h4>Calculate Your Daily Calorie Needs</h4>
+
+                <div class="calculator-inputs">
+                    <!-- Gender Selection -->
+                    <div class="input-group">
+                        <label for="gender">Gender</label>
+                        <div class="gender-toggle">
+                            <button type="button" class="gender-btn active" data-gender="male">
+                                <i class="fas fa-mars"></i> Male
+                            </button>
+                            <button type="button" class="gender-btn" data-gender="female">
+                                <i class="fas fa-venus"></i> Female
+                            </button>
+                        </div>
+                        <input type="hidden" id="gender" value="male">
+                    </div>
+
+                    <!-- Age -->
+                    <div class="input-group">
+                        <label for="age">Age (years)</label>
+                        <input type="number" id="age" min="15" max="100" value="30" required>
+                    </div>
+
+                    <!-- Weight -->
+                    <div class="input-group">
+                        <label for="weight">Weight</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="weight" step="0.1" value="70" required>
+                            <select id="weightUnit" class="converter-select">
+                                <option value="kg" selected>kg</option>
+                                <option value="lb">lb</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Height -->
+                    <div class="input-group">
+                        <label for="height">Height</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="height" step="0.1" value="170" required>
+                            <select id="heightUnit" class="converter-select">
+                                <option value="cm" selected>cm</option>
+                                <option value="ft">ft/in</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Activity Level -->
+                    <div class="input-group">
+                        <label for="activity">Activity Level</label>
+                        <select id="activity" class="converter-select" required>
+                            <option value="1.2">Sedentary (no exercise)</option>
+                            <option value="1.375">Light (1-3 days/week)</option>
+                            <option value="1.55" selected>Moderate (3-5 days/week)</option>
+                            <option value="1.725">Very active (6-7 days/week)</option>
+                            <option value="1.9">Extreme (2x training/day)</option>
+                        </select>
+                    </div>
+
+                    <!-- Goal -->
+                    <div class="input-group">
+                        <label for="goal">Goal</label>
+                        <select id="goal" class="converter-select" required>
+                            <option value="maintain" selected>Maintain weight</option>
+                            <option value="mild-loss">Mild weight loss (0.25 kg/week)</option>
+                            <option value="loss">Weight loss (0.5 kg/week)</option>
+                            <option value="extreme-loss">Extreme weight loss (1 kg/week)</option>
+                            <option value="mild-gain">Mild weight gain (0.25 kg/week)</option>
+                            <option value="gain">Weight gain (0.5 kg/week)</option>
+                            <option value="extreme-gain">Extreme weight gain (1 kg/week)</option>
+                        </select>
+                    </div>
+
+                    <!-- Calculate Button -->
+                    <button class="calculate-btn" id="calculateBtn">
+                        <i class="fas fa-calculator"></i>
+                        Calculate Calories
+                    </button>
+
+                    <!-- Error Message -->
+                    <div class="error-message" id="errorMessage" style="display: none;">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span id="errorText"></span>
+                    </div>
+                </div>
+
+                <!-- Results Display -->
+                <div class="calculator-results" id="resultsSection" style="display: none;">
+                    <!-- Main Results -->
+                    <div class="result-cards-grid">
+                    <div class="result-card highlight">
+                        <div class="result-label">Daily Calories</div>
+                        <div class="result-value" id="dailyCalories">-</div>
+                        <div class="result-sublabel" id="goalDescription">-</div>
+                    </div>
+
+                    <div class="result-card">
+                        <div class="result-label">BMR</div>
+                        <div class="result-value" id="bmr">-</div>
+                        <div class="result-sublabel">Basal Metabolic Rate</div>
+                    </div>
+
+                    <div class="result-card">
+                        <div class="result-label">TDEE</div>
+                        <div class="result-value" id="tdee">-</div>
+                        <div class="result-sublabel">Total Daily Energy Expenditure</div>
+                    </div>
+                </div>
+
+                <!-- Macronutrient Breakdown -->
+                <div class="macro-section">
+                    <h3>Recommended Macronutrients</h3>
+                    <div class="macro-cards">
+                        <div class="macro-card">
+                            <i class="fas fa-drumstick-bite"></i>
+                            <h4>Protein</h4>
+                            <div class="macro-value" id="protein">-</div>
+                            <div class="macro-percentage">30%</div>
+                        </div>
+                        <div class="macro-card">
+                            <i class="fas fa-bread-slice"></i>
+                            <h4>Carbs</h4>
+                            <div class="macro-value" id="carbs">-</div>
+                            <div class="macro-percentage">40%</div>
+                        </div>
+                        <div class="macro-card">
+                            <i class="fas fa-cheese"></i>
+                            <h4>Fats</h4>
+                            <div class="macro-value" id="fats">-</div>
+                            <div class="macro-percentage">30%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weight Timeline -->
+                <div class="timeline-section">
+                    <h3>Weight Timeline</h3>
+                    <table class="timeline-table">
+                        <thead>
+                            <tr>
+                                <th>Time Period</th>
+                                <th>Weight</th>
+                                <th>Change</th>
+                            </tr>
+                        </thead>
+                        <tbody id="timelineTable">
+                            <!-- Will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+
+                    <!-- Recalculate Button -->
+                    <button class="recalculate-btn" id="recalculateBtn">
+                        <i class="fas fa-redo"></i>
+                        Calculate Again
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- How to Use Section -->
+        <section class="usage-guide-section">
+                <h3>사용 방법 (How to Use)</h3>
+                <p class="section-description">이 칼로리 계산기를 사용하여 하루 칼로리 필요량을 계산하는 간단한 단계를 따라하세요.</p>
+                <div class="guide-steps">
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">1</span>
+                            <h4>기본 정보 입력</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>성별, 나이, 체중, 키를 입력하세요. 정확한 측정값을 사용할수록 더 정확한 칼로리 계산 결과를 얻을 수 있습니다. 체중과 키는 kg/cm 또는 lb/ft-in 단위를 선택할 수 있습니다.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">2</span>
+                            <h4>활동량 수준 선택</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>일상적인 신체 활동 수준을 선택하세요. 운동 빈도와 직업적 활동을 고려하여 가장 적합한 활동량 수준을 선택하는 것이 중요합니다. 과대평가하면 체중 증가, 과소평가하면 피로감을 느낄 수 있습니다.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">3</span>
+                            <h4>목표 설정</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>체중 유지, 감량, 증량 중 목표를 선택하세요. 각 목표에 따라 권장 칼로리 섭취량이 자동으로 조정됩니다. 안전한 체중 변화 속도는 주당 0.5-1kg입니다.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">4</span>
+                            <h4>결과 확인 및 활용</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>"Calculate Calories" 버튼을 클릭하면 BMR, TDEE, 목표 칼로리, 영양소 배분(단백질, 탄수화물, 지방)이 표시됩니다. 이 결과를 바탕으로 식단을 계획하고 정기적으로 재측정하세요.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Examples Section -->
+            <section class="examples-section">
+                <h3>실전 예제 (Practical Examples)</h3>
+                <div class="example-grid">
+                    <div class="example-card example-normal">
+                        <div class="example-header">
+                            <span class="example-icon">💼</span>
+                            <h4>사무직 직장인 (체중 유지)</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label">성별:</span>
+                                <span class="value">남성, 35세</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">체형:</span>
+                                <span class="value">75kg, 175cm</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">활동량:</span>
+                                <span class="value">좌식 생활 (주 1-2회 가벼운 운동)</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">BMR:</span>
+                                <span class="value bmi-highlight">1,710 kcal</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">TDEE:</span>
+                                <span class="value bmi-highlight">2,050 kcal</span>
+                            </div>
+                            <div class="example-category">
+                                <span class="category-badge normal">일일 권장 칼로리: 2,050 kcal</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-card example-overweight">
+                        <div class="example-header">
+                            <span class="example-icon">🏃</span>
+                            <h4>중간 활동량 성인 (체중 감량)</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label">성별:</span>
+                                <span class="value">여성, 28세</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">체형:</span>
+                                <span class="value">68kg, 165cm</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">활동량:</span>
+                                <span class="value">중간 활동 (주 3-5회 운동)</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">BMR:</span>
+                                <span class="value bmi-highlight">1,420 kcal</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">TDEE:</span>
+                                <span class="value bmi-highlight">2,200 kcal</span>
+                            </div>
+                            <div class="example-category">
+                                <span class="category-badge overweight">감량 목표: 1,700 kcal (주 0.5kg 감량)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-card example-underweight">
+                        <div class="example-header">
+                            <span class="example-icon">💪</span>
+                            <h4>운동선수 (체중 증량)</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label">성별:</span>
+                                <span class="value">남성, 25세</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">체형:</span>
+                                <span class="value">70kg, 180cm</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">활동량:</span>
+                                <span class="value">매우 활동적 (주 6-7회 고강도 운동)</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">BMR:</span>
+                                <span class="value bmi-highlight">1,730 kcal</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">TDEE:</span>
+                                <span class="value bmi-highlight">2,985 kcal</span>
+                            </div>
+                            <div class="example-category">
+                                <span class="category-badge underweight">증량 목표: 3,485 kcal (주 0.5kg 증량)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Understanding Calories Section -->
+            <section class="info-section">
+                <h3>칼로리의 이해 (Understanding Calories)</h3>
+                <div class="info-content">
+                    <h4>BMR (기초대사량) 이란?</h4>
+                    <p>
+                        <strong>Basal Metabolic Rate (BMR)</strong>은 신체가 안정 상태에서 기본적인 생리 기능(호흡, 혈액 순환, 세포 생산 등)을 유지하기 위해 소모하는 최소 칼로리입니다.
+                        이 계산기는 가장 정확한 공식 중 하나인 <strong>Mifflin-St Jeor 공식</strong>을 사용합니다.
+                    </p>
+                    <div class="formula-box">
+                        <p><strong>남성:</strong> BMR = 10 × 체중(kg) + 6.25 × 키(cm) - 5 × 나이 + 5</p>
+                        <p><strong>여성:</strong> BMR = 10 × 체중(kg) + 6.25 × 키(cm) - 5 × 나이 - 161</p>
+                    </div>
+
+                    <h4>TDEE (총 일일 에너지 소비량) 이란?</h4>
+                    <p>
+                        <strong>Total Daily Energy Expenditure (TDEE)</strong>는 BMR에 활동량 계수를 곱한 값으로, 하루 동안 신체 활동과 운동을 포함하여 소모하는 총 칼로리입니다.
+                        TDEE는 현재 체중을 유지하는 데 필요한 칼로리입니다.
+                    </p>
+
+                    <h4>칼로리 적자/잉여</h4>
+                    <p>
+                        체중을 감량하려면 <strong>칼로리 적자</strong>(TDEE보다 적게 섭취)가 필요하고, 체중을 증량하려면 <strong>칼로리 잉여</strong>(TDEE보다 많이 섭취)가 필요합니다.
+                        안전한 체중 변화 속도는 주당 0.5-1kg(1-2파운드)입니다.
+                    </p>
+
+                    <div class="important-notes">
+                        <h4>중요한 수치:</h4>
+                        <ul>
+                            <li>체중 1kg ≈ 7,700 칼로리</li>
+                            <li>주당 0.5kg 감량 = 일일 500 칼로리 적자</li>
+                            <li>주당 1kg 감량 = 일일 1,000 칼로리 적자</li>
+                            <li>주당 0.5kg 증량 = 일일 500 칼로리 잉여</li>
+                        </ul>
+                    </div>
+
+                    <h4>다양한 BMR 계산 공식</h4>
+                    <p>이 계산기는 Mifflin-St Jeor 공식을 사용하지만, 다른 공식도 존재합니다:</p>
+                    <ul>
+                        <li><strong>Mifflin-St Jeor (1990):</strong> 가장 정확한 현대 공식, ±10% 오차</li>
+                        <li><strong>Harris-Benedict (1984 개정):</strong> 널리 사용되는 전통적 공식</li>
+                        <li><strong>Katch-McArdle:</strong> 체지방률을 고려한 공식 (운동선수에게 적합)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Activity Level Guide -->
+            <section class="info-section">
+                <h3>활동량 수준 가이드 (Activity Level Guide)</h3>
+                <p class="section-description">자신의 일상 활동 패턴에 가장 적합한 활동량 수준을 선택하세요.</p>
+                <div class="activity-grid">
+                    <div class="activity-card activity-sedentary">
+                        <div class="activity-icon">
+                            <i class="fas fa-couch"></i>
+                        </div>
+                        <h4>좌식 생활 (Sedentary)</h4>
+                        <div class="activity-multiplier">계수 1.2</div>
+                        <div class="activity-detail">
+                            <p><strong>설명:</strong> 거의 또는 전혀 운동하지 않음</p>
+                            <p><strong>예시:</strong> 하루 종일 컴퓨터 앞, 차량 출퇴근, TV 시청</p>
+                            <p><strong>걸음 수:</strong> &lt;5,000보/일</p>
+                        </div>
+                    </div>
+
+                    <div class="activity-card activity-light">
+                        <div class="activity-icon">
+                            <i class="fas fa-walking"></i>
+                        </div>
+                        <h4>가벼운 활동 (Lightly Active)</h4>
+                        <div class="activity-multiplier">계수 1.375</div>
+                        <div class="activity-detail">
+                            <p><strong>설명:</strong> 주 1-3일 가벼운 운동</p>
+                            <p><strong>예시:</strong> 점심 산책, 주 1-3회 요가, 적극적 집안일</p>
+                            <p><strong>걸음 수:</strong> 5,000-7,500보/일</p>
+                        </div>
+                    </div>
+
+                    <div class="activity-card activity-moderate">
+                        <div class="activity-icon">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <h4>중간 활동 (Moderately Active)</h4>
+                        <div class="activity-multiplier">계수 1.55</div>
+                        <div class="activity-detail">
+                            <p><strong>설명:</strong> 주 3-5일 중간 강도 운동</p>
+                            <p><strong>예시:</strong> 규칙적 헬스/수영, 활동적 직업</p>
+                            <p><strong>걸음 수:</strong> 7,500-10,000보/일</p>
+                        </div>
+                    </div>
+
+                    <div class="activity-card activity-very">
+                        <div class="activity-icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <h4>활발한 활동 (Very Active)</h4>
+                        <div class="activity-multiplier">계수 1.725</div>
+                        <div class="activity-detail">
+                            <p><strong>설명:</strong> 주 6-7일 고강도 운동</p>
+                            <p><strong>예시:</strong> 매일 격렬한 운동, 매우 활동적 직업</p>
+                            <p><strong>걸음 수:</strong> 10,000-12,500보/일</p>
+                        </div>
+                    </div>
+
+                    <div class="activity-card activity-extreme">
+                        <div class="activity-icon">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <h4>극도로 활동적 (Extremely Active)</h4>
+                        <div class="activity-multiplier">계수 1.9</div>
+                        <div class="activity-detail">
+                            <p><strong>설명:</strong> 하루 2회 훈련 또는 극한 육체노동</p>
+                            <p><strong>예시:</strong> 프로 운동선수, 군인, 고강도 2회 훈련</p>
+                            <p><strong>걸음 수:</strong> &gt;12,500보/일</p>
+                        </div>
+                    </div>
+
+                    <div class="activity-card activity-tips">
+                        <div class="activity-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h4>💡 활동량 선택 시 주의사항</h4>
+                        <div class="activity-detail">
+                            <p>• 과대평가하면 체중이 증가할 수 있으니 보수적으로 선택하세요</p>
+                            <p>• 운동 빈도와 일상 활동을 모두 고려하세요</p>
+                            <p>• 2-3주 후 체중 변화를 확인하고 필요시 조정하세요</p>
+                            <p>• 의심스러우면 낮은 수준을 선택하는 것이 안전합니다</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="faq-section">
+                <h3>자주 묻는 질문 (Frequently Asked Questions)</h3>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 이 칼로리 계산기는 얼마나 정확한가요?</h4>
+                        <p>이 계산기는 가장 정확한 공식 중 하나인 Mifflin-St Jeor 공식을 사용합니다. 하지만 개인의 신진대사는 ±10-15% 차이가 날 수 있습니다. 2-3주간 추적한 후 실제 체중 변화를 바탕으로 조정하세요.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 운동한 칼로리를 따로 추가해야 하나요?</h4>
+                        <p>아니요, TDEE 계산에 이미 활동량 계수를 통해 운동이 포함되어 있습니다. 추가로 운동 칼로리를 더하면 이중 계산이 되어 과다 섭취하게 됩니다. 선택한 활동량 수준이 운동을 포함한 전체 활동을 반영합니다.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 얼마나 빨리 체중을 감량할 수 있나요?</h4>
+                        <p>안전한 감량 속도는 주당 0.5-1kg(1-2파운드)입니다. 더 빠른 감량은 근육 손실, 영양 결핍, 요요 현상을 초래할 수 있습니다. 천천히 꾸준히 감량하는 것이 장기적으로 성공 확률이 높습니다.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 이 칼로리로 체중이 변하지 않으면 어떻게 하나요?</h4>
+                        <p>2-3주간 정확히 칼로리를 추적하세요. 변화가 없다면 칼로리를 10% 줄이고 다시 평가하세요. 신진대사가 평균보다 낮을 수 있으며, 계량 오차나 숨은 칼로리(소스, 음료 등)를 확인하세요.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 영양소 배분(탄단지)도 중요한가요?</h4>
+                        <p>네! 칼로리는 체중 변화를 결정하지만, 영양소 배분은 체구성(근육 vs 지방)에 영향을 줍니다. 체중 감량 시 높은 단백질 섭취(체중 1kg당 1.6-2.2g)는 근육 보존에 도움이 됩니다. 이 계산기는 30% 단백질, 40% 탄수화물, 30% 지방을 권장합니다.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> BMR과 TDEE의 차이는 무엇인가요?</h4>
+                        <p>BMR(기초대사량)은 완전히 쉬고 있을 때 소모하는 칼로리이고, TDEE(총 일일 에너지 소비량)는 BMR + 일상 활동 + 운동을 모두 포함한 총 칼로리입니다. 예를 들어 BMR이 1,500 kcal이고 중간 활동량이면 TDEE는 약 2,325 kcal(1,500 × 1.55)입니다.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="feature-section">
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-bolt feature-icon-text"></i>
+                    </div>
+                    <h4>즉각적인 결과</h4>
+                    <p>최적화된 알고리즘으로 BMR, TDEE, 목표 칼로리를 즉시 계산합니다. 기다림 없이 밀리초 단위로 정확한 결과를 제공합니다.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-hospital feature-icon-text"></i>
+                    </div>
+                    <h4>검증된 공식 사용</h4>
+                    <p>Mifflin-St Jeor 공식을 사용하여 가장 정확한 칼로리 계산을 제공합니다. 의학적으로 인정받은 표준 계산 방식입니다.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-bullseye feature-icon-text"></i>
+                    </div>
+                    <h4>맞춤형 영양소 배분</h4>
+                    <p>목표 칼로리를 기반으로 단백질, 탄수화물, 지방의 최적 섭취량을 그램 단위로 제공합니다. 체구성 개선에 도움이 됩니다.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-sync-alt feature-icon-text"></i>
+                    </div>
+                    <h4>다중 단위 지원</h4>
+                    <p>미터법(kg/cm)과 야드파운드법(lb/ft-in)을 자유롭게 전환할 수 있습니다. 변환 계산 없이 편리하게 사용하세요.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-lock feature-icon-text"></i>
+                    </div>
+                    <h4>100% 프라이버시 보호</h4>
+                    <p>모든 계산은 브라우저에서 이루어집니다. 개인 건강 데이터를 저장하거나 전송하지 않습니다.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-mobile-alt feature-icon-text"></i>
+                    </div>
+                    <h4>모바일 최적화</h4>
+                    <p>모든 기기에서 칼로리를 계산할 수 있습니다. 스마트폰, 태블릿, 데스크톱에서 완벽하게 작동하는 반응형 디자인입니다.</p>
+                </div>
+            </section>
+
+            <!-- Related Calculators Section -->
+            <section class="related-section">
+                <h3>관련 건강 계산기 (Related Health Calculators)</h3>
+                <div class="related-grid">
+                    <a href="/health/bmi-calculator.html" class="related-card">
+                        <i class="fas fa-weight"></i>
+                        <h4>BMI 계산기</h4>
+                        <p>체질량지수 계산</p>
+                    </a>
+                    <a href="/health/weight-loss-calculator.html" class="related-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>체중 감량 계산기</h4>
+                        <p>체중 감량 계획 수립</p>
+                    </a>
+                    <a href="/health/protein-calculator.html" class="related-card">
+                        <i class="fas fa-drumstick-bite"></i>
+                        <h4>단백질 계산기</h4>
+                        <p>단백질 필요량 계산</p>
+                    </a>
+                    <a href="/" class="related-card">
+                        <i class="fas fa-calculator"></i>
+                        <h4>더 많은 계산기</h4>
+                        <p>65개 이상의 계산기 탐색</p>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CALCULATOR</h3>
+                    <p>Free online calculators for all your needs</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Categories</h3>
+                    <ul>
+                        <li><a href="/category/general.html">General</a></li>
+                        <li><a href="/category/finance.html">Finance</a></li>
+                        <li><a href="/category/health.html">Health</a></li>
+                        <li><a href="/category/conversion.html">Conversion</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="/about.html">About</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
+                        <li><a href="/privacy.html">Privacy Policy</a></li>
+                        <li><a href="/terms.html">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CALCULATOR by HQMX. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/i18n.js?v=20251101fix"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/utils/calculator-base.js"></script>
+    <script src="/js/calculators/calorie.js"></script>
+</body>
+</html>

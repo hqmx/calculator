@@ -1,0 +1,55 @@
+{
+  "navigation": {
+    "home": "الرئيسية",
+    "navHowToUse": "كيفية الاستخدام",
+    "navFAQ": "الأسئلة الشائعة",
+    "navAPI": "واجهة برمجية"
+  },
+  "home": {
+    "tagline": "الآلة الحاسبة الشاملة على الويب"
+  },
+  "bmi": {
+    "tagline": "حاسبة مؤشر كتلة الجسم",
+    "subtitle": "احسب مؤشر كتلة جسمك فوراً",
+    "weight": "الوزن",
+    "height": "الطول",
+    "age": "العمر",
+    "gender": "الجنس",
+    "male": "ذكر",
+    "female": "أنثى",
+    "calculateBtn": "احسب مؤشر كتلة الجسم",
+    "recalculateBtn": "احسب مرة أخرى",
+    "yourBMI": "نتيجة مؤشر كتلة جسمك",
+    "category": "فئة مؤشر كتلة الجسم",
+    "healthStatus": "الحالة الصحية",
+    "recommendations": "التوصيات"
+  },
+  "age": {
+    "tagline": "احسب عمرك الدقيق فوراً",
+    "title": "حاسبة العمر",
+    "birthDate": "تاريخ الميلاد",
+    "calculateBtn": "احسب العمر",
+    "recalculateBtn": "احسب مرة أخرى",
+    "yourAge": "عمرك",
+    "years": "سنوات",
+    "months": "أشهر",
+    "days": "أيام",
+    "totalDays": "إجمالي الأيام",
+    "totalHours": "إجمالي الساعات",
+    "totalMinutes": "إجمالي الدقائق",
+    "nextBirthday": "عيد الميلاد القادم",
+    "bornOn": "ولد في"
+  },
+  "percentage": {
+    "tagline": "احسب النسب المئوية",
+    "title": "حاسبة النسبة المئوية",
+    "whatIsPercentOf": "كم يساوي X% من Y؟",
+    "isWhatPercentOf": "X يساوي كم بالمئة من Y؟",
+    "percentageIncrease": "الزيادة بالنسبة المئوية",
+    "percentageDecrease": "النقصان بالنسبة المئوية",
+    "addPercentTo": "أضف X% إلى Y",
+    "subtractPercentFrom": "اطرح X% من Y",
+    "calculateBtn": "احسب",
+    "result": "النتيجة"
+  }
+}

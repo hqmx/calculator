@@ -1,0 +1,55 @@
+{
+  "navigation": {
+    "home": "首頁",
+    "navHowToUse": "使用方法",
+    "navFAQ": "常見問題",
+    "navAPI": "API"
+  },
+  "home": {
+    "tagline": "通用網路計算機"
+  },
+  "bmi": {
+    "tagline": "BMI計算機",
+    "subtitle": "即刻計算您的身體質量指數",
+    "weight": "體重",
+    "height": "身高",
+    "age": "年齡",
+    "gender": "性別",
+    "male": "男",
+    "female": "女",
+    "calculateBtn": "計算BMI",
+    "recalculateBtn": "重新計算",
+    "yourBMI": "您的BMI結果",
+    "category": "BMI類別",
+    "healthStatus": "健康狀態",
+    "recommendations": "建議"
+  },
+  "age": {
+    "tagline": "即刻計算您的準確年齡",
+    "title": "年齡計算器",
+    "birthDate": "出生日期",
+    "calculateBtn": "計算年齡",
+    "recalculateBtn": "重新計算",
+    "yourAge": "您的年齡",
+    "years": "年",
+    "months": "月",
+    "days": "日",
+    "totalDays": "總天數",
+    "totalHours": "總小時數",
+    "totalMinutes": "總分鐘數",
+    "nextBirthday": "下次生日",
+    "bornOn": "出生於"
+  },
+  "percentage": {
+    "tagline": "計算百分比",
+    "title": "百分比計算器",
+    "whatIsPercentOf": "Y的X%是多少？",
+    "isWhatPercentOf": "X是Y的百分之幾？",
+    "percentageIncrease": "百分比增加",
+    "percentageDecrease": "百分比減少",
+    "addPercentTo": "將X%加到Y",
+    "subtractPercentFrom": "從Y減去X%",
+    "calculateBtn": "計算",
+    "result": "結果"
+  }
+}

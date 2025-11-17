@@ -1,0 +1,55 @@
+{
+  "navigation": {
+    "home": "Beranda",
+    "navHowToUse": "Cara Menggunakan",
+    "navFAQ": "FAQ",
+    "navAPI": "API"
+  },
+  "home": {
+    "tagline": "Kalkulator Web Universal"
+  },
+  "bmi": {
+    "tagline": "Kalkulator BMI",
+    "subtitle": "Hitung Indeks Massa Tubuh Anda Secara Instan",
+    "weight": "Berat Badan",
+    "height": "Tinggi Badan",
+    "age": "Usia",
+    "gender": "Jenis Kelamin",
+    "male": "Laki-laki",
+    "female": "Perempuan",
+    "calculateBtn": "Hitung BMI",
+    "recalculateBtn": "Hitung Lagi",
+    "yourBMI": "Hasil BMI Anda",
+    "category": "Kategori BMI",
+    "healthStatus": "Status Kesehatan",
+    "recommendations": "Rekomendasi"
+  },
+  "age": {
+    "tagline": "Hitung Usia Anda Secara Tepat dan Instan",
+    "title": "Kalkulator Usia",
+    "birthDate": "Tanggal Lahir",
+    "calculateBtn": "Hitung Usia",
+    "recalculateBtn": "Hitung Lagi",
+    "yourAge": "Usia Anda",
+    "years": "Tahun",
+    "months": "Bulan",
+    "days": "Hari",
+    "totalDays": "Total Hari",
+    "totalHours": "Total Jam",
+    "totalMinutes": "Total Menit",
+    "nextBirthday": "Ulang Tahun Berikutnya",
+    "bornOn": "Lahir Pada"
+  },
+  "percentage": {
+    "tagline": "Hitung Persentase",
+    "title": "Kalkulator Persentase",
+    "whatIsPercentOf": "Berapa X% dari Y?",
+    "isWhatPercentOf": "X adalah berapa % dari Y?",
+    "percentageIncrease": "Peningkatan Persentase",
+    "percentageDecrease": "Penurunan Persentase",
+    "addPercentTo": "Tambahkan X% ke Y",
+    "subtractPercentFrom": "Kurangi X% dari Y",
+    "calculateBtn": "Hitung",
+    "result": "Hasil"
+  }
+}

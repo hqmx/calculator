@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Date Calculator - Add or Subtract Days from Date | HQMX</title>
+    <meta name="description" content="Free online date calculator. Add or subtract days, weeks, months, or years from any date. Find future or past dates easily and accurately.">
+    <meta name="keywords" content="date calculator, add days to date, subtract days from date, future date calculator, past date calculator, 날짜 계산기">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Date Calculator - Free Online Calculator | HQMX">
+    <meta property="og:description" content="Calculate future or past dates by adding or subtracting time periods.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://calculator.hqmx.net/date-time/date-calculator.html">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://calculator.hqmx.net/date-time/date-calculator.html">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css?v=20251101blur2">
+    <link rel="stylesheet" href="/category.css">
+    <link rel="stylesheet" href="/css/calculator.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <style>
+        .operation-selector {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .operation-btn {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid var(--input-border);
+            border-radius: 8px;
+            background: var(--input-bg);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .operation-btn:hover {
+            border-color: var(--primary);
+            background: var(--hover-bg);
+        }
+
+        .operation-btn.active {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .time-unit-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .time-unit-input {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .time-unit-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .result-date-display {
+            background: var(--primary-light);
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .result-date-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .result-date-day {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .time-unit-group {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .result-date-value {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation Header (같은 구조) -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <a href="/" class="converter-logo-link">
+                    <div class="converter-logo">
+                        <span class="converter-text"><span class="converter-c">C</span><span class="converter-rest">ALCULATOR</span></span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="nav-center">
+                <button class="hamburger-menu" id="hamburgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="nav-menu">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/how-to-use" class="nav-link">How to Use</a>
+                    <a href="/faq" class="nav-link">FAQ</a>
+                    <a href="/api.html" class="nav-link">API</a>
+                </div>
+
+                <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+                    <div class="mobile-menu-box">
+                        <div class="mobile-menu-links">
+                            <a href="/" class="mobile-menu-link">Home</a>
+                            <a href="/how-to-use" class="mobile-menu-link">How to Use</a>
+                            <a href="/faq" class="mobile-menu-link">FAQ</a>
+                            <a href="/api.html" class="mobile-menu-link">API</a>
+                        </div>
+
+                        <div class="mobile-menu-controls">
+                            <div class="mobile-control-item menu-divider">
+                                <button id="mobileThemeToggleBtn" class="mobile-theme-toggle-btn">
+                                    <i class="fas fa-sun"></i>
+                                    <i class="fas fa-moon"></i>
+                                </button>
+                                <button id="mobileLanguageSelectorBtn" class="mobile-language-selector-btn">
+                                    <i class="fas fa-globe"></i>
+                                    <span id="mobileCurrentLanguage">EN</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="mobile-control-item">
+                                <div id="mobileLanguageOptions" class="mobile-language-options">
+                                    <a href="#" data-lang="en">English</a>
+                                    <a href="#" data-lang="ko">한국어</a>
+                                    <a href="#" data-lang="es">Español</a>
+                                    <a href="#" data-lang="fr">Français</a>
+                                    <a href="#" data-lang="de">Deutsch</a>
+                                    <a href="#" data-lang="ja">日本語</a>
+                                    <a href="#" data-lang="zh-CN">简体中文</a>
+                                    <a href="#" data-lang="pt">Português</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <button id="themeToggleBtn" class="icon-btn">
+                    <i class="fas fa-sun sun-icon"></i>
+                    <i class="fas fa-moon moon-icon"></i>
+                </button>
+
+                <div class="language-selector">
+                    <button id="languageSelectorBtn" class="icon-btn">
+                        <i class="fas fa-globe"></i>
+                        <span id="currentLanguage">EN</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="languageOptions" class="language-options">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="ko">한국어</a>
+                        <a href="#" data-lang="es">Español</a>
+                        <a href="#" data-lang="fr">Français</a>
+                        <a href="#" data-lang="de">Deutsch</a>
+                        <a href="#" data-lang="ja">日本語</a>
+                        <a href="#" data-lang="zh-CN">简体中文</a>
+                        <a href="#" data-lang="pt">Português</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Calculator Header -->
+            <header class="calculator-header">
+                <h1>Date Calculator</h1>
+                <p class="tagline">Add or Subtract Time from Any Date</p>
+            </header>
+
+            <!-- Error Message -->
+            <div id="errorMessage" class="error-message" style="display: none;">
+                <i class="fas fa-exclamation-circle"></i>
+                <span id="errorText"></span>
+            </div>
+
+            <!-- Calculator Container -->
+            <div class="calculator-container">
+                <!-- Left: Input Section -->
+                <div class="input-section">
+                    <h2>Start Date</h2>
+
+                    <div class="input-group">
+                        <label for="startDate">Select Date</label>
+                        <input type="date" id="startDate" class="input-field">
+                    </div>
+
+                    <div class="input-group">
+                        <button id="useTodayBtn" class="secondary-btn" style="width: 100%;">
+                            <i class="fas fa-calendar-day"></i> Use Today
+                        </button>
+                    </div>
+
+                    <h2>Operation</h2>
+
+                    <div class="operation-selector">
+                        <button class="operation-btn active" data-operation="add">
+                            <i class="fas fa-plus"></i> Add
+                        </button>
+                        <button class="operation-btn" data-operation="subtract">
+                            <i class="fas fa-minus"></i> Subtract
+                        </button>
+                    </div>
+
+                    <h2>Time Period</h2>
+
+                    <div class="time-unit-group">
+                        <div class="time-unit-input">
+                            <label class="time-unit-label" for="years">Years</label>
+                            <input type="number" id="years" class="input-field" value="0" min="0">
+                        </div>
+                        <div class="time-unit-input">
+                            <label class="time-unit-label" for="months">Months</label>
+                            <input type="number" id="months" class="input-field" value="0" min="0">
+                        </div>
+                        <div class="time-unit-input">
+                            <label class="time-unit-label" for="weeks">Weeks</label>
+                            <input type="number" id="weeks" class="input-field" value="0" min="0">
+                        </div>
+                        <div class="time-unit-input">
+                            <label class="time-unit-label" for="days">Days</label>
+                            <input type="number" id="days" class="input-field" value="0" min="0">
+                        </div>
+                    </div>
+
+                    <button id="calculateBtn" class="calculate-btn">
+                        <i class="fas fa-calculator"></i>
+                        Calculate Date
+                    </button>
+                </div>
+
+                <!-- Right: Results Section -->
+                <div id="resultsSection" class="results-section" style="display: none;">
+                    <h2>Result</h2>
+
+                    <div class="result-date-display">
+                        <div class="result-date-value" id="resultDate">-</div>
+                        <div class="result-date-day" id="resultDay">-</div>
+                    </div>
+
+                    <div class="result-details" style="margin-top: 2rem;">
+                        <div class="detail-row">
+                            <span class="detail-label">Start Date:</span>
+                            <span class="detail-value" id="displayStartDate">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Operation:</span>
+                            <span class="detail-value" id="displayOperation">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Time Period:</span>
+                            <span class="detail-value" id="displayPeriod">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Result Date:</span>
+                            <span class="detail-value" id="displayResultDate">-</span>
+                        </div>
+                    </div>
+
+                    <button id="recalculateBtn" class="recalculate-btn">
+                        <i class="fas fa-redo"></i>
+                        Calculate Again
+                    </button>
+                </div>
+            </div>
+
+            <!-- How to Use Section -->
+            <section class="info-section">
+                <h2><i class="fas fa-question-circle"></i> How to Use</h2>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3>Select Start Date</h3>
+                        <p>Choose your starting date from the calendar picker, or click "Use Today" to start from today's date.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3>Choose Operation</h3>
+                        <p>Select "Add" to find a future date or "Subtract" to find a past date. Then enter the time period (years, months, weeks, days).</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3>Get Result</h3>
+                        <p>Click Calculate to see the result date with the day of the week and complete calculation details.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Examples Section -->
+            <section class="info-section">
+                <h2><i class="fas fa-lightbulb"></i> Examples</h2>
+                <div class="examples-grid">
+                    <div class="example-card">
+                        <h3>Project Deadline</h3>
+                        <div class="example-problem">
+                            Start: January 15, 2025<br>
+                            Add: 90 days
+                        </div>
+                        <div class="example-solution">
+                            <strong>Result:</strong> April 15, 2025 (Tuesday)<br>
+                            <strong>Use:</strong> Planning project completion
+                        </div>
+                    </div>
+                    <div class="example-card">
+                        <h3>Historical Date</h3>
+                        <div class="example-problem">
+                            Start: January 15, 2025<br>
+                            Subtract: 6 months
+                        </div>
+                        <div class="example-solution">
+                            <strong>Result:</strong> July 15, 2024 (Monday)<br>
+                            <strong>Use:</strong> Finding past dates
+                        </div>
+                    </div>
+                    <div class="example-card">
+                        <h3>Future Event</h3>
+                        <div class="example-problem">
+                            Start: January 15, 2025<br>
+                            Add: 2 years, 3 months
+                        </div>
+                        <div class="example-solution">
+                            <strong>Result:</strong> April 15, 2027 (Thursday)<br>
+                            <strong>Use:</strong> Long-term planning
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="info-section">
+                <h2><i class="fas fa-comments"></i> Frequently Asked Questions</h2>
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary>Does it account for leap years?</summary>
+                        <p>Yes, the calculator correctly handles leap years in all calculations. February 29th will be included in leap years automatically.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Can I add both months and days at the same time?</summary>
+                        <p>Yes! You can combine different time units (years, months, weeks, days) for complex calculations. The calculator will apply them all to get the final result.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>What happens when I add months to dates like January 31?</summary>
+                        <p>The calculator intelligently handles month-end dates. For example, January 31 + 1 month = February 28 (or 29 in leap years), as February doesn't have 31 days.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Can I calculate business days only?</summary>
+                        <p>The standard date calculator uses calendar days. For business days (excluding weekends and holidays), use our Work Hours Calculator.</p>
+                    </details>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="info-section">
+                <h2><i class="fas fa-star"></i> Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-calendar-plus"></i></div>
+                        <h3>Add or Subtract</h3>
+                        <p>Calculate both future and past dates with ease. Perfect for deadlines, planning, and historical research.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-layer-group"></i></div>
+                        <h3>Multiple Time Units</h3>
+                        <p>Combine years, months, weeks, and days in a single calculation for flexible date arithmetic.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon"><i class="fas fa-check-circle"></i></div>
+                        <h3>Accurate Results</h3>
+                        <p>Handles leap years, varying month lengths, and provides day of the week for the result.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Related Calculators -->
+            <section class="info-section">
+                <h2><i class="fas fa-link"></i> Related Calculators</h2>
+                <div class="related-grid">
+                    <a href="/date-time/age-calculator.html" class="related-card">
+                        <i class="fas fa-birthday-cake"></i>
+                        <h3>Age Calculator</h3>
+                        <p>Calculate exact age</p>
+                    </a>
+                    <a href="/date-time/date-difference-calculator.html" class="related-card">
+                        <i class="fas fa-calendar-minus"></i>
+                        <h3>Date Difference</h3>
+                        <p>Days between dates</p>
+                    </a>
+                    <a href="/date-time/work-hours-calculator.html" class="related-card">
+                        <i class="fas fa-briefcase"></i>
+                        <h3>Work Hours</h3>
+                        <p>Calculate working time</p>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>CALCULATOR</h3>
+                    <p>Free online calculators for all your needs</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="/general/">General</a></li>
+                        <li><a href="/finance/">Finance</a></li>
+                        <li><a href="/health/">Health</a></li>
+                        <li><a href="/date-time/">Date & Time</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/how-to-use">How to Use</a></li>
+                        <li><a href="/faq">FAQ</a></li>
+                        <li><a href="/api.html">API</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 HQMX. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="/js/utils/calculator-base.js"></script>
+    <script src="/js/calculators/date.js"></script>
+    <script src="/category.js"></script>
+</body>
+</html>

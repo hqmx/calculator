@@ -1,0 +1,55 @@
+{
+  "navigation": {
+    "home": "Trang chủ",
+    "navHowToUse": "Cách sử dụng",
+    "navFAQ": "Câu hỏi thường gặp",
+    "navAPI": "API"
+  },
+  "home": {
+    "tagline": "Máy tính web đa năng"
+  },
+  "bmi": {
+    "tagline": "Máy tính BMI",
+    "subtitle": "Tính chỉ số khối cơ thể của bạn ngay lập tức",
+    "weight": "Cân nặng",
+    "height": "Chiều cao",
+    "age": "Tuổi",
+    "gender": "Giới tính",
+    "male": "Nam",
+    "female": "Nữ",
+    "calculateBtn": "Tính BMI",
+    "recalculateBtn": "Tính lại",
+    "yourBMI": "Kết quả BMI của bạn",
+    "category": "Phân loại BMI",
+    "healthStatus": "Tình trạng sức khỏe",
+    "recommendations": "Khuyến nghị"
+  },
+  "age": {
+    "tagline": "Tính tuổi chính xác của bạn ngay lập tức",
+    "title": "Máy tính tuổi",
+    "birthDate": "Ngày sinh",
+    "calculateBtn": "Tính tuổi",
+    "recalculateBtn": "Tính lại",
+    "yourAge": "Tuổi của bạn",
+    "years": "Năm",
+    "months": "Tháng",
+    "days": "Ngày",
+    "totalDays": "Tổng số ngày",
+    "totalHours": "Tổng số giờ",
+    "totalMinutes": "Tổng số phút",
+    "nextBirthday": "Sinh nhật tiếp theo",
+    "bornOn": "Sinh vào"
+  },
+  "percentage": {
+    "tagline": "Tính phần trăm",
+    "title": "Máy tính phần trăm",
+    "whatIsPercentOf": "X% của Y là bao nhiêu?",
+    "isWhatPercentOf": "X là bao nhiêu % của Y?",
+    "percentageIncrease": "Tăng phần trăm",
+    "percentageDecrease": "Giảm phần trăm",
+    "addPercentTo": "Thêm X% vào Y",
+    "subtractPercentFrom": "Trừ X% từ Y",
+    "calculateBtn": "Tính toán",
+    "result": "Kết quả"
+  }
+}
