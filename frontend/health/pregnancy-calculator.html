@@ -3,28 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>임신 계산기 | CALCULATOR</title>
+    <meta name="description" content="출산 예정일, 현재 임신 주차, 태아 발달 단계를 계산하세요. 삼분기 정보와 중요한 날짜를 제공하는 무료 임신 계산기입니다.">
+    <meta name="keywords" content="임신 계산기, pregnancy calculator, 출산 예정일, due date calculator, 임신 주수, pregnancy week calculator, 수정일, conception date">
 
-    <!-- SEO Meta Tags -->
-    <title>Age Calculator - Calculate Your Exact Age | HQMX</title>
-    <meta name="description" content="Free online age calculator. Calculate your exact age in years, months, and days. Find out how old you are with precision.">
-    <meta name="keywords" content="age calculator, calculate age, how old am I, age in days, 나이 계산기">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Age Calculator - Free Online Calculator | HQMX">
-    <meta property="og:description" content="Calculate your exact age in years, months, and days instantly.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://calculator.hqmx.net/date-time/age-calculator.html">
-
-    <!-- Canonical -->
-    <link rel="canonical" href="https://calculator.hqmx.net/date-time/age-calculator.html">
-
-    <!-- Stylesheets -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/style.css?v=20250118mobile">
-    <link rel="stylesheet" href="/category.css">
-    <link rel="stylesheet" href="/css/calculator.css">
+    <link rel="stylesheet" href="/css/calculator.css?v=20250118nav">
 
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
     <link rel="shortcut icon" href="/assets/favicon.ico" />
@@ -148,32 +134,67 @@
 
         <!-- Header -->
         <header class="header">
-            <p class="tagline" data-i18n-key="age.tagline">Calculate Your Exact Age Instantly</p>
+            <p class="tagline">출산 예정일과 임신 타임라인 계산하기</p>
         </header>
 
         <main class="main-content">
-            <!-- Age Calculator Section -->
+            <!-- Pregnancy Calculator Section -->
             <section class="calculator-section">
                 <div class="calculator-container">
-                    <!-- Calculator Title -->
                     <div class="calculator-header">
-                        <h2 data-i18n-key="age.title">Age Calculator</h2>
+                        <h2>출산 예정일 계산기</h2>
                     </div>
 
                     <div class="calculator-inputs">
-                        <!-- Birth Date Input -->
+                        <!-- Calculation Method Selection -->
                         <div class="input-group">
-                            <label for="birthdate">
-                                Birth Date
+                            <label>계산 방법</label>
+                            <div class="gender-toggle" style="grid-template-columns: 1fr 1fr;">
+                                <button type="button" class="gender-btn active" data-method="lmp">
+                                    <i class="fas fa-calendar-day"></i> 마지막 생리일
+                                </button>
+                                <button type="button" class="gender-btn" data-method="conception">
+                                    <i class="fas fa-heartbeat"></i> 수정일
+                                </button>
+                            </div>
+                            <input type="hidden" id="calculationMethod" value="lmp">
+                        </div>
+
+                        <!-- Last Menstrual Period Date -->
+                        <div class="input-group" id="lmpGroup">
+                            <label for="lmpDate">
+                                마지막 생리 시작일 (LMP)
                             </label>
-                            <input type="date" id="birthdate" max="" placeholder="Select your birth date">
-                            <span class="input-hint">Select your date of birth</span>
+                            <input type="date" id="lmpDate" max="" placeholder="Select date">
+                            <span class="input-hint">마지막 생리가 시작된 날짜를 선택하세요</span>
+                        </div>
+
+                        <!-- Conception Date (hidden by default) -->
+                        <div class="input-group" id="conceptionGroup" style="display: none;">
+                            <label for="conceptionDate">
+                                수정/배란일
+                            </label>
+                            <input type="date" id="conceptionDate" max="" placeholder="Select date">
+                            <span class="input-hint">예상 수정일 또는 배란일</span>
+                        </div>
+
+                        <!-- Average Cycle Length (optional) -->
+                        <div class="input-group optional">
+                            <label for="cycleLength">
+                                <i class="fas fa-sync-alt"></i>
+                                평균 생리 주기 <span class="optional-badge">선택사항</span>
+                            </label>
+                            <div class="input-with-unit">
+                                <input type="number" id="cycleLength" min="21" max="35" value="28">
+                                <span class="unit-label">일</span>
+                            </div>
+                            <span class="input-hint">일반적인 주기: 21-35일 (기본값: 28일)</span>
                         </div>
 
                         <!-- Calculate Button -->
                         <button class="calculate-btn" id="calculateBtn">
                             <i class="fas fa-calculator"></i>
-                            <span data-i18n-key="age.calculateBtn">Calculate Age</span>
+                            <span>출산 예정일 계산하기</span>
                         </button>
 
                         <!-- Error Message -->
@@ -185,79 +206,88 @@
 
                     <!-- Results Display -->
                     <div class="calculator-results" id="resultsSection" style="display: none; margin-top: 3rem !important;">
-                        <!-- Main Age Display -->
-                        <div class="result-card" style="margin-bottom: 2rem;">
-                            <h3>Your Age</h3>
-                            <div class="age-display" id="ageDisplay">
-                                <div class="age-component">
-                                    <span class="age-number" id="yearsValue">0</span>
-                                    <span class="age-label">Years</span>
-                                </div>
-                                <div class="age-separator">:</div>
-                                <div class="age-component">
-                                    <span class="age-number" id="monthsValue">0</span>
-                                    <span class="age-label">Months</span>
-                                </div>
-                                <div class="age-separator">:</div>
-                                <div class="age-component">
-                                    <span class="age-number" id="daysValue">0</span>
-                                    <span class="age-label">Days</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Detailed Information Grid (5 panels = 2 columns on desktop) -->
+                        <!-- Main Results (4 panels = 2 columns) -->
                         <div class="result-cards-grid" style="grid-template-columns: repeat(2, 1fr); margin-bottom: 2rem;">
+                            <div class="result-card highlight">
+                                <div class="result-label">
+                                    <i class="fas fa-baby" style="margin-right: 0.5rem; color: #3b82f6;"></i>
+                                    출산 예정일
+                                </div>
+                                <div class="result-value" id="dueDateValue" style="font-size: 1.5rem;">-</div>
+                                <div class="result-sublabel">예상 출산일 (40주)</div>
+                            </div>
+
                             <div class="result-card">
                                 <div class="result-label">
-                                    <i class="fas fa-calendar-day" style="margin-right: 0.5rem; color: #3b82f6;"></i>
-                                    Total Days
+                                    <i class="fas fa-calendar-check" style="margin-right: 0.5rem; color: #3b82f6;"></i>
+                                    현재 주차
                                 </div>
-                                <div class="result-value" id="totalDaysValue">0</div>
-                                <div class="result-sublabel">Days you've lived</div>
+                                <div class="result-value" id="currentWeekValue">-</div>
+                                <div class="result-sublabel">현재 임신 X주차입니다</div>
+                            </div>
+
+                            <div class="result-card">
+                                <div class="result-label">
+                                    <i class="fas fa-calendar-alt" style="margin-right: 0.5rem; color: #3b82f6;"></i>
+                                    남은 일수
+                                </div>
+                                <div class="result-value" id="daysRemainingValue">-</div>
+                                <div class="result-sublabel">출산 예정일까지</div>
                             </div>
 
                             <div class="result-card">
                                 <div class="result-label">
                                     <i class="fas fa-hourglass-half" style="margin-right: 0.5rem; color: #3b82f6;"></i>
-                                    Total Hours
+                                    현재 삼분기
                                 </div>
-                                <div class="result-value" id="totalHoursValue">0</div>
-                                <div class="result-sublabel">Hours you've lived</div>
+                                <div class="result-value" id="trimesterValue" style="font-size: 1.5rem;">-</div>
+                                <div class="result-sublabel">1분기, 2분기, 또는 3분기</div>
+                            </div>
+                        </div>
+
+                        <!-- Important Dates (4 panels = 2 columns) -->
+                        <div class="result-cards-grid" style="grid-template-columns: repeat(2, 1fr); margin-bottom: 2rem;">
+                            <div class="result-card">
+                                <div class="result-label">
+                                    <i class="fas fa-heartbeat" style="margin-right: 0.5rem; color: #3b82f6;"></i>
+                                    수정일
+                                </div>
+                                <div class="result-value" id="conceptionDateValue" style="font-size: 1.3rem;">-</div>
+                                <div class="result-sublabel">예상 수정일</div>
                             </div>
 
                             <div class="result-card">
                                 <div class="result-label">
-                                    <i class="fas fa-clock" style="margin-right: 0.5rem; color: #3b82f6;"></i>
-                                    Total Minutes
+                                    <i class="fas fa-calendar-plus" style="margin-right: 0.5rem; color: #3b82f6;"></i>
+                                    1분기 종료
                                 </div>
-                                <div class="result-value" id="totalMinutesValue">0</div>
-                                <div class="result-sublabel">Minutes you've lived</div>
+                                <div class="result-value" id="trimester1EndValue" style="font-size: 1.3rem;">-</div>
+                                <div class="result-sublabel">13주차 (13주)</div>
                             </div>
 
                             <div class="result-card">
                                 <div class="result-label">
-                                    <i class="fas fa-birthday-cake" style="margin-right: 0.5rem; color: #3b82f6;"></i>
-                                    Next Birthday
+                                    <i class="fas fa-calendar-plus" style="margin-right: 0.5rem; color: #3b82f6;"></i>
+                                    2분기 종료
                                 </div>
-                                <div class="result-value" id="nextBirthdayValue" style="font-size: 1.5rem;">-</div>
-                                <div class="result-sublabel">Days until birthday</div>
+                                <div class="result-value" id="trimester2EndValue" style="font-size: 1.3rem;">-</div>
+                                <div class="result-sublabel">27주차 (27주)</div>
                             </div>
 
-                            <div class="result-card" style="grid-column: 1 / -1;">
+                            <div class="result-card">
                                 <div class="result-label">
                                     <i class="fas fa-calendar-check" style="margin-right: 0.5rem; color: #3b82f6;"></i>
-                                    Born On
+                                    만삭
                                 </div>
-                                <div class="result-value" id="dayOfWeekValue" style="font-size: 1.5rem;">-</div>
-                                <div class="result-sublabel">Day of the week</div>
+                                <div class="result-value" id="fullTermValue" style="font-size: 1.3rem;">-</div>
+                                <div class="result-sublabel">37주차 (37주)</div>
                             </div>
                         </div>
 
                         <!-- Recalculate Button -->
                         <button class="recalculate-btn" id="recalculateBtn">
                             <i class="fas fa-redo"></i>
-                            <span data-i18n-key="age.recalculateBtn">Calculate Again</span>
+                            <span>다시 계산하기</span>
                         </button>
                     </div>
                 </div>
@@ -265,25 +295,25 @@
 
             <!-- How to Use Section -->
             <section class="usage-guide-section">
-                <h3>사용 방법 (How to Use This Age Calculator)</h3>
-                <p class="section-description">간단한 3단계로 정확한 나이를 계산하세요.</p>
+                <h3>사용 방법</h3>
+                <p class="section-description">간단한 3단계로 출산 예정일과 임신 주차를 계산하세요.</p>
                 <div class="guide-steps">
                     <div class="step">
                         <div class="step-header">
                             <span class="step-number">1</span>
-                            <h4>생년월일 입력</h4>
+                            <h4>계산 방법 선택</h4>
                         </div>
                         <div class="step-content">
-                            <p>날짜 입력 필드를 클릭하여 달력에서 생년월일을 선택하세요. 직접 날짜를 입력할 수도 있습니다. 정확한 생년월일을 입력할수록 더 정밀한 결과를 얻을 수 있습니다.</p>
+                            <p>마지막 생리 시작일(LMP) 또는 수정/배란일 중 하나를 선택하세요. 대부분의 경우 마지막 생리 시작일이 더 정확합니다.</p>
                         </div>
                     </div>
                     <div class="step">
                         <div class="step-header">
                             <span class="step-number">2</span>
-                            <h4>계산 버튼 클릭</h4>
+                            <h4>날짜 입력</h4>
                         </div>
                         <div class="step-content">
-                            <p>"나이 계산하기" 버튼을 클릭하면 즉시 정확한 나이가 계산됩니다. 윤년과 월별 일수를 자동으로 고려하여 정밀한 계산을 제공합니다.</p>
+                            <p>선택한 방법에 따라 마지막 생리 시작일 또는 수정일을 입력하세요. 생리 주기가 불규칙하면 평균 주기 길이도 입력하세요 (선택 사항).</p>
                         </div>
                     </div>
                     <div class="step">
@@ -292,7 +322,7 @@
                             <h4>결과 확인</h4>
                         </div>
                         <div class="step-content">
-                            <p>나이를 연, 월, 일로 세분화하여 확인하세요. 총 생존 일수, 시간, 분은 물론 다음 생일까지 남은 일수와 태어난 요일까지 상세한 정보를 제공합니다.</p>
+                            <p>"Calculate Due Date" 버튼을 클릭하면 출산 예정일, 현재 임신 주차, 삼분기, 중요한 날짜 등 상세한 정보를 확인할 수 있습니다.</p>
                         </div>
                     </div>
                 </div>
@@ -345,33 +375,33 @@
 
             <!-- Examples Section -->
             <section class="examples-section">
-                <h3>실전 예제 (Age Calculation Examples)</h3>
+                <h3>실전 예제</h3>
                 <div class="example-grid">
                     <div class="example-card example-normal">
                         <div class="example-header">
-                            <span class="example-icon">👨‍💼</span>
-                            <h4>예제 1: 성인 나이 계산</h4>
+                            <span class="example-icon">🤰</span>
+                            <h4>예제 1: 마지막 생리일 기준</h4>
                         </div>
                         <div class="example-content">
                             <div class="example-detail">
-                                <span class="label">생년월일:</span>
-                                <span class="value">1990년 1월 15일</span>
+                                <span class="label">마지막 생리 시작일:</span>
+                                <span class="value">2024년 10월 1일</span>
                             </div>
                             <div class="example-detail">
-                                <span class="label">만 나이:</span>
-                                <span class="value">35세 0개월 0일</span>
+                                <span class="label">생리 주기:</span>
+                                <span class="value">28일 (표준)</span>
                             </div>
                             <div class="example-result">
-                                <span class="label">총 생존 일수:</span>
-                                <span class="value bmi-highlight">12,784일</span>
+                                <span class="label">출산 예정일:</span>
+                                <span class="value bmi-highlight">2025년 7월 8일</span>
                             </div>
                             <div class="example-detail">
-                                <span class="label">다음 생일:</span>
-                                <span class="value">2026년 1월 15일 (365일 후)</span>
+                                <span class="label">현재 주차 (2025년 1월 15일 기준):</span>
+                                <span class="value">15주 2일</span>
                             </div>
                             <div class="example-detail">
-                                <span class="label">태어난 요일:</span>
-                                <span class="value">월요일</span>
+                                <span class="label">현재 삼분기:</span>
+                                <span class="value">2분기 (Second Trimester)</span>
                             </div>
                         </div>
                     </div>
@@ -379,92 +409,90 @@
                     <div class="example-card example-overweight">
                         <div class="example-header">
                             <span class="example-icon">👶</span>
-                            <h4>예제 2: 아동 나이 계산</h4>
+                            <h4>예제 2: 수정일 기준</h4>
                         </div>
                         <div class="example-content">
                             <div class="example-detail">
-                                <span class="label">생년월일:</span>
-                                <span class="value">2020년 3월 20일</span>
-                            </div>
-                            <div class="example-detail">
-                                <span class="label">만 나이:</span>
-                                <span class="value">4세 9개월 26일</span>
+                                <span class="label">수정/배란일:</span>
+                                <span class="value">2024년 10월 15일</span>
                             </div>
                             <div class="example-result">
-                                <span class="label">총 생존 일수:</span>
-                                <span class="value bmi-highlight">1,761일</span>
+                                <span class="label">출산 예정일:</span>
+                                <span class="value bmi-highlight">2025년 7월 8일</span>
                             </div>
                             <div class="example-detail">
-                                <span class="label">다음 생일:</span>
-                                <span class="value">2025년 3월 20일 (64일 후)</span>
+                                <span class="label">현재 주차 (2025년 1월 15일 기준):</span>
+                                <span class="value">13주 0일</span>
                             </div>
                             <div class="example-detail">
-                                <span class="label">태어난 요일:</span>
-                                <span class="value">금요일</span>
+                                <span class="label">현재 삼분기:</span>
+                                <span class="value">1분기 끝 (End of First Trimester)</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="example-card example-underweight">
                         <div class="example-header">
-                            <span class="example-icon">👼</span>
-                            <h4>예제 3: 갓 태어난 아기</h4>
+                            <span class="example-icon">💕</span>
+                            <h4>예제 3: 불규칙한 생리 주기</h4>
                         </div>
                         <div class="example-content">
                             <div class="example-detail">
-                                <span class="label">생년월일:</span>
-                                <span class="value">2024년 6월 1일</span>
+                                <span class="label">마지막 생리 시작일:</span>
+                                <span class="value">2024년 9월 20일</span>
                             </div>
                             <div class="example-detail">
-                                <span class="label">만 나이:</span>
-                                <span class="value">0세 7개월 14일</span>
+                                <span class="label">평균 생리 주기:</span>
+                                <span class="value">32일 (불규칙)</span>
                             </div>
                             <div class="example-result">
-                                <span class="label">총 생존 일수:</span>
-                                <span class="value bmi-highlight">228일</span>
+                                <span class="label">출산 예정일:</span>
+                                <span class="value bmi-highlight">2025년 7월 1일</span>
                             </div>
                             <div class="example-detail">
-                                <span class="label">다음 생일:</span>
-                                <span class="value">2025년 6월 1일 (137일 후)</span>
+                                <span class="label">현재 주차 (2025년 1월 15일 기준):</span>
+                                <span class="value">16주 5일</span>
                             </div>
                             <div class="example-detail">
-                                <span class="label">태어난 요일:</span>
-                                <span class="value">토요일</span>
+                                <span class="label">현재 삼분기:</span>
+                                <span class="value">2분기 (Second Trimester)</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Understanding Age Calculation Section -->
+            <!-- Understanding Pregnancy Calculation Section -->
             <section class="info-section">
-                <h3>나이 계산의 이해 (Understanding Age Calculation)</h3>
+                <h3>임신 계산의 이해</h3>
                 <div class="info-content">
-                    <p>나이 계산에는 여러 가지 방식이 있으며, 문화와 상황에 따라 다르게 적용됩니다. 가장 일반적인 방식들을 알아보겠습니다.</p>
+                    <p>임신 기간은 마지막 생리 시작일(LMP)부터 계산하며, 일반적으로 40주 또는 280일입니다. 실제 수정은 생리 시작일로부터 약 2주 후에 일어납니다.</p>
 
                     <div class="formula-box">
-                        <h4>만 나이 (International Age)</h4>
-                        <p><strong>만 나이 = 현재 년도 - 출생 년도 (생일이 지나지 않았으면 -1)</strong></p>
+                        <h4>Naegele's Rule (네겔레 공식)</h4>
+                        <p><strong>출산 예정일 = LMP + 280일 (40주)</strong></p>
+                        <p><strong>간단 계산:</strong> LMP 날짜에서 3개월을 빼고, 7일을 더합니다</p>
+                        <p>예: LMP = 2024년 10월 1일 → 출산 예정일 = 2025년 7월 8일</p>
                     </div>
 
-                    <p>이 계산기는 <strong>만 나이</strong>를 기준으로 정확한 연, 월, 일을 계산합니다. 만 나이는 국제적으로 가장 널리 사용되는 나이 계산 방식입니다.</p>
-
                     <div class="important-notes">
-                        <h4>나이 계산 방식의 종류:</h4>
+                        <h4>임신 삼분기 (Trimesters):</h4>
                         <ul>
-                            <li><strong>만 나이 (International Age):</strong> 태어난 날을 0세로 하고, 생일이 지날 때마다 1세씩 증가. 전 세계적으로 사용되는 표준 방식입니다.</li>
-                            <li><strong>세는 나이 (Korean Age):</strong> 태어나자마자 1세, 1월 1일마다 1세씩 증가. 한국의 전통적인 나이 계산 방식이었습니다.</li>
-                            <li><strong>연 나이 (Year Age):</strong> 현재 년도에서 출생 년도를 뺀 값. 생일과 관계없이 계산합니다.</li>
+                            <li><strong>1분기 (First Trimester):</strong> 1주 ~ 13주 - 기관 형성, 입덧 흔함</li>
+                            <li><strong>2분기 (Second Trimester):</strong> 14주 ~ 27주 - 태동 시작, 비교적 안정기</li>
+                            <li><strong>3분기 (Third Trimester):</strong> 28주 ~ 40주 - 급속 성장, 출산 준비</li>
                         </ul>
                     </div>
 
                     <div class="important-notes" style="margin-top: 1.5rem;">
-                        <h4>중요한 사항:</h4>
+                        <h4>중요한 마일스톤:</h4>
                         <ul>
-                            <li>2023년 6월부터 한국에서도 공식적으로 만 나이를 사용합니다</li>
-                            <li>윤년(2월 29일)에 태어난 경우도 정확하게 계산됩니다</li>
-                            <li>법적 연령 계산은 각 국가의 법률을 따라야 합니다</li>
-                            <li>이 계산기는 그레고리력을 기준으로 합니다</li>
+                            <li><strong>Week 4-5:</strong> 심장 박동 시작</li>
+                            <li><strong>Week 8:</strong> 태아의 모든 주요 기관 형성</li>
+                            <li><strong>Week 12:</strong> 성별 확인 가능 (초음파)</li>
+                            <li><strong>Week 20:</strong> 중기 초음파 검사 (해부학적 검사)</li>
+                            <li><strong>Week 24:</strong> 생존 가능성 시작점</li>
+                            <li><strong>Week 37:</strong> 만삭 (Full term) - 안전한 출산 시기</li>
                         </ul>
                     </div>
                 </div>
@@ -472,36 +500,36 @@
 
             <!-- FAQ Section -->
             <section class="faq-section">
-                <h3>자주 묻는 질문 (Frequently Asked Questions)</h3>
+                <h3>자주 묻는 질문</h3>
                 <div class="faq-grid">
                     <div class="faq-item">
-                        <h4><i class="fas fa-question-circle"></i> 나이는 어떻게 계산되나요?</h4>
-                        <p>나이는 생년월일과 현재 날짜의 차이를 연, 월, 일로 세분화하여 계산됩니다. 이 계산기는 윤년과 각 월의 일수를 정확하게 고려하여 정밀한 만 나이를 제공합니다.</p>
+                        <h4><i class="fas fa-question-circle"></i> 출산 예정일은 얼마나 정확한가요?</h4>
+                        <p>출산 예정일은 '예상' 날짜입니다. 실제로 정확히 예정일에 출산하는 경우는 5% 미만입니다. 대부분의 아기는 예정일 전후 2주 사이에 태어납니다. 초음파 검사로 더 정확한 예정일을 확인할 수 있습니다.</p>
                     </div>
 
                     <div class="faq-item">
-                        <h4><i class="fas fa-question-circle"></i> 이 계산기는 정확한가요?</h4>
-                        <p>네! 우리 계산기는 윤년과 월별 일수 변화를 모두 고려하여 100% 정확한 나이를 계산합니다. 그레고리력을 기준으로 하며, 1초 단위까지 정밀하게 계산됩니다.</p>
+                        <h4><i class="fas fa-question-circle"></i> 마지막 생리일을 정확히 기억 못하면?</h4>
+                        <p>생리일을 정확히 기억하지 못하면 초기 초음파 검사 (8-13주)로 임신 주차와 예정일을 더 정확하게 결정할 수 있습니다. 초음파로 측정한 태아 크기를 바탕으로 산부인과 의사가 예정일을 조정합니다.</p>
                     </div>
 
                     <div class="faq-item">
-                        <h4><i class="fas fa-question-circle"></i> 만 나이와 세는 나이의 차이는?</h4>
-                        <p>만 나이는 태어난 날을 0세로 시작하여 생일마다 1세씩 증가합니다. 세는 나이는 태어나자마자 1세이고 1월 1일마다 증가했습니다. 2023년 6월부터 한국에서도 공식적으로 만 나이를 사용합니다.</p>
+                        <h4><i class="fas fa-question-circle"></i> 생리 주기가 불규칙하면 어떻게 하나요?</h4>
+                        <p>생리 주기가 불규칙하면 LMP 기반 계산이 덜 정확할 수 있습니다. 이 경우 수정/배란일을 아는 것이 더 정확하며, 초기 초음파 검사를 통해 예정일을 확인하는 것이 가장 좋습니다.</p>
                     </div>
 
                     <div class="faq-item">
-                        <h4><i class="fas fa-question-circle"></i> 다른 사람의 나이도 계산할 수 있나요?</h4>
-                        <p>물론입니다! 친구, 가족, 유명인, 심지어 역사적 인물의 나이도 계산할 수 있습니다. 생년월일만 입력하면 현재 기준으로 정확한 나이를 확인할 수 있습니다.</p>
+                        <h4><i class="fas fa-question-circle"></i> 임신 주차는 어떻게 세나요?</h4>
+                        <p>임신은 마지막 생리 시작일부터 계산하며, 주 단위로 표시합니다 (예: 15주 2일). 한 달은 정확히 4주가 아니므로, "임신 X개월"보다 "임신 X주"가 더 정확한 표현입니다. 40주 = 약 9개월입니다.</p>
                     </div>
 
                     <div class="faq-item">
-                        <h4><i class="fas fa-question-circle"></i> 윤년에 태어난 경우는 어떻게 되나요?</h4>
-                        <p>2월 29일에 태어난 경우에도 정확하게 계산됩니다. 윤년이 아닌 해에는 2월 28일을 기준으로 나이를 계산하며, 다음 생일도 정확하게 표시됩니다.</p>
+                        <h4><i class="fas fa-question-circle"></i> 쌍둥이 임신도 이 계산기를 쓸 수 있나요?</h4>
+                        <p>네, 같은 방법으로 계산할 수 있습니다. 다만 쌍둥이는 보통 37-38주에 출산하는 경우가 많아 실제 출산일이 예정일보다 빠를 수 있습니다. 산부인과 의사가 초음파로 쌍둥이 성장을 모니터링합니다.</p>
                     </div>
 
                     <div class="faq-item">
-                        <h4><i class="fas fa-question-circle"></i> "총 생존 일수"는 무엇을 의미하나요?</h4>
-                        <p>총 생존 일수는 태어난 날부터 현재까지 살아온 전체 일수를 의미합니다. 이 수치는 인생의 이정표를 추적하거나 특별한 날(예: 10,000일째 되는 날)을 계산할 때 유용합니다.</p>
+                        <h4><i class="fas fa-question-circle"></i> 예정일이 지나도 출산하지 않으면?</h4>
+                        <p>예정일 이후 1-2주까지는 정상 범위입니다. 대부분 병원에서는 41-42주를 넘기지 않도록 유도 분만을 권장합니다. 예정일 이후에는 정기 검진과 태아 모니터링 빈도가 늘어납니다.</p>
                     </div>
                 </div>
             </section>
@@ -520,28 +548,28 @@
                         <i class="fas fa-bolt feature-icon-text"></i>
                     </div>
                     <h4>초고속 계산</h4>
-                    <p>최적화된 알고리즘으로 밀리초 단위의 즉각적인 나이 계산. 대기 시간 없이 정확한 결과를 즉시 확인하세요.</p>
+                    <p>최적화된 알고리즘으로 밀리초 단위의 즉각적인 임신 주차 및 예정일 계산을 제공합니다.</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon-wrapper">
                         <i class="fas fa-calendar-check feature-icon-text"></i>
                     </div>
                     <h4>완벽한 정확도</h4>
-                    <p>윤년과 월별 일수 변화를 완벽하게 고려하여 100% 정확한 나이를 계산합니다. 그레고리력 기준 정밀 계산을 제공합니다.</p>
+                    <p>Naegele's Rule과 의학적으로 검증된 공식을 사용하여 정확한 출산 예정일과 임신 단계를 계산합니다.</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon-wrapper">
-                        <i class="fas fa-chart-line feature-icon-text"></i>
+                        <i class="fas fa-heartbeat feature-icon-text"></i>
                     </div>
                     <h4>상세한 정보 제공</h4>
-                    <p>연, 월, 일은 물론 시간, 분 단위까지 세분화된 나이 정보를 제공합니다. 완전한 통찰력을 위한 포괄적인 데이터를 확인하세요.</p>
+                    <p>출산 예정일, 현재 주차, 삼분기, 중요한 마일스톤 날짜 등 임신 여정 전반에 대한 포괄적인 정보를 제공합니다.</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon-wrapper">
-                        <i class="fas fa-birthday-cake feature-icon-text"></i>
+                        <i class="fas fa-sync-alt feature-icon-text"></i>
                     </div>
-                    <h4>다음 생일 카운트다운</h4>
-                    <p>다음 생일까지 남은 정확한 일수를 확인하세요. 특별한 날을 위한 계획을 미리 세울 수 있습니다.</p>
+                    <h4>다중 계산 방법</h4>
+                    <p>마지막 생리일 또는 수정일 기반 계산을 선택할 수 있으며, 불규칙한 생리 주기도 고려합니다.</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon-wrapper">
@@ -555,28 +583,28 @@
                         <i class="fas fa-mobile-alt feature-icon-text"></i>
                     </div>
                     <h4>모바일 최적화</h4>
-                    <p>모든 기기에서 완벽하게 작동합니다. 스마트폰, 태블릿, 데스크톱 어디서나 편리하게 나이를 계산하세요.</p>
+                    <p>모든 기기에서 완벽하게 작동합니다. 스마트폰, 태블릿, 데스크톱 어디서나 편리하게 임신 정보를 확인하세요.</p>
                 </div>
             </section>
 
             <!-- Related Calculators Section -->
             <section class="related-section">
-                <h3>관련 도구 (Related Date & Time Calculators)</h3>
+                <h3>관련 건강 계산기</h3>
                 <div class="related-grid">
-                    <a href="/date-time/date-calculator.html" class="related-card">
-                        <i class="fas fa-calendar-plus"></i>
-                        <h4>날짜 계산기</h4>
-                        <p>날짜 더하기/빼기 계산</p>
+                    <a href="/health/calorie-calculator.html" class="related-card">
+                        <i class="fas fa-fire"></i>
+                        <h4>칼로리 계산기</h4>
+                        <p>임신 중 칼로리 필요량</p>
                     </a>
-                    <a href="/date-time/date-difference-calculator.html" class="related-card">
+                    <a href="/health/bmi-calculator.html" class="related-card">
+                        <i class="fas fa-weight"></i>
+                        <h4>BMI 계산기</h4>
+                        <p>임신 전 체질량지수</p>
+                    </a>
+                    <a href="/date-time/age-calculator.html" class="related-card">
                         <i class="fas fa-calendar-alt"></i>
-                        <h4>날짜 차이 계산기</h4>
-                        <p>두 날짜 사이의 기간 계산</p>
-                    </a>
-                    <a href="/date-time/work-hours-calculator.html" class="related-card">
-                        <i class="fas fa-business-time"></i>
-                        <h4>근무 시간 계산기</h4>
-                        <p>업무 시간 및 급여 계산</p>
+                        <h4>나이 계산기</h4>
+                        <p>아기 나이 계산</p>
                     </a>
                     <a href="/" class="related-card">
                         <i class="fas fa-calculator"></i>
@@ -605,85 +633,6 @@
     <script src="/i18n.js?v=20251101fix"></script>
     <script src="/nav-common.js"></script>
     <script src="/js/utils/calculator-base.js"></script>
-    <script src="/js/calculators/age.js"></script>
-
-    <style>
-        /* Age-specific styles */
-        .age-display {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .age-component {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1rem;
-            background: rgba(59, 130, 246, 0.1);
-            border-radius: 12px;
-            min-width: 80px;
-        }
-
-        [data-theme="dark"] .age-component {
-            background: rgba(59, 130, 246, 0.15);
-        }
-
-        .age-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .age-label {
-            font-size: 0.875rem;
-            color: var(--text-secondary, #666);
-            margin-top: 0.25rem;
-        }
-
-        [data-theme="dark"] .age-label {
-            color: #999;
-        }
-
-        .age-separator {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-secondary, #999);
-        }
-
-        /* Mobile responsive for age display */
-        @media (max-width: 768px) {
-            .age-display {
-                gap: 0.5rem;
-            }
-
-            .age-component {
-                min-width: 70px;
-                padding: 0.75rem 0.5rem;
-            }
-
-            .age-number {
-                font-size: 2rem;
-            }
-
-            .age-separator {
-                font-size: 1.5rem;
-            }
-
-            /* Adjust result-cards-grid for mobile */
-            .result-cards-grid {
-                grid-template-columns: 1fr !important;
-            }
-
-            .result-cards-grid .result-card {
-                grid-column: 1 !important;
-            }
-        }
-    </style>
+    <script src="/js/calculators/pregnancy.js"></script>
 </body>
 </html>

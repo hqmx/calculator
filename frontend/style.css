@@ -2788,7 +2788,7 @@ body[data-theme="dark"] input {
     right: -320px;
     width: 280px;
     max-width: 85vw;
-    background: transparent;
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(20px) saturate(120%);
     -webkit-backdrop-filter: blur(20px) saturate(120%);
     border: 1px solid rgba(255, 255, 255, 0.2);
@@ -2800,7 +2800,7 @@ body[data-theme="dark"] input {
 }
 
 body[data-theme="dark"] .mobile-menu-box {
-    background: transparent;
+    background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(20px) saturate(120%);
     -webkit-backdrop-filter: blur(20px) saturate(120%);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -4407,3 +4407,86 @@ body[data-theme="dark"] .conversion-category[data-category="archive"] .conversio
     color: var(--heading-color);
 }
 
+/* ========================================
+   Ad Banner Styles
+   ======================================== */
+
+/* Ad Banner - Full width display */
+.ad-banner {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem 0;
+    background: transparent;
+}
+
+/* Ensure ad content is centered */
+.ad-banner ins {
+    display: inline-block;
+    max-width: 100%;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .ad-banner {
+        padding: 0.5rem 0;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+/* ========================================
+   Responsive Ad Banner Styles
+   ======================================== */
+
+/* Responsive Ad Banner Container */
+.responsive-ad-banner {
+    width: 100%;
+    text-align: center;
+    margin: 1rem auto;
+    padding: 1rem 0;
+    overflow: hidden;
+}
+
+/* Desktop ad: 728x90 */
+.ad-desktop {
+    display: none;
+}
+
+/* Tablet ad: 468x60 */
+.ad-tablet {
+    display: none;
+}
+
+/* Mobile ad: 320x50 */
+.ad-mobile {
+    display: none;
+}
+
+/* Show appropriate ad based on screen width */
+@media (min-width: 728px) {
+    .ad-desktop {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+@media (min-width: 468px) and (max-width: 727px) {
+    .ad-tablet {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 467px) {
+    .ad-mobile {
+        display: block;
+        margin: 0 auto;
+    }
+}

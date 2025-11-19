@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calorie Calculator - Calculate Daily Calorie Needs | CALCULATOR</title>
-    <meta name="description" content="Calculate your daily calorie needs based on age, gender, weight, height, and activity level. Free calorie calculator with BMR and TDEE calculations.">
-    <meta name="keywords" content="calorie calculator, daily calorie needs, BMR calculator, TDEE calculator, calories per day, weight loss calculator">
+    <title>체중 감량 계산기 | CALCULATOR</title>
+    <meta name="description" content="체중 감량 목표 달성 기간을 계산하세요. 맞춤형 타임라인과 칼로리 권장량을 제공하는 무료 체중 감량 계산기입니다.">
+    <meta name="keywords" content="체중감량 계산기, weight loss calculator, 다이어트 계산기, weight loss timeline, calorie deficit, 칼로리 적자, 체중감량 계획, weight loss plan">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="/style.css?v=20250118mobile">
@@ -140,25 +140,25 @@
 
     <!-- Header -->
     <header class="header">
-        <p class="tagline">Calculate Your Daily Calorie Needs</p>
+        <p class="tagline">체중 감량 여정 계획하기</p>
     </header>
 
     <main class="main-content">
-        <!-- Calorie Calculator Section -->
+        <!-- Weight Loss Calculator Section -->
         <section class="upload-section">
             <div class="upload-container">
-                <h4>Calculate Your Daily Calorie Needs</h4>
+                <h4>체중 감량 타임라인 계산하기</h4>
 
                 <div class="calculator-inputs">
                     <!-- Gender Selection -->
                     <div class="input-group">
-                        <label for="gender">Gender</label>
+                        <label for="gender">성별</label>
                         <div class="gender-toggle">
                             <button type="button" class="gender-btn active" data-gender="male">
-                                <i class="fas fa-mars"></i> Male
+                                <i class="fas fa-mars"></i> 남성
                             </button>
                             <button type="button" class="gender-btn" data-gender="female">
-                                <i class="fas fa-venus"></i> Female
+                                <i class="fas fa-venus"></i> 여성
                             </button>
                         </div>
                         <input type="hidden" id="gender" value="male">
@@ -166,16 +166,28 @@
 
                     <!-- Age -->
                     <div class="input-group">
-                        <label for="age">Age (years)</label>
+                        <label for="age">나이</label>
                         <input type="number" id="age" min="15" max="100" value="30" required>
                     </div>
 
-                    <!-- Weight -->
+                    <!-- Current Weight -->
                     <div class="input-group">
-                        <label for="weight">Weight</label>
+                        <label for="currentWeight">현재 체중</label>
                         <div class="input-with-unit">
-                            <input type="number" id="weight" step="0.1" value="70" required>
+                            <input type="number" id="currentWeight" step="0.1" value="80" required>
                             <select id="weightUnit" class="converter-select">
+                                <option value="kg" selected>kg</option>
+                                <option value="lb">lb</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Goal Weight -->
+                    <div class="input-group">
+                        <label for="goalWeight">목표 체중</label>
+                        <div class="input-with-unit">
+                            <input type="number" id="goalWeight" step="0.1" value="70" required>
+                            <select id="goalWeightUnit" class="converter-select">
                                 <option value="kg" selected>kg</option>
                                 <option value="lb">lb</option>
                             </select>
@@ -184,7 +196,7 @@
 
                     <!-- Height -->
                     <div class="input-group">
-                        <label for="height">Height</label>
+                        <label for="height">키</label>
                         <div class="input-with-unit">
                             <input type="number" id="height" step="0.1" value="170" required>
                             <select id="heightUnit" class="converter-select">
@@ -196,34 +208,31 @@
 
                     <!-- Activity Level -->
                     <div class="input-group">
-                        <label for="activity">Activity Level</label>
+                        <label for="activity">활동량</label>
                         <select id="activity" class="converter-select" required>
-                            <option value="1.2">Sedentary (no exercise)</option>
-                            <option value="1.375">Light (1-3 days/week)</option>
-                            <option value="1.55" selected>Moderate (3-5 days/week)</option>
-                            <option value="1.725">Very active (6-7 days/week)</option>
-                            <option value="1.9">Extreme (2x training/day)</option>
+                            <option value="1.2">앉아있는 생활 (운동 안 함)</option>
+                            <option value="1.375">가벼운 활동 (주 1-3일)</option>
+                            <option value="1.55" selected>중간 활동 (주 3-5일)</option>
+                            <option value="1.725">매우 활동적 (주 6-7일)</option>
+                            <option value="1.9">극도로 활동적 (하루 2회 운동)</option>
                         </select>
                     </div>
 
-                    <!-- Goal -->
+                    <!-- Weekly Weight Loss Goal -->
                     <div class="input-group">
-                        <label for="goal">Goal</label>
-                        <select id="goal" class="converter-select" required>
-                            <option value="maintain" selected>Maintain weight</option>
-                            <option value="mild-loss">Mild weight loss (0.25 kg/week)</option>
-                            <option value="loss">Weight loss (0.5 kg/week)</option>
-                            <option value="extreme-loss">Extreme weight loss (1 kg/week)</option>
-                            <option value="mild-gain">Mild weight gain (0.25 kg/week)</option>
-                            <option value="gain">Weight gain (0.5 kg/week)</option>
-                            <option value="extreme-gain">Extreme weight gain (1 kg/week)</option>
+                        <label for="weeklyGoal">주간 감량 목표</label>
+                        <select id="weeklyGoal" class="converter-select" required>
+                            <option value="0.25">느림 (주당 0.25kg)</option>
+                            <option value="0.5" selected>중간 (주당 0.5kg)</option>
+                            <option value="0.75">빠름 (주당 0.75kg)</option>
+                            <option value="1">매우 빠름 (주당 1kg)</option>
                         </select>
                     </div>
 
                     <!-- Calculate Button -->
                     <button class="calculate-btn" id="calculateBtn">
                         <i class="fas fa-calculator"></i>
-                        Calculate Calories
+                        체중 감량 계획 계산하기
                     </button>
 
                     <!-- Error Message -->
@@ -235,73 +244,63 @@
 
                 <!-- Results Display -->
                 <div class="calculator-results" id="resultsSection" style="display: none;">
-                    <!-- Main Results -->
-                    <div class="result-cards-grid">
-                    <div class="result-card highlight">
-                        <div class="result-label">Daily Calories</div>
-                        <div class="result-value" id="dailyCalories">-</div>
-                        <div class="result-sublabel" id="goalDescription">-</div>
-                    </div>
-
-                    <div class="result-card">
-                        <div class="result-label">BMR</div>
-                        <div class="result-value" id="bmr">-</div>
-                        <div class="result-sublabel">Basal Metabolic Rate</div>
-                    </div>
-
-                    <div class="result-card">
-                        <div class="result-label">TDEE</div>
-                        <div class="result-value" id="tdee">-</div>
-                        <div class="result-sublabel">Total Daily Energy Expenditure</div>
-                    </div>
-                </div>
-
-                <!-- Macronutrient Breakdown -->
-                <div class="macro-section">
-                    <h3>Recommended Macronutrients</h3>
-                    <div class="macro-cards">
-                        <div class="macro-card">
-                            <i class="fas fa-drumstick-bite"></i>
-                            <h4>Protein</h4>
-                            <div class="macro-value" id="protein">-</div>
-                            <div class="macro-percentage">30%</div>
+                    <!-- Main Results (3 panels = 3 columns) -->
+                    <div class="result-cards-grid" style="grid-template-columns: repeat(3, 1fr);">
+                        <div class="result-card highlight">
+                            <div class="result-label">감량 목표</div>
+                            <div class="result-value" id="weightToLose">-</div>
+                            <div class="result-sublabel">총 목표량</div>
                         </div>
-                        <div class="macro-card">
-                            <i class="fas fa-bread-slice"></i>
-                            <h4>Carbs</h4>
-                            <div class="macro-value" id="carbs">-</div>
-                            <div class="macro-percentage">40%</div>
+
+                        <div class="result-card">
+                            <div class="result-label">소요 기간</div>
+                            <div class="result-value" id="timeRequired">-</div>
+                            <div class="result-sublabel">예상 소요 시간</div>
                         </div>
-                        <div class="macro-card">
-                            <i class="fas fa-cheese"></i>
-                            <h4>Fats</h4>
-                            <div class="macro-value" id="fats">-</div>
-                            <div class="macro-percentage">30%</div>
+
+                        <div class="result-card">
+                            <div class="result-label">목표 날짜</div>
+                            <div class="result-value" id="targetDate" style="font-size: 1.5rem;">-</div>
+                            <div class="result-sublabel">목표 달성일</div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Weight Timeline -->
-                <div class="timeline-section">
-                    <h3>Weight Timeline</h3>
-                    <table class="timeline-table">
-                        <thead>
-                            <tr>
-                                <th>Time Period</th>
-                                <th>Weight</th>
-                                <th>Change</th>
-                            </tr>
-                        </thead>
-                        <tbody id="timelineTable">
-                            <!-- Will be populated by JavaScript -->
-                        </tbody>
-                    </table>
-                </div>
+                    <!-- Calorie Information (2 panels = 2 columns) -->
+                    <div class="result-cards-grid" style="grid-template-columns: repeat(2, 1fr); margin-top: 2rem;">
+                        <div class="result-card">
+                            <div class="result-label">현재 일일 칼로리</div>
+                            <div class="result-value" id="currentCalories">-</div>
+                            <div class="result-sublabel">유지 칼로리 (TDEE)</div>
+                        </div>
+
+                        <div class="result-card">
+                            <div class="result-label">목표 일일 칼로리</div>
+                            <div class="result-value" id="targetCalories">-</div>
+                            <div class="result-sublabel">체중 감량용 칼로리</div>
+                        </div>
+                    </div>
+
+                    <!-- Progress Milestones -->
+                    <div class="timeline-section">
+                        <h3>체중 감량 마일스톤</h3>
+                        <table class="timeline-table">
+                            <thead>
+                                <tr>
+                                    <th>기간</th>
+                                    <th>체중</th>
+                                    <th>감량량</th>
+                                </tr>
+                            </thead>
+                            <tbody id="milestonesTable">
+                                <!-- Will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
 
                     <!-- Recalculate Button -->
                     <button class="recalculate-btn" id="recalculateBtn">
                         <i class="fas fa-redo"></i>
-                        Calculate Again
+                        다시 계산하기
                     </button>
                 </div>
             </div>
@@ -309,8 +308,8 @@
 
         <!-- How to Use Section -->
         <section class="usage-guide-section">
-                <h3>사용 방법 (How to Use)</h3>
-                <p class="section-description">이 칼로리 계산기를 사용하여 하루 칼로리 필요량을 계산하는 간단한 단계를 따라하세요.</p>
+                <h3>사용 방법</h3>
+                <p class="section-description">체중 감량 계산기를 사용하여 목표 달성 계획을 세우는 간단한 단계를 따라하세요.</p>
                 <div class="guide-steps">
                     <div class="step">
                         <div class="step-header">
@@ -318,34 +317,34 @@
                             <h4>기본 정보 입력</h4>
                         </div>
                         <div class="step-content">
-                            <p>성별, 나이, 체중, 키를 입력하세요. 정확한 측정값을 사용할수록 더 정확한 칼로리 계산 결과를 얻을 수 있습니다. 체중과 키는 kg/cm 또는 lb/ft-in 단위를 선택할 수 있습니다.</p>
+                            <p>성별, 나이, 현재 체중, 키를 입력하세요. 정확한 측정값을 사용할수록 더 정확한 체중 감량 계획을 얻을 수 있습니다.</p>
                         </div>
                     </div>
                     <div class="step">
                         <div class="step-header">
                             <span class="step-number">2</span>
-                            <h4>활동량 수준 선택</h4>
+                            <h4>목표 체중 설정</h4>
                         </div>
                         <div class="step-content">
-                            <p>일상적인 신체 활동 수준을 선택하세요. 운동 빈도와 직업적 활동을 고려하여 가장 적합한 활동량 수준을 선택하는 것이 중요합니다. 과대평가하면 체중 증가, 과소평가하면 피로감을 느낄 수 있습니다.</p>
+                            <p>달성하고자 하는 목표 체중을 입력하세요. 현실적이고 건강한 목표를 설정하는 것이 중요합니다. BMI 정상 범위를 참고하세요.</p>
                         </div>
                     </div>
                     <div class="step">
                         <div class="step-header">
                             <span class="step-number">3</span>
-                            <h4>목표 설정</h4>
+                            <h4>주간 감량 속도 선택</h4>
                         </div>
                         <div class="step-content">
-                            <p>체중 유지, 감량, 증량 중 목표를 선택하세요. 각 목표에 따라 권장 칼로리 섭취량이 자동으로 조정됩니다. 안전한 체중 변화 속도는 주당 0.5-1kg입니다.</p>
+                            <p>주당 감량 목표를 선택하세요. 안전하고 지속 가능한 감량 속도는 주당 0.5-1kg입니다. 너무 빠른 감량은 건강에 해로울 수 있습니다.</p>
                         </div>
                     </div>
                     <div class="step">
                         <div class="step-header">
                             <span class="step-number">4</span>
-                            <h4>결과 확인 및 활용</h4>
+                            <h4>결과 확인 및 실행</h4>
                         </div>
                         <div class="step-content">
-                            <p>"Calculate Calories" 버튼을 클릭하면 BMR, TDEE, 목표 칼로리, 영양소 배분(단백질, 탄수화물, 지방)이 표시됩니다. 이 결과를 바탕으로 식단을 계획하고 정기적으로 재측정하세요.</p>
+                            <p>"Calculate Weight Loss Plan" 버튼을 클릭하면 목표 달성 기간, 일일 칼로리 목표, 단계별 마일스톤이 표시됩니다. 이 계획을 바탕으로 식단과 운동을 조정하세요.</p>
                         </div>
                     </div>
                 </div>
@@ -398,269 +397,187 @@
 
             <!-- Examples Section -->
             <section class="examples-section">
-                <h3>실전 예제 (Practical Examples)</h3>
+                <h3>실전 예제</h3>
                 <div class="example-grid">
                     <div class="example-card example-normal">
                         <div class="example-header">
-                            <span class="example-icon">💼</span>
-                            <h4>사무직 직장인 (체중 유지)</h4>
+                            <span class="example-icon">🎯</span>
+                            <h4>중간 속도 감량 (권장)</h4>
                         </div>
                         <div class="example-content">
                             <div class="example-detail">
-                                <span class="label">성별:</span>
-                                <span class="value">남성, 35세</span>
+                                <span class="label">현재:</span>
+                                <span class="value">남성, 35세, 80kg, 175cm</span>
                             </div>
                             <div class="example-detail">
-                                <span class="label">체형:</span>
-                                <span class="value">75kg, 175cm</span>
+                                <span class="label">목표:</span>
+                                <span class="value">70kg (10kg 감량)</span>
                             </div>
                             <div class="example-detail">
-                                <span class="label">활동량:</span>
-                                <span class="value">좌식 생활 (주 1-2회 가벼운 운동)</span>
+                                <span class="label">주간 속도:</span>
+                                <span class="value">0.5kg/주</span>
                             </div>
                             <div class="example-result">
-                                <span class="label">BMR:</span>
-                                <span class="value bmi-highlight">1,710 kcal</span>
+                                <span class="label">예상 기간:</span>
+                                <span class="value bmi-highlight">20주 (약 5개월)</span>
                             </div>
                             <div class="example-result">
-                                <span class="label">TDEE:</span>
-                                <span class="value bmi-highlight">2,050 kcal</span>
+                                <span class="label">일일 칼로리:</span>
+                                <span class="value bmi-highlight">1,550 kcal (500 kcal 적자)</span>
                             </div>
                             <div class="example-category">
-                                <span class="category-badge normal">일일 권장 칼로리: 2,050 kcal</span>
+                                <span class="category-badge normal">건강하고 지속 가능한 감량 속도</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="example-card example-overweight">
                         <div class="example-header">
-                            <span class="example-icon">🏃</span>
-                            <h4>중간 활동량 성인 (체중 감량)</h4>
+                            <span class="example-icon">⚡</span>
+                            <h4>빠른 속도 감량</h4>
                         </div>
                         <div class="example-content">
                             <div class="example-detail">
-                                <span class="label">성별:</span>
-                                <span class="value">여성, 28세</span>
+                                <span class="label">현재:</span>
+                                <span class="value">여성, 28세, 75kg, 165cm</span>
                             </div>
                             <div class="example-detail">
-                                <span class="label">체형:</span>
-                                <span class="value">68kg, 165cm</span>
+                                <span class="label">목표:</span>
+                                <span class="value">60kg (15kg 감량)</span>
                             </div>
                             <div class="example-detail">
-                                <span class="label">활동량:</span>
-                                <span class="value">중간 활동 (주 3-5회 운동)</span>
+                                <span class="label">주간 속도:</span>
+                                <span class="value">1kg/주</span>
                             </div>
                             <div class="example-result">
-                                <span class="label">BMR:</span>
-                                <span class="value bmi-highlight">1,420 kcal</span>
+                                <span class="label">예상 기간:</span>
+                                <span class="value bmi-highlight">15주 (약 4개월)</span>
                             </div>
                             <div class="example-result">
-                                <span class="label">TDEE:</span>
-                                <span class="value bmi-highlight">2,200 kcal</span>
+                                <span class="label">일일 칼로리:</span>
+                                <span class="value bmi-highlight">1,200 kcal (1,000 kcal 적자)</span>
                             </div>
                             <div class="example-category">
-                                <span class="category-badge overweight">감량 목표: 1,700 kcal (주 0.5kg 감량)</span>
+                                <span class="category-badge overweight">공격적인 감량, 의료 감독 권장</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="example-card example-underweight">
                         <div class="example-header">
-                            <span class="example-icon">💪</span>
-                            <h4>운동선수 (체중 증량)</h4>
+                            <span class="example-icon">🐢</span>
+                            <h4>느린 속도 감량 (안전)</h4>
                         </div>
                         <div class="example-content">
                             <div class="example-detail">
-                                <span class="label">성별:</span>
-                                <span class="value">남성, 25세</span>
+                                <span class="label">현재:</span>
+                                <span class="value">여성, 45세, 68kg, 160cm</span>
                             </div>
                             <div class="example-detail">
-                                <span class="label">체형:</span>
-                                <span class="value">70kg, 180cm</span>
+                                <span class="label">목표:</span>
+                                <span class="value">62kg (6kg 감량)</span>
                             </div>
                             <div class="example-detail">
-                                <span class="label">활동량:</span>
-                                <span class="value">매우 활동적 (주 6-7회 고강도 운동)</span>
+                                <span class="label">주간 속도:</span>
+                                <span class="value">0.25kg/주</span>
                             </div>
                             <div class="example-result">
-                                <span class="label">BMR:</span>
-                                <span class="value bmi-highlight">1,730 kcal</span>
+                                <span class="label">예상 기간:</span>
+                                <span class="value bmi-highlight">24주 (약 6개월)</span>
                             </div>
                             <div class="example-result">
-                                <span class="label">TDEE:</span>
-                                <span class="value bmi-highlight">2,985 kcal</span>
+                                <span class="label">일일 칼로리:</span>
+                                <span class="value bmi-highlight">1,550 kcal (250 kcal 적자)</span>
                             </div>
                             <div class="example-category">
-                                <span class="category-badge underweight">증량 목표: 3,485 kcal (주 0.5kg 증량)</span>
+                                <span class="category-badge underweight">가장 안전하고 유지하기 쉬운 속도</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- Understanding Calories Section -->
+            <!-- Understanding Weight Loss Section -->
             <section class="info-section">
-                <h3>칼로리의 이해 (Understanding Calories)</h3>
+                <h3>체중 감량의 이해</h3>
                 <div class="info-content">
-                    <h4>BMR (기초대사량) 이란?</h4>
+                    <h4>칼로리 적자의 원리</h4>
                     <p>
-                        <strong>Basal Metabolic Rate (BMR)</strong>은 신체가 안정 상태에서 기본적인 생리 기능(호흡, 혈액 순환, 세포 생산 등)을 유지하기 위해 소모하는 최소 칼로리입니다.
-                        이 계산기는 가장 정확한 공식 중 하나인 <strong>Mifflin-St Jeor 공식</strong>을 사용합니다.
+                        체중 감량의 핵심은 <strong>칼로리 적자</strong>입니다. 섭취하는 칼로리보다 소모하는 칼로리가 많을 때 체중이 감소합니다.
+                        이 계산기는 TDEE(총 일일 에너지 소비량)를 기반으로 안전한 감량 계획을 제시합니다.
                     </p>
+
                     <div class="formula-box">
-                        <p><strong>남성:</strong> BMR = 10 × 체중(kg) + 6.25 × 키(cm) - 5 × 나이 + 5</p>
-                        <p><strong>여성:</strong> BMR = 10 × 체중(kg) + 6.25 × 키(cm) - 5 × 나이 - 161</p>
+                        <p><strong>체중 감량 공식:</strong> 칼로리 적자 = TDEE - 섭취 칼로리</p>
+                        <p><strong>체중 1kg 감량:</strong> 약 7,700 칼로리 적자 필요</p>
+                        <p><strong>주당 0.5kg 감량:</strong> 일일 500 칼로리 적자</p>
+                        <p><strong>주당 1kg 감량:</strong> 일일 1,000 칼로리 적자</p>
                     </div>
 
-                    <h4>TDEE (총 일일 에너지 소비량) 이란?</h4>
+                    <h4>안전한 체중 감량 속도</h4>
                     <p>
-                        <strong>Total Daily Energy Expenditure (TDEE)</strong>는 BMR에 활동량 계수를 곱한 값으로, 하루 동안 신체 활동과 운동을 포함하여 소모하는 총 칼로리입니다.
-                        TDEE는 현재 체중을 유지하는 데 필요한 칼로리입니다.
+                        건강 전문가들은 주당 <strong>0.5-1kg (1-2파운드)</strong> 감량을 권장합니다. 이 속도는:
                     </p>
-
-                    <h4>칼로리 적자/잉여</h4>
-                    <p>
-                        체중을 감량하려면 <strong>칼로리 적자</strong>(TDEE보다 적게 섭취)가 필요하고, 체중을 증량하려면 <strong>칼로리 잉여</strong>(TDEE보다 많이 섭취)가 필요합니다.
-                        안전한 체중 변화 속도는 주당 0.5-1kg(1-2파운드)입니다.
-                    </p>
+                    <ul>
+                        <li>근육 손실을 최소화합니다</li>
+                        <li>영양 결핍을 방지합니다</li>
+                        <li>요요 현상을 줄입니다</li>
+                        <li>장기적으로 유지하기 쉽습니다</li>
+                    </ul>
 
                     <div class="important-notes">
-                        <h4>중요한 수치:</h4>
+                        <h4>주의사항:</h4>
                         <ul>
-                            <li>체중 1kg ≈ 7,700 칼로리</li>
-                            <li>주당 0.5kg 감량 = 일일 500 칼로리 적자</li>
-                            <li>주당 1kg 감량 = 일일 1,000 칼로리 적자</li>
-                            <li>주당 0.5kg 증량 = 일일 500 칼로리 잉여</li>
+                            <li>일일 칼로리는 최소 1,200 kcal (여성), 1,500 kcal (남성) 이상 유지</li>
+                            <li>너무 빠른 감량은 건강에 해롭고 요요 현상을 일으킵니다</li>
+                            <li>운동을 병행하면 근육을 보존하고 건강을 개선할 수 있습니다</li>
+                            <li>의학적 조언이 필요한 경우 전문가와 상담하세요</li>
                         </ul>
                     </div>
 
-                    <h4>다양한 BMR 계산 공식</h4>
-                    <p>이 계산기는 Mifflin-St Jeor 공식을 사용하지만, 다른 공식도 존재합니다:</p>
+                    <h4>효과적인 체중 감량 전략</h4>
                     <ul>
-                        <li><strong>Mifflin-St Jeor (1990):</strong> 가장 정확한 현대 공식, ±10% 오차</li>
-                        <li><strong>Harris-Benedict (1984 개정):</strong> 널리 사용되는 전통적 공식</li>
-                        <li><strong>Katch-McArdle:</strong> 체지방률을 고려한 공식 (운동선수에게 적합)</li>
+                        <li><strong>균형 잡힌 식단:</strong> 단백질, 탄수화물, 지방을 적절히 섭취</li>
+                        <li><strong>규칙적인 운동:</strong> 유산소 + 근력 운동 병행</li>
+                        <li><strong>충분한 수면:</strong> 7-9시간 수면으로 호르몬 균형 유지</li>
+                        <li><strong>스트레스 관리:</strong> 스트레스는 과식과 체중 증가를 유발</li>
+                        <li><strong>충분한 수분 섭취:</strong> 하루 2-3리터의 물 마시기</li>
                     </ul>
-                </div>
-            </section>
-
-            <!-- Activity Level Guide -->
-            <section class="info-section">
-                <h3>활동량 수준 가이드 (Activity Level Guide)</h3>
-                <p class="section-description">자신의 일상 활동 패턴에 가장 적합한 활동량 수준을 선택하세요.</p>
-                <div class="activity-grid">
-                    <div class="activity-card activity-sedentary">
-                        <div class="activity-icon">
-                            <i class="fas fa-couch"></i>
-                        </div>
-                        <h4>좌식 생활 (Sedentary)</h4>
-                        <div class="activity-multiplier">계수 1.2</div>
-                        <div class="activity-detail">
-                            <p><strong>설명:</strong> 거의 또는 전혀 운동하지 않음</p>
-                            <p><strong>예시:</strong> 하루 종일 컴퓨터 앞, 차량 출퇴근, TV 시청</p>
-                            <p><strong>걸음 수:</strong> &lt;5,000보/일</p>
-                        </div>
-                    </div>
-
-                    <div class="activity-card activity-light">
-                        <div class="activity-icon">
-                            <i class="fas fa-walking"></i>
-                        </div>
-                        <h4>가벼운 활동 (Lightly Active)</h4>
-                        <div class="activity-multiplier">계수 1.375</div>
-                        <div class="activity-detail">
-                            <p><strong>설명:</strong> 주 1-3일 가벼운 운동</p>
-                            <p><strong>예시:</strong> 점심 산책, 주 1-3회 요가, 적극적 집안일</p>
-                            <p><strong>걸음 수:</strong> 5,000-7,500보/일</p>
-                        </div>
-                    </div>
-
-                    <div class="activity-card activity-moderate">
-                        <div class="activity-icon">
-                            <i class="fas fa-running"></i>
-                        </div>
-                        <h4>중간 활동 (Moderately Active)</h4>
-                        <div class="activity-multiplier">계수 1.55</div>
-                        <div class="activity-detail">
-                            <p><strong>설명:</strong> 주 3-5일 중간 강도 운동</p>
-                            <p><strong>예시:</strong> 규칙적 헬스/수영, 활동적 직업</p>
-                            <p><strong>걸음 수:</strong> 7,500-10,000보/일</p>
-                        </div>
-                    </div>
-
-                    <div class="activity-card activity-very">
-                        <div class="activity-icon">
-                            <i class="fas fa-dumbbell"></i>
-                        </div>
-                        <h4>활발한 활동 (Very Active)</h4>
-                        <div class="activity-multiplier">계수 1.725</div>
-                        <div class="activity-detail">
-                            <p><strong>설명:</strong> 주 6-7일 고강도 운동</p>
-                            <p><strong>예시:</strong> 매일 격렬한 운동, 매우 활동적 직업</p>
-                            <p><strong>걸음 수:</strong> 10,000-12,500보/일</p>
-                        </div>
-                    </div>
-
-                    <div class="activity-card activity-extreme">
-                        <div class="activity-icon">
-                            <i class="fas fa-fire"></i>
-                        </div>
-                        <h4>극도로 활동적 (Extremely Active)</h4>
-                        <div class="activity-multiplier">계수 1.9</div>
-                        <div class="activity-detail">
-                            <p><strong>설명:</strong> 하루 2회 훈련 또는 극한 육체노동</p>
-                            <p><strong>예시:</strong> 프로 운동선수, 군인, 고강도 2회 훈련</p>
-                            <p><strong>걸음 수:</strong> &gt;12,500보/일</p>
-                        </div>
-                    </div>
-
-                    <div class="activity-card activity-tips">
-                        <div class="activity-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <h4>💡 활동량 선택 시 주의사항</h4>
-                        <div class="activity-detail">
-                            <p>• 과대평가하면 체중이 증가할 수 있으니 보수적으로 선택하세요</p>
-                            <p>• 운동 빈도와 일상 활동을 모두 고려하세요</p>
-                            <p>• 2-3주 후 체중 변화를 확인하고 필요시 조정하세요</p>
-                            <p>• 의심스러우면 낮은 수준을 선택하는 것이 안전합니다</p>
-                        </div>
-                    </div>
                 </div>
             </section>
 
             <!-- FAQ Section -->
             <section class="faq-section">
-                <h3>자주 묻는 질문 (Frequently Asked Questions)</h3>
+                <h3>자주 묻는 질문</h3>
                 <div class="faq-grid">
                     <div class="faq-item">
-                        <h4><i class="fas fa-question-circle"></i> 이 칼로리 계산기는 얼마나 정확한가요?</h4>
-                        <p>이 계산기는 가장 정확한 공식 중 하나인 Mifflin-St Jeor 공식을 사용합니다. 하지만 개인의 신진대사는 ±10-15% 차이가 날 수 있습니다. 2-3주간 추적한 후 실제 체중 변화를 바탕으로 조정하세요.</p>
+                        <h4><i class="fas fa-question-circle"></i> 체중 감량 계산기는 얼마나 정확한가요?</h4>
+                        <p>이 계산기는 Mifflin-St Jeor 공식을 사용하여 BMR과 TDEE를 계산합니다. 개인의 신진대사 차이로 ±10-15% 오차가 있을 수 있으므로, 2-3주 후 실제 체중 변화를 확인하고 필요시 조정하세요.</p>
                     </div>
 
                     <div class="faq-item">
-                        <h4><i class="fas fa-question-circle"></i> 운동한 칼로리를 따로 추가해야 하나요?</h4>
-                        <p>아니요, TDEE 계산에 이미 활동량 계수를 통해 운동이 포함되어 있습니다. 추가로 운동 칼로리를 더하면 이중 계산이 되어 과다 섭취하게 됩니다. 선택한 활동량 수준이 운동을 포함한 전체 활동을 반영합니다.</p>
+                        <h4><i class="fas fa-question-circle"></i> 일주일에 몇 kg 감량이 안전한가요?</h4>
+                        <p>건강 전문가들은 주당 0.5-1kg (1-2파운드) 감량을 권장합니다. 이보다 빠른 감량은 근육 손실, 영양 결핍, 요요 현상을 초래할 수 있습니다. 천천히 꾸준히 감량하는 것이 장기적 성공의 열쇠입니다.</p>
                     </div>
 
                     <div class="faq-item">
-                        <h4><i class="fas fa-question-circle"></i> 얼마나 빨리 체중을 감량할 수 있나요?</h4>
-                        <p>안전한 감량 속도는 주당 0.5-1kg(1-2파운드)입니다. 더 빠른 감량은 근육 손실, 영양 결핍, 요요 현상을 초래할 수 있습니다. 천천히 꾸준히 감량하는 것이 장기적으로 성공 확률이 높습니다.</p>
+                        <h4><i class="fas fa-question-circle"></i> 계산된 칼로리대로 먹어도 체중이 안 빠지면?</h4>
+                        <p>2-3주간 정확히 칼로리를 추적하세요. 변화가 없다면 일일 칼로리를 10% 줄이고 다시 평가하세요. 계량 오차, 숨은 칼로리(소스, 음료), 과소평가된 섭취량을 확인하세요. 필요시 활동량을 늘리세요.</p>
                     </div>
 
                     <div class="faq-item">
-                        <h4><i class="fas fa-question-circle"></i> 이 칼로리로 체중이 변하지 않으면 어떻게 하나요?</h4>
-                        <p>2-3주간 정확히 칼로리를 추적하세요. 변화가 없다면 칼로리를 10% 줄이고 다시 평가하세요. 신진대사가 평균보다 낮을 수 있으며, 계량 오차나 숨은 칼로리(소스, 음료 등)를 확인하세요.</p>
+                        <h4><i class="fas fa-question-circle"></i> 운동 없이 식단만으로 감량 가능한가요?</h4>
+                        <p>네, 칼로리 적자만 있으면 체중 감량이 가능합니다. 하지만 운동을 병행하면 근육을 보존하고, 신진대사를 유지하며, 건강을 개선할 수 있습니다. 특히 근력 운동은 체구성(근육 대 지방 비율) 개선에 중요합니다.</p>
                     </div>
 
                     <div class="faq-item">
-                        <h4><i class="fas fa-question-circle"></i> 영양소 배분(탄단지)도 중요한가요?</h4>
-                        <p>네! 칼로리는 체중 변화를 결정하지만, 영양소 배분은 체구성(근육 vs 지방)에 영향을 줍니다. 체중 감량 시 높은 단백질 섭취(체중 1kg당 1.6-2.2g)는 근육 보존에 도움이 됩니다. 이 계산기는 30% 단백질, 40% 탄수화물, 30% 지방을 권장합니다.</p>
+                        <h4><i class="fas fa-question-circle"></i> 체중 정체기(plateau)는 왜 생기나요?</h4>
+                        <p>체중 감량 중 정체기는 자연스러운 현상입니다. 체중이 줄면 TDEE도 감소하기 때문입니다. 정체기 돌파 방법: 1) 칼로리를 재계산, 2) 운동 강도/빈도 증가, 3) 식단 변화, 4) 충분한 수면과 스트레스 관리.</p>
                     </div>
 
                     <div class="faq-item">
-                        <h4><i class="fas fa-question-circle"></i> BMR과 TDEE의 차이는 무엇인가요?</h4>
-                        <p>BMR(기초대사량)은 완전히 쉬고 있을 때 소모하는 칼로리이고, TDEE(총 일일 에너지 소비량)는 BMR + 일상 활동 + 운동을 모두 포함한 총 칼로리입니다. 예를 들어 BMR이 1,500 kcal이고 중간 활동량이면 TDEE는 약 2,325 kcal(1,500 × 1.55)입니다.</p>
+                        <h4><i class="fas fa-question-circle"></i> 요요 현상을 방지하려면?</h4>
+                        <p>요요 방지 전략: 1) 천천히 감량 (주당 0.5-1kg), 2) 극단적 식단 금지, 3) 근력 운동으로 근육 보존, 4) 목표 달성 후 점진적 유지 칼로리 증가, 5) 평생 건강한 습관 유지. 빠른 감량은 요요의 주범입니다.</p>
                     </div>
                 </div>
             </section>
@@ -678,22 +595,22 @@
                     <div class="feature-icon-wrapper">
                         <i class="fas fa-bolt feature-icon-text"></i>
                     </div>
-                    <h4>즉각적인 결과</h4>
-                    <p>최적화된 알고리즘으로 BMR, TDEE, 목표 칼로리를 즉시 계산합니다. 기다림 없이 밀리초 단위로 정확한 결과를 제공합니다.</p>
+                    <h4>즉각적인 계획 수립</h4>
+                    <p>목표 체중과 기간을 입력하면 즉시 맞춤형 체중 감량 계획을 제공합니다. 과학적 공식 기반의 정확한 칼로리 목표를 확인하세요.</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon-wrapper">
-                        <i class="fas fa-hospital feature-icon-text"></i>
+                        <i class="fas fa-chart-line feature-icon-text"></i>
                     </div>
-                    <h4>검증된 공식 사용</h4>
-                    <p>Mifflin-St Jeor 공식을 사용하여 가장 정확한 칼로리 계산을 제공합니다. 의학적으로 인정받은 표준 계산 방식입니다.</p>
+                    <h4>단계별 마일스톤</h4>
+                    <p>주간, 월간 체중 감량 마일스톤을 제공하여 진행 상황을 추적하고 동기를 유지할 수 있습니다.</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon-wrapper">
-                        <i class="fas fa-bullseye feature-icon-text"></i>
+                        <i class="fas fa-heartbeat feature-icon-text"></i>
                     </div>
-                    <h4>맞춤형 영양소 배분</h4>
-                    <p>목표 칼로리를 기반으로 단백질, 탄수화물, 지방의 최적 섭취량을 그램 단위로 제공합니다. 체구성 개선에 도움이 됩니다.</p>
+                    <h4>건강 우선 접근</h4>
+                    <p>안전한 감량 속도를 권장하고 과도한 칼로리 제한을 방지하여 건강한 체중 감량을 지원합니다.</p>
                 </div>
                 <div class="feature-item">
                     <div class="feature-icon-wrapper">
@@ -714,23 +631,23 @@
                         <i class="fas fa-mobile-alt feature-icon-text"></i>
                     </div>
                     <h4>모바일 최적화</h4>
-                    <p>모든 기기에서 칼로리를 계산할 수 있습니다. 스마트폰, 태블릿, 데스크톱에서 완벽하게 작동하는 반응형 디자인입니다.</p>
+                    <p>모든 기기에서 체중 감량 계획을 확인할 수 있습니다. 스마트폰, 태블릿, 데스크톱에서 완벽하게 작동하는 반응형 디자인입니다.</p>
                 </div>
             </section>
 
             <!-- Related Calculators Section -->
             <section class="related-section">
-                <h3>관련 건강 계산기 (Related Health Calculators)</h3>
+                <h3>관련 건강 계산기</h3>
                 <div class="related-grid">
+                    <a href="/health/calorie-calculator.html" class="related-card">
+                        <i class="fas fa-fire"></i>
+                        <h4>칼로리 계산기</h4>
+                        <p>일일 칼로리 필요량 계산</p>
+                    </a>
                     <a href="/health/bmi-calculator.html" class="related-card">
                         <i class="fas fa-weight"></i>
                         <h4>BMI 계산기</h4>
                         <p>체질량지수 계산</p>
-                    </a>
-                    <a href="/health/weight-loss-calculator.html" class="related-card">
-                        <i class="fas fa-chart-line"></i>
-                        <h4>체중 감량 계산기</h4>
-                        <p>체중 감량 계획 수립</p>
                     </a>
                     <a href="/health/protein-calculator.html" class="related-card">
                         <i class="fas fa-drumstick-bite"></i>
@@ -753,10 +670,10 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h3>CALCULATOR</h3>
-                    <p>Free online calculators for all your needs</p>
+                    <p>모든 계산 필요를 위한 무료 온라인 계산기</p>
                 </div>
                 <div class="footer-section">
-                    <h3>Categories</h3>
+                    <h3>카테고리</h3>
                     <ul>
                         <li><a href="/category/general.html">General</a></li>
                         <li><a href="/category/finance.html">Finance</a></li>
@@ -784,6 +701,6 @@
     <script src="/i18n.js?v=20251101fix"></script>
     <script src="/js/main.js"></script>
     <script src="/js/utils/calculator-base.js"></script>
-    <script src="/js/calculators/calorie.js"></script>
+    <script src="/js/calculators/weight-loss.js"></script>
 </body>
 </html>

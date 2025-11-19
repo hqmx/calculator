@@ -28,7 +28,7 @@ calculator/
 │   │       └── ...
 │   │
 │   ├── general/                      # 일반 계산기 카테고리
-│   │   ├── CLAUDE.md                # 카테고리 콘텐츠 관리
+│   │   ├── GEMINI.md                # 카테고리 콘텐츠 관리
 │   │   ├── basic-calculator.html
 │   │   ├── scientific-calculator.html
 │   │   ├── percentage-calculator.html
@@ -36,7 +36,7 @@ calculator/
 │   │   └── engineering-calculator.html
 │   │
 │   ├── finance/                      # 금융 카테고리
-│   │   ├── CLAUDE.md
+│   │   ├── GEMINI.md
 │   │   ├── mortgage-calculator.html
 │   │   ├── loan-calculator.html
 │   │   ├── interest-calculator.html
@@ -47,7 +47,7 @@ calculator/
 │   │   └── tip-calculator.html
 │   │
 │   ├── health/                       # 건강 & 피트니스 카테고리
-│   │   ├── CLAUDE.md
+│   │   ├── GEMINI.md
 │   │   ├── bmi-calculator.html
 │   │   ├── calorie-calculator.html
 │   │   ├── weight-loss-calculator.html
@@ -56,7 +56,7 @@ calculator/
 │   │   └── protein-calculator.html
 │   │
 │   ├── date-time/                    # 날짜 & 시간 카테고리
-│   │   ├── CLAUDE.md
+│   │   ├── GEMINI.md
 │   │   ├── age-calculator.html
 │   │   ├── date-calculator.html
 │   │   ├── time-calculator.html
@@ -65,7 +65,7 @@ calculator/
 │   │   └── countdown-timer.html
 │   │
 │   ├── math/                         # 수학 카테고리
-│   │   ├── CLAUDE.md
+│   │   ├── GEMINI.md
 │   │   ├── equation-solver.html
 │   │   ├── matrix-calculator.html
 │   │   ├── probability-calculator.html
@@ -75,7 +75,7 @@ calculator/
 │   │   └── triangle-calculator.html
 │   │
 │   ├── conversion/                   # 단위 변환 카테고리
-│   │   ├── CLAUDE.md
+│   │   ├── GEMINI.md
 │   │   ├── length-converter.html
 │   │   ├── weight-converter.html
 │   │   ├── temperature-converter.html
@@ -86,7 +86,7 @@ calculator/
 │   │   └── energy-converter.html
 │   │
 │   ├── media/                        # 미디어 & 기술 카테고리
-│   │   ├── CLAUDE.md
+│   │   ├── GEMINI.md
 │   │   ├── pixel-calculator.html
 │   │   ├── screen-size-calculator.html
 │   │   ├── bitrate-calculator.html
@@ -95,7 +95,7 @@ calculator/
 │   │   └── storage-calculator.html
 │   │
 │   └── construction/                 # 건축 & DIY 카테고리
-│       ├── CLAUDE.md
+│       ├── GEMINI.md
 │       ├── paint-calculator.html
 │       ├── tile-calculator.html
 │       ├── wallpaper-calculator.html
@@ -126,8 +126,8 @@ calculator/
   </main>
   ```
 
-### 2. 카테고리별 CLAUDE.md 역할
-각 카테고리 폴더의 `CLAUDE.md`는 해당 카테고리의 모든 계산기에 대한:
+### 2. 카테고리별 GEMINI.md 역할
+각 카테고리 폴더의 `GEMINI.md`는 해당 카테고리의 모든 계산기에 대한:
 - 계산기별 제목 및 설명
 - 입력 필드 레이블 및 설명
 - 사용 방법 단계별 가이드
@@ -342,14 +342,14 @@ CATEGORY.md Phase 1 순서대로 구현:
 - 플레이스홀더로 변수화
 
 # 3. 각 계산기별 콘텐츠 주입
-- 카테고리 CLAUDE.md에서 콘텐츠 읽기
+- 카테고리 GEMINI.md에서 콘텐츠 읽기
 - 템플릿에 맞춰 HTML 생성
 - 계산기 로직 JavaScript 연결
 ```
 
-### 2. 카테고리 CLAUDE.md 활용
+### 2. 카테고리 GEMINI.md 활용
 ```javascript
-// 스크립트로 CLAUDE.md 파싱하여 HTML 생성 가능
+// 스크립트로 GEMINI.md 파싱하여 HTML 생성 가능
 // 또는 수동으로 콘텐츠 복사-붙여넣기
 ```
 
@@ -406,12 +406,12 @@ mkdir -p frontend/{general,finance,health,date-time,math,conversion,media,constr
 mkdir -p frontend/js/{common,calculators}
 ```
 
-### Step 2: 카테고리 CLAUDE.md 템플릿 생성
-각 카테고리 폴더에 CLAUDE.md 템플릿 생성
+### Step 2: 카테고리 GEMINI.md 템플릿 생성
+각 카테고리 폴더에 GEMINI.md 템플릿 생성
 
 ### Step 3: BMI Calculator 프로토타입
 - health/bmi-calculator.html
-- health/CLAUDE.md (BMI 콘텐츠)
+- health/GEMINI.md (BMI 콘텐츠)
 - js/calculators/bmi.js
 
 ### Step 4: 검증 및 반복

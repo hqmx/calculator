@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>단백질 계산기 | CALCULATOR</title>
+    <meta name="description" content="체중, 활동량, 피트니스 목표에 따른 일일 단백질 필요량을 계산하세요. 맞춤형 권장량을 제공하는 무료 단백질 계산기입니다.">
+    <meta name="keywords" content="단백질 계산기, protein calculator, 일일 단백질, daily protein needs, 단백질 섭취량, protein intake, 단백질 필요량, protein requirements">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css?v=20250118mobile">
+    <link rel="stylesheet" href="/css/calculator.css?v=20250118nav">
+
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation Header -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <a href="/" class="converter-logo-link">
+                    <div class="converter-logo" dir="ltr">
+                        <span class="converter-text"><span class="converter-c">C</span><span class="converter-rest">ALCULATOR</span></span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="nav-center">
+                <!-- 햄버거 메뉴 버튼 (모바일용) -->
+                <button class="hamburger-menu" id="hamburgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="nav-menu">
+                    <a href="/" class="nav-link active">Home</a>
+                    <a href="/how-to-use" class="nav-link">How to Use</a>
+                    <a href="/faq" class="nav-link">FAQ</a>
+                    <a href="/sitemap" class="nav-link">Site Map</a>
+                    <a href="/api.html" class="nav-link">API</a>
+                </div>
+
+                <!-- 모바일 메뉴 오버레이 -->
+                <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+                    <div class="mobile-menu-box">
+                        <!-- 모바일 메뉴 페이지 링크 -->
+                        <div class="mobile-menu-links">
+                            <a href="/" class="mobile-menu-link active">Home</a>
+                            <a href="/how-to-use" class="mobile-menu-link">How to Use</a>
+                            <a href="/faq" class="mobile-menu-link">FAQ</a>
+                            <a href="/sitemap" class="mobile-menu-link">Site Map</a>
+                            <a href="/api.html" class="mobile-menu-link">API</a>
+                        </div>
+
+                        <div class="mobile-menu-controls">
+                            <div class="mobile-control-item menu-divider">
+                                <button id="mobileThemeToggleBtn" class="mobile-theme-toggle-btn">
+                                    <i class="fas fa-sun"></i>
+                                    <i class="fas fa-moon"></i>
+                                </button>
+                                <button id="mobileLanguageSelectorBtn" class="mobile-language-selector-btn">
+                                    <i class="fas fa-globe"></i>
+                                    <span id="mobileCurrentLanguage">EN</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="mobile-control-item">
+                                <div id="mobileLanguageOptions" class="mobile-language-options">
+                                    <a href="#" data-lang="en">English</a>
+                                    <a href="#" data-lang="de">Deutsch</a>
+                                    <a href="#" data-lang="es">Español</a>
+                                    <a href="#" data-lang="fr">Français</a>
+                                    <a href="#" data-lang="hi">हिन्दी / Hindī</a>
+                                    <a href="#" data-lang="id">Bahasa Indonesia</a>
+                                    <a href="#" data-lang="it">Italiano</a>
+                                    <a href="#" data-lang="ko">한국어</a>
+                                    <a href="#" data-lang="ja">日本語</a>
+                                    <a href="#" data-lang="my">Myanmar (မြန်မာ)</a>
+                                    <a href="#" data-lang="ms">Malay</a>
+                                    <a href="#" data-lang="fil">Filipino</a>
+                                    <a href="#" data-lang="pt">Português</a>
+                                    <a href="#" data-lang="ru">Русский</a>
+                                    <a href="#" data-lang="th">ไทย</a>
+                                    <a href="#" data-lang="tr">Türkçe</a>
+                                    <a href="#" data-lang="vi">Tiếng Việt</a>
+                                    <a href="#" data-lang="zh-CN">简体中文</a>
+                                    <a href="#" data-lang="zh-TW">繁體中文</a>
+                                    <a href="#" data-lang="ar">عربي</a>
+                                    <a href="#" data-lang="bn">বাঙালি</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <button id="themeToggleBtn" class="theme-toggle-btn">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="language-switcher">
+                    <button id="language-selector-btn" class="language-selector-btn">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">English</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="language-options" class="language-options">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="de">Deutsch</a>
+                        <a href="#" data-lang="es">Español</a>
+                        <a href="#" data-lang="fr">Français</a>
+                        <a href="#" data-lang="hi">हिन्दी / Hindī</a>
+                        <a href="#" data-lang="id">Bahasa Indonesia</a>
+                        <a href="#" data-lang="it">Italiano</a>
+                        <a href="#" data-lang="ko">한국어</a>
+                        <a href="#" data-lang="ja">日本語</a>
+                        <a href="#" data-lang="my">Myanmar (မြန်မာ)</a>
+                        <a href="#" data-lang="ms">Malay</a>
+                        <a href="#" data-lang="fil">Filipino</a>
+                        <a href="#" data-lang="pt">Português</a>
+                        <a href="#" data-lang="ru">Русский</a>
+                        <a href="#" data-lang="th">ไทย</a>
+                        <a href="#" data-lang="tr">Türkçe</a>
+                        <a href="#" data-lang="vi">Tiếng Việt</a>
+                        <a href="#" data-lang="zh-CN">简体中文</a>
+                        <a href="#" data-lang="zh-TW">繁體中文</a>
+                        <a href="#" data-lang="ar">عربي</a>
+                        <a href="#" data-lang="bn">বাঙালি</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <header class="header">
+            <p class="tagline">일일 단백질 필요량 계산하기</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Protein Calculator Section -->
+            <section class="upload-section">
+                <div class="upload-container">
+                    <h4>단백질 필요량 계산하기</h4>
+
+                    <div class="calculator-inputs">
+                        <!-- Weight Input -->
+                        <div class="input-group">
+                            <label for="weight">
+                                <i class="fas fa-weight"></i>
+                                체중
+                            </label>
+                            <div class="input-with-unit">
+                                <input type="number" id="weight" placeholder="체중을 입력하세요" min="30" max="200" step="0.1" value="70">
+                                <div class="unit-toggle">
+                                    <button class="unit-btn active" data-unit="kg">kg</button>
+                                    <button class="unit-btn" data-unit="lb">lb</button>
+                                </div>
+                            </div>
+                            <span class="input-hint">현재 체중</span>
+                        </div>
+
+                        <!-- Activity Level -->
+                        <div class="input-group">
+                            <label for="activity">
+                                <i class="fas fa-running"></i>
+                                활동량
+                            </label>
+                            <select id="activity" class="converter-select" required>
+                                <option value="sedentary">앉아있는 생활 (운동 거의 안 함)</option>
+                                <option value="light">가벼운 활동 (주 1-3일)</option>
+                                <option value="moderate" selected>중간 활동 (주 3-5일)</option>
+                                <option value="very">매우 활동적 (주 6-7일)</option>
+                                <option value="extreme">극도로 활동적 (육체 노동 + 운동)</option>
+                            </select>
+                            <span class="input-hint">운동 빈도</span>
+                        </div>
+
+                        <!-- Fitness Goal -->
+                        <div class="input-group">
+                            <label for="goal">
+                                <i class="fas fa-bullseye"></i>
+                                피트니스 목표
+                            </label>
+                            <select id="goal" class="converter-select" required>
+                                <option value="maintain">근육 유지</option>
+                                <option value="lose">체지방 감소 (근육 보존)</option>
+                                <option value="gain" selected>근육 증가 (벌크업)</option>
+                                <option value="athlete">운동 선수</option>
+                            </select>
+                            <span class="input-hint">주요 목표는 무엇인가요?</span>
+                        </div>
+
+                        <!-- Gender (Optional) -->
+                        <div class="input-group optional">
+                            <label>
+                                <i class="fas fa-user"></i>
+                                성별 <span class="optional-badge">선택사항</span>
+                            </label>
+                            <div class="gender-toggle">
+                                <button class="gender-btn" data-gender="male">
+                                    <i class="fas fa-mars"></i> 남성
+                                </button>
+                                <button class="gender-btn" data-gender="female">
+                                    <i class="fas fa-venus"></i> 여성
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Calculate Button -->
+                        <button class="calculate-btn" id="calculateBtn">
+                            <i class="fas fa-calculator"></i>
+                            <span>단백질 필요량 계산하기</span>
+                        </button>
+
+                        <!-- Error Message -->
+                        <div class="error-message" id="errorMessage" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span id="errorText"></span>
+                        </div>
+                    </div>
+
+                    <!-- Results Display -->
+                    <div class="calculator-results" id="resultsSection" style="display: none; margin-top: 3rem !important;">
+                        <!-- Main Results (3 panels = 3 columns) -->
+                        <div class="result-cards-grid" style="grid-template-columns: repeat(3, 1fr);">
+                            <div class="result-card highlight">
+                                <div class="result-label">일일 단백질</div>
+                                <div class="result-value" id="dailyProtein">-</div>
+                                <div class="result-sublabel">하루 그램 수</div>
+                            </div>
+
+                            <div class="result-card">
+                                <div class="result-label">체중당 (kg)</div>
+                                <div class="result-value" id="perKg">-</div>
+                                <div class="result-sublabel">g/kg 체중</div>
+                            </div>
+
+                            <div class="result-card">
+                                <div class="result-label">체중당 (lb)</div>
+                                <div class="result-value" id="perLb">-</div>
+                                <div class="result-sublabel">g/lb 체중</div>
+                            </div>
+                        </div>
+
+                        <!-- Per Meal Breakdown -->
+                        <div class="macro-section">
+                            <h3>권장 식사 배분</h3>
+                            <div class="macro-cards">
+                                <div class="macro-card">
+                                    <i class="fas fa-coffee"></i>
+                                    <h4>아침</h4>
+                                    <div class="macro-value" id="breakfast">-</div>
+                                    <div class="macro-percentage">25%</div>
+                                </div>
+                                <div class="macro-card">
+                                    <i class="fas fa-utensils"></i>
+                                    <h4>점심</h4>
+                                    <div class="macro-value" id="lunch">-</div>
+                                    <div class="macro-percentage">30%</div>
+                                </div>
+                                <div class="macro-card">
+                                    <i class="fas fa-drumstick-bite"></i>
+                                    <h4>저녁</h4>
+                                    <div class="macro-value" id="dinner">-</div>
+                                    <div class="macro-percentage">30%</div>
+                                </div>
+                                <div class="macro-card">
+                                    <i class="fas fa-cookie-bite"></i>
+                                    <h4>간식</h4>
+                                    <div class="macro-value" id="snacks">-</div>
+                                    <div class="macro-percentage">15%</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Protein Sources -->
+                        <div class="timeline-section">
+                            <h3>고단백 식품 예시</h3>
+                            <table class="timeline-table">
+                                <thead>
+                                    <tr>
+                                        <th>식품</th>
+                                        <th>1회 분량</th>
+                                        <th>단백질 (g)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>닭가슴살</td>
+                                        <td>100g (3.5 oz)</td>
+                                        <td>31g</td>
+                                    </tr>
+                                    <tr>
+                                        <td>연어</td>
+                                        <td>100g (3.5 oz)</td>
+                                        <td>25g</td>
+                                    </tr>
+                                    <tr>
+                                        <td>계란 (대)</td>
+                                        <td>2개</td>
+                                        <td>13g</td>
+                                    </tr>
+                                    <tr>
+                                        <td>그릭 요거트</td>
+                                        <td>170g (6 oz)</td>
+                                        <td>17g</td>
+                                    </tr>
+                                    <tr>
+                                        <td>두부 (단단함)</td>
+                                        <td>100g (3.5 oz)</td>
+                                        <td>17g</td>
+                                    </tr>
+                                    <tr>
+                                        <td>유청 단백질</td>
+                                        <td>1스쿱 (30g)</td>
+                                        <td>25g</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Recalculate Button -->
+                        <button class="recalculate-btn" id="recalculateBtn">
+                            <i class="fas fa-redo"></i>
+                            다시 계산하기
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How to Use Section -->
+            <section class="usage-guide-section">
+                <h3>사용 방법</h3>
+                <p class="section-description">단백질 계산기를 사용하여 일일 단백질 필요량을 계산하는 간단한 단계를 따라하세요.</p>
+                <div class="guide-steps">
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">1</span>
+                            <h4>체중 입력</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>현재 체중을 입력하세요. kg 또는 lb 단위를 선택할 수 있습니다. 정확한 체중 측정값을 사용하세요.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">2</span>
+                            <h4>활동량 및 목표 선택</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>일상적인 활동량 수준과 피트니스 목표를 선택하세요. 근육 증가, 체지방 감소, 유지 등 목표에 따라 단백질 필요량이 달라집니다.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">3</span>
+                            <h4>결과 확인 및 실행</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>"Calculate Protein Needs" 버튼을 클릭하면 일일 권장 단백질 섭취량, 식사별 배분, 고단백 식품 예시가 표시됩니다. 이 목표량을 바탕으로 식단을 계획하세요.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Responsive Ad Banner (Examples 위) -->
+            <div class="responsive-ad-banner">
+                <!-- Desktop: 728x90 -->
+                <div class="ad-desktop">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : 'a0109a486ddd226684cfa5934f412a88',
+                            'format' : 'iframe',
+                            'height' : 90,
+                            'width' : 728,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//annoyingnightmareedit.com/a0109a486ddd226684cfa5934f412a88/invoke.js"></script>
+                </div>
+
+                <!-- Tablet: 468x60 -->
+                <div class="ad-tablet">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : 'cb93fb1de0136f18561bd497f24daa03',
+                            'format' : 'iframe',
+                            'height' : 60,
+                            'width' : 468,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//annoyingnightmareedit.com/cb93fb1de0136f18561bd497f24daa03/invoke.js"></script>
+                </div>
+
+                <!-- Mobile: 320x50 -->
+                <div class="ad-mobile">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : '266dce0b2742554614d486d3a6e08060',
+                            'format' : 'iframe',
+                            'height' : 50,
+                            'width' : 320,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//annoyingnightmareedit.com/266dce0b2742554614d486d3a6e08060/invoke.js"></script>
+                </div>
+            </div>
+
+            <!-- Examples Section -->
+            <section class="examples-section">
+                <h3>실전 예제</h3>
+                <div class="example-grid">
+                    <div class="example-card example-normal">
+                        <div class="example-header">
+                            <span class="example-icon">💪</span>
+                            <h4>근육 증가 목표 (벌크업)</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label">체중:</span>
+                                <span class="value">70kg (154 lb)</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">활동량:</span>
+                                <span class="value">매우 활동적 (주 6-7일 운동)</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">목표:</span>
+                                <span class="value">근육 증가 (벌크업)</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">일일 단백질:</span>
+                                <span class="value bmi-highlight">154g (2.2g/kg)</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">식사당 평균:</span>
+                                <span class="value">38g × 4끼</span>
+                            </div>
+                            <div class="example-category">
+                                <span class="category-badge normal">고단백 식단 권장</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-card example-overweight">
+                        <div class="example-header">
+                            <span class="example-icon">🔥</span>
+                            <h4>체지방 감량 (근육 보존)</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label">체중:</span>
+                                <span class="value">85kg (187 lb)</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">활동량:</span>
+                                <span class="value">중간 활동 (주 3-5일)</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">목표:</span>
+                                <span class="value">체지방 감소 (근육 보존)</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">일일 단백질:</span>
+                                <span class="value bmi-highlight">170g (2.0g/kg)</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">식사당 평균:</span>
+                                <span class="value">42g × 4끼</span>
+                            </div>
+                            <div class="example-category">
+                                <span class="category-badge overweight">감량 시 고단백 필수</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-card example-underweight">
+                        <div class="example-header">
+                            <span class="example-icon">🏃</span>
+                            <h4>근육 유지 (일반인)</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label">체중:</span>
+                                <span class="value">60kg (132 lb)</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">활동량:</span>
+                                <span class="value">가벼운 활동 (주 1-3일)</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">목표:</span>
+                                <span class="value">근육량 유지</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">일일 단백질:</span>
+                                <span class="value bmi-highlight">84g (1.4g/kg)</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label">식사당 평균:</span>
+                                <span class="value">21g × 4끼</span>
+                            </div>
+                            <div class="example-category">
+                                <span class="category-badge underweight">건강 유지 수준</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Understanding Protein Section -->
+            <section class="info-section">
+                <h3>단백질의 이해</h3>
+                <div class="info-content">
+                    <h4>단백질이란?</h4>
+                    <p>
+                        단백질은 근육, 뼈, 피부, 효소, 호르몬을 구성하는 필수 영양소입니다. 아미노산으로 이루어져 있으며,
+                        체내에서 합성되지 않는 9가지 필수 아미노산은 음식을 통해 섭취해야 합니다.
+                    </p>
+
+                    <div class="formula-box">
+                        <h4>단백질 권장 섭취량 (g/kg 체중)</h4>
+                        <p><strong>일반 성인:</strong> 0.8-1.0 g/kg (최소 권장량)</p>
+                        <p><strong>근육 유지:</strong> 1.2-1.6 g/kg</p>
+                        <p><strong>근육 증가 (벌크업):</strong> 1.6-2.2 g/kg</p>
+                        <p><strong>체지방 감량 (근육 보존):</strong> 1.8-2.4 g/kg</p>
+                        <p><strong>운동선수:</strong> 2.0-2.5 g/kg</p>
+                    </div>
+
+                    <h4>단백질의 중요성</h4>
+                    <ul>
+                        <li><strong>근육 성장과 회복:</strong> 운동 후 근육 손상을 복구하고 새로운 근육 조직을 생성합니다</li>
+                        <li><strong>포만감 증가:</strong> 다른 영양소보다 포만감이 오래 지속되어 과식을 방지합니다</li>
+                        <li><strong>대사 촉진:</strong> 소화 과정에서 더 많은 칼로리를 소모합니다 (식이성 열 생성)</li>
+                        <li><strong>체중 조절:</strong> 체지방 감량 시 근육 손실을 최소화합니다</li>
+                        <li><strong>면역 기능:</strong> 항체와 면역 세포를 생성하여 면역력을 강화합니다</li>
+                    </ul>
+
+                    <div class="important-notes">
+                        <h4>단백질 섭취 팁:</h4>
+                        <ul>
+                            <li>하루 섭취량을 3-4끼에 고르게 분배하세요 (1회 섭취량 20-40g)</li>
+                            <li>운동 후 30-60분 이내에 단백질을 섭취하면 근육 회복에 효과적입니다</li>
+                            <li>동물성과 식물성 단백질을 다양하게 섭취하세요</li>
+                            <li>과도한 단백질 섭취 (3g/kg 이상)는 신장에 부담을 줄 수 있습니다</li>
+                            <li>충분한 수분 섭취 (하루 2-3리터)가 중요합니다</li>
+                        </ul>
+                    </div>
+
+                    <h4>고단백 식품 종류</h4>
+                    <p><strong>동물성 단백질:</strong></p>
+                    <ul>
+                        <li>닭가슴살, 소고기, 돼지고기 (살코기)</li>
+                        <li>생선 (연어, 참치, 고등어)</li>
+                        <li>계란 (완전 단백질 식품)</li>
+                        <li>우유, 요거트, 치즈</li>
+                        <li>유청 단백질 (Whey Protein) 보충제</li>
+                    </ul>
+
+                    <p><strong>식물성 단백질:</strong></p>
+                    <ul>
+                        <li>두부, 템페, 콩류 (검은콩, 렌틸콩, 병아리콩)</li>
+                        <li>견과류와 씨앗 (아몬드, 땅콩버터, 치아씨드)</li>
+                        <li>퀴노아, 귀리, 통곡물</li>
+                        <li>채소 (브로콜리, 시금치, 완두콩)</li>
+                        <li>식물성 단백질 보충제 (대두, 완두콩 단백질)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="faq-section">
+                <h3>자주 묻는 질문</h3>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 단백질을 너무 많이 먹으면 해로운가요?</h4>
+                        <p>건강한 사람의 경우 체중 1kg당 2.5g 이하의 단백질 섭취는 일반적으로 안전합니다. 하지만 3g/kg 이상의 과도한 섭취는 신장에 부담을 줄 수 있으며, 충분한 수분 섭취가 필요합니다. 신장 질환이 있다면 의사와 상담하세요.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 한 끼에 흡수 가능한 단백질량은 제한이 있나요?</h4>
+                        <p>과거에는 한 끼 20-30g만 흡수된다고 믿었지만, 최근 연구에 따르면 한 끼에 더 많은 양도 흡수됩니다. 다만 근육 단백질 합성을 최대화하려면 20-40g씩 여러 끼로 나누어 먹는 것이 더 효과적입니다.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 운동하지 않아도 고단백 식단이 필요한가요?</h4>
+                        <p>운동하지 않는 일반인도 체중 1kg당 0.8-1.0g의 단백질이 필요합니다. 나이가 들수록 근육 손실(근감소증)을 방지하기 위해 더 많은 단백질 (1.2-1.5g/kg)이 권장됩니다. 하지만 운동과 함께 병행하는 것이 가장 효과적입니다.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 단백질 보충제는 꼭 필요한가요?</h4>
+                        <p>아니요, 음식만으로도 충분히 단백질을 섭취할 수 있습니다. 하지만 보충제는 편리하고, 저칼로리로 많은 단백질을 섭취할 수 있어 체중 감량이나 근육 증가에 도움이 됩니다. 식사로 목표량을 채우기 어려운 경우 보충제를 사용하세요.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 식물성 단백질만으로도 충분한가요?</h4>
+                        <p>네, 다양한 식물성 단백질을 조합하면 모든 필수 아미노산을 섭취할 수 있습니다. 퀴노아, 콩, 두부는 완전 단백질이며, 곡물+콩류 조합 (예: 밥+콩)으로도 충분합니다. 채식주의자는 비타민 B12와 철분 보충에 주의하세요.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 체중 감량 시 단백질을 더 많이 먹어야 하나요?</h4>
+                        <p>네! 칼로리 적자 상태에서 단백질을 충분히 섭취하지 않으면 근육이 손실됩니다. 체지방 감량 시 체중 1kg당 1.8-2.4g의 높은 단백질 섭취가 근육을 보존하고 포만감을 높여 다이어트 성공률을 높입니다.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ExoClick Ad Banner -->
+            <div class="ad-banner">
+                <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
+                <ins class="eas6a97888e20" data-zoneid="5773292"></ins>
+                <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+            </div>
+
+            <!-- Features Section -->
+            <section class="feature-section">
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-bolt feature-icon-text"></i>
+                    </div>
+                    <h4>즉각적인 결과</h4>
+                    <p>최적화된 알고리즘으로 개인 맞춤형 단백질 필요량을 즉시 계산합니다. 밀리초 단위로 정확한 결과를 제공합니다.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-dumbbell feature-icon-text"></i>
+                    </div>
+                    <h4>목표 기반 계산</h4>
+                    <p>근육 증가, 체지방 감소, 유지 등 피트니스 목표에 따라 최적화된 단백질 섭취량을 제공합니다.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-utensils feature-icon-text"></i>
+                    </div>
+                    <h4>식사별 배분 가이드</h4>
+                    <p>아침, 점심, 저녁, 간식별로 단백질을 어떻게 배분할지 상세한 가이드를 제공하여 실천하기 쉽습니다.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-sync-alt feature-icon-text"></i>
+                    </div>
+                    <h4>다중 단위 지원</h4>
+                    <p>미터법(kg)과 야드파운드법(lb)을 자유롭게 전환할 수 있습니다. 변환 계산 없이 편리하게 사용하세요.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-lock feature-icon-text"></i>
+                    </div>
+                    <h4>100% 프라이버시 보호</h4>
+                    <p>모든 계산은 브라우저에서 이루어집니다. 개인 건강 데이터를 저장하거나 전송하지 않습니다.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-mobile-alt feature-icon-text"></i>
+                    </div>
+                    <h4>모바일 최적화</h4>
+                    <p>모든 기기에서 단백질 필요량을 계산할 수 있습니다. 스마트폰, 태블릿, 데스크톱에서 완벽하게 작동하는 반응형 디자인입니다.</p>
+                </div>
+            </section>
+
+            <!-- Related Calculators Section -->
+            <section class="related-section">
+                <h3>관련 건강 계산기</h3>
+                <div class="related-grid">
+                    <a href="/health/calorie-calculator.html" class="related-card">
+                        <i class="fas fa-fire"></i>
+                        <h4>칼로리 계산기</h4>
+                        <p>일일 칼로리 필요량 계산</p>
+                    </a>
+                    <a href="/health/bmi-calculator.html" class="related-card">
+                        <i class="fas fa-weight"></i>
+                        <h4>BMI 계산기</h4>
+                        <p>체질량지수 계산</p>
+                    </a>
+                    <a href="/health/weight-loss-calculator.html" class="related-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>체중 감량 계산기</h4>
+                        <p>체중 감량 계획 수립</p>
+                    </a>
+                    <a href="/" class="related-card">
+                        <i class="fas fa-calculator"></i>
+                        <h4>더 많은 계산기</h4>
+                        <p>65개 이상의 계산기 탐색</p>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-social">
+                <a href="https://x.com/8hqmx" target="_blank" rel="noopener noreferrer" class="footer-twitter" aria-label="Follow us on X (Twitter)">
+                    <img src="/assets/x-twitter-footer.svg" alt="X (Twitter)" class="footer-social-icon">
+                </a>
+            </div>
+            <p>
+                <span>&copy; 2024 HQMX Calculator. All Rights Reserved.</span>
+                <span class="footer-contact"> • support@hqmx.net</span>
+            </p>
+        </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="/i18n.js?v=20251101fix"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/calculators/protein.js"></script>
+</body>
+</html>
