@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tax Calculator - VAT & Sales Tax Calculator | HQMX</title>
+    <meta name="description"
+        content="Free online tax calculator. Calculate VAT, sales tax, and remove tax from total amount. Supports add tax and remove tax modes.">
+    <meta name="keywords"
+        content="tax calculator, vat calculator, sales tax calculator, add tax, remove tax, gst calculator, 세금 계산기, 부가세 계산기">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css?v=20250118mobile">
+    <link rel="stylesheet" href="/css/calculator.css?v=20250118nav">
+
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+</head>
+
+<body>
+    <div class="container">
+        <!-- Navigation Header -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <a href="/" class="converter-logo-link">
+                    <div class="converter-logo" dir="ltr">
+                        <span class="converter-text"><span class="converter-c">C</span><span
+                                class="converter-rest">ALCULATOR</span></span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="nav-center">
+                <button class="hamburger-menu" id="hamburgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="nav-menu">
+                    <a href="/" class="nav-link">Home</a>
+                    <a href="/how-to-use" class="nav-link">How to Use</a>
+                    <a href="/faq" class="nav-link">FAQ</a>
+                    <a href="/api.html" class="nav-link">API</a>
+                </div>
+
+                <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+                    <div class="mobile-menu-box">
+                        <div class="mobile-menu-links">
+                            <a href="/" class="mobile-menu-link">Home</a>
+                            <a href="/how-to-use" class="mobile-menu-link">How to Use</a>
+                            <a href="/faq" class="mobile-menu-link">FAQ</a>
+                            <a href="/api.html" class="mobile-menu-link">API</a>
+                        </div>
+
+                        <div class="mobile-menu-controls">
+                            <div class="mobile-control-item menu-divider">
+                                <button id="mobileThemeToggleBtn" class="mobile-theme-toggle-btn">
+                                    <i class="fas fa-sun"></i>
+                                    <i class="fas fa-moon"></i>
+                                </button>
+                                <button id="mobileLanguageSelectorBtn" class="mobile-language-selector-btn">
+                                    <i class="fas fa-globe"></i>
+                                    <span id="mobileCurrentLanguage">EN</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="mobile-control-item">
+                                <div id="mobileLanguageOptions" class="mobile-language-options">
+                                    <a href="#" data-lang="en">English</a>
+                                    <a href="#" data-lang="ko">한국어</a>
+                                    <a href="#" data-lang="es">Español</a>
+                                    <a href="#" data-lang="fr">Français</a>
+                                    <a href="#" data-lang="de">Deutsch</a>
+                                    <a href="#" data-lang="ja">日本語</a>
+                                    <a href="#" data-lang="zh-CN">简体中文</a>
+                                    <a href="#" data-lang="pt">Português</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <button id="themeToggleBtn" class="theme-toggle-btn">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="language-switcher">
+                    <button id="language-selector-btn" class="language-selector-btn">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">English</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="language-options" class="language-options">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="ko">한국어</a>
+                        <a href="#" data-lang="es">Español</a>
+                        <a href="#" data-lang="fr">Français</a>
+                        <a href="#" data-lang="de">Deutsch</a>
+                        <a href="#" data-lang="ja">日本語</a>
+                        <a href="#" data-lang="zh-CN">简体中文</a>
+                        <a href="#" data-lang="pt">Português</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <header class="header">
+            <p class="tagline" data-i18n-key="tax.tagline">Tax Calculator</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Tax Calculator Section -->
+            <section class="upload-section">
+                <div class="upload-container">
+                    <h4 data-i18n-key="tax.subtitle">Calculate VAT & Sales Tax Instantly</h4>
+
+                    <div class="calculator-inputs">
+                        <!-- Mode Selection -->
+                        <div class="input-group">
+                            <label data-i18n-key="tax.modeLabel">Calculation Mode</label>
+                            <div class="gender-toggle" style="grid-template-columns: 1fr 1fr;">
+                                <button class="gender-btn active" data-mode="add">
+                                    <i class="fas fa-plus-circle"></i> <span data-i18n-key="tax.addTax">Add Tax</span>
+                                </button>
+                                <button class="gender-btn" data-mode="remove">
+                                    <i class="fas fa-minus-circle"></i> <span data-i18n-key="tax.removeTax">Remove
+                                        Tax</span>
+                                </button>
+                            </div>
+                            <input type="hidden" id="calcMode" value="add">
+                        </div>
+
+                        <!-- Amount Input -->
+                        <div class="input-group">
+                            <label for="amount">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <span data-i18n-key="tax.amount">Amount</span>
+                            </label>
+                            <div class="input-with-unit">
+                                <input type="number" id="amount" data-i18n-placeholder="tax.amountPlaceholder"
+                                    placeholder="Enter amount" min="0" step="0.01">
+                                <span class="unit-label">$</span>
+                            </div>
+                            <span class="input-hint" id="amountHint" data-i18n-key="tax.amountHintAdd">Net amount
+                                (before tax)</span>
+                        </div>
+
+                        <!-- Tax Rate Input -->
+                        <div class="input-group">
+                            <label for="taxRate">
+                                <i class="fas fa-percentage"></i>
+                                <span data-i18n-key="tax.taxRate">Tax Rate</span>
+                            </label>
+                            <div class="input-with-unit">
+                                <input type="number" id="taxRate" data-i18n-placeholder="tax.taxRatePlaceholder"
+                                    placeholder="Enter tax rate" min="0" max="100" step="0.1" value="10">
+                                <span class="unit-label">%</span>
+                            </div>
+                            <div class="preset-rates"
+                                style="margin-top: 0.5rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                                <button class="preset-btn" data-rate="5">5%</button>
+                                <button class="preset-btn" data-rate="10">10%</button>
+                                <button class="preset-btn" data-rate="15">15%</button>
+                                <button class="preset-btn" data-rate="20">20%</button>
+                            </div>
+                        </div>
+
+                        <!-- Calculate Button -->
+                        <button class="calculate-btn" id="calculateBtn">
+                            <i class="fas fa-calculator"></i>
+                            <span data-i18n-key="tax.calculateBtn">Calculate Tax</span>
+                        </button>
+
+                        <!-- Error Message -->
+                        <div class="error-message" id="errorMessage" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span id="errorText"></span>
+                        </div>
+                    </div>
+
+                    <!-- Results Display -->
+                    <div class="calculator-results" id="resultsSection"
+                        style="display: none; margin-top: 3rem !important;">
+                        <div class="result-cards-grid" style="grid-template-columns: repeat(3, 1fr);">
+                            <div class="result-card highlight">
+                                <div class="result-label" data-i18n-key="tax.totalAmount">Total Amount</div>
+                                <div class="result-value" id="totalAmount">-</div>
+                                <div class="result-sublabel" data-i18n-key="tax.grossAmount">Gross Amount</div>
+                            </div>
+
+                            <div class="result-card">
+                                <div class="result-label" data-i18n-key="tax.taxAmount">Tax Amount</div>
+                                <div class="result-value" id="taxAmount">-</div>
+                                <div class="result-sublabel" id="taxRateDisplay">@ 10%</div>
+                            </div>
+
+                            <div class="result-card">
+                                <div class="result-label" data-i18n-key="tax.netAmount">Net Amount</div>
+                                <div class="result-value" id="netAmount">-</div>
+                                <div class="result-sublabel" data-i18n-key="tax.beforeTax">Before Tax</div>
+                            </div>
+                        </div>
+
+                        <button class="recalculate-btn" id="recalculateBtn">
+                            <i class="fas fa-redo"></i>
+                            <span data-i18n-key="tax.recalculateBtn">Calculate Again</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How to Use Section -->
+            <section class="usage-guide-section">
+                <h3 data-i18n-key="tax.howToUseTitle">How to Use This Tax Calculator</h3>
+                <p class="section-description" data-i18n-key="tax.howToUseDescription">Calculate sales tax, VAT, or GST in 3 simple steps.</p>
+                <div class="guide-steps">
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">1</span>
+                            <h4 data-i18n-key="tax.howToUseStep1Title">Select Mode</h4>
+                        </div>
+                        <div class="step-content">
+                            <p data-i18n-key="tax.howToUseStep1Text">Choose "Add Tax" to calculate tax on a net price, or "Remove Tax" to find the net price
+                                from a total amount.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">2</span>
+                            <h4 data-i18n-key="tax.howToUseStep2Title">Enter Amount & Rate</h4>
+                        </div>
+                        <div class="step-content">
+                            <p data-i18n-key="tax.howToUseStep2Text">Input the monetary amount and the tax percentage rate. You can use the preset buttons for
+                                common tax rates.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">3</span>
+                            <h4 data-i18n-key="tax.howToUseStep3Title">View Results</h4>
+                        </div>
+                        <div class="step-content">
+                            <p data-i18n-key="tax.howToUseStep3Text">Instantly see the Net Amount, Tax Amount, and Total (Gross) Amount breakdown.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Responsive Ad Banner -->
+            <div class="responsive-ad-banner">
+                <div class="ad-desktop">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key': 'a0109a486ddd226684cfa5934f412a88',
+                            'format': 'iframe',
+                            'height': 90,
+                            'width': 728,
+                            'params': {}
+                        };
+                    </script>
+                    <script type="text/javascript"
+                        src="//annoyingnightmareedit.com/a0109a486ddd226684cfa5934f412a88/invoke.js"></script>
+                </div>
+                <div class="ad-tablet">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key': 'cb93fb1de0136f18561bd497f24daa03',
+                            'format': 'iframe',
+                            'height': 60,
+                            'width': 468,
+                            'params': {}
+                        };
+                    </script>
+                    <script type="text/javascript"
+                        src="//annoyingnightmareedit.com/cb93fb1de0136f18561bd497f24daa03/invoke.js"></script>
+                </div>
+                <div class="ad-mobile">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key': '266dce0b2742554614d486d3a6e08060',
+                            'format': 'iframe',
+                            'height': 50,
+                            'width': 320,
+                            'params': {}
+                        };
+                    </script>
+                    <script type="text/javascript"
+                        src="//annoyingnightmareedit.com/266dce0b2742554614d486d3a6e08060/invoke.js"></script>
+                </div>
+            </div>
+
+            <!-- Examples Section -->
+            <section class="examples-section">
+                <h3 data-i18n-key="tax.examplesTitle">Tax Calculation Examples</h3>
+                <div class="example-grid">
+                    <div class="example-card example-normal">
+                        <div class="example-header">
+                            <span class="example-icon">➕</span>
+                            <h4 data-i18n-key="tax.example1Title">Add Tax (VAT)</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label" data-i18n-key="tax.exampleNetPriceLabel">Net Price:</span>
+                                <span class="value">$100.00</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label" data-i18n-key="tax.exampleTaxRateLabel">Tax Rate:</span>
+                                <span class="value">10%</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label" data-i18n-key="tax.exampleTotalPriceLabel">Total Price:</span>
+                                <span class="value bmi-highlight">$110.00</span>
+                            </div>
+                            <div class="example-category">
+                                <span class="category-badge normal"><span data-i18n-key="tax.exampleTaxLabel">Tax:</span> $10.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-card example-overweight">
+                        <div class="example-header">
+                            <span class="example-icon">➖</span>
+                            <h4 data-i18n-key="tax.example2Title">Remove Tax (VAT)</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label" data-i18n-key="tax.exampleTotalPriceLabel">Total Price:</span>
+                                <span class="value">$110.00</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label" data-i18n-key="tax.exampleTaxRateLabel">Tax Rate:</span>
+                                <span class="value">10%</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label" data-i18n-key="tax.exampleNetPriceLabel">Net Price:</span>
+                                <span class="value bmi-highlight">$100.00</span>
+                            </div>
+                            <div class="example-category">
+                                <span class="category-badge overweight"><span data-i18n-key="tax.exampleTaxLabel">Tax:</span> $10.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-card example-underweight">
+                        <div class="example-header">
+                            <span class="example-icon">🛒</span>
+                            <h4 data-i18n-key="tax.example3Title">Sales Tax</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label" data-i18n-key="tax.examplePriceLabel">Price:</span>
+                                <span class="value">$49.99</span>
+                            </div>
+                            <div class="example-detail">
+                                <span class="label" data-i18n-key="tax.exampleTaxRateLabel">Tax Rate:</span>
+                                <span class="value">8.5%</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label" data-i18n-key="tax.exampleTotalLabel">Total:</span>
+                                <span class="value bmi-highlight">$54.24</span>
+                            </div>
+                            <div class="example-category">
+                                <span class="category-badge underweight"><span data-i18n-key="tax.exampleTaxLabel">Tax:</span> $4.25</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Info Section -->
+            <section class="info-section">
+                <h3 data-i18n-key="tax.understandingTitle">Understanding Tax Calculations</h3>
+                <div class="info-content">
+                    <p data-i18n-key="tax.understandingText">Whether you're calculating Sales Tax, VAT (Value Added Tax), or GST (Goods and Services Tax), the
+                        math is generally the same.</p>
+
+                    <div class="formula-box">
+                        <h4 data-i18n-key="tax.formulasTitle">Formulas:</h4>
+                        <p data-i18n-html="tax.formulaAdd"><strong>Add Tax:</strong> Total = Net Amount × (1 + Rate/100)</p>
+                        <p data-i18n-html="tax.formulaRemove"><strong>Remove Tax:</strong> Net Amount = Total / (1 + Rate/100)</p>
+                        <p data-i18n-html="tax.formulaTaxAmount"><strong>Tax Amount:</strong> Total - Net Amount</p>
+                    </div>
+
+                    <div class="important-notes">
+                        <h4 data-i18n-key="tax.commonRatesTitle">Common Tax Rates:</h4>
+                        <ul>
+                            <li data-i18n-html="tax.commonRate1"><strong>VAT (UK/EU):</strong> Typically 20% (Standard)</li>
+                            <li data-i18n-html="tax.commonRate2"><strong>GST (Australia):</strong> 10%</li>
+                            <li data-i18n-html="tax.commonRate3"><strong>Sales Tax (US):</strong> Varies by state (0% - 10%+)</li>
+                            <li data-i18n-html="tax.commonRate4"><strong>Consumption Tax (Japan):</strong> 10%</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="faq-section">
+                <h3 data-i18n-key="tax.faqTitle">Frequently Asked Questions</h3>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> <span data-i18n-key="tax.faq1Title">What is the difference between Sales Tax and VAT?</span>
+                        </h4>
+                        <p data-i18n-key="tax.faq1Text">Sales Tax is collected only at the final sale to the consumer. VAT is collected at every
+                            stage of production and distribution. However, for the final consumer, the calculation
+                            method is often the same (percentage added to price).</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> <span data-i18n-key="tax.faq2Title">How do I calculate tax backwards?</span></h4>
+                        <p data-i18n-key="tax.faq2Text">Use the "Remove Tax" mode. The formula is: Total Price ÷ (1 + Tax Rate). For example, if
+                            Total is $110 and Tax is 10%, Net = 110 ÷ 1.10 = $100.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> <span data-i18n-key="tax.faq3Title">Can I use this for GST?</span></h4>
+                        <p data-i18n-key="tax.faq3Text">Yes! GST (Goods and Services Tax) works exactly like VAT. Just enter your local GST rate
+                            (e.g., 10% for Australia, 5% for Canada) to calculate.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="feature-section">
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-calculator feature-icon-text"></i>
+                    </div>
+                    <h4 data-i18n-key="tax.feature1Title">Dual Modes</h4>
+                    <p data-i18n-key="tax.feature1Text">Easily switch between adding tax to a net price and removing tax from a gross price.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-percentage feature-icon-text"></i>
+                    </div>
+                    <h4 data-i18n-key="tax.feature2Title">Custom Rates</h4>
+                    <p data-i18n-key="tax.feature2Text">Enter any tax rate or use quick presets for common percentages.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-mobile-alt feature-icon-text"></i>
+                    </div>
+                    <h4 data-i18n-key="tax.feature3Title">Mobile Ready</h4>
+                    <p data-i18n-key="tax.feature3Text">Calculate taxes on the go with our fully responsive mobile design.</p>
+                </div>
+            </section>
+
+            <!-- Related Calculators Section -->
+            <section class="related-section">
+                <h3 data-i18n-key="tax.relatedTitle">Related Finance Calculators</h3>
+                <div class="related-grid">
+                    <a href="/finance/salary-calculator.html" class="related-card">
+                        <i class="fas fa-money-check-alt"></i>
+                        <h4 data-i18n-key="tax.relatedSalaryTitle">Salary Calculator</h4>
+                        <p data-i18n-key="tax.relatedSalaryText">Calculate take-home pay</p>
+                    </a>
+                    <a href="/finance/currency-converter.html" class="related-card">
+                        <i class="fas fa-exchange-alt"></i>
+                        <h4 data-i18n-key="tax.relatedCurrencyTitle">Currency Converter</h4>
+                        <p data-i18n-key="tax.relatedCurrencyText">Live exchange rates</p>
+                    </a>
+                    <a href="/general/percentage-calculator.html" class="related-card">
+                        <i class="fas fa-percent"></i>
+                        <h4 data-i18n-key="tax.relatedPercentageTitle">Percentage Calculator</h4>
+                        <p data-i18n-key="tax.relatedPercentageText">Calculate percentages</p>
+                    </a>
+                    <a href="/" class="related-card">
+                        <i class="fas fa-calculator"></i>
+                        <h4 data-i18n-key="tax.relatedMoreTitle">More Calculators</h4>
+                        <p data-i18n-key="tax.relatedMoreText">Explore all 65+ calculators</p>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-social">
+                <a href="https://x.com/8hqmx" target="_blank" rel="noopener noreferrer" class="footer-twitter">
+                    <img src="/assets/x-twitter-footer.svg" alt="X (Twitter)" class="footer-social-icon">
+                </a>
+            </div>
+            <p>
+                <span>&copy; 2024 HQMX Calculator. All Rights Reserved.</span>
+                <span class="footer-contact"> • support@hqmx.net</span>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/i18n.js?v=20251101fix"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/calculators/tax.js"></script>
+</body>
+
+</html>

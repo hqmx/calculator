@@ -51,5 +51,140 @@
     "subtractPercentFrom": "Y에서 X% 빼기",
     "calculateBtn": "계산하기",
     "result": "결과"
+  },
+  "equation": {
+    "tagline": "방정식 풀이",
+    "subtitle": "1차 및 2차 방정식을 즉시 풀어보세요",
+    "solveBtn": "방정식 풀기",
+    "solveAgainBtn": "다시 풀기"
+  },
+  "statistics": {
+    "tagline": "통계 계산기",
+    "subtitle": "평균, 중앙값, 표준편차 등을 계산하세요",
+    "calculateBtn": "통계 계산하기",
+    "recalculateBtn": "다시 계산하기"
+  },
+  "probability": {
+    "tagline": "확률 계산기",
+    "subtitle": "조합과 순열을 계산하세요",
+    "calculateBtn": "계산하기",
+    "recalculateBtn": "다시 계산하기"
+  },
+  "pixel": {
+    "tagline": "픽셀 계산기",
+    "subtitle": "DPI, PPI 및 화면 해상도를 계산하세요",
+    "calculateBtn": "PPI/DPI 계산하기",
+    "recalculateBtn": "다시 계산하기"
+  },
+  "videoBitrate": {
+    "tagline": "비디오 비트레이트 계산기",
+    "subtitle": "비디오 파일 크기 및 비트레이트를 계산하세요",
+    "calculateBtn": "파일 크기 계산하기",
+    "recalculateBtn": "다시 계산하기"
+  },
+  "aspectRatio": {
+    "tagline": "화면 비율 계산기",
+    "subtitle": "화면 비율을 계산하고 유지하세요",
+    "calculateBtn": "비율 계산하기",
+    "recalculateBtn": "다시 계산하기"
+  },
+  "paint": {
+    "tagline": "페인트 계산기",
+    "subtitle": "프로젝트에 필요한 페인트 양을 계산하세요",
+    "calculateBtn": "페인트 양 계산하기",
+    "recalculateBtn": "다시 계산하기"
+  },
+  "tile": {
+    "tagline": "타일 계산기",
+    "subtitle": "프로젝트에 필요한 타일 개수를 계산하세요",
+    "calculateBtn": "타일 개수 계산하기",
+    "recalculateBtn": "다시 계산하기"
+  },
+  "concrete": {
+    "tagline": "콘크리트 계산기",
+    "subtitle": "프로젝트에 필요한 콘크리트 양을 계산하세요",
+    "calculateBtn": "콘크리트 양 계산하기",
+    "recalculateBtn": "다시 계산하기"
+  },
+  "wallpaper": {
+    "tagline": "벽지 계산기",
+    "subtitle": "필요한 벽지 롤 수를 계산하세요",
+    "calculateBtn": "롤 수 계산하기",
+    "recalculateBtn": "다시 계산하기"
+  },
+  "tax": {
+    "tagline": "세금 계산기",
+    "subtitle": "부가세 및 판매세를 즉시 계산하세요",
+    "modeLabel": "계산 모드",
+    "addTax": "세금 더하기",
+    "removeTax": "세금 빼기",
+    "amount": "금액",
+    "amountPlaceholder": "금액을 입력하세요",
+    "amountHintAdd": "순수 금액 (세전)",
+    "amountHintRemove": "총 금액 (세금 포함)",
+    "taxRate": "세율",
+    "taxRatePlaceholder": "세율을 입력하세요",
+    "calculateBtn": "세금 계산하기",
+    "recalculateBtn": "다시 계산하기",
+    "totalAmount": "총 금액",
+    "grossAmount": "총액",
+    "taxAmount": "세금",
+    "netAmount": "순수 금액",
+    "beforeTax": "세전",
+    "howToUseTitle": "세금 계산기 사용 방법",
+    "howToUseDescription": "3단계로 간단하게 판매세, 부가가치세(VAT), 상품용역세(GST)를 계산하세요.",
+    "howToUseStep1Title": "모드 선택",
+    "howToUseStep1Text": "\"세금 추가\"를 선택하여 순 가격에 대한 세금을 계산하거나, \"세금 제외\"를 선택하여 총액에서 순 가격을 찾으세요.",
+    "howToUseStep2Title": "금액 및 세율 입력",
+    "howToUseStep2Text": "금액과 세율(%)을 입력하세요. 일반적인 세율에 대해서는 미리 설정된 버튼을 사용할 수 있습니다.",
+    "howToUseStep3Title": "결과 보기",
+    "howToUseStep3Text": "순 금액, 세액, 총액(세후) 내역을 즉시 확인하세요.",
+    "examplesTitle": "세금 계산 예시",
+    "example1Title": "세금 추가 (부가가치세)",
+    "exampleNetPriceLabel": "순 가격:",
+    "exampleTaxRateLabel": "세율:",
+    "exampleTotalPriceLabel": "총 가격:",
+    "exampleTaxLabel": "세금:",
+    "example2Title": "세금 제외 (부가가치세)",
+    "example3Title": "판매세",
+    "examplePriceLabel": "가격:",
+    "exampleTotalLabel": "총계:",
+    "understandingTitle": "세금 계산 이해하기",
+    "understandingText": "판매세, 부가가치세(VAT), 또는 상품용역세(GST) 중 무엇을 계산하든 계산 방식은 일반적으로 동일합니다.",
+    "formulasTitle": "계산식:",
+    "formulaAdd": "<strong>세금 추가:</strong> 총액 = 순 금액 × (1 + 세율/100)",
+    "formulaRemove": "<strong>세금 제외:</strong> 순 금액 = 총액 / (1 + 세율/100)",
+    "formulaTaxAmount": "<strong>세액:</strong> 총액 - 순 금액",
+    "commonRatesTitle": "일반적인 세율:",
+    "commonRate1": "<strong>부가가치세 (영국/EU):</strong> 일반적으로 20% (표준)",
+    "commonRate2": "<strong>상품용역세 (호주):</strong> 10%",
+    "commonRate3": "<strong>판매세 (미국):</strong> 주마다 다름 (0% - 10%+)",
+    "commonRate4": "<strong>소비세 (일본):</strong> 10%",
+    "faqTitle": "자주 묻는 질문",
+    "faq1Title": "판매세와 부가가치세(VAT)의 차이점은 무엇인가요?",
+    "faq1Text": "판매세는 소비자에게 최종 판매될 때만 징수됩니다. 부가가치세는 생산 및 유통의 모든 단계에서 징수됩니다. 그러나 최종 소비자의 경우 계산 방법(가격에 백분율 추가)은 종종 동일합니다.",
+    "faq2Title": "세금을 역으로 계산하려면 어떻게 해야 하나요?",
+    "faq2Text": "\"세금 제외\" 모드를 사용하세요. 계산식은 총 가격 ÷ (1 + 세율) 입니다. 예를 들어, 총액이 $110이고 세율이 10%인 경우, 순 금액 = 110 ÷ 1.10 = $100 입니다.",
+    "faq3Title": "이것을 상품용역세(GST) 계산에 사용할 수 있나요?",
+    "faq3Text": "네! 상품용역세(GST)는 부가가치세(VAT)와 똑같이 작동합니다. 계산하려면 현지 GST 세율(예: 호주 10%, 캐나다 5%)을 입력하기만 하면 됩니다.",
+    "feature1Title": "듀얼 모드",
+    "feature1Text": "순 가격에 세금을 추가하는 것과 총 가격에서 세금을 제외하는 것 사이를 쉽게 전환할 수 있습니다.",
+    "feature2Title": "사용자 지정 세율",
+    "feature2Text": "임의의 세율을 입력하거나 일반적인 백분율에 대해 빠른 사전 설정을 사용하세요.",
+    "feature3Title": "모바일 지원",
+    "feature3Text": "완벽하게 반응하는 모바일 디자인으로 이동 중에도 세금을 계산하세요.",
+    "relatedTitle": "관련 금융 계산기",
+    "relatedSalaryTitle": "급여 계산기",
+    "relatedSalaryText": "실수령액 계산",
+    "relatedCurrencyTitle": "환율 변환기",
+    "relatedCurrencyText": "실시간 환율",
+    "relatedPercentageTitle": "퍼센트 계산기",
+    "relatedPercentageText": "백분율 계산",
+    "relatedMoreTitle": "더 많은 계산기",
+    "relatedMoreText": "65개 이상의 모든 계산기 살펴보기"
+  },
+  "error": {
+    "invalidAmount": "유효한 금액을 입력해주세요.",
+    "invalidTaxRate": "유효한 세율을 입력해주세요."
   }
 }
