@@ -304,7 +304,7 @@
             <section class="usage-guide-section">
                 <h3>주택담보대출 계산기 사용 방법</h3>
                 <p class="section-description">아래 단계를 따라 대출 상환액을 쉽고 빠르게 계산하세요.</p>
-                <div class="guide-steps">
+                <div class="guide-steps steps-grid-3">
                     <div class="step">
                         <div class="step-header">
                             <span class="step-number">1</span>
@@ -728,6 +728,32 @@
     <script src="/i18n.js?v=20251101fix"></script>
     <script src="/js/main.js"></script>
     <script src="/js/calculators/mortgage.js"></script>
+
+    <!-- ExoClick Video Slider - 페이지 로드 후 35초 후 로드 -->
+    <script>
+        // 35초 지연 후 ExoClick 비디오 슬라이더 광고 로드
+        setTimeout(function() {
+            // ad-provider.js 스크립트 로드
+            var adScript = document.createElement('script');
+            adScript.type = 'application/javascript';
+            adScript.async = true;
+            adScript.src = 'https://a.magsrv.com/ad-provider.js';
+
+            // ins 요소 생성 및 추가
+            var insElement = document.createElement('ins');
+            insElement.className = 'eas6a97888e31';
+            insElement.setAttribute('data-zoneid', '5760302');
+
+            // body에 요소들 추가
+            document.body.appendChild(adScript);
+            document.body.appendChild(insElement);
+
+            // AdProvider 초기화 (스크립트 로드 완료 후)
+            adScript.onload = function() {
+                (window.AdProvider = window.AdProvider || []).push({"serve": {}});
+            };
+        }, 35000); // 35초 = 35000ms
+    </script>
 </body>
 
 </html>

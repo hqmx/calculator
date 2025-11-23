@@ -262,7 +262,7 @@
 
             <section class="usage-guide-section">
                 <h3>사용 방법 (How to Use)</h3>
-                <div class="guide-steps">
+                <div class="guide-steps steps-grid-3">
                     <div class="step">
                         <div class="step-header"><span class="step-number">1</span><h4>모드 선택 (Select Mode)</h4></div>
                         <div class="step-content"><p>삼각함수 계산을 위해 DEG(도) 또는 RAD(라디안) 모드를 선택하세요. 대부분의 학교 수학에서는 DEG를 사용합니다.</p></div>
@@ -319,5 +319,31 @@
     <script src="/i18n.js?v=20251101fix"></script>
     <script src="/nav-common.js"></script>
     <script src="/js/calculators/scientific.js"></script>
+
+    <!-- ExoClick Video Slider - 페이지 로드 후 35초 후 로드 -->
+    <script>
+        // 35초 지연 후 ExoClick 비디오 슬라이더 광고 로드
+        setTimeout(function() {
+            // ad-provider.js 스크립트 로드
+            var adScript = document.createElement('script');
+            adScript.type = 'application/javascript';
+            adScript.async = true;
+            adScript.src = 'https://a.magsrv.com/ad-provider.js';
+
+            // ins 요소 생성 및 추가
+            var insElement = document.createElement('ins');
+            insElement.className = 'eas6a97888e31';
+            insElement.setAttribute('data-zoneid', '5760302');
+
+            // body에 요소들 추가
+            document.body.appendChild(adScript);
+            document.body.appendChild(insElement);
+
+            // AdProvider 초기화 (스크립트 로드 완료 후)
+            adScript.onload = function() {
+                (window.AdProvider = window.AdProvider || []).push({"serve": {}});
+            };
+        }, 35000); // 35초 = 35000ms
+    </script>
 </body>
 </html>

@@ -149,7 +149,7 @@
             
             <section class="usage-guide-section">
                 <h3>사용 방법 (How to Use)</h3>
-                <div class="guide-steps">
+                <div class="guide-steps steps-grid-3">
                     <div class="step"><div class="step-header"><span class="step-number">1</span><h4>분수 입력 (Enter Fractions)</h4></div><div class="step-content"><p>분자와 분모를 각 필드에 입력하세요. 예: 1/2 + 1/4</p></div></div>
                     <div class="step"><div class="step-header"><span class="step-number">2</span><h4>연산 선택 (Choose Operation)</h4></div><div class="step-content"><p>+, -, ×, ÷ 버튼을 클릭하여 원하는 계산을 선택하세요.</p></div></div>
                     <div class="step"><div class="step-header"><span class="step-number">3</span><h4>결과 확인 (Get Result)</h4></div><div class="step-content"><p>결과는 자동으로 약분된 분수와 소수 형태로 표시됩니다.</p></div></div>
@@ -194,5 +194,31 @@
     <script src="/i18n.js?v=20251101fix"></script>
     <script src="/nav-common.js"></script>
     <script src="/js/calculators/fraction.js"></script>
+
+    <!-- ExoClick Video Slider - 페이지 로드 후 35초 후 로드 -->
+    <script>
+        // 35초 지연 후 ExoClick 비디오 슬라이더 광고 로드
+        setTimeout(function() {
+            // ad-provider.js 스크립트 로드
+            var adScript = document.createElement('script');
+            adScript.type = 'application/javascript';
+            adScript.async = true;
+            adScript.src = 'https://a.magsrv.com/ad-provider.js';
+
+            // ins 요소 생성 및 추가
+            var insElement = document.createElement('ins');
+            insElement.className = 'eas6a97888e31';
+            insElement.setAttribute('data-zoneid', '5760302');
+
+            // body에 요소들 추가
+            document.body.appendChild(adScript);
+            document.body.appendChild(insElement);
+
+            // AdProvider 초기화 (스크립트 로드 완료 후)
+            adScript.onload = function() {
+                (window.AdProvider = window.AdProvider || []).push({"serve": {}});
+            };
+        }, 35000); // 35초 = 35000ms
+    </script>
 </body>
 </html>
