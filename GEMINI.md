@@ -577,7 +577,7 @@ git push origin main
 
 # EC2 서버 배포
 ssh -i hqmx-ec2.pem ubuntu@3.213.100.223
-cd /var/www/calculator
+cd /var/www/html
 git pull origin main
 ```
 

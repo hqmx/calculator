@@ -1587,12 +1587,18 @@ body[data-theme="dark"] .format-option {
 /* Feature Section */
 .feature-section {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     padding: 1rem 0;
     background: transparent;
     border: none;
     box-shadow: none;
+}
+
+@media (max-width: 768px) {
+    .feature-section {
+        grid-template-columns: 1fr;
+    }
 }
 
 .feature-item {
