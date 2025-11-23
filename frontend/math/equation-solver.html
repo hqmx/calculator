@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equation Solver - Solve Linear & Quadratic Equations | HQMX</title>
+    <meta name="description"
+        content="Free online equation solver. Solve linear and quadratic equations instantly. Get step-by-step solutions for 1st and 2nd degree equations.">
+    <meta name="keywords"
+        content="equation solver, quadratic equation, linear equation, math calculator, solve equations, 방정식 풀이, equation calculator">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css?v=20250118mobile">
+    <link rel="stylesheet" href="/css/calculator.css?v=20250118nav">
+
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+</head>
+
+<body>
+    <div class="container">
+        <!-- Navigation Header -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <a href="/" class="converter-logo-link">
+                    <div class="converter-logo" dir="ltr">
+                        <span class="converter-text"><span class="converter-c">C</span><span
+                                class="converter-rest">ALCULATOR</span></span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="nav-center">
+                <!-- 햄버거 메뉴 버튼 (모바일용) -->
+                <button class="hamburger-menu" id="hamburgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="nav-menu">
+                    <a href="/" class="nav-link active">Home</a>
+                    <a href="/how-to-use" class="nav-link">How to Use</a>
+                    <a href="/faq" class="nav-link">FAQ</a>
+                    <a href="/sitemap" class="nav-link">Site Map</a>
+                    <a href="/api.html" class="nav-link">API</a>
+                </div>
+
+                <!-- 모바일 메뉴 오버레이 -->
+                <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+                    <div class="mobile-menu-box">
+                        <!-- 모바일 메뉴 페이지 링크 -->
+                        <div class="mobile-menu-links">
+                            <a href="/" class="mobile-menu-link active">Home</a>
+                            <a href="/how-to-use" class="mobile-menu-link">How to Use</a>
+                            <a href="/faq" class="mobile-menu-link">FAQ</a>
+                            <a href="/sitemap" class="mobile-menu-link">Site Map</a>
+                            <a href="/api.html" class="mobile-menu-link">API</a>
+                        </div>
+
+                        <div class="mobile-menu-controls">
+                            <div class="mobile-control-item menu-divider">
+                                <button id="mobileThemeToggleBtn" class="mobile-theme-toggle-btn">
+                                    <i class="fas fa-sun"></i>
+                                    <i class="fas fa-moon"></i>
+                                </button>
+                                <button id="mobileLanguageSelectorBtn" class="mobile-language-selector-btn">
+                                    <i class="fas fa-globe"></i>
+                                    <span id="mobileCurrentLanguage">EN</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="mobile-control-item">
+                                <div id="mobileLanguageOptions" class="mobile-language-options">
+                                    <a href="#" data-lang="en">English</a>
+                                    <a href="#" data-lang="de">Deutsch</a>
+                                    <a href="#" data-lang="es">Español</a>
+                                    <a href="#" data-lang="fr">Français</a>
+                                    <a href="#" data-lang="hi">हिन्दी / Hindī</a>
+                                    <a href="#" data-lang="id">Bahasa Indonesia</a>
+                                    <a href="#" data-lang="it">Italiano</a>
+                                    <a href="#" data-lang="ko">한국어</a>
+                                    <a href="#" data-lang="ja">日本語</a>
+                                    <a href="#" data-lang="my">Myanmar (မြန်မာ)</a>
+                                    <a href="#" data-lang="ms">Malay</a>
+                                    <a href="#" data-lang="fil">Filipino</a>
+                                    <a href="#" data-lang="pt">Português</a>
+                                    <a href="#" data-lang="ru">Русский</a>
+                                    <a href="#" data-lang="th">ไทย</a>
+                                    <a href="#" data-lang="tr">Türkçe</a>
+                                    <a href="#" data-lang="vi">Tiếng Việt</a>
+                                    <a href="#" data-lang="zh-CN">简体中文</a>
+                                    <a href="#" data-lang="zh-TW">繁體中文</a>
+                                    <a href="#" data-lang="ar">عربي</a>
+                                    <a href="#" data-lang="bn">বাঙালি</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <button id="themeToggleBtn" class="theme-toggle-btn">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="language-switcher">
+                    <button id="language-selector-btn" class="language-selector-btn">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">English</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="language-options" class="language-options">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="de">Deutsch</a>
+                        <a href="#" data-lang="es">Español</a>
+                        <a href="#" data-lang="fr">Français</a>
+                        <a href="#" data-lang="hi">हिन्दी / Hindī</a>
+                        <a href="#" data-lang="id">Bahasa Indonesia</a>
+                        <a href="#" data-lang="it">Italiano</a>
+                        <a href="#" data-lang="ko">한국어</a>
+                        <a href="#" data-lang="ja">日本語</a>
+                        <a href="#" data-lang="my">Myanmar (မြန်မာ)</a>
+                        <a href="#" data-lang="ms">Malay</a>
+                        <a href="#" data-lang="fil">Filipino</a>
+                        <a href="#" data-lang="pt">Português</a>
+                        <a href="#" data-lang="ru">Русский</a>
+                        <a href="#" data-lang="th">ไทย</a>
+                        <a href="#" data-lang="tr">Türkçe</a>
+                        <a href="#" data-lang="vi">Tiếng Việt</a>
+                        <a href="#" data-lang="zh-CN">简体中文</a>
+                        <a href="#" data-lang="zh-TW">繁體中文</a>
+                        <a href="#" data-lang="ar">عربي</a>
+                        <a href="#" data-lang="bn">বাঙালি</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <header class="header">
+            <p class="tagline" data-i18n-key="equation.tagline">Equation Solver</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Equation Solver Section -->
+            <section class="upload-section">
+                <div class="upload-container">
+                    <h4 data-i18n-key="equation.subtitle">Solve Linear & Quadratic Equations Instantly</h4>
+
+                    <div class="calculator-inputs">
+                        <!-- Equation Type Selector -->
+                        <div class="input-group">
+                            <label>
+                                <i class="fas fa-calculator"></i>
+                                Equation Type
+                            </label>
+                            <div class="equation-type-toggle">
+                                <button class="type-btn active" data-type="linear">
+                                    <i class="fas fa-chart-line"></i> Linear (ax + b = 0)
+                                </button>
+                                <button class="type-btn" data-type="quadratic">
+                                    <i class="fas fa-square-root-alt"></i> Quadratic (ax² + bx + c = 0)
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Linear Equation Inputs -->
+                        <div id="linearInputs" class="equation-inputs">
+                            <div class="input-group">
+                                <label for="linearA">
+                                    <i class="fas fa-a"></i>
+                                    Coefficient a
+                                </label>
+                                <input type="number" id="linearA" placeholder="Enter coefficient a" step="any">
+                                <span class="input-hint">Coefficient of x</span>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="linearB">
+                                    <i class="fas fa-b"></i>
+                                    Constant b
+                                </label>
+                                <input type="number" id="linearB" placeholder="Enter constant b" step="any">
+                                <span class="input-hint">Constant term</span>
+                            </div>
+                        </div>
+
+                        <!-- Quadratic Equation Inputs -->
+                        <div id="quadraticInputs" class="equation-inputs" style="display: none;">
+                            <div class="input-group">
+                                <label for="quadraticA">
+                                    <i class="fas fa-a"></i>
+                                    Coefficient a
+                                </label>
+                                <input type="number" id="quadraticA" placeholder="Enter coefficient a" step="any">
+                                <span class="input-hint">Coefficient of x²</span>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="quadraticB">
+                                    <i class="fas fa-b"></i>
+                                    Coefficient b
+                                </label>
+                                <input type="number" id="quadraticB" placeholder="Enter coefficient b" step="any">
+                                <span class="input-hint">Coefficient of x</span>
+                            </div>
+
+                            <div class="input-group">
+                                <label for="quadraticC">
+                                    <i class="fas fa-c"></i>
+                                    Constant c
+                                </label>
+                                <input type="number" id="quadraticC" placeholder="Enter constant c" step="any">
+                                <span class="input-hint">Constant term</span>
+                            </div>
+                        </div>
+
+                        <!-- Solve Button -->
+                        <button class="calculate-btn" id="solveBtn">
+                            <i class="fas fa-calculator"></i>
+                            <span data-i18n-key="equation.solveBtn">Solve Equation</span>
+                        </button>
+
+                        <!-- Error Message -->
+                        <div class="error-message" id="errorMessage" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span id="errorText"></span>
+                        </div>
+                    </div>
+
+                    <!-- Results Display -->
+                    <div class="calculator-results" id="resultsSection"
+                        style="display: none; margin-top: 3rem !important;">
+                        <div class="result-card">
+                            <h3>Solution</h3>
+                            <div class="equation-display" id="equationDisplay"></div>
+                            <div class="solution-display" id="solutionDisplay"></div>
+                            <div class="steps-display" id="stepsDisplay"></div>
+
+                            <button class="recalculate-btn" id="recalculateBtn">
+                                <i class="fas fa-redo"></i>
+                                <span data-i18n-key="equation.solveAgainBtn">Solve Another</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How to Use Section -->
+            <section class="usage-guide-section">
+                <h3>How to Use This Equation Solver</h3>
+                <p class="section-description">Follow these simple steps to solve equations quickly.</p>
+                <div class="guide-steps">
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">1</span>
+                            <h4>Select Equation Type</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>Choose between Linear (ax + b = 0) or Quadratic (ax² + bx + c = 0) equation.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">2</span>
+                            <h4>Enter Coefficients</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>Input the coefficients for your equation. For linear: a and b. For quadratic: a, b, and
+                                c.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">3</span>
+                            <h4>Solve</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>Click "Solve Equation" to get instant results with step-by-step solutions.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Responsive Ad Banner (Examples 위) -->
+            <div class="responsive-ad-banner">
+                <!-- Desktop: 728x90 -->
+                <div class="ad-desktop">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key': 'a0109a486ddd226684cfa5934f412a88',
+                            'format': 'iframe',
+                            'height': 90,
+                            'width': 728,
+                            'params': {}
+                        };
+                    </script>
+                    <script type="text/javascript"
+                        src="//annoyingnightmareedit.com/a0109a486ddd226684cfa5934f412a88/invoke.js"></script>
+                </div>
+
+                <!-- Tablet: 468x60 -->
+                <div class="ad-tablet">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key': 'cb93fb1de0136f18561bd497f24daa03',
+                            'format': 'iframe',
+                            'height': 60,
+                            'width': 468,
+                            'params': {}
+                        };
+                    </script>
+                    <script type="text/javascript"
+                        src="//annoyingnightmareedit.com/cb93fb1de0136f18561bd497f24daa03/invoke.js"></script>
+                </div>
+
+                <!-- Mobile: 320x50 -->
+                <div class="ad-mobile">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key': '266dce0b2742554614d486d3a6e08060',
+                            'format': 'iframe',
+                            'height': 50,
+                            'width': 320,
+                            'params': {}
+                        };
+                    </script>
+                    <script type="text/javascript"
+                        src="//annoyingnightmareedit.com/266dce0b2742554614d486d3a6e08060/invoke.js"></script>
+                </div>
+            </div>
+
+            <!-- Examples Section -->
+
+            <section class="examples-section">
+                <h3>Equation Examples</h3>
+                <div class="example-grid">
+                    <div class="example-card">
+                        <div class="example-header">
+                            <span class="example-icon">📐</span>
+                            <h4>Simple Linear</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label">Equation:</span>
+                                <span class="value">2x + 4 = 0</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">Solution:</span>
+                                <span class="value">x = -2</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-header">
+                            <span class="example-icon">📊</span>
+                            <h4>Quadratic (Two Solutions)</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label">Equation:</span>
+                                <span class="value">x² - 5x + 6 = 0</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">Solutions:</span>
+                                <span class="value">x = 2, x = 3</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-card">
+                        <div class="example-header">
+                            <span class="example-icon">🔢</span>
+                            <h4>Quadratic (One Solution)</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label">Equation:</span>
+                                <span class="value">x² - 4x + 4 = 0</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">Solution:</span>
+                                <span class="value">x = 2 (double root)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Info Section -->
+            <section class="info-section">
+                <h3>Understanding Equations</h3>
+                <div class="info-content">
+                    <h4>Linear Equations (1st Degree)</h4>
+                    <p>A linear equation has the form: <strong>ax + b = 0</strong></p>
+                    <div class="formula-box">
+                        <span class="formula"><strong>Solution: x = -b/a</strong></span>
+                    </div>
+
+                    <h4 style="margin-top: 2rem;">Quadratic Equations (2nd Degree)</h4>
+                    <p>A quadratic equation has the form: <strong>ax² + bx + c = 0</strong></p>
+                    <div class="formula-box">
+                        <span class="formula"><strong>x = (-b ± √(b² - 4ac)) / 2a</strong></span>
+                    </div>
+
+                    <div class="important-notes">
+                        <h4>Discriminant (Δ = b² - 4ac):</h4>
+                        <ul>
+                            <li><strong>Δ > 0:</strong> Two distinct real solutions</li>
+                            <li><strong>Δ = 0:</strong> One repeated real solution</li>
+                            <li><strong>Δ < 0:</strong> Two complex conjugate solutions</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="faq-section">
+                <h3>Frequently Asked Questions</h3>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> What is a linear equation?</h4>
+                        <p>A linear equation is a first-degree polynomial equation with one variable. It has the form ax
+                            + b = 0, where a ≠ 0.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> What is a quadratic equation?</h4>
+                        <p>A quadratic equation is a second-degree polynomial equation with the form ax² + bx + c = 0,
+                            where a ≠ 0.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> Can quadratic equations have complex solutions?</h4>
+                        <p>Yes! When the discriminant (b² - 4ac) is negative, the equation has two complex conjugate
+                            solutions.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> What if coefficient a is zero?</h4>
+                        <p>If a = 0 in a quadratic equation, it becomes a linear equation. Our solver automatically
+                            handles this case.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section class="feature-section">
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-bolt feature-icon-text"></i>
+                    </div>
+                    <h4>Instant Solutions</h4>
+                    <p>Get equation solutions in milliseconds with our optimized algorithm.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-list-ol feature-icon-text"></i>
+                    </div>
+                    <h4>Step-by-Step</h4>
+                    <p>View detailed solution steps to understand the solving process.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-infinity feature-icon-text"></i>
+                    </div>
+                    <h4>Complex Numbers</h4>
+                    <p>Handles real and complex solutions for quadratic equations.</p>
+                </div>
+            </section>
+
+            <!-- Related Calculators Section -->
+            <section class="related-section">
+                <h3>Related Math Calculators</h3>
+                <div class="related-grid">
+                    <a href="/math/matrix-calculator.html" class="related-card">
+                        <i class="fas fa-th"></i>
+                        <h4>Matrix Calculator</h4>
+                        <p>Matrix operations</p>
+                    </a>
+                    <a href="/math/statistics-calculator.html" class="related-card">
+                        <i class="fas fa-chart-bar"></i>
+                        <h4>Statistics Calculator</h4>
+                        <p>Mean, median, std dev</p>
+                    </a>
+                    <a href="/general/scientific-calculator.html" class="related-card">
+                        <i class="fas fa-calculator"></i>
+                        <h4>Scientific Calculator</h4>
+                        <p>Advanced math functions</p>
+                    </a>
+                    <a href="/" class="related-card">
+                        <i class="fas fa-home"></i>
+                        <h4>All Calculators</h4>
+                        <p>Explore 65+ calculators</p>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-social">
+                <a href="https://x.com/8hqmx" target="_blank" rel="noopener noreferrer" class="footer-twitter"
+                    aria-label="Follow us on X (Twitter)">
+                    <img src="/assets/x-twitter-footer.svg" alt="X (Twitter)" class="footer-social-icon">
+                </a>
+            </div>
+            <p>
+                <span>&copy; 2024 HQMX Calculator. All Rights Reserved.</span>
+                <span class="footer-contact"> • support@hqmx.net</span>
+            </p>
+        </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="/i18n.js?v=20251101fix"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/calculators/equation.js"></script>
+    <!-- ExoClick Video Slider - 페이지 로드 후 35초 후 로드 -->
+    <script>
+        // 35초 지연 후 ExoClick 비디오 슬라이더 광고 로드
+        setTimeout(function() {
+            // ad-provider.js 스크립트 로드
+            var adScript = document.createElement('script');
+            adScript.type = 'application/javascript';
+            adScript.async = true;
+            adScript.src = 'https://a.magsrv.com/ad-provider.js';
+
+            // ins 요소 생성 및 추가
+            var insElement = document.createElement('ins');
+            insElement.className = 'eas6a97888e31';
+            insElement.setAttribute('data-zoneid', '5760302');
+
+            // body에 요소들 추가
+            document.body.appendChild(adScript);
+            document.body.appendChild(insElement);
+
+            // AdProvider 초기화 (스크립트 로드 완료 후)
+            adScript.onload = function() {
+                (window.AdProvider = window.AdProvider || []).push({"serve": {}});
+            };
+        }, 35000); // 35초 = 35000ms
+    </script>
+
+
+</body>
+
+</html>

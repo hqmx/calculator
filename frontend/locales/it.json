@@ -51,5 +51,65 @@
     "subtractPercentFrom": "Sottrai X% da Y",
     "calculateBtn": "Calcola",
     "result": "Risultato"
+  },
+  "equation": {
+    "tagline": "Equation Solver",
+    "subtitle": "Solve Linear & Quadratic Equations Instantly",
+    "solveBtn": "Solve Equation",
+    "solveAgainBtn": "Solve Another"
+  },
+  "statistics": {
+    "tagline": "Statistics Calculator",
+    "subtitle": "Calculate Mean, Median, Standard Deviation & More",
+    "calculateBtn": "Calculate Statistics",
+    "recalculateBtn": "Calculate Again"
+  },
+  "probability": {
+    "tagline": "Probability Calculator",
+    "subtitle": "Calculate Combinations & Permutations",
+    "calculateBtn": "Calculate",
+    "recalculateBtn": "Calculate Again"
+  },
+  "pixel": {
+    "tagline": "Pixel Calculator",
+    "subtitle": "Calculate DPI, PPI & Screen Resolution",
+    "calculateBtn": "Calculate PPI/DPI",
+    "recalculateBtn": "Calculate Again"
+  },
+  "videoBitrate": {
+    "tagline": "Video Bitrate Calculator",
+    "subtitle": "Calculate Video File Size & Bitrate",
+    "calculateBtn": "Calculate File Size",
+    "recalculateBtn": "Calculate Again"
+  },
+  "aspectRatio": {
+    "tagline": "Aspect Ratio Calculator",
+    "subtitle": "Calculate & Maintain Aspect Ratios",
+    "calculateBtn": "Calculate Ratio",
+    "recalculateBtn": "Calculate Again"
+  },
+  "paint": {
+    "tagline": "Paint Calculator",
+    "subtitle": "Calculate Paint Needed for Your Project",
+    "calculateBtn": "Calculate Paint Needed",
+    "recalculateBtn": "Calculate Again"
+  },
+  "tile": {
+    "tagline": "Tile Calculator",
+    "subtitle": "Calculate Tiles Needed for Your Project",
+    "calculateBtn": "Calculate Tiles Needed",
+    "recalculateBtn": "Calculate Again"
+  },
+  "concrete": {
+    "tagline": "Concrete Calculator",
+    "subtitle": "Calculate Concrete Needed for Your Project",
+    "calculateBtn": "Calculate Concrete",
+    "recalculateBtn": "Calculate Again"
+  },
+  "wallpaper": {
+    "tagline": "Wallpaper Calculator",
+    "subtitle": "Calculate Wallpaper Rolls Needed",
+    "calculateBtn": "Calculate Rolls Needed",
+    "recalculateBtn": "Calculate Again"
   }
 }

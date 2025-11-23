@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics Calculator - Mean, Median, Standard Deviation | HQMX</title>
+    <meta name="description"
+        content="Free online statistics calculator. Calculate mean, median, mode, standard deviation, variance, and more. Perfect for students and data analysis.">
+    <meta name="keywords"
+        content="statistics calculator, mean calculator, standard deviation, variance, median, mode, 통계 계산기, stats calculator">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css?v=20250118mobile">
+    <link rel="stylesheet" href="/css/calculator.css?v=20250118nav">
+
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+</head>
+
+<body>
+    <div class="container">
+        <!-- Navigation Header (same as equation-solver.html) -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <a href="/" class="converter-logo-link">
+                    <div class="converter-logo" dir="ltr">
+                        <span class="converter-text"><span class="converter-c">C</span><span
+                                class="converter-rest">ALCULATOR</span></span>
+                    </div>
+                </a>
+            </div>
+            <div class="nav-center">
+                <button class="hamburger-menu" id="hamburgerMenu">
+                    <span></span><span></span><span></span>
+                </button>
+                <div class="nav-menu">
+                    <a href="/" class="nav-link active">Home</a>
+                    <a href="/how-to-use" class="nav-link">How to Use</a>
+                    <a href="/faq" class="nav-link">FAQ</a>
+                    <a href="/sitemap" class="nav-link">Site Map</a>
+                    <a href="/api.html" class="nav-link">API</a>
+                </div>
+                <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+                    <div class="mobile-menu-box">
+                        <div class="mobile-menu-links">
+                            <a href="/" class="mobile-menu-link active">Home</a>
+                            <a href="/how-to-use" class="mobile-menu-link">How to Use</a>
+                            <a href="/faq" class="mobile-menu-link">FAQ</a>
+                            <a href="/sitemap" class="mobile-menu-link">Site Map</a>
+                            <a href="/api.html" class="mobile-menu-link">API</a>
+                        </div>
+                        <div class="mobile-menu-controls">
+                            <div class="mobile-control-item menu-divider">
+                                <button id="mobileThemeToggleBtn" class="mobile-theme-toggle-btn">
+                                    <i class="fas fa-sun"></i><i class="fas fa-moon"></i>
+                                </button>
+                                <button id="mobileLanguageSelectorBtn" class="mobile-language-selector-btn">
+                                    <i class="fas fa-globe"></i>
+                                    <span id="mobileCurrentLanguage">EN</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="mobile-control-item">
+                                <div id="mobileLanguageOptions" class="mobile-language-options">
+                                    <a href="#" data-lang="en">English</a>
+                                    <a href="#" data-lang="ko">한국어</a>
+                                    <a href="#" data-lang="es">Español</a>
+                                    <a href="#" data-lang="fr">Français</a>
+                                    <a href="#" data-lang="de">Deutsch</a>
+                                    <a href="#" data-lang="ja">日本語</a>
+                                    <a href="#" data-lang="zh-CN">简体中文</a>
+                                    <a href="#" data-lang="pt">Português</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-right">
+                <button id="themeToggleBtn" class="theme-toggle-btn">
+                    <i class="fas fa-sun"></i><i class="fas fa-moon"></i>
+                </button>
+                <div class="language-switcher">
+                    <button id="language-selector-btn" class="language-selector-btn">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">English</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="language-options" class="language-options">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="ko">한국어</a>
+                        <a href="#" data-lang="es">Español</a>
+                        <a href="#" data-lang="fr">Français</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <header class="header">
+            <p class="tagline" data-i18n-key="statistics.tagline">Statistics Calculator</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Statistics Calculator Section -->
+            <section class="upload-section">
+                <div class="upload-container">
+                    <h4 data-i18n-key="statistics.subtitle">Calculate Mean, Median, Standard Deviation & More</h4>
+
+                    <div class="calculator-inputs">
+                        <!-- Data Input -->
+                        <div class="input-group">
+                            <label for="dataInput">
+                                <i class="fas fa-database"></i>
+                                Enter Data (comma or space separated)
+                            </label>
+                            <textarea id="dataInput" placeholder="Enter numbers: 1, 2, 3, 4, 5 or 1 2 3 4 5"
+                                rows="4"></textarea>
+                            <span class="input-hint">Enter at least 2 numbers</span>
+                        </div>
+
+                        <!-- Calculate Button -->
+                        <button class="calculate-btn" id="calculateBtn">
+                            <i class="fas fa-calculator"></i>
+                            <span data-i18n-key="statistics.calculateBtn">Calculate Statistics</span>
+                        </button>
+
+                        <!-- Error Message -->
+                        <div class="error-message" id="errorMessage" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span id="errorText"></span>
+                        </div>
+                    </div>
+
+                    <!-- Results Display -->
+                    <div class="calculator-results" id="resultsSection"
+                        style="display: none; margin-top: 3rem !important;">
+                        <div class="result-cards-grid">
+                            <div class="result-card">
+                                <h4>Count</h4>
+                                <div class="result-value" id="countValue">0</div>
+                            </div>
+                            <div class="result-card">
+                                <h4>Sum</h4>
+                                <div class="result-value" id="sumValue">0</div>
+                            </div>
+                            <div class="result-card">
+                                <h4>Mean (Average)</h4>
+                                <div class="result-value" id="meanValue">0</div>
+                            </div>
+                            <div class="result-card">
+                                <h4>Median</h4>
+                                <div class="result-value" id="medianValue">0</div>
+                            </div>
+                            <div class="result-card">
+                                <h4>Mode</h4>
+                                <div class="result-value" id="modeValue">-</div>
+                            </div>
+                            <div class="result-card">
+                                <h4>Range</h4>
+                                <div class="result-value" id="rangeValue">0</div>
+                            </div>
+                            <div class="result-card">
+                                <h4>Variance</h4>
+                                <div class="result-value" id="varianceValue">0</div>
+                            </div>
+                            <div class="result-card">
+                                <h4>Standard Deviation</h4>
+                                <div class="result-value" id="stdDevValue">0</div>
+                            </div>
+                        </div>
+
+                        <button class="recalculate-btn" id="recalculateBtn">
+                            <i class="fas fa-redo"></i>
+                            <span data-i18n-key="statistics.recalculateBtn">Calculate Again</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How to Use Section -->
+            <section class="usage-guide-section">
+                <h3>How to Use This Statistics Calculator</h3>
+                <div class="guide-steps">
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">1</span>
+                            <h4>Enter Your Data</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>Input your numbers separated by commas or spaces. Example: 1, 2, 3, 4, 5</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">2</span>
+                            <h4>Calculate</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>Click "Calculate Statistics" to get all statistical measures instantly.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">3</span>
+                            <h4>View Results</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>Review mean, median, mode, standard deviation, variance, and more.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Responsive Ad Banner (Examples 위) -->
+            <div class="responsive-ad-banner">
+                <!-- Desktop: 728x90 -->
+                <div class="ad-desktop">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key': 'a0109a486ddd226684cfa5934f412a88',
+                            'format': 'iframe',
+                            'height': 90,
+                            'width': 728,
+                            'params': {}
+                        };
+                    </script>
+                    <script type="text/javascript"
+                        src="//annoyingnightmareedit.com/a0109a486ddd226684cfa5934f412a88/invoke.js"></script>
+                </div>
+
+                <!-- Tablet: 468x60 -->
+                <div class="ad-tablet">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key': 'cb93fb1de0136f18561bd497f24daa03',
+                            'format': 'iframe',
+                            'height': 60,
+                            'width': 468,
+                            'params': {}
+                        };
+                    </script>
+                    <script type="text/javascript"
+                        src="//annoyingnightmareedit.com/cb93fb1de0136f18561bd497f24daa03/invoke.js"></script>
+                </div>
+
+                <!-- Mobile: 320x50 -->
+                <div class="ad-mobile">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key': '266dce0b2742554614d486d3a6e08060',
+                            'format': 'iframe',
+                            'height': 50,
+                            'width': 320,
+                            'params': {}
+                        };
+                    </script>
+                    <script type="text/javascript"
+                        src="//annoyingnightmareedit.com/266dce0b2742554614d486d3a6e08060/invoke.js"></script>
+                </div>
+            </div>
+
+            <!-- Examples Section -->
+
+            <section class="examples-section">
+                <h3>Statistics Examples</h3>
+                <div class="example-grid">
+                    <div class="example-card">
+                        <div class="example-header">
+                            <span class="example-icon">📊</span>
+                            <h4>Test Scores</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label">Data:</span>
+                                <span class="value">85, 90, 78, 92, 88</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">Mean:</span>
+                                <span class="value">86.6</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">Std Dev:</span>
+                                <span class="value">5.27</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Info Section -->
+            <section class="info-section">
+                <h3>Understanding Statistics</h3>
+                <div class="info-content">
+                    <h4>Key Statistical Measures</h4>
+                    <ul>
+                        <li><strong>Mean:</strong> Average of all values (sum ÷ count)</li>
+                        <li><strong>Median:</strong> Middle value when sorted</li>
+                        <li><strong>Mode:</strong> Most frequently occurring value</li>
+                        <li><strong>Standard Deviation:</strong> Measure of data spread</li>
+                        <li><strong>Variance:</strong> Square of standard deviation</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="faq-section">
+                <h3>Frequently Asked Questions</h3>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> What is the difference between mean and median?</h4>
+                        <p>Mean is the average (sum/count), while median is the middle value. Median is less affected by
+                            outliers.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> What does standard deviation tell us?</h4>
+                        <p>Standard deviation measures how spread out the data is. Lower values mean data is closer to
+                            the mean.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Related Calculators Section -->
+            <section class="related-section">
+                <h3>Related Math Calculators</h3>
+                <div class="related-grid">
+                    <a href="/math/equation-solver.html" class="related-card">
+                        <i class="fas fa-square-root-alt"></i>
+                        <h4>Equation Solver</h4>
+                        <p>Solve linear & quadratic equations</p>
+                    </a>
+                    <a href="/math/probability-calculator.html" class="related-card">
+                        <i class="fas fa-dice"></i>
+                        <h4>Probability Calculator</h4>
+                        <p>Calculate combinations & permutations</p>
+                    </a>
+                    <a href="/general/percentage-calculator.html" class="related-card">
+                        <i class="fas fa-percent"></i>
+                        <h4>Percentage Calculator</h4>
+                        <p>Calculate percentages</p>
+                    </a>
+                    <a href="/" class="related-card">
+                        <i class="fas fa-home"></i>
+                        <h4>All Calculators</h4>
+                        <p>Explore 65+ calculators</p>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-social">
+                <a href="https://x.com/8hqmx" target="_blank" rel="noopener noreferrer" class="footer-twitter">
+                    <img src="/assets/x-twitter-footer.svg" alt="X (Twitter)" class="footer-social-icon">
+                </a>
+            </div>
+            <p>
+                <span>&copy; 2024 HQMX Calculator. All Rights Reserved.</span>
+                <span class="footer-contact"> • support@hqmx.net</span>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/i18n.js?v=20251101fix"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/calculators/statistics.js"></script>
+    <!-- ExoClick Video Slider - 페이지 로드 후 35초 후 로드 -->
+    <script>
+        // 35초 지연 후 ExoClick 비디오 슬라이더 광고 로드
+        setTimeout(function() {
+            // ad-provider.js 스크립트 로드
+            var adScript = document.createElement('script');
+            adScript.type = 'application/javascript';
+            adScript.async = true;
+            adScript.src = 'https://a.magsrv.com/ad-provider.js';
+
+            // ins 요소 생성 및 추가
+            var insElement = document.createElement('ins');
+            insElement.className = 'eas6a97888e31';
+            insElement.setAttribute('data-zoneid', '5760302');
+
+            // body에 요소들 추가
+            document.body.appendChild(adScript);
+            document.body.appendChild(insElement);
+
+            // AdProvider 초기화 (스크립트 로드 완료 후)
+            adScript.onload = function() {
+                (window.AdProvider = window.AdProvider || []).push({"serve": {}});
+            };
+        }, 35000); // 35초 = 35000ms
+    </script>
+
+
+</body>
+
+</html>

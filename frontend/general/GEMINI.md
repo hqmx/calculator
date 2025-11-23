@@ -814,6 +814,6 @@ describe('PercentageCalculator', () => {
 
 ---
 
-**Last Updated**: 2025-01-15
-**Version**: 1.0
-**Maintained By**: HQMX Development Team
+**최종 업데이트**: 2025-11-23
+**버전**: 1.1
+**관리**: HQMX Development Team

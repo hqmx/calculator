@@ -51,5 +51,85 @@
     "subtractPercentFrom": "從Y減去X%",
     "calculateBtn": "計算",
     "result": "結果"
+  },
+  "equation": {
+    "tagline": "Equation Solver",
+    "subtitle": "Solve Linear & Quadratic Equations Instantly",
+    "solveBtn": "Solve Equation",
+    "solveAgainBtn": "Solve Another"
+  },
+  "statistics": {
+    "tagline": "Statistics Calculator",
+    "subtitle": "Calculate Mean, Median, Standard Deviation & More",
+    "calculateBtn": "Calculate Statistics",
+    "recalculateBtn": "Calculate Again"
+  },
+  "probability": {
+    "tagline": "Probability Calculator",
+    "subtitle": "Calculate Combinations & Permutations",
+    "calculateBtn": "Calculate",
+    "recalculateBtn": "Calculate Again"
+  },
+  "pixel": {
+    "tagline": "Pixel Calculator",
+    "subtitle": "Calculate DPI, PPI & Screen Resolution",
+    "calculateBtn": "Calculate PPI/DPI",
+    "recalculateBtn": "Calculate Again"
+  },
+  "videoBitrate": {
+    "tagline": "Video Bitrate Calculator",
+    "subtitle": "Calculate Video File Size & Bitrate",
+    "calculateBtn": "Calculate File Size",
+    "recalculateBtn": "Calculate Again"
+  },
+  "aspectRatio": {
+    "tagline": "Aspect Ratio Calculator",
+    "subtitle": "Calculate & Maintain Aspect Ratios",
+    "calculateBtn": "Calculate Ratio",
+    "recalculateBtn": "Calculate Again"
+  },
+  "paint": {
+    "tagline": "Paint Calculator",
+    "subtitle": "Calculate Paint Needed for Your Project",
+    "calculateBtn": "Calculate Paint Needed",
+    "recalculateBtn": "Calculate Again"
+  },
+  "tile": {
+    "tagline": "Tile Calculator",
+    "subtitle": "Calculate Tiles Needed for Your Project",
+    "calculateBtn": "Calculate Tiles Needed",
+    "recalculateBtn": "Calculate Again"
+  },
+  "concrete": {
+    "tagline": "Concrete Calculator",
+    "subtitle": "Calculate Concrete Needed for Your Project",
+    "calculateBtn": "Calculate Concrete",
+    "recalculateBtn": "Calculate Again"
+  },
+  "wallpaper": {
+    "tagline": "Wallpaper Calculator",
+    "subtitle": "Calculate Wallpaper Rolls Needed",
+    "calculateBtn": "Calculate Rolls Needed",
+    "recalculateBtn": "Calculate Again"
+  },
+  "tax": {
+    "tagline": "稅金計算機",
+    "subtitle": "即時計算增值稅和營業稅",
+    "modeLabel": "計算模式",
+    "addTax": "添加稅金",
+    "removeTax": "移除稅金",
+    "amount": "金額",
+    "amountPlaceholder": "輸入金額",
+    "amountHintAdd": "淨額（稅前）",
+    "amountHintRemove": "總額（含稅）",
+    "taxRate": "稅率",
+    "taxRatePlaceholder": "輸入稅率",
+    "calculateBtn": "計算稅金",
+    "recalculateBtn": "重新計算",
+    "totalAmount": "總金額",
+    "grossAmount": "總額",
+    "taxAmount": "稅額",
+    "netAmount": "淨額",
+    "beforeTax": "稅前"
   }
 }

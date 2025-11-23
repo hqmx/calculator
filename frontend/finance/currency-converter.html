@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter - Live Exchange Rates | HQMX</title>
+    <meta name="description"
+        content="Free online currency converter. Convert between USD, EUR, KRW, JPY, and 160+ currencies with real-time exchange rates. Accurate and fast.">
+    <meta name="keywords"
+        content="currency converter, exchange rate calculator, money converter, currency exchange, 환율 계산기, 환율 변환기, 환율 조회">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css?v=20250118mobile">
+    <link rel="stylesheet" href="/css/calculator.css?v=20250118nav">
+
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Currency Converter - Live Exchange Rates | HQMX">
+    <meta property="og:description" content="Convert between 160+ currencies instantly with real-time exchange rates.">
+    <meta property="og:url" content="https://calculator.hqmx.net/finance/currency-converter.html">
+    <meta property="og:type" content="website">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://calculator.hqmx.net/finance/currency-converter.html">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Navigation Header -->
+        <nav class="top-nav">
+            <div class="nav-left">
+                <a href="/" class="converter-logo-link">
+                    <div class="converter-logo" dir="ltr">
+                        <span class="converter-text"><span class="converter-c">C</span><span
+                                class="converter-rest">ALCULATOR</span></span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="nav-center">
+                <!-- 햄버거 메뉴 버튼 (모바일용) -->
+                <button class="hamburger-menu" id="hamburgerMenu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <div class="nav-menu">
+                    <a href="/" class="nav-link active">Home</a>
+                    <a href="/how-to-use" class="nav-link">How to Use</a>
+                    <a href="/faq" class="nav-link">FAQ</a>
+                    <a href="/sitemap" class="nav-link">Site Map</a>
+                    <a href="/api.html" class="nav-link">API</a>
+                </div>
+
+                <!-- 모바일 메뉴 오버레이 -->
+                <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+                    <div class="mobile-menu-box">
+                        <!-- 모바일 메뉴 페이지 링크 -->
+                        <div class="mobile-menu-links">
+                            <a href="/" class="mobile-menu-link active">Home</a>
+                            <a href="/how-to-use" class="mobile-menu-link">How to Use</a>
+                            <a href="/faq" class="mobile-menu-link">FAQ</a>
+                            <a href="/sitemap" class="mobile-menu-link">Site Map</a>
+                            <a href="/api.html" class="mobile-menu-link">API</a>
+                        </div>
+
+                        <div class="mobile-menu-controls">
+                            <div class="mobile-control-item menu-divider">
+                                <button id="mobileThemeToggleBtn" class="mobile-theme-toggle-btn">
+                                    <i class="fas fa-sun"></i>
+                                    <i class="fas fa-moon"></i>
+                                </button>
+                                <button id="mobileLanguageSelectorBtn" class="mobile-language-selector-btn">
+                                    <i class="fas fa-globe"></i>
+                                    <span id="mobileCurrentLanguage">EN</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                            </div>
+                            <div class="mobile-control-item">
+                                <div id="mobileLanguageOptions" class="mobile-language-options">
+                                    <a href="#" data-lang="en">English</a>
+                                    <a href="#" data-lang="de">Deutsch</a>
+                                    <a href="#" data-lang="es">Español</a>
+                                    <a href="#" data-lang="fr">Français</a>
+                                    <a href="#" data-lang="hi">हिन्दी / Hindī</a>
+                                    <a href="#" data-lang="id">Bahasa Indonesia</a>
+                                    <a href="#" data-lang="it">Italiano</a>
+                                    <a href="#" data-lang="ko">한국어</a>
+                                    <a href="#" data-lang="ja">日本語</a>
+                                    <a href="#" data-lang="my">Myanmar (မြန်မာ)</a>
+                                    <a href="#" data-lang="ms">Malay</a>
+                                    <a href="#" data-lang="fil">Filipino</a>
+                                    <a href="#" data-lang="pt">Português</a>
+                                    <a href="#" data-lang="ru">Русский</a>
+                                    <a href="#" data-lang="th">ไทย</a>
+                                    <a href="#" data-lang="tr">Türkçe</a>
+                                    <a href="#" data-lang="vi">Tiếng Việt</a>
+                                    <a href="#" data-lang="zh-CN">简体中文</a>
+                                    <a href="#" data-lang="zh-TW">繁體中文</a>
+                                    <a href="#" data-lang="ar">عربي</a>
+                                    <a href="#" data-lang="bn">বাঙালি</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <button id="themeToggleBtn" class="theme-toggle-btn">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="language-switcher">
+                    <button id="language-selector-btn" class="language-selector-btn">
+                        <i class="fas fa-globe"></i>
+                        <span id="current-language">English</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div id="language-options" class="language-options">
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="de">Deutsch</a>
+                        <a href="#" data-lang="es">Español</a>
+                        <a href="#" data-lang="fr">Français</a>
+                        <a href="#" data-lang="hi">हिन्दी / Hindī</a>
+                        <a href="#" data-lang="id">Bahasa Indonesia</a>
+                        <a href="#" data-lang="it">Italiano</a>
+                        <a href="#" data-lang="ko">한국어</a>
+                        <a href="#" data-lang="ja">日本語</a>
+                        <a href="#" data-lang="my">Myanmar (မြန်မာ)</a>
+                        <a href="#" data-lang="ms">Malay</a>
+                        <a href="#" data-lang="fil">Filipino</a>
+                        <a href="#" data-lang="pt">Português</a>
+                        <a href="#" data-lang="ru">Русский</a>
+                        <a href="#" data-lang="th">ไทย</a>
+                        <a href="#" data-lang="tr">Türkçe</a>
+                        <a href="#" data-lang="vi">Tiếng Việt</a>
+                        <a href="#" data-lang="zh-CN">简体中文</a>
+                        <a href="#" data-lang="zh-TW">繁體中文</a>
+                        <a href="#" data-lang="ar">عربي</a>
+                        <a href="#" data-lang="bn">বাঙালি</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <header class="header">
+            <p class="tagline" data-i18n-key="currency.tagline">Live Exchange Rates</p>
+        </header>
+
+        <main class="main-content">
+            <!-- Currency Converter Section -->
+            <section class="upload-section">
+                <div class="upload-container">
+                    <h4 data-i18n-key="currency.subtitle">Convert Currencies Instantly</h4>
+
+                    <div class="calculator-inputs">
+                        <!-- Amount Input -->
+                        <div class="input-group">
+                            <label for="amount">
+                                <i class="fas fa-coins"></i>
+                                <span data-i18n-key="currency.amount">Amount</span>
+                            </label>
+                            <div class="input-with-unit">
+                                <input type="number" id="amount" placeholder="Enter amount" value="1" min="0"
+                                    step="any">
+                            </div>
+                        </div>
+
+                        <!-- From Currency -->
+                        <div class="input-group">
+                            <label for="fromCurrency">
+                                <i class="fas fa-wallet"></i>
+                                <span data-i18n-key="currency.from">From</span>
+                            </label>
+                            <div class="input-with-unit">
+                                <select id="fromCurrency" class="currency-select"
+                                    style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--input-bg); color: var(--text-color);">
+                                    <option value="USD" selected>USD - US Dollar</option>
+                                    <option value="EUR">EUR - Euro</option>
+                                    <option value="KRW">KRW - South Korean Won</option>
+                                    <!-- More options populated by JS -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Swap Button (Centered) -->
+                        <div class="input-group" style="align-items: center; margin: 10px 0;">
+                            <button id="swapBtn" class="swap-btn" aria-label="Swap currencies"
+                                style="background: var(--primary-color); color: white; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; transition: transform 0.3s;">
+                                <i class="fas fa-exchange-alt"></i>
+                            </button>
+                        </div>
+
+                        <!-- To Currency -->
+                        <div class="input-group">
+                            <label for="toCurrency">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <span data-i18n-key="currency.to">To</span>
+                            </label>
+                            <div class="input-with-unit">
+                                <select id="toCurrency" class="currency-select"
+                                    style="width: 100%; padding: 12px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--input-bg); color: var(--text-color);">
+                                    <option value="KRW" selected>KRW - South Korean Won</option>
+                                    <option value="USD">USD - US Dollar</option>
+                                    <option value="EUR">EUR - Euro</option>
+                                    <!-- More options populated by JS -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Calculate Button -->
+                        <button class="calculate-btn" id="calculateBtn">
+                            <i class="fas fa-calculator"></i>
+                            <span data-i18n-key="currency.convert">Convert</span>
+                        </button>
+
+                        <!-- Loading Indicator -->
+                        <div id="loadingIndicator" class="loading-indicator"
+                            style="display: none; text-align: center; margin-top: 10px;">
+                            <i class="fas fa-spinner fa-spin"></i> Updating rates...
+                        </div>
+
+                        <!-- Error Message -->
+                        <div class="error-message" id="errorMessage" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span id="errorText"></span>
+                        </div>
+                    </div>
+
+                    <!-- Results Display -->
+                    <div class="calculator-results" id="resultsSection"
+                        style="display: none; margin-top: 3rem !important;">
+                        <div class="result-card">
+                            <h3>Conversion Result</h3>
+
+                            <!-- Summary Grid (Mortgage Style) -->
+                            <div class="mortgage-summary"
+                                style="grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 2rem;">
+                                <div class="summary-item">
+                                    <span class="summary-label">Exchange Rate</span>
+                                    <span class="summary-value" id="summaryRate">1 USD = 0.00 KRW</span>
+                                </div>
+                                <div class="summary-item">
+                                    <span class="summary-label">Last Updated</span>
+                                    <span class="summary-value" id="lastUpdated">-</span>
+                                </div>
+                            </div>
+
+                            <!-- Main Result -->
+                            <div class="bmi-value-display"
+                                style="flex-direction: column; gap: 10px; margin-bottom: 2rem;">
+                                <div class="source-amount" style="font-size: 1.2rem; color: var(--text-muted);">
+                                    <span id="displayAmount">1</span> <span id="displayFromCurrency">USD</span> =
+                                </div>
+                                <div class="target-amount">
+                                    <span id="resultValue" class="bmi-number"
+                                        style="color: var(--primary-color);">0.00</span> <span id="displayToCurrency"
+                                        style="font-size: 1.5rem;">KRW</span>
+                                </div>
+                            </div>
+
+                            <!-- Additional Info -->
+                            <div class="health-status">
+                                <h4>Additional Information</h4>
+                                <div class="repayment-summary">
+                                    <div class="summary-row">
+                                        <span class="label">Inverse Rate</span>
+                                        <span class="value" id="inverseRate">1 KRW = 0.00 USD</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button class="recalculate-btn" id="recalculateBtn" style="display: none;">
+                                <i class="fas fa-redo"></i>
+                                <span>Convert Again</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How to Use Section -->
+            <section class="usage-guide-section">
+                <h3>How to Use This Currency Converter</h3>
+                <p class="section-description">Convert between 160+ global currencies in 3 simple steps.</p>
+                <div class="guide-steps">
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">1</span>
+                            <h4>Enter Amount</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>Type the amount of money you want to convert in the input field.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">2</span>
+                            <h4>Select Currencies</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>Choose the currency you have (From) and the currency you want (To) from the dropdown
+                                lists.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header">
+                            <span class="step-number">3</span>
+                            <h4>Convert</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>Click "Convert" to see the result instantly. The exchange rates are updated daily.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Responsive Ad Banner (Examples 위) -->
+            <div class="responsive-ad-banner">
+                <!-- Desktop: 728x90 -->
+                <div class="ad-desktop">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key': 'a0109a486ddd226684cfa5934f412a88',
+                            'format': 'iframe',
+                            'height': 90,
+                            'width': 728,
+                            'params': {}
+                        };
+                    </script>
+                    <script type="text/javascript"
+                        src="//annoyingnightmareedit.com/a0109a486ddd226684cfa5934f412a88/invoke.js"></script>
+                </div>
+
+                <!-- Tablet: 468x60 -->
+                <div class="ad-tablet">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key': 'cb93fb1de0136f18561bd497f24daa03',
+                            'format': 'iframe',
+                            'height': 60,
+                            'width': 468,
+                            'params': {}
+                        };
+                    </script>
+                    <script type="text/javascript"
+                        src="//annoyingnightmareedit.com/cb93fb1de0136f18561bd497f24daa03/invoke.js"></script>
+                </div>
+
+                <!-- Mobile: 320x50 -->
+                <div class="ad-mobile">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key': '266dce0b2742554614d486d3a6e08060',
+                            'format': 'iframe',
+                            'height': 50,
+                            'width': 320,
+                            'params': {}
+                        };
+                    </script>
+                    <script type="text/javascript"
+                        src="//annoyingnightmareedit.com/266dce0b2742554614d486d3a6e08060/invoke.js"></script>
+                </div>
+            </div>
+
+            <!-- Examples Section -->
+            <section class="examples-section">
+                <h3>Currency Conversion Examples</h3>
+                <div class="example-grid">
+                    <div class="example-card example-normal">
+                        <div class="example-header">
+                            <span class="example-icon">🇺🇸</span>
+                            <h4>USD to KRW</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label">Amount:</span>
+                                <span class="value">$100 USD</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">Result:</span>
+                                <span class="value bmi-highlight">₩140,000 KRW</span>
+                            </div>
+                            <div class="example-category">
+                                <span class="category-badge normal">Approx. Rate</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-card example-overweight">
+                        <div class="example-header">
+                            <span class="example-icon">🇪🇺</span>
+                            <h4>EUR to USD</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label">Amount:</span>
+                                <span class="value">€100 EUR</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">Result:</span>
+                                <span class="value bmi-highlight">$108 USD</span>
+                            </div>
+                            <div class="example-category">
+                                <span class="category-badge overweight">Approx. Rate</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-card example-underweight">
+                        <div class="example-header">
+                            <span class="example-icon">🇯🇵</span>
+                            <h4>JPY to KRW</h4>
+                        </div>
+                        <div class="example-content">
+                            <div class="example-detail">
+                                <span class="label">Amount:</span>
+                                <span class="value">¥1,000 JPY</span>
+                            </div>
+                            <div class="example-result">
+                                <span class="label">Result:</span>
+                                <span class="value bmi-highlight">₩9,000 KRW</span>
+                            </div>
+                            <div class="example-category">
+                                <span class="category-badge underweight">Approx. Rate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- What is Currency Converter Section -->
+            <section class="info-section">
+                <h3>About Currency Converter</h3>
+                <div class="info-content">
+                    <p>Our Currency Converter allows you to check the latest exchange rates for over 160 currencies. It
+                        uses real-time data to provide accurate conversions.</p>
+                    <div class="formula-box">
+                        <span class="formula"><strong>Result = Amount × Exchange Rate</strong></span>
+                    </div>
+                    <p>Whether you are traveling, shopping online, or conducting business, knowing the current exchange
+                        rate is essential.</p>
+
+                    <div class="important-notes">
+                        <h4>Key Features:</h4>
+                        <ul>
+                            <li>Real-time exchange rates</li>
+                            <li>Support for 160+ world currencies</li>
+                            <li>Mobile-friendly design</li>
+                            <li>Instant calculation</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="faq-section">
+                <h3>Frequently Asked Questions</h3>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> Are the exchange rates accurate?</h4>
+                        <p>Yes, we use professional-grade currency data sources. However, for actual transactions, rates
+                            may vary slightly due to bank fees.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> How often are rates updated?</h4>
+                        <p>Rates are updated regularly to ensure accuracy. The "Last updated" time is displayed below
+                            the result.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> Can I convert crypto currencies?</h4>
+                        <p>Currently we support major fiat currencies. Crypto support may be added in future updates.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> Is this service free?</h4>
+                        <p>Yes, our currency converter is 100% free to use with no hidden fees or limits.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ExoClick Ad Banner -->
+            <div class="ad-banner">
+                <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
+                <ins class="eas6a97888e20" data-zoneid="5773292"></ins>
+                <script>(AdProvider = window.AdProvider || []).push({ "serve": {} });</script>
+            </div>
+
+            <!-- Features Section -->
+            <section class="feature-section">
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-globe feature-icon-text"></i>
+                    </div>
+                    <h4>160+ Currencies</h4>
+                    <p>Support for all major world currencies including USD, EUR, GBP, JPY, KRW, and many more.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-sync-alt feature-icon-text"></i>
+                    </div>
+                    <h4>Real-Time Rates</h4>
+                    <p>Exchange rates are updated regularly from reliable financial data sources to ensure accuracy.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-mobile-alt feature-icon-text"></i>
+                    </div>
+                    <h4>Mobile Friendly</h4>
+                    <p>Use our converter on the go. Optimized for all devices including smartphones and tablets.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-bolt feature-icon-text"></i>
+                    </div>
+                    <h4>Lightning Fast</h4>
+                    <p>Get instant results without any page reloads. Our optimized engine ensures the fastest
+                        experience.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-lock feature-icon-text"></i>
+                    </div>
+                    <h4>Secure & Private</h4>
+                    <p>We respect your privacy. All calculations happen in your browser and we don't store your data.
+                    </p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-wrapper">
+                        <i class="fas fa-check-circle feature-icon-text"></i>
+                    </div>
+                    <h4>Easy to Use</h4>
+                    <p>Simple and intuitive interface designed for everyone. Convert currencies in just a few clicks.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Related Calculators Section -->
+            <section class="related-section">
+                <h3>Related Finance Calculators</h3>
+                <div class="related-grid">
+                    <a href="/finance/mortgage-calculator.html" class="related-card">
+                        <i class="fas fa-home"></i>
+                        <h4>Mortgage Calculator</h4>
+                        <p>Calculate monthly mortgage payments</p>
+                    </a>
+                    <a href="/finance/loan-calculator.html" class="related-card">
+                        <i class="fas fa-money-bill-wave"></i>
+                        <h4>Loan Calculator</h4>
+                        <p>Calculate loan payments and interest</p>
+                    </a>
+                    <a href="/finance/salary-calculator.html" class="related-card">
+                        <i class="fas fa-briefcase"></i>
+                        <h4>Salary Calculator</h4>
+                        <p>Calculate take-home pay</p>
+                    </a>
+                    <a href="/" class="related-card">
+                        <i class="fas fa-calculator"></i>
+                        <h4>More Calculators</h4>
+                        <p>Explore all 65+ calculators</p>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-social">
+                <a href="https://x.com/8hqmx" target="_blank" rel="noopener noreferrer" class="footer-twitter"
+                    aria-label="Follow us on X (Twitter)">
+                    <img src="/assets/x-twitter-footer.svg" alt="X (Twitter)" class="footer-social-icon">
+                </a>
+            </div>
+            <p>
+                <span>&copy; 2025 HQMX Calculator. All Rights Reserved.</span>
+                <span class="footer-contact"> • support@hqmx.net</span>
+            </p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/i18n.js?v=20251101fix"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/calculators/currency-converter.js"></script>
+</body>
+
+</html>

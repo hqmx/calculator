@@ -634,7 +634,7 @@ For each calculator page, verify:
 
 ## 9. DESIGN PRINCIPLES
 
-### From GEMINI.md:
+### From CLAUDE.md:
 1. **CONVERTER Template as Base**: All structure from `~/hqmx/converter/index.html`
 2. **Logo Pattern**: First letter gradient (C), rest monochrome (ALCULATOR)
 3. **Layout Consistency**: Same blur effects, padding, margins, containers

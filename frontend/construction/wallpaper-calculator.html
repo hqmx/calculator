@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallpaper Calculator - Calculate Wallpaper Rolls Needed | HQMX</title>
+    <meta name="description"
+        content="Free online wallpaper calculator. Calculate how many wallpaper rolls you need for your room. Perfect for DIY and interior designers.">
+    <meta name="keywords"
+        content="wallpaper calculator, wallpaper rolls, wallpaper needed, 벽지 계산기, wallpaper estimator">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css?v=20250118mobile">
+    <link rel="stylesheet" href="/css/calculator.css?v=20250118nav">
+
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="manifest" href="/manifest.json" />
+</head>
+
+<body>
+    <div class="container">
+        <nav class="top-nav">
+            <div class="nav-left">
+                <a href="/" class="converter-logo-link">
+                    <div class="converter-logo" dir="ltr">
+                        <span class="converter-text"><span class="converter-c">C</span><span
+                                class="converter-rest">ALCULATOR</span></span>
+                    </div>
+                </a>
+            </div>
+            <div class="nav-center">
+                <button class="hamburger-menu" id="hamburgerMenu"><span></span><span></span><span></span></button>
+                <div class="nav-menu">
+                    <a href="/" class="nav-link active">Home</a>
+                    <a href="/how-to-use" class="nav-link">How to Use</a>
+                    <a href="/faq" class="nav-link">FAQ</a>
+                </div>
+            </div>
+            <div class="nav-right">
+                <button id="themeToggleBtn" class="theme-toggle-btn"><i class="fas fa-sun"></i><i
+                        class="fas fa-moon"></i></button>
+            </div>
+        </nav>
+
+        <header class="header">
+            <p class="tagline">Wallpaper Calculator</p>
+        </header>
+
+        <main class="main-content">
+            <section class="upload-section">
+                <div class="upload-container">
+                    <h4>Calculate Wallpaper Rolls Needed</h4>
+
+                    <div class="calculator-inputs">
+                        <div class="input-group">
+                            <label for="roomPerimeter"><i class="fas fa-ruler-combined"></i> Room Perimeter (m)</label>
+                            <input type="number" id="roomPerimeter" placeholder="e.g., 16" min="0.1" step="0.1">
+                            <span class="input-hint">Sum of all wall lengths</span>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="wallHeight"><i class="fas fa-arrows-alt-v"></i> Wall Height (m)</label>
+                            <input type="number" id="wallHeight" placeholder="e.g., 2.5" min="0.1" step="0.1">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="rollWidth"><i class="fas fa-ruler-horizontal"></i> Roll Width (cm)</label>
+                            <input type="number" id="rollWidth" placeholder="e.g., 53" min="1" step="1" value="53">
+                            <span class="input-hint">Standard: 53 cm</span>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="rollLength"><i class="fas fa-ruler-vertical"></i> Roll Length (m)</label>
+                            <input type="number" id="rollLength" placeholder="e.g., 10" min="1" step="0.1" value="10">
+                            <span class="input-hint">Standard: 10 m</span>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="patternRepeat"><i class="fas fa-redo"></i> Pattern Repeat (cm)</label>
+                            <input type="number" id="patternRepeat" placeholder="e.g., 0" min="0" step="1" value="0">
+                            <span class="input-hint">0 for no pattern, or pattern repeat distance</span>
+                        </div>
+
+                        <button class="calculate-btn" id="calculateBtn">
+                            <i class="fas fa-calculator"></i> Calculate Rolls Needed
+                        </button>
+
+                        <div class="error-message" id="errorMessage" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span id="errorText"></span>
+                        </div>
+                    </div>
+
+                    <div class="calculator-results" id="resultsSection"
+                        style="display: none; margin-top: 3rem !important;">
+                        <div class="result-cards-grid">
+                            <div class="result-card">
+                                <h4>Rolls Needed</h4>
+                                <div class="result-value" id="rollsNeeded">0</div>
+                            </div>
+                            <div class="result-card">
+                                <h4>Wall Area</h4>
+                                <div class="result-value" id="wallArea">0 m²</div>
+                            </div>
+                            <div class="result-card">
+                                <h4>Roll Coverage</h4>
+                                <div class="result-value" id="rollCoverage">0 m²</div>
+                            </div>
+                            <div class="result-card">
+                                <h4>Recommended</h4>
+                                <div class="result-value" id="recommended">0</div>
+                                <span class="result-hint">(+1 spare roll)</span>
+                            </div>
+                        </div>
+
+                        <button class="recalculate-btn" id="recalculateBtn">
+                            <i class="fas fa-redo"></i> Calculate Again
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="usage-guide-section">
+                <h3>How to Use</h3>
+                <div class="guide-steps">
+                    <div class="step">
+                        <div class="step-header"><span class="step-number">1</span>
+                            <h4>Measure Room</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>Calculate room perimeter (sum of all wall lengths) and wall height.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header"><span class="step-number">2</span>
+                            <h4>Enter Roll Size</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>Input wallpaper roll width and length (check product label).</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header"><span class="step-number">3</span>
+                            <h4>Pattern Repeat</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>Enter pattern repeat distance if applicable (0 for plain wallpaper).</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header"><span class="step-number">4</span>
+                            <h4>Calculate</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>Get number of rolls needed, plus recommended spare.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            
+            <!-- Responsive Ad Banner -->
+            <div class="responsive-ad-banner">
+                <!-- Desktop: 728x90 -->
+                <div class="ad-desktop">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : 'a0109a486ddd226684cfa5934f412a88',
+                            'format' : 'iframe',
+                            'height' : 90,
+                            'width' : 728,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//annoyingnightmareedit.com/a0109a486ddd226684cfa5934f412a88/invoke.js"></script>
+                </div>
+
+                <!-- Tablet: 468x60 -->
+                <div class="ad-tablet">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : 'cb93fb1de0136f18561bd497f24daa03',
+                            'format' : 'iframe',
+                            'height' : 60,
+                            'width' : 468,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//annoyingnightmareedit.com/cb93fb1de0136f18561bd497f24daa03/invoke.js"></script>
+                </div>
+
+                <!-- Mobile: 320x50 -->
+                <div class="ad-mobile">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : '266dce0b2742554614d486d3a6e08060',
+                            'format' : 'iframe',
+                            'height' : 50,
+                            'width' : 320,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//annoyingnightmareedit.com/266dce0b2742554614d486d3a6e08060/invoke.js"></script>
+                </div>
+            </div>
+
+<section class="info-section">
+                <h3>Wallpaper Calculator Guide</h3>
+                <div class="info-content">
+                    <h4>Standard Roll Sizes</h4>
+                    <ul>
+                        <li><strong>European:</strong> 53 cm × 10 m (5.3 m²)</li>
+                        <li><strong>American:</strong> 20.5 in × 33 ft (~5.2 m²)</li>
+                    </ul>
+
+                    <h4 style="margin-top: 2rem;">Tips</h4>
+                    <ul>
+                        <li>Always buy 1-2 extra rolls for mistakes and future repairs</li>
+                        <li>Patterns with large repeats need more wallpaper</li>
+                        <li>Deduct area for large windows and doors</li>
+                        <li>Buy from same batch for color consistency</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="related-section">
+                <h3>Related Construction Calculators</h3>
+                <div class="related-grid">
+                    <a href="/construction/paint-calculator.html" class="related-card">
+                        <i class="fas fa-paint-roller"></i>
+                        <h4>Paint Calculator</h4>
+                    </a>
+                    <a href="/construction/tile-calculator.html" class="related-card">
+                        <i class="fas fa-th-large"></i>
+                        <h4>Tile Calculator</h4>
+                    </a>
+                    <a href="/conversion/area-converter.html" class="related-card">
+                        <i class="fas fa-expand"></i>
+                        <h4>Area Converter</h4>
+                    </a>
+                    <a href="/" class="related-card">
+                        <i class="fas fa-home"></i>
+                        <h4>All Calculators</h4>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 HQMX Calculator. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <script src="/i18n.js?v=20251101fix"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/calculators/wallpaper.js"></script>
+    <!-- ExoClick Video Slider - 페이지 로드 후 35초 후 로드 -->
+    <script>
+        // 35초 지연 후 ExoClick 비디오 슬라이더 광고 로드
+        setTimeout(function() {
+            // ad-provider.js 스크립트 로드
+            var adScript = document.createElement('script');
+            adScript.type = 'application/javascript';
+            adScript.async = true;
+            adScript.src = 'https://a.magsrv.com/ad-provider.js';
+
+            // ins 요소 생성 및 추가
+            var insElement = document.createElement('ins');
+            insElement.className = 'eas6a97888e31';
+            insElement.setAttribute('data-zoneid', '5760302');
+
+            // body에 요소들 추가
+            document.body.appendChild(adScript);
+            document.body.appendChild(insElement);
+
+            // AdProvider 초기화 (스크립트 로드 완료 후)
+            adScript.onload = function() {
+                (window.AdProvider = window.AdProvider || []).push({"serve": {}});
+            };
+        }, 35000); // 35초 = 35000ms
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concrete Calculator - Calculate Concrete Needed | HQMX</title>
+    <meta name="description"
+        content="Free online concrete calculator. Calculate how much concrete you need for slabs, footings, and foundations. Perfect for construction projects.">
+    <meta name="keywords"
+        content="concrete calculator, cement calculator, concrete needed, 콘크리트 계산기, concrete estimator">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css?v=20250118mobile">
+    <link rel="stylesheet" href="/css/calculator.css?v=20250118nav">
+
+    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="manifest" href="/manifest.json" />
+</head>
+
+<body>
+    <div class="container">
+        <nav class="top-nav">
+            <div class="nav-left">
+                <a href="/" class="converter-logo-link">
+                    <div class="converter-logo" dir="ltr">
+                        <span class="converter-text"><span class="converter-c">C</span><span
+                                class="converter-rest">ALCULATOR</span></span>
+                    </div>
+                </a>
+            </div>
+            <div class="nav-center">
+                <button class="hamburger-menu" id="hamburgerMenu"><span></span><span></span><span></span></button>
+                <div class="nav-menu">
+                    <a href="/" class="nav-link active">Home</a>
+                    <a href="/how-to-use" class="nav-link">How to Use</a>
+                    <a href="/faq" class="nav-link">FAQ</a>
+                </div>
+            </div>
+            <div class="nav-right">
+                <button id="themeToggleBtn" class="theme-toggle-btn"><i class="fas fa-sun"></i><i
+                        class="fas fa-moon"></i></button>
+            </div>
+        </nav>
+
+        <header class="header">
+            <p class="tagline">Concrete Calculator</p>
+        </header>
+
+        <main class="main-content">
+            <section class="upload-section">
+                <div class="upload-container">
+                    <h4>Calculate Concrete Needed for Your Project</h4>
+
+                    <div class="calculator-inputs">
+                        <div class="input-group">
+                            <label for="slabLength"><i class="fas fa-ruler-horizontal"></i> Length (m)</label>
+                            <input type="number" id="slabLength" placeholder="e.g., 5" min="0.1" step="0.1">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="slabWidth"><i class="fas fa-ruler-vertical"></i> Width (m)</label>
+                            <input type="number" id="slabWidth" placeholder="e.g., 4" min="0.1" step="0.1">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="slabThickness"><i class="fas fa-arrows-alt-v"></i> Thickness (cm)</label>
+                            <input type="number" id="slabThickness" placeholder="e.g., 10" min="1" step="1">
+                            <span class="input-hint">Typical: 10-15 cm for slabs, 30+ cm for foundations</span>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="wastage"><i class="fas fa-percent"></i> Wastage (%)</label>
+                            <input type="number" id="wastage" placeholder="e.g., 5" min="0" max="20" step="1" value="5">
+                            <span class="input-hint">Typically 5-10% for spillage</span>
+                        </div>
+
+                        <button class="calculate-btn" id="calculateBtn">
+                            <i class="fas fa-calculator"></i> Calculate Concrete
+                        </button>
+
+                        <div class="error-message" id="errorMessage" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span id="errorText"></span>
+                        </div>
+                    </div>
+
+                    <div class="calculator-results" id="resultsSection"
+                        style="display: none; margin-top: 3rem !important;">
+                        <div class="result-cards-grid">
+                            <div class="result-card">
+                                <h4>Concrete Needed</h4>
+                                <div class="result-value" id="concreteNeeded">0 m³</div>
+                            </div>
+                            <div class="result-card">
+                                <h4>With Wastage</h4>
+                                <div class="result-value" id="concreteWithWastage">0 m³</div>
+                            </div>
+                            <div class="result-card">
+                                <h4>Slab Volume</h4>
+                                <div class="result-value" id="slabVolume">0 m³</div>
+                            </div>
+                            <div class="result-card">
+                                <h4>Approx. Weight</h4>
+                                <div class="result-value" id="approxWeight">0 kg</div>
+                                <span class="result-hint">(~2400 kg/m³)</span>
+                            </div>
+                        </div>
+
+                        <button class="recalculate-btn" id="recalculateBtn">
+                            <i class="fas fa-redo"></i> Calculate Again
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="usage-guide-section">
+                <h3>How to Use</h3>
+                <div class="guide-steps">
+                    <div class="step">
+                        <div class="step-header"><span class="step-number">1</span>
+                            <h4>Measure Area</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>Enter length and width in meters.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header"><span class="step-number">2</span>
+                            <h4>Set Thickness</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>Input slab thickness in centimeters.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header"><span class="step-number">3</span>
+                            <h4>Add Wastage</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>Include 5-10% for spillage and uneven surfaces.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header"><span class="step-number">4</span>
+                            <h4>Calculate</h4>
+                        </div>
+                        <div class="step-content">
+                            <p>Get total concrete volume needed in cubic meters.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            
+            <!-- Responsive Ad Banner -->
+            <div class="responsive-ad-banner">
+                <!-- Desktop: 728x90 -->
+                <div class="ad-desktop">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : 'a0109a486ddd226684cfa5934f412a88',
+                            'format' : 'iframe',
+                            'height' : 90,
+                            'width' : 728,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//annoyingnightmareedit.com/a0109a486ddd226684cfa5934f412a88/invoke.js"></script>
+                </div>
+
+                <!-- Tablet: 468x60 -->
+                <div class="ad-tablet">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : 'cb93fb1de0136f18561bd497f24daa03',
+                            'format' : 'iframe',
+                            'height' : 60,
+                            'width' : 468,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//annoyingnightmareedit.com/cb93fb1de0136f18561bd497f24daa03/invoke.js"></script>
+                </div>
+
+                <!-- Mobile: 320x50 -->
+                <div class="ad-mobile">
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : '266dce0b2742554614d486d3a6e08060',
+                            'format' : 'iframe',
+                            'height' : 50,
+                            'width' : 320,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//annoyingnightmareedit.com/266dce0b2742554614d486d3a6e08060/invoke.js"></script>
+                </div>
+            </div>
+
+<section class="info-section">
+                <h3>Concrete Calculator Guide</h3>
+                <div class="info-content">
+                    <h4>Formula</h4>
+                    <div class="formula-box"><strong>Volume (m³) = Length × Width × Thickness × (1 + Wastage%)</strong>
+                    </div>
+
+                    <h4 style="margin-top: 2rem;">Concrete Mix Ratios</h4>
+                    <ul>
+                        <li><strong>1:2:3</strong> - General purpose (1 cement : 2 sand : 3 gravel)</li>
+                        <li><strong>1:2:4</strong> - Foundations and footings</li>
+                        <li><strong>1:1.5:3</strong> - High strength (columns, beams)</li>
+                    </ul>
+
+                    <h4 style="margin-top: 2rem;">Typical Thicknesses</h4>
+                    <ul>
+                        <li><strong>10 cm:</strong> Pathways, light slabs</li>
+                        <li><strong>15 cm:</strong> Driveways, garage floors</li>
+                        <li><strong>20-30 cm:</strong> Heavy-duty slabs</li>
+                        <li><strong>30+ cm:</strong> Foundations, footings</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="related-section">
+                <h3>Related Construction Calculators</h3>
+                <div class="related-grid">
+                    <a href="/construction/paint-calculator.html" class="related-card">
+                        <i class="fas fa-paint-roller"></i>
+                        <h4>Paint Calculator</h4>
+                    </a>
+                    <a href="/construction/tile-calculator.html" class="related-card">
+                        <i class="fas fa-th-large"></i>
+                        <h4>Tile Calculator</h4>
+                    </a>
+                    <a href="/conversion/volume-converter.html" class="related-card">
+                        <i class="fas fa-cube"></i>
+                        <h4>Volume Converter</h4>
+                    </a>
+                    <a href="/" class="related-card">
+                        <i class="fas fa-home"></i>
+                        <h4>All Calculators</h4>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 HQMX Calculator. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <script src="/i18n.js?v=20251101fix"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/calculators/concrete.js"></script>
+    <!-- ExoClick Video Slider - 페이지 로드 후 35초 후 로드 -->
+    <script>
+        // 35초 지연 후 ExoClick 비디오 슬라이더 광고 로드
+        setTimeout(function() {
+            // ad-provider.js 스크립트 로드
+            var adScript = document.createElement('script');
+            adScript.type = 'application/javascript';
+            adScript.async = true;
+            adScript.src = 'https://a.magsrv.com/ad-provider.js';
+
+            // ins 요소 생성 및 추가
+            var insElement = document.createElement('ins');
+            insElement.className = 'eas6a97888e31';
+            insElement.setAttribute('data-zoneid', '5760302');
+
+            // body에 요소들 추가
+            document.body.appendChild(adScript);
+            document.body.appendChild(insElement);
+
+            // AdProvider 초기화 (스크립트 로드 완료 후)
+            adScript.onload = function() {
+                (window.AdProvider = window.AdProvider || []).push({"serve": {}});
+            };
+        }, 35000); // 35초 = 35000ms
+    </script>
+
+
+</body>
+
+</html>

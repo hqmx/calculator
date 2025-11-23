@@ -51,5 +51,85 @@
     "subtractPercentFrom": "Restar X% de Y",
     "calculateBtn": "Calcular",
     "result": "Resultado"
+  },
+  "equation": {
+    "tagline": "Equation Solver",
+    "subtitle": "Solve Linear & Quadratic Equations Instantly",
+    "solveBtn": "Solve Equation",
+    "solveAgainBtn": "Solve Another"
+  },
+  "statistics": {
+    "tagline": "Statistics Calculator",
+    "subtitle": "Calculate Mean, Median, Standard Deviation & More",
+    "calculateBtn": "Calculate Statistics",
+    "recalculateBtn": "Calculate Again"
+  },
+  "probability": {
+    "tagline": "Probability Calculator",
+    "subtitle": "Calculate Combinations & Permutations",
+    "calculateBtn": "Calculate",
+    "recalculateBtn": "Calculate Again"
+  },
+  "pixel": {
+    "tagline": "Pixel Calculator",
+    "subtitle": "Calculate DPI, PPI & Screen Resolution",
+    "calculateBtn": "Calculate PPI/DPI",
+    "recalculateBtn": "Calculate Again"
+  },
+  "videoBitrate": {
+    "tagline": "Video Bitrate Calculator",
+    "subtitle": "Calculate Video File Size & Bitrate",
+    "calculateBtn": "Calculate File Size",
+    "recalculateBtn": "Calculate Again"
+  },
+  "aspectRatio": {
+    "tagline": "Aspect Ratio Calculator",
+    "subtitle": "Calculate & Maintain Aspect Ratios",
+    "calculateBtn": "Calculate Ratio",
+    "recalculateBtn": "Calculate Again"
+  },
+  "paint": {
+    "tagline": "Paint Calculator",
+    "subtitle": "Calculate Paint Needed for Your Project",
+    "calculateBtn": "Calculate Paint Needed",
+    "recalculateBtn": "Calculate Again"
+  },
+  "tile": {
+    "tagline": "Tile Calculator",
+    "subtitle": "Calculate Tiles Needed for Your Project",
+    "calculateBtn": "Calculate Tiles Needed",
+    "recalculateBtn": "Calculate Again"
+  },
+  "concrete": {
+    "tagline": "Concrete Calculator",
+    "subtitle": "Calculate Concrete Needed for Your Project",
+    "calculateBtn": "Calculate Concrete",
+    "recalculateBtn": "Calculate Again"
+  },
+  "wallpaper": {
+    "tagline": "Wallpaper Calculator",
+    "subtitle": "Calculate Wallpaper Rolls Needed",
+    "calculateBtn": "Calculate Rolls Needed",
+    "recalculateBtn": "Calculate Again"
+  },
+  "tax": {
+    "tagline": "Calculadora de Impuestos",
+    "subtitle": "Calcule IVA e Impuesto de Ventas al Instante",
+    "modeLabel": "Modo de Cálculo",
+    "addTax": "Añadir Impuesto",
+    "removeTax": "Eliminar Impuesto",
+    "amount": "Monto",
+    "amountPlaceholder": "Ingrese el monto",
+    "amountHintAdd": "Monto neto (antes de impuestos)",
+    "amountHintRemove": "Monto bruto (impuestos incluidos)",
+    "taxRate": "Tasa de Impuesto",
+    "taxRatePlaceholder": "Ingrese la tasa de impuesto",
+    "calculateBtn": "Calcular Impuesto",
+    "recalculateBtn": "Calcular de nuevo",
+    "totalAmount": "Monto Total",
+    "grossAmount": "Monto Bruto",
+    "taxAmount": "Monto del Impuesto",
+    "netAmount": "Monto Neto",
+    "beforeTax": "Antes de Impuestos"
   }
 }

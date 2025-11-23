@@ -51,5 +51,85 @@
     "subtractPercentFrom": "YからX%を引く",
     "calculateBtn": "計算",
     "result": "結果"
+  },
+  "equation": {
+    "tagline": "Equation Solver",
+    "subtitle": "Solve Linear & Quadratic Equations Instantly",
+    "solveBtn": "Solve Equation",
+    "solveAgainBtn": "Solve Another"
+  },
+  "statistics": {
+    "tagline": "Statistics Calculator",
+    "subtitle": "Calculate Mean, Median, Standard Deviation & More",
+    "calculateBtn": "Calculate Statistics",
+    "recalculateBtn": "Calculate Again"
+  },
+  "probability": {
+    "tagline": "Probability Calculator",
+    "subtitle": "Calculate Combinations & Permutations",
+    "calculateBtn": "Calculate",
+    "recalculateBtn": "Calculate Again"
+  },
+  "pixel": {
+    "tagline": "Pixel Calculator",
+    "subtitle": "Calculate DPI, PPI & Screen Resolution",
+    "calculateBtn": "Calculate PPI/DPI",
+    "recalculateBtn": "Calculate Again"
+  },
+  "videoBitrate": {
+    "tagline": "Video Bitrate Calculator",
+    "subtitle": "Calculate Video File Size & Bitrate",
+    "calculateBtn": "Calculate File Size",
+    "recalculateBtn": "Calculate Again"
+  },
+  "aspectRatio": {
+    "tagline": "Aspect Ratio Calculator",
+    "subtitle": "Calculate & Maintain Aspect Ratios",
+    "calculateBtn": "Calculate Ratio",
+    "recalculateBtn": "Calculate Again"
+  },
+  "paint": {
+    "tagline": "Paint Calculator",
+    "subtitle": "Calculate Paint Needed for Your Project",
+    "calculateBtn": "Calculate Paint Needed",
+    "recalculateBtn": "Calculate Again"
+  },
+  "tile": {
+    "tagline": "Tile Calculator",
+    "subtitle": "Calculate Tiles Needed for Your Project",
+    "calculateBtn": "Calculate Tiles Needed",
+    "recalculateBtn": "Calculate Again"
+  },
+  "concrete": {
+    "tagline": "Concrete Calculator",
+    "subtitle": "Calculate Concrete Needed for Your Project",
+    "calculateBtn": "Calculate Concrete",
+    "recalculateBtn": "Calculate Again"
+  },
+  "wallpaper": {
+    "tagline": "Wallpaper Calculator",
+    "subtitle": "Calculate Wallpaper Rolls Needed",
+    "calculateBtn": "Calculate Rolls Needed",
+    "recalculateBtn": "Calculate Again"
+  },
+  "tax": {
+    "tagline": "税金計算機",
+    "subtitle": "消費税と売上税を即座に計算",
+    "modeLabel": "計算モード",
+    "addTax": "税金を追加",
+    "removeTax": "税金を除く",
+    "amount": "金額",
+    "amountPlaceholder": "金額を入力",
+    "amountHintAdd": "正味金額（税抜）",
+    "amountHintRemove": "総額（税込）",
+    "taxRate": "税率",
+    "taxRatePlaceholder": "税率を入力",
+    "calculateBtn": "税金を計算",
+    "recalculateBtn": "再計算",
+    "totalAmount": "合計金額",
+    "grossAmount": "総額",
+    "taxAmount": "税額",
+    "netAmount": "正味金額",
+    "beforeTax": "税抜"
   }
 }
