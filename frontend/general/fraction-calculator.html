@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO Meta Tags -->
-    <title>분수 계산기 | HQMX</title>
-    <meta name="description" content="무료 온라인 분수 계산기. 분수 덧셈, 뺄셈, 곱셈, 나눗셈. 분수 간소화 및 소수 변환.">
-    <meta name="keywords" content="분수 계산기, fraction calculator, add fractions, subtract fractions, multiply fractions, divide fractions, simplify fractions, 분수 덧셈, 분수 뺄셈">
+    <title>Fraction Calculator - Add, Subtract, Multiply, Divide Fractions | HQMX</title>
+    <meta name="description" content="Free online fraction calculator. Add, subtract, multiply, and divide fractions. Simplify fractions and convert between fractions and decimals.">
+    <meta name="keywords" content="fraction calculator, add fractions, subtract fractions, multiply fractions, divide fractions, simplify fractions, 분수 계산기">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="분수 계산기 | HQMX">
-    <meta property="og:description" content="분수 계산을 쉽게. 분수 덧셈, 뺄셈, 곱셈, 나눗셈 및 간소화.">
+    <meta property="og:title" content="Fraction Calculator - Add, Subtract, Multiply, Divide Fractions | HQMX">
+    <meta property="og:description" content="Easily perform calculations with fractions. Add, subtract, multiply, divide, and simplify fractions.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://calculator.hqmx.net/general/fraction-calculator.html">
 
@@ -32,745 +32,167 @@
     <link rel="manifest" href="/manifest.json" />
 
     <style>
-        .percent-calc-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .percent-calc-card {
-            background: var(--input-bg);
-            border: 2px solid var(--input-border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .percent-calc-card:hover {
-            border-color: var(--primary);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .calc-card-header h3 {
-            color: var(--text-primary);
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .calc-example {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .calc-card-inputs {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .input-group {
+        .fraction-input-group {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            align-items: center;
+            gap: 0.25rem;
         }
 
-        .input-group label {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        .input-group input {
-            padding: 0.75rem;
-            border: 2px solid var(--input-border);
-            border-radius: 8px;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            font-size: 1rem;
-            transition: all 0.2s ease;
-        }
-
-        .input-group input:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .fraction-display {
+        .fraction-input-group input {
+            width: 80px;
             text-align: center;
-            font-size: 1.5rem;
-            color: var(--text-primary);
-            margin: 0.5rem 0;
-        }
-
-        .fraction-numerator,
-        .fraction-denominator {
-            display: block;
         }
 
         .fraction-line {
-            border-top: 2px solid var(--text-primary);
-            margin: 0.25rem 0;
+            width: 60px;
+            height: 2px;
+            background-color: var(--text-primary);
         }
 
-        .calc-card-btn {
-            width: 100%;
-            padding: 0.875rem;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
+        .operator-display {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
-        }
-
-        .calc-card-btn:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-        }
-
-        .calc-card-btn:active {
-            transform: translateY(0);
-        }
-
-        .calc-card-result {
-            margin-top: 1rem;
-            padding: 1rem;
-            background: var(--secondary-bg);
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .result-label {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-        }
-
-        .result-value {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 2rem;
             color: var(--primary);
+            padding: 1rem;
         }
 
-        .operation-selector {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            justify-content: center;
-        }
-
-        .operation-btn {
-            padding: 0.75rem 1.25rem;
-            border: 2px solid var(--input-border);
-            border-radius: 8px;
+        .fraction-calc-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 2fr 1fr 2fr;
+            align-items: center;
+            gap: 1rem;
             background: var(--input-bg);
-            color: var(--text-primary);
-            font-size: 1.25rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--input-border);
         }
 
-        .operation-btn:hover {
-            border-color: var(--primary);
-            background: var(--hover-bg);
+        .fraction-result {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .calc-card-inputs {
+            display: grid;
+            grid-template-columns: 1fr 20px 1fr;
+            align-items: center;
+            gap: 1rem;
         }
 
-        .operation-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        @media (max-width: 768px) {
-            .percent-calc-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .calc-card-inputs {
-                grid-template-columns: 1fr;
-                gap: 0.75rem;
-            }
-
-            .operation-selector {
-                flex-wrap: wrap;
-            }
-        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Navigation Header -->
+        <!-- Navigation -->
         <nav class="top-nav">
-            <div class="nav-left">
-                <a href="/" class="converter-logo-link">
-                    <div class="converter-logo">
-                        <span class="converter-text"><span class="converter-c">C</span><span class="converter-rest">ALCULATOR</span></span>
-                    </div>
-                </a>
-            </div>
-
-            <div class="nav-center">
-                <button class="hamburger-menu" id="hamburgerMenu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-
-                <div class="nav-menu">
-                    <a href="/" class="nav-link">Home</a>
-                    <a href="/how-to-use" class="nav-link">How to Use</a>
-                    <a href="/faq" class="nav-link">FAQ</a>
-                    <a href="/api.html" class="nav-link">API</a>
-                </div>
-
-                <div class="mobile-menu-overlay" id="mobileMenuOverlay">
-                    <div class="mobile-menu-box">
-                        <div class="mobile-menu-links">
-                            <a href="/" class="mobile-menu-link">Home</a>
-                            <a href="/how-to-use" class="mobile-menu-link">How to Use</a>
-                            <a href="/faq" class="mobile-menu-link">FAQ</a>
-                            <a href="/api.html" class="mobile-menu-link">API</a>
-                        </div>
-
-                        <div class="mobile-menu-controls">
-                            <div class="mobile-control-item menu-divider">
-                                <button id="mobileThemeToggleBtn" class="mobile-theme-toggle-btn">
-                                    <i class="fas fa-sun"></i>
-                                    <i class="fas fa-moon"></i>
-                                </button>
-                                <button id="mobileLanguageSelectorBtn" class="mobile-language-selector-btn">
-                                    <i class="fas fa-globe"></i>
-                                    <span id="mobileCurrentLanguage">EN</span>
-                                    <i class="fas fa-chevron-down"></i>
-                                </button>
-                            </div>
-                            <div class="mobile-control-item">
-                                <div id="mobileLanguageOptions" class="mobile-language-options">
-                                    <a href="#" data-lang="en">English</a>
-                                    <a href="#" data-lang="ko">한국어</a>
-                                    <a href="#" data-lang="es">Español</a>
-                                    <a href="#" data-lang="fr">Français</a>
-                                    <a href="#" data-lang="de">Deutsch</a>
-                                    <a href="#" data-lang="ja">日本語</a>
-                                    <a href="#" data-lang="zh-CN">简体中文</a>
-                                    <a href="#" data-lang="pt">Português</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="nav-right">
-                <button id="themeToggleBtn" class="icon-btn">
-                    <i class="fas fa-sun sun-icon"></i>
-                    <i class="fas fa-moon moon-icon"></i>
-                </button>
-
-                <div class="language-selector">
-                    <button id="languageSelectorBtn" class="icon-btn">
-                        <i class="fas fa-globe"></i>
-                        <span id="currentLanguage">EN</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div id="languageOptions" class="language-options">
-                        <a href="#" data-lang="en">English</a>
-                        <a href="#" data-lang="ko">한국어</a>
-                        <a href="#" data-lang="es">Español</a>
-                        <a href="#" data-lang="fr">Français</a>
-                        <a href="#" data-lang="de">Deutsch</a>
-                        <a href="#" data-lang="ja">日本語</a>
-                        <a href="#" data-lang="zh-CN">简体中文</a>
-                        <a href="#" data-lang="pt">Português</a>
-                    </div>
-                </div>
-            </div>
+            <div class="nav-left"><a href="/" class="converter-logo-link"><div class="converter-logo" dir="ltr"><span class="converter-text"><span class="converter-c">C</span><span class="converter-rest">ALCULATOR</span></span></div></a></div>
+            <div class="nav-center"><button class="hamburger-menu" id="hamburgerMenu"><span></span><span></span><span></span></button><div class="nav-menu"><a href="/" class="nav-link">Home</a><a href="/how-to-use" class="nav-link">How to Use</a><a href="/faq" class="nav-link">FAQ</a><a href="/api.html" class="nav-link">API</a></div><div class="mobile-menu-overlay" id="mobileMenuOverlay"><div class="mobile-menu-box"><div class="mobile-menu-links"><a href="/" class="mobile-menu-link">Home</a><a href="/how-to-use" class="mobile-menu-link">How to Use</a><a href="/faq" class="mobile-menu-link">FAQ</a><a href="/api.html" class="mobile-menu-link">API</a></div><div class="mobile-menu-controls"><div class="mobile-control-item menu-divider"><button id="mobileThemeToggleBtn" class="mobile-theme-toggle-btn"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></button><button id="mobileLanguageSelectorBtn" class="mobile-language-selector-btn"><i class="fas fa-globe"></i><span id="mobileCurrentLanguage">EN</span><i class="fas fa-chevron-down"></i></button></div><div class="mobile-control-item"><div id="mobileLanguageOptions" class="mobile-language-options"></div></div></div></div></div></div>
+            <div class="nav-right"><button id="themeToggleBtn" class="theme-toggle-btn"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></button><div class="language-switcher"><button id="language-selector-btn" class="language-selector-btn"><i class="fas fa-globe"></i><span id="current-language">English</span><i class="fas fa-chevron-down"></i></button><div id="language-options" class="language-options"></div></div></div>
         </nav>
 
-        <!-- Main Content -->
         <main class="main-content">
-            <!-- Calculator Header -->
             <header class="calculator-header">
-                <h1>분수 계산기</h1>
-                <p class="tagline">분수 계산</p>
+                <p class="tagline">Add, Subtract, Multiply, and Divide Fractions</p>
             </header>
 
-            <!-- Fraction Calculators Container -->
             <section class="calculators-section">
-                <!-- Calculator Cards Grid -->
+                <h2 class="section-title"><i class="fas fa-divide"></i><span>Fraction Calculator</span></h2>
+                
                 <div class="percent-calc-grid">
-                    <!-- Card 1: Add Fractions -->
                     <div class="percent-calc-card">
-                        <div class="calc-card-header">
-                            <h3><i class="fas fa-plus"></i> 분수 덧셈</h3>
-                            <p class="calc-example">예제: 1/4 + 1/6 = 5/12</p>
-                        </div>
+                        <div class="calc-card-header"><h3><i class="fas fa-calculator"></i> Fraction Operations</h3></div>
                         <div class="calc-card-inputs">
-                            <div class="input-group">
-                                <label>분자 1</label>
-                                <input type="number" id="add_num1" placeholder="1" step="1">
+                            <div class="fraction-input-group">
+                                <input type="number" id="num1" placeholder="1">
+                                <div class="fraction-line"></div>
+                                <input type="number" id="den1" placeholder="2" min="1">
                             </div>
-                            <div class="input-group">
-                                <label>분모 1</label>
-                                <input type="number" id="add_den1" placeholder="4" step="1" min="1">
-                            </div>
-                            <div class="input-group">
-                                <label>분자 2</label>
-                                <input type="number" id="add_num2" placeholder="1" step="1">
-                            </div>
-                            <div class="input-group">
-                                <label>분모 2</label>
-                                <input type="number" id="add_den2" placeholder="6" step="1" min="1">
+                            <div class="operator-display" id="operator_display">+</div>
+                            <div class="fraction-input-group">
+                                <input type="number" id="num2" placeholder="1">
+                                <div class="fraction-line"></div>
+                                <input type="number" id="den2" placeholder="4" min="1">
                             </div>
                         </div>
-                        <button class="calc-card-btn" data-calc="add">
-                            <i class="fas fa-calculator"></i> 계산하기
-                        </button>
-                        <div class="calc-card-result" id="result_add">
-                            <div class="result-label">결과:</div>
+                        <div class="operation-selector">
+                            <button class="operation-btn active" data-op="+">+</button>
+                            <button class="operation-btn" data-op="-">−</button>
+                            <button class="operation-btn" data-op="*">×</button>
+                            <button class="operation-btn" data-op="/">÷</button>
+                        </div>
+                        <div class="calc-card-result" id="result_op">
+                            <div class="result-label">Result:</div>
                             <div class="result-value">-</div>
                         </div>
                     </div>
 
-                    <!-- Card 2: Subtract Fractions -->
                     <div class="percent-calc-card">
-                        <div class="calc-card-header">
-                            <h3><i class="fas fa-minus"></i> 분수 뺄셈</h3>
-                            <p class="calc-example">예제: 3/4 - 1/6 = 7/12</p>
-                        </div>
-                        <div class="calc-card-inputs">
-                            <div class="input-group">
-                                <label>분자 1</label>
-                                <input type="number" id="subtract_num1" placeholder="3" step="1">
-                            </div>
-                            <div class="input-group">
-                                <label>분모 1</label>
-                                <input type="number" id="subtract_den1" placeholder="4" step="1" min="1">
-                            </div>
-                            <div class="input-group">
-                                <label>분자 2</label>
-                                <input type="number" id="subtract_num2" placeholder="1" step="1">
-                            </div>
-                            <div class="input-group">
-                                <label>분모 2</label>
-                                <input type="number" id="subtract_den2" placeholder="6" step="1" min="1">
+                        <div class="calc-card-header"><h3><i class="fas fa-compress-arrows-alt"></i> Simplify & Convert</h3></div>
+                         <div class="calc-card-inputs">
+                            <div class="fraction-input-group">
+                                <input type="number" id="simp_num" placeholder="6">
+                                <div class="fraction-line"></div>
+                                <input type="number" id="simp_den" placeholder="9" min="1">
                             </div>
                         </div>
-                        <button class="calc-card-btn" data-calc="subtract">
-                            <i class="fas fa-calculator"></i> 계산하기
-                        </button>
-                        <div class="calc-card-result" id="result_subtract">
-                            <div class="result-label">결과:</div>
-                            <div class="result-value">-</div>
-                        </div>
-                    </div>
-
-                    <!-- Card 3: Multiply Fractions -->
-                    <div class="percent-calc-card">
-                        <div class="calc-card-header">
-                            <h3><i class="fas fa-times"></i> 분수 곱셈</h3>
-                            <p class="calc-example">예제: 2/3 × 3/4 = 1/2</p>
-                        </div>
-                        <div class="calc-card-inputs">
-                            <div class="input-group">
-                                <label>분자 1</label>
-                                <input type="number" id="multiply_num1" placeholder="2" step="1">
-                            </div>
-                            <div class="input-group">
-                                <label>분모 1</label>
-                                <input type="number" id="multiply_den1" placeholder="3" step="1" min="1">
-                            </div>
-                            <div class="input-group">
-                                <label>분자 2</label>
-                                <input type="number" id="multiply_num2" placeholder="3" step="1">
-                            </div>
-                            <div class="input-group">
-                                <label>분모 2</label>
-                                <input type="number" id="multiply_den2" placeholder="4" step="1" min="1">
-                            </div>
-                        </div>
-                        <button class="calc-card-btn" data-calc="multiply">
-                            <i class="fas fa-calculator"></i> 계산하기
-                        </button>
-                        <div class="calc-card-result" id="result_multiply">
-                            <div class="result-label">결과:</div>
-                            <div class="result-value">-</div>
-                        </div>
-                    </div>
-
-                    <!-- Card 4: Divide Fractions -->
-                    <div class="percent-calc-card">
-                        <div class="calc-card-header">
-                            <h3><i class="fas fa-divide"></i> 분수 나눗셈</h3>
-                            <p class="calc-example">예제: 2/3 ÷ 3/4 = 8/9</p>
-                        </div>
-                        <div class="calc-card-inputs">
-                            <div class="input-group">
-                                <label>분자 1</label>
-                                <input type="number" id="divide_num1" placeholder="2" step="1">
-                            </div>
-                            <div class="input-group">
-                                <label>분모 1</label>
-                                <input type="number" id="divide_den1" placeholder="3" step="1" min="1">
-                            </div>
-                            <div class="input-group">
-                                <label>분자 2</label>
-                                <input type="number" id="divide_num2" placeholder="3" step="1">
-                            </div>
-                            <div class="input-group">
-                                <label>분모 2</label>
-                                <input type="number" id="divide_den2" placeholder="4" step="1" min="1">
-                            </div>
-                        </div>
-                        <button class="calc-card-btn" data-calc="divide">
-                            <i class="fas fa-calculator"></i> 계산하기
-                        </button>
-                        <div class="calc-card-result" id="result_divide">
-                            <div class="result-label">결과:</div>
-                            <div class="result-value">-</div>
-                        </div>
-                    </div>
-
-                    <!-- Card 5: Simplify Fraction -->
-                    <div class="percent-calc-card">
-                        <div class="calc-card-header">
-                            <h3><i class="fas fa-compress-alt"></i> 분수 약분</h3>
-                            <p class="calc-example">예제: 6/9 = 2/3</p>
-                        </div>
-                        <div class="calc-card-inputs">
-                            <div class="input-group">
-                                <label>분자</label>
-                                <input type="number" id="simplify_num" placeholder="6" step="1">
-                            </div>
-                            <div class="input-group">
-                                <label>분모</label>
-                                <input type="number" id="simplify_den" placeholder="9" step="1" min="1">
-                            </div>
-                        </div>
-                        <button class="calc-card-btn" data-calc="simplify">
-                            <i class="fas fa-calculator"></i> 계산하기
-                        </button>
+                        <button class="calc-card-btn" id="simplifyBtn"><i class="fas fa-calculator"></i> Simplify</button>
                         <div class="calc-card-result" id="result_simplify">
-                            <div class="result-label">결과:</div>
-                            <div class="result-value">-</div>
-                        </div>
-                    </div>
-
-                    <!-- Card 6: Fraction to Decimal -->
-                    <div class="percent-calc-card">
-                        <div class="calc-card-header">
-                            <h3><i class="fas fa-exchange-alt"></i> 분수를 소수로</h3>
-                            <p class="calc-example">예제: 3/4 = 0.75</p>
-                        </div>
-                        <div class="calc-card-inputs">
-                            <div class="input-group">
-                                <label>분자</label>
-                                <input type="number" id="toDecimal_num" placeholder="3" step="1">
-                            </div>
-                            <div class="input-group">
-                                <label>분모</label>
-                                <input type="number" id="toDecimal_den" placeholder="4" step="1" min="1">
-                            </div>
-                        </div>
-                        <button class="calc-card-btn" data-calc="toDecimal">
-                            <i class="fas fa-calculator"></i> 계산하기
-                        </button>
-                        <div class="calc-card-result" id="result_toDecimal">
-                            <div class="result-label">결과:</div>
+                            <div class="result-label">Result:</div>
                             <div class="result-value">-</div>
                         </div>
                     </div>
                 </div>
             </section>
-
-            <!-- How to Use Section -->
-            <section class="info-section">
-                <h2><i class="fas fa-question-circle"></i> 사용 방법</h2>
-                <div class="steps-grid">
-                    <div class="step-card">
-                        <div class="step-number">1</div>
-                        <h3>첫 번째 분수 입력</h3>
-                        <p>첫 번째 분수의 분자(위 숫자)와 분모(아래 숫자)를 입력하세요.</p>
+            
+            <section class="usage-guide-section">
+                <h3>사용 방법 (How to Use)</h3>
+                <div class="guide-steps">
+                    <div class="step"><div class="step-header"><span class="step-number">1</span><h4>분수 입력 (Enter Fractions)</h4></div><div class="step-content"><p>분자와 분모를 각 필드에 입력하세요. 예: 1/2 + 1/4</p></div></div>
+                    <div class="step"><div class="step-header"><span class="step-number">2</span><h4>연산 선택 (Choose Operation)</h4></div><div class="step-content"><p>+, -, ×, ÷ 버튼을 클릭하여 원하는 계산을 선택하세요.</p></div></div>
+                    <div class="step"><div class="step-header"><span class="step-number">3</span><h4>결과 확인 (Get Result)</h4></div><div class="step-content"><p>결과는 자동으로 약분된 분수와 소수 형태로 표시됩니다.</p></div></div>
+                </div>
+            </section>
+            
+            <section class="faq-section">
+                <h3>자주 묻는 질문 (FAQ)</h3>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 대분수(Mixed numbers)는 어떻게 입력하나요?</h4>
+                        <p>현재 계산기는 가분수(improper fractions) 형태(예: 3/2)만 지원합니다. 대분수(예: 1 ½)는 가분수로 변환하여 입력해주세요.</p>
                     </div>
-                    <div class="step-card">
-                        <div class="step-number">2</div>
-                        <h3>연산 선택</h3>
-                        <p>덧셈, 뺄셈, 곱셈 또는 나눗셈을 선택하세요. 또는 단일 분수를 약분하세요.</p>
-                    </div>
-                    <div class="step-card">
-                        <div class="step-number">3</div>
-                        <h3>결과 확인</h3>
-                        <p>계산 버튼을 눌러 결과를 확인하세요. 답은 자동으로 최소 항으로 약분됩니다.</p>
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 분수는 어떻게 약분되나요?</h4>
+                        <p>분자와 분모의 최대공약수(GCD)를 찾아 양쪽을 나누어 가장 간단한 형태로 만듭니다. 예: 6/9의 GCD는 3이므로, 2/3으로 약분됩니다.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- Formulas Section -->
-            <section class="info-section">
-                <h2><i class="fas fa-book"></i> 분수 공식</h2>
-                <div class="examples-grid">
-                    <div class="example-card">
-                        <h3>덧셈</h3>
-                        <div class="example-problem" style="font-family: monospace;">
-                            a/b + c/d = (a×d + b×c) / (b×d)
-                        </div>
-                        <div class="example-solution">
-                            <strong>예제:</strong> 1/4 + 1/6 = (1×6 + 4×1) / (4×6) = 10/24 = 5/12
-                        </div>
-                    </div>
-                    <div class="example-card">
-                        <h3>뺄셈</h3>
-                        <div class="example-problem" style="font-family: monospace;">
-                            a/b - c/d = (a×d - b×c) / (b×d)
-                        </div>
-                        <div class="example-solution">
-                            <strong>예제:</strong> 3/4 - 1/6 = (3×6 - 4×1) / (4×6) = 14/24 = 7/12
-                        </div>
-                    </div>
-                    <div class="example-card">
-                        <h3>곱셈</h3>
-                        <div class="example-problem" style="font-family: monospace;">
-                            a/b × c/d = (a×c) / (b×d)
-                        </div>
-                        <div class="example-solution">
-                            <strong>예제:</strong> 2/3 × 3/4 = (2×3) / (3×4) = 6/12 = 1/2
-                        </div>
-                    </div>
-                    <div class="example-card">
-                        <h3>나눗셈</h3>
-                        <div class="example-problem" style="font-family: monospace;">
-                            a/b ÷ c/d = (a×d) / (b×c)
-                        </div>
-                        <div class="example-solution">
-                            <strong>예제:</strong> 2/3 ÷ 3/4 = (2×4) / (3×3) = 8/9
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Responsive Ad Banner (Examples 위) -->
-            <div class="responsive-ad-banner">
-                <!-- Desktop: 728x90 -->
-                <div class="ad-desktop">
-                    <script type="text/javascript">
-                        atOptions = {
-                            'key' : 'a0109a486ddd226684cfa5934f412a88',
-                            'format' : 'iframe',
-                            'height' : 90,
-                            'width' : 728,
-                            'params' : {}
-                        };
-                    </script>
-                    <script type="text/javascript" src="//annoyingnightmareedit.com/a0109a486ddd226684cfa5934f412a88/invoke.js"></script>
-                </div>
-
-                <!-- Tablet: 468x60 -->
-                <div class="ad-tablet">
-                    <script type="text/javascript">
-                        atOptions = {
-                            'key' : 'cb93fb1de0136f18561bd497f24daa03',
-                            'format' : 'iframe',
-                            'height' : 60,
-                            'width' : 468,
-                            'params' : {}
-                        };
-                    </script>
-                    <script type="text/javascript" src="//annoyingnightmareedit.com/cb93fb1de0136f18561bd497f24daa03/invoke.js"></script>
-                </div>
-
-                <!-- Mobile: 320x50 -->
-                <div class="ad-mobile">
-                    <script type="text/javascript">
-                        atOptions = {
-                            'key' : '266dce0b2742554614d486d3a6e08060',
-                            'format' : 'iframe',
-                            'height' : 50,
-                            'width' : 320,
-                            'params' : {}
-                        };
-                    </script>
-                    <script type="text/javascript" src="//annoyingnightmareedit.com/266dce0b2742554614d486d3a6e08060/invoke.js"></script>
-                </div>
-            </div>
-
-            <!-- Examples Section -->
-            <section class="info-section">
-                <h2><i class="fas fa-lightbulb"></i> 실용 예제</h2>
-                <div class="examples-grid">
-                    <div class="example-card">
-                        <h3>레시피 배율 조정</h3>
-                        <div class="example-problem">
-                            원래: 2/3 컵 밀가루<br>
-                            2배 레시피: 2/3 × 2
-                        </div>
-                        <div class="example-solution">
-                            <strong>결과:</strong> 4/3 = 1⅓ 컵
-                        </div>
-                    </div>
-                    <div class="example-card">
-                        <h3>목재 자르기</h3>
-                        <div class="example-problem">
-                            판재: 8/4 피트 (2 피트)<br>
-                            3조각으로 자르기
-                        </div>
-                        <div class="example-solution">
-                            <strong>결과:</strong> 8/4 ÷ 3 = 2/3 피트씩
-                        </div>
-                    </div>
-                    <div class="example-card">
-                        <h3>페인트 혼합</h3>
-                        <div class="example-problem">
-                            빨강: 3/8 갤런<br>
-                            파랑: 1/4 갤런
-                        </div>
-                        <div class="example-solution">
-                            <strong>총계:</strong> 3/8 + 2/8 = 5/8 갤런
-                        </div>
-                    </div>
-                    <div class="example-card">
-                        <h3>숙제 문제</h3>
-                        <div class="example-problem">
-                            계산: 5/6 + 2/3
-                        </div>
-                        <div class="example-solution">
-                            <strong>결과:</strong> 5/6 + 4/6 = 9/6 = 3/2 = 1½
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- FAQ Section -->
-            <section class="info-section">
-                <h2><i class="fas fa-comments"></i> 자주 묻는 질문</h2>
-                <div class="faq-list">
-                    <details class="faq-item">
-                        <summary>대분수란 무엇인가요?</summary>
-                        <p>대분수는 정수와 분수를 결합한 것으로 2½와 같습니다 (가분수로는 5/2와 같습니다).</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>분수를 어떻게 약분하나요?</summary>
-                        <p>분자와 분모를 최대공약수(GCD)로 나눕니다. 예: 6/9 ÷ 3 = 2/3.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>정수를 입력할 수 있나요?</summary>
-                        <p>네! 정수를 분자로 입력하고 1을 분모로 입력하세요. 예: 5 = 5/1.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>가분수란 무엇인가요?</summary>
-                        <p>가분수는 분자가 분모보다 큰 분수로 7/4와 같습니다 (대분수로는 1¾와 같습니다).</p>
-                    </details>
-
-                    <details class="faq-item">
-                        <summary>분모가 0일 수 없는 이유는?</summary>
-                        <p>0으로 나누기는 수학에서 정의되지 않습니다. 분모가 0인 분수는 의미가 없습니다.</p>
-                    </details>
-                </div>
-            </section>
-
-            <!-- ExoClick Ad Banner -->
-            <div class="ad-banner">
-                <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
-                <ins class="eas6a97888e20" data-zoneid="5773292"></ins>
-                <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-            </div>
-
-            <!-- Features Section -->
-            <section class="info-section">
-                <h2><i class="fas fa-star"></i> 주요 기능</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-calculator"></i></div>
-                        <h3>모든 연산</h3>
-                        <p>자동 약분 기능이 있는 분수 덧셈, 뺄셈, 곱셈, 나눗셈 및 약분.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-compress-alt"></i></div>
-                        <h3>자동 약분</h3>
-                        <p>결과가 자동으로 최소 항으로 약분되어 이해하기 쉽습니다.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-exchange-alt"></i></div>
-                        <h3>변환</h3>
-                        <p>분수를 소수로 변환하고 그 반대도 가능합니다. 대분수 지원.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
-                        <h3>모바일 친화적</h3>
-                        <p>터치 최적화 인터페이스로 스마트폰과 태블릿에서 완벽하게 작동합니다.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Related Calculators -->
-            <section class="info-section">
-                <h2><i class="fas fa-link"></i> 관련 계산기</h2>
+            <section class="related-section">
+                <h3>Related Calculators</h3>
                 <div class="related-grid">
-                    <a href="/general/percentage-calculator.html" class="related-card">
-                        <i class="fas fa-percent"></i>
-                        <h3>퍼센트 계산기</h3>
-                        <p>백분율 계산</p>
-                    </a>
-                    <a href="/general/basic-calculator.html" class="related-card">
-                        <i class="fas fa-calculator"></i>
-                        <h3>기본 계산기</h3>
-                        <p>간단한 산술</p>
-                    </a>
-                    <a href="/general/scientific-calculator.html" class="related-card">
-                        <i class="fas fa-square-root-alt"></i>
-                        <h3>공학용 계산기</h3>
-                        <p>고급 함수</p>
-                    </a>
+                    <a href="/general/basic-calculator.html" class="related-card"><i class="fas fa-calculator"></i><h4>Basic Calculator</h4><p>기본 산술 계산</p></a>
+                    <a href="/general/percentage-calculator.html" class="related-card"><i class="fas fa-percent"></i><h4>Percentage Calculator</h4><p>백분율 계산</p></a>
+                    <a href="/general/scientific-calculator.html" class="related-card"><i class="fas fa-flask"></i><h4>Scientific Calculator</h4><p>고급 함수 계산</p></a>
                 </div>
             </section>
+
         </main>
 
-        <!-- Footer -->
         <footer class="footer">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>CALCULATOR</h3>
-                    <p>Free online calculators for all your needs</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Categories</h4>
-                    <ul>
-                        <li><a href="/general/">General</a></li>
-                        <li><a href="/finance/">Finance</a></li>
-                        <li><a href="/health/">Health</a></li>
-                        <li><a href="/conversion/">Conversions</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="/how-to-use">How to Use</a></li>
-                        <li><a href="/faq">FAQ</a></li>
-                        <li><a href="/api.html">API</a></li>
-                    </ul>
-                </div>
+                <div class="footer-section"><h3>CALCULATOR</h3><p>Free online calculators for all your needs</p></div>
+                <div class="footer-section"><h4>Categories</h4><ul><li><a href="/general/">General</a></li><li><a href="/finance/">Finance</a></li><li><a href="/health/">Health</a></li><li><a href="/date-time/">Date & Time</a></li></ul></div>
+                <div class="footer-section"><h4>Resources</h4><ul><li><a href="/how-to-use">How to Use</a></li><li><a href="/faq">FAQ</a></li><li><a href="/api.html">API</a></li></ul></div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 HQMX. All rights reserved.</p>
-            </div>
+            <div class="footer-bottom"><p>&copy; 2025 HQMX. All rights reserved.</p></div>
         </footer>
     </div>
 
-    <!-- JavaScript -->
+    <script src="/i18n.js?v=20251101fix"></script>
+    <script src="/nav-common.js"></script>
     <script src="/js/calculators/fraction.js"></script>
-    <script src="/category.js"></script>
 </body>
 </html>

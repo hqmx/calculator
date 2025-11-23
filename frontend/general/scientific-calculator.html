@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO Meta Tags -->
-    <title>공학용 계산기 | HQMX</title>
-    <meta name="description" content="무료 온라인 공학용 계산기. 삼각함수, 로그, 지수 등 고급 계산 수행.">
-    <meta name="keywords" content="공학용 계산기, scientific calculator, advanced calculator, trigonometry calculator, logarithm calculator, sin cos tan, 과학 계산기">
+    <title>Scientific Calculator - Advanced Online Calculator | HQMX</title>
+    <meta name="description" content="Free online scientific calculator. Perform advanced calculations including trigonometry, logarithms, exponents, and more. Perfect for students and professionals.">
+    <meta name="keywords" content="scientific calculator, advanced calculator, trigonometry calculator, logarithm calculator, 공학용 계산기, sin cos tan">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="공학용 계산기 | HQMX">
-    <meta property="og:description" content="삼각함수, 로그, 지수 등 고급 계산 기능을 갖춘 공학용 계산기.">
+    <meta property="og:title" content="Scientific Calculator - Advanced Online Calculator | HQMX">
+    <meta property="og:description" content="Perform advanced calculations including trigonometry, logarithms, exponents, and more.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://calculator.hqmx.net/general/scientific-calculator.html">
 
@@ -38,6 +38,9 @@
             border-radius: 12px;
             padding: 1.5rem;
             margin-bottom: 1.5rem;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .calc-display {
@@ -61,10 +64,16 @@
             min-height: 1.5rem;
         }
 
+        .calc-controls {
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 1.5rem;
+        }
+
         .mode-toggle {
             display: flex;
             gap: 0.5rem;
-            margin-bottom: 1rem;
             align-items: center;
         }
 
@@ -86,16 +95,13 @@
             border-color: var(--primary);
         }
 
-        .mode-label {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
         .calc-buttons-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: 0.5rem;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .calc-btn {
@@ -126,54 +132,17 @@
             font-weight: 600;
         }
 
-        .calc-btn.operator:hover {
-            background: var(--primary);
-            color: white;
-        }
-
         .calc-btn.equals {
             background: var(--primary);
             color: white;
             font-weight: 700;
-        }
-
-        .calc-btn.equals:hover {
-            opacity: 0.9;
+            grid-column: span 5;
         }
 
         .calc-btn.function {
             background: var(--secondary-bg);
             color: var(--text-secondary);
             font-size: 0.95rem;
-        }
-
-        @media (max-width: 768px) {
-            .calc-display {
-                font-size: 2rem;
-                padding: 1rem;
-            }
-
-            .calc-btn {
-                padding: 0.75rem;
-                font-size: 0.95rem;
-                min-height: 45px;
-            }
-
-            .calc-buttons-grid {
-                gap: 0.4rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .calc-display {
-                font-size: 1.75rem;
-            }
-
-            .calc-btn {
-                padding: 0.6rem;
-                font-size: 0.85rem;
-                min-height: 40px;
-            }
         }
     </style>
 </head>
@@ -183,26 +152,19 @@
         <nav class="top-nav">
             <div class="nav-left">
                 <a href="/" class="converter-logo-link">
-                    <div class="converter-logo">
+                    <div class="converter-logo" dir="ltr">
                         <span class="converter-text"><span class="converter-c">C</span><span class="converter-rest">ALCULATOR</span></span>
                     </div>
                 </a>
             </div>
-
             <div class="nav-center">
-                <button class="hamburger-menu" id="hamburgerMenu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-
+                <button class="hamburger-menu" id="hamburgerMenu"><span></span><span></span><span></span></button>
                 <div class="nav-menu">
                     <a href="/" class="nav-link">Home</a>
                     <a href="/how-to-use" class="nav-link">How to Use</a>
                     <a href="/faq" class="nav-link">FAQ</a>
                     <a href="/api.html" class="nav-link">API</a>
                 </div>
-
                 <div class="mobile-menu-overlay" id="mobileMenuOverlay">
                     <div class="mobile-menu-box">
                         <div class="mobile-menu-links">
@@ -211,431 +173,151 @@
                             <a href="/faq" class="mobile-menu-link">FAQ</a>
                             <a href="/api.html" class="mobile-menu-link">API</a>
                         </div>
-
                         <div class="mobile-menu-controls">
                             <div class="mobile-control-item menu-divider">
-                                <button id="mobileThemeToggleBtn" class="mobile-theme-toggle-btn">
-                                    <i class="fas fa-sun"></i>
-                                    <i class="fas fa-moon"></i>
-                                </button>
-                                <button id="mobileLanguageSelectorBtn" class="mobile-language-selector-btn">
-                                    <i class="fas fa-globe"></i>
-                                    <span id="mobileCurrentLanguage">EN</span>
-                                    <i class="fas fa-chevron-down"></i>
-                                </button>
+                                <button id="mobileThemeToggleBtn" class="mobile-theme-toggle-btn"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></button>
+                                <button id="mobileLanguageSelectorBtn" class="mobile-language-selector-btn"><i class="fas fa-globe"></i><span id="mobileCurrentLanguage">EN</span><i class="fas fa-chevron-down"></i></button>
                             </div>
-                            <div class="mobile-control-item">
-                                <div id="mobileLanguageOptions" class="mobile-language-options">
-                                    <a href="#" data-lang="en">English</a>
-                                    <a href="#" data-lang="ko">한국어</a>
-                                    <a href="#" data-lang="es">Español</a>
-                                    <a href="#" data-lang="fr">Français</a>
-                                    <a href="#" data-lang="de">Deutsch</a>
-                                    <a href="#" data-lang="ja">日本語</a>
-                                    <a href="#" data-lang="zh-CN">简体中文</a>
-                                    <a href="#" data-lang="pt">Português</a>
-                                </div>
-                            </div>
+                            <div class="mobile-control-item"><div id="mobileLanguageOptions" class="mobile-language-options"></div></div>
                         </div>
                     </div>
                 </div>
             </div>
-
             <div class="nav-right">
-                <button id="themeToggleBtn" class="icon-btn">
-                    <i class="fas fa-sun sun-icon"></i>
-                    <i class="fas fa-moon moon-icon"></i>
-                </button>
-
-                <div class="language-selector">
-                    <button id="languageSelectorBtn" class="icon-btn">
-                        <i class="fas fa-globe"></i>
-                        <span id="currentLanguage">EN</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div id="languageOptions" class="language-options">
-                        <a href="#" data-lang="en">English</a>
-                        <a href="#" data-lang="ko">한국어</a>
-                        <a href="#" data-lang="es">Español</a>
-                        <a href="#" data-lang="fr">Français</a>
-                        <a href="#" data-lang="de">Deutsch</a>
-                        <a href="#" data-lang="ja">日本語</a>
-                        <a href="#" data-lang="zh-CN">简体中文</a>
-                        <a href="#" data-lang="pt">Português</a>
-                    </div>
+                <button id="themeToggleBtn" class="theme-toggle-btn"><i class="fas fa-sun"></i><i class="fas fa-moon"></i></button>
+                <div class="language-switcher">
+                    <button id="language-selector-btn" class="language-selector-btn"><i class="fas fa-globe"></i><span id="current-language">English</span><i class="fas fa-chevron-down"></i></button>
+                    <div id="language-options" class="language-options"></div>
                 </div>
             </div>
         </nav>
 
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Calculator Header -->
             <header class="calculator-header">
-                <h1>공학용 계산기</h1>
-                <p class="tagline">고급 수학 계산기</p>
+                <p class="tagline">Advanced Online Calculator for Complex Math</p>
             </header>
 
-            <!-- Calculator -->
-            <div style="max-width: 650px; margin: 0 auto;">
-                <!-- Display -->
+            <section class="calculators-section">
+                <h2 class="section-title"><i class="fas fa-flask"></i><span>Scientific Calculator</span></h2>
+                
                 <div class="calc-display-wrapper">
                     <div id="expression" class="calc-expression"></div>
                     <div id="display" class="calc-display">0</div>
                 </div>
 
-                <!-- Mode Toggle -->
-                <div class="mode-toggle">
-                    <span class="mode-label">각도 모드:</span>
-                    <button class="mode-toggle-btn active" id="degBtn" data-mode="deg">DEG</button>
-                    <button class="mode-toggle-btn" id="radBtn" data-mode="rad">RAD</button>
+                <div class="calc-controls">
+                    <div class="mode-toggle">
+                        <span class="mode-label">Angle:</span>
+                        <button class="mode-toggle-btn active" id="degBtn" data-mode="deg">DEG</button>
+                        <button class="mode-toggle-btn" id="radBtn" data-mode="rad">RAD</button>
+                    </div>
                 </div>
 
-                <!-- Buttons -->
                 <div class="calc-buttons-grid">
-                    <!-- Row 1: Advanced functions -->
                     <button class="calc-btn function" data-action="sin">sin</button>
                     <button class="calc-btn function" data-action="cos">cos</button>
                     <button class="calc-btn function" data-action="tan">tan</button>
                     <button class="calc-btn function" data-action="(">(</button>
                     <button class="calc-btn function" data-action=")">)</button>
 
-                    <!-- Row 2: Inverse trig functions -->
                     <button class="calc-btn function" data-action="asin">sin⁻¹</button>
                     <button class="calc-btn function" data-action="acos">cos⁻¹</button>
                     <button class="calc-btn function" data-action="atan">tan⁻¹</button>
                     <button class="calc-btn function" data-action="clear">C</button>
                     <button class="calc-btn function" data-action="backspace"><i class="fas fa-backspace"></i></button>
 
-                    <!-- Row 3: Logarithms -->
                     <button class="calc-btn function" data-action="log">log</button>
                     <button class="calc-btn function" data-action="ln">ln</button>
                     <button class="calc-btn function" data-action="sqrt">√</button>
-                    <button class="calc-btn function" data-action="^">x^y</button>
+                    <button class="calc-btn function" data-action="^">xʸ</button>
                     <button class="calc-btn operator" data-action="/">÷</button>
 
-                    <!-- Row 4: Powers and 7-9 -->
                     <button class="calc-btn function" data-action="^2">x²</button>
-                    <button class="calc-btn function" data-action="^3">x³</button>
                     <button class="calc-btn" data-number="7">7</button>
                     <button class="calc-btn" data-number="8">8</button>
                     <button class="calc-btn" data-number="9">9</button>
-
-                    <!-- Row 5: Constants and 4-6 -->
+                    <button class="calc-btn operator" data-action="*">×</button>
+                    
                     <button class="calc-btn function" data-action="pi">π</button>
-                    <button class="calc-btn function" data-action="e">e</button>
                     <button class="calc-btn" data-number="4">4</button>
                     <button class="calc-btn" data-number="5">5</button>
                     <button class="calc-btn" data-number="6">6</button>
+                    <button class="calc-btn operator" data-action="-">−</button>
 
-                    <!-- Row 6: Factorial and 1-3 -->
-                    <button class="calc-btn function" data-action="!">n!</button>
-                    <button class="calc-btn function" data-action="abs">|x|</button>
+                    <button class="calc-btn function" data-action="e">e</button>
                     <button class="calc-btn" data-number="1">1</button>
                     <button class="calc-btn" data-number="2">2</button>
                     <button class="calc-btn" data-number="3">3</button>
-
-                    <!-- Row 7: Operations -->
                     <button class="calc-btn operator" data-action="+">+</button>
-                    <button class="calc-btn operator" data-action="-">−</button>
-                    <button class="calc-btn" data-number="0">0</button>
+
+                    <button class="calc-btn function" data-action="!">n!</button>
+                    <button class="calc-btn function" data-action="abs">|x|</button>
+                    <button class="calc-btn" data-number="0" style="grid-column: span 2;">0</button>
                     <button class="calc-btn" data-action=".">.</button>
-                    <button class="calc-btn operator" data-action="*">×</button>
-
-                    <!-- Row 8: Equals -->
-                    <button class="calc-btn equals" data-action="=" style="grid-column: span 5;">=</button>
+                    
+                    <button class="calc-btn equals" data-action="=">=</button>
                 </div>
+            </section>
 
-                <!-- Keyboard hint -->
-                <div style="margin-top: 1rem; text-align: center; color: var(--text-secondary); font-size: 0.9rem;">
-                    <i class="fas fa-keyboard"></i> 키보드 지원: 0-9, +, -, *, /, (, ), Enter, Escape
+            <section class="usage-guide-section">
+                <h3>사용 방법 (How to Use)</h3>
+                <div class="guide-steps">
+                    <div class="step">
+                        <div class="step-header"><span class="step-number">1</span><h4>모드 선택 (Select Mode)</h4></div>
+                        <div class="step-content"><p>삼각함수 계산을 위해 DEG(도) 또는 RAD(라디안) 모드를 선택하세요. 대부분의 학교 수학에서는 DEG를 사용합니다.</p></div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header"><span class="step-number">2</span><h4>수식 입력 (Enter Expression)</h4></div>
+                        <div class="step-content"><p>숫자, 연산자, 함수 버튼을 클릭하여 수식을 입력하세요. 중첩 괄호도 지원됩니다.</p></div>
+                    </div>
+                    <div class="step">
+                        <div class="step-header"><span class="step-number">3</span><h4>결과 확인 (Get Result)</h4></div>
+                        <div class="step-content"><p>'=' 버튼을 누르면 결과가 표시됩니다. 'C'는 전체 수식을, 백스페이스는 마지막 입력을 지웁니다.</p></div>
+                    </div>
                 </div>
-            </div>
-
-            <!-- How to Use Section -->
-            <section class="info-section">
-                <h2><i class="fas fa-question-circle"></i> 사용 방법</h2>
-                <div class="steps-grid">
-                    <div class="step-card">
-                        <div class="step-number">1</div>
-                        <h3>모드 선택</h3>
-                        <p>삼각함수를 위한 DEG(도) 또는 RAD(라디안) 모드를 선택하세요. 대부분의 학교 수학은 도를 사용합니다.</p>
+            </section>
+            
+            <section class="faq-section">
+                <h3>자주 묻는 질문 (FAQ)</h3>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> DEG와 RAD 모드의 차이는 무엇인가요?</h4>
+                        <p>DEG(도)는 각도를 0-360°로 표현하며, RAD(라디안)은 0-2π로 표현합니다. 공학 및 고급 수학에서는 주로 RAD를 사용합니다.</p>
                     </div>
-                    <div class="step-card">
-                        <div class="step-number">2</div>
-                        <h3>수식 입력</h3>
-                        <p>숫자, 연산자, 함수 버튼을 사용하세요. 중첩 괄호 및 복잡한 수식을 지원합니다.</p>
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 'e'는 무엇인가요?</h4>
+                        <p>'e'는 오일러의 수(Euler's number)로, 약 2.71828입니다. 자연로그의 밑으로 미적분학에서 매우 중요합니다.</p>
                     </div>
-                    <div class="step-card">
-                        <div class="step-number">3</div>
-                        <h3>계산하기</h3>
-                        <p>= 또는 Enter 키를 눌러 결과를 확인하세요. C를 눌러 지우거나 백스페이스로 마지막 문자를 삭제할 수 있습니다.</p>
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> 'ln'과 'log'의 차이는 무엇인가요?</h4>
+                        <p>'ln'은 밑이 'e'인 자연로그(natural log)이고, 'log'는 밑이 10인 상용로그(common log)입니다.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- Function Reference Section -->
-            <section class="info-section">
-                <h2><i class="fas fa-book"></i> 함수 참조</h2>
-                <div class="examples-grid">
-                    <div class="example-card">
-                        <h3>삼각함수</h3>
-                        <ul style="text-align: left; color: var(--text-secondary); line-height: 1.8;">
-                            <li><strong>sin</strong>: 사인</li>
-                            <li><strong>cos</strong>: 코사인</li>
-                            <li><strong>tan</strong>: 탄젠트</li>
-                            <li><strong>sin⁻¹</strong>: 역사인</li>
-                            <li><strong>cos⁻¹</strong>: 역코사인</li>
-                            <li><strong>tan⁻¹</strong>: 역탄젠트</li>
-                        </ul>
-                    </div>
-                    <div class="example-card">
-                        <h3>로그 및 거듭제곱</h3>
-                        <ul style="text-align: left; color: var(--text-secondary); line-height: 1.8;">
-                            <li><strong>log</strong>: 상용로그</li>
-                            <li><strong>ln</strong>: 자연로그</li>
-                            <li><strong>x²</strong>: 제곱</li>
-                            <li><strong>x³</strong>: 세제곱</li>
-                            <li><strong>x^y</strong>: 거듭제곱</li>
-                            <li><strong>√</strong>: 제곱근</li>
-                        </ul>
-                    </div>
-                    <div class="example-card">
-                        <h3>특수 함수</h3>
-                        <ul style="text-align: left; color: var(--text-secondary); line-height: 1.8;">
-                            <li><strong>π</strong>: 원주율 (≈ 3.14159)</li>
-                            <li><strong>e</strong>: 오일러 수 (≈ 2.71828)</li>
-                            <li><strong>n!</strong>: 팩토리얼</li>
-                            <li><strong>|x|</strong>: 절댓값</li>
-                            <li><strong>( )</strong>: 괄호</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Responsive Ad Banner (Examples 위) -->
-            <div class="responsive-ad-banner">
-                <!-- Desktop: 728x90 -->
-                <div class="ad-desktop">
-                    <script type="text/javascript">
-                        atOptions = {
-                            'key' : 'a0109a486ddd226684cfa5934f412a88',
-                            'format' : 'iframe',
-                            'height' : 90,
-                            'width' : 728,
-                            'params' : {}
-                        };
-                    </script>
-                    <script type="text/javascript" src="//annoyingnightmareedit.com/a0109a486ddd226684cfa5934f412a88/invoke.js"></script>
-                </div>
-
-                <!-- Tablet: 468x60 -->
-                <div class="ad-tablet">
-                    <script type="text/javascript">
-                        atOptions = {
-                            'key' : 'cb93fb1de0136f18561bd497f24daa03',
-                            'format' : 'iframe',
-                            'height' : 60,
-                            'width' : 468,
-                            'params' : {}
-                        };
-                    </script>
-                    <script type="text/javascript" src="//annoyingnightmareedit.com/cb93fb1de0136f18561bd497f24daa03/invoke.js"></script>
-                </div>
-
-                <!-- Mobile: 320x50 -->
-                <div class="ad-mobile">
-                    <script type="text/javascript">
-                        atOptions = {
-                            'key' : '266dce0b2742554614d486d3a6e08060',
-                            'format' : 'iframe',
-                            'height' : 50,
-                            'width' : 320,
-                            'params' : {}
-                        };
-                    </script>
-                    <script type="text/javascript" src="//annoyingnightmareedit.com/266dce0b2742554614d486d3a6e08060/invoke.js"></script>
-                </div>
-            </div>
-
-            <!-- Examples Section -->
-            <section class="info-section">
-                <h2><i class="fas fa-lightbulb"></i> 예제</h2>
-                <div class="examples-grid">
-                    <div class="example-card">
-                        <h3>삼각함수</h3>
-                        <div class="example-problem">
-                            sin(30°)
-                        </div>
-                        <div class="example-solution">
-                            <strong>결과:</strong> 0.5
-                        </div>
-                    </div>
-                    <div class="example-card">
-                        <h3>로그</h3>
-                        <div class="example-problem">
-                            log(100)
-                        </div>
-                        <div class="example-solution">
-                            <strong>결과:</strong> 2
-                        </div>
-                    </div>
-                    <div class="example-card">
-                        <h3>거듭제곱</h3>
-                        <div class="example-problem">
-                            2^8
-                        </div>
-                        <div class="example-solution">
-                            <strong>결과:</strong> 256
-                        </div>
-                    </div>
-                    <div class="example-card">
-                        <h3>피타고라스 정리</h3>
-                        <div class="example-problem">
-                            √(3² + 4²)
-                        </div>
-                        <div class="example-solution">
-                            <strong>결과:</strong> 5
-                        </div>
-                    </div>
-                    <div class="example-card">
-                        <h3>팩토리얼</h3>
-                        <div class="example-problem">
-                            5!
-                        </div>
-                        <div class="example-solution">
-                            <strong>결과:</strong> 120
-                        </div>
-                    </div>
-                    <div class="example-card">
-                        <h3>자연로그</h3>
-                        <div class="example-problem">
-                            ln(e²)
-                        </div>
-                        <div class="example-solution">
-                            <strong>결과:</strong> 2
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- FAQ Section -->
-            <section class="info-section">
-                <h2><i class="fas fa-comments"></i> 자주 묻는 질문</h2>
-                <div class="faq-list">
-                    <details class="faq-item">
-                        <summary>DEG와 RAD 모드의 차이는 무엇인가요?</summary>
-                        <p>DEG(도) 모드는 각도에 대해 도(0-360°)를 사용합니다. RAD(라디안) 모드는 라디안(0-2π)을 사용합니다. 대부분의 고등학교 삼각법은 도를 사용하며, 고급 수학 및 미적분학은 일반적으로 라디안을 사용합니다.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>수학에서 'e'는 무엇인가요?</summary>
-                        <p>e ≈ 2.71828은 오일러 수로, 자연로그의 밑입니다. 지수 성장, 복리 이자, 미적분학에 나타나는 수학의 기본 상수입니다.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>괄호가 있는 복잡한 식을 입력할 수 있나요?</summary>
-                        <p>네! 계산기는 중첩 괄호를 지원하며 적절한 연산 순서(PEMDAS)를 따릅니다. 예: ((2 + 3) × (4 + 5)) = 45.</p>
-                    </details>
-                    <details class="faq-item">
-                        <summary>'ln'은 무엇을 의미하나요?</summary>
-                        <p>ln은 자연로그(밑 e)입니다. 지수 함수의 역함수입니다. 예: ln(e) = 1, ln(e²) = 2, ln(1) = 0.</p>
-                    </details>
-
-                    <details class="faq-item">
-                        <summary>역삼각함수는 어떻게 계산하나요?</summary>
-                        <p>sin⁻¹, cos⁻¹, tan⁻¹ 버튼을 사용하세요. 이들은 비율을 알 때 각도를 제공합니다. 예: DEG 모드에서 sin⁻¹(0.5) = 30°.</p>
-                    </details>
-                </div>
-            </section>
-
-            <!-- ExoClick Ad Banner -->
-            <div class="ad-banner">
-                <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
-                <ins class="eas6a97888e20" data-zoneid="5773292"></ins>
-                <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
-            </div>
-
-            <!-- Features Section -->
-            <section class="info-section">
-                <h2><i class="fas fa-star"></i> 주요 기능</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-calculator"></i></div>
-                        <h3>고급 함수</h3>
-                        <p>복잡한 계산을 위한 삼각함수, 로그, 지수, 근, 특수 함수.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-toggle-on"></i></div>
-                        <h3>도/라디안 모드</h3>
-                        <p>삼각 계산을 위해 도와 라디안 모드 간 전환.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-keyboard"></i></div>
-                        <h3>키보드 지원</h3>
-                        <p>빠른 입력을 위한 전체 키보드 지원. 수식을 직접 입력하세요.</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
-                        <h3>모바일 최적화</h3>
-                        <p>스마트폰과 태블릿에서 완벽하게 작동하는 터치 친화적 버튼.</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Related Calculators -->
-            <section class="info-section">
-                <h2><i class="fas fa-link"></i> 관련 계산기</h2>
+            <section class="related-section">
+                <h3>Related Calculators</h3>
                 <div class="related-grid">
-                    <a href="/general/basic-calculator.html" class="related-card">
-                        <i class="fas fa-calculator"></i>
-                        <h3>기본 계산기</h3>
-                        <p>간단한 산술 연산</p>
-                    </a>
-                    <a href="/general/percentage-calculator.html" class="related-card">
-                        <i class="fas fa-percent"></i>
-                        <h3>퍼센트 계산기</h3>
-                        <p>백분율 계산</p>
-                    </a>
-                    <a href="/general/fraction-calculator.html" class="related-card">
-                        <i class="fas fa-divide"></i>
-                        <h3>분수 계산기</h3>
-                        <p>분수 계산</p>
-                    </a>
+                    <a href="/general/basic-calculator.html" class="related-card"><i class="fas fa-calculator"></i><h4>Basic Calculator</h4><p>기본 산술 계산</p></a>
+                    <a href="/general/percentage-calculator.html" class="related-card"><i class="fas fa-percent"></i><h4>Percentage Calculator</h4><p>백분율 계산</p></a>
+                    <a href="/general/fraction-calculator.html" class="related-card"><i class="fas fa-divide"></i><h4>Fraction Calculator</h4><p>분수 계산</p></a>
                 </div>
             </section>
         </main>
 
-        <!-- Footer -->
         <footer class="footer">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>CALCULATOR</h3>
-                    <p>Free online calculators for all your needs</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Categories</h4>
-                    <ul>
-                        <li><a href="/general/">General</a></li>
-                        <li><a href="/finance/">Finance</a></li>
-                        <li><a href="/health/">Health</a></li>
-                        <li><a href="/conversion/">Conversions</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Resources</h4>
-                    <ul>
-                        <li><a href="/how-to-use">How to Use</a></li>
-                        <li><a href="/faq">FAQ</a></li>
-                        <li><a href="/api.html">API</a></li>
-                    </ul>
-                </div>
+                <div class="footer-section"><h3>CALCULATOR</h3><p>Free online calculators for all your needs</p></div>
+                <div class="footer-section"><h4>Categories</h4><ul><li><a href="/general/">General</a></li><li><a href="/finance/">Finance</a></li><li><a href="/health/">Health</a></li><li><a href="/date-time/">Date & Time</a></li></ul></div>
+                <div class="footer-section"><h4>Resources</h4><ul><li><a href="/how-to-use">How to Use</a></li><li><a href="/faq">FAQ</a></li><li><a href="/api.html">API</a></li></ul></div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 HQMX. All rights reserved.</p>
-            </div>
+            <div class="footer-bottom"><p>&copy; 2025 HQMX. All rights reserved.</p></div>
         </footer>
     </div>
 
-    <!-- JavaScript -->
+    <script src="/i18n.js?v=20251101fix"></script>
+    <script src="/nav-common.js"></script>
     <script src="/js/calculators/scientific.js"></script>
-    <script src="/category.js"></script>
 </body>
 </html>
