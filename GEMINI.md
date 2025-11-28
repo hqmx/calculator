@@ -389,7 +389,7 @@ const API_URL = 'https://api.exchangerate-api.com/v4/latest/USD';
 5. 테스트 → 다양한 입력값 검증
 6. SEO 최적화 → 메타태그, 구조화 데이터
 7. 다국어 → 21개 언어 번역
-8. 배포 → EC2 업로드
+8. 배포 → Cloudflare Pages (Git Push)
 ```
 
 ### 2. 코드 스타일
@@ -568,36 +568,45 @@ https://calculator.hqmx.net/es/bmi-calculator
 
 ## 🚀 배포 및 관리
 
-### 1. 배포 프로세스
-```bash
-# Git 저장소 업데이트
-git add .
-git commit -m "Add [calculator-name] calculator"
-git push origin main
+### 1. 배포 프로세스 (Cloudflare Pages)
+**이 프로젝트는 Cloudflare Pages를 통해 자동으로 배포됩니다.**
 
+1.  **Git 저장소 업데이트**: 로컬에서 변경 사항을 커밋합니다.
+    ```bash
+    git add .
+    git commit -m "Add [calculator-name] calculator"
+    ```
+2.  **배포 트리거**: `main` 브랜치에 푸시하면 Cloudflare Pages가 자동으로 빌드 및 배포를 시작합니다.
+    ```bash
+    git push origin main
+    ```
+    **⚠️ 중요**: `git push`가 실제 배포를 실행하는 유일한 단계입니다.
+
+### 2. 배포 프로세스 (EC2 - 레거시)
+```bash
+# 이 섹션은 레거시 정보이며, 현재는 Cloudflare Pages를 사용합니다.
 # EC2 서버 배포
 ssh -i hqmx-ec2.pem ubuntu@3.213.100.223
 cd /var/www/html
 git pull origin main
 ```
 
-### 2. 성능 최적화
+### 3. 성능 최적화
 ```
 ✅ 이미지 최적화: WebP 포맷, lazy loading
 ✅ CSS/JS 압축: Minify, 번들링
-✅ CDN 사용: CloudFront 또는 Cloudflare
+✅ CDN 사용: Cloudflare (자동)
 ✅ 캐싱: 브라우저 캐싱, 서버 캐싱
 ✅ Gzip 압축: 서버 레벨
 ```
 
-### 3. 모니터링
+### 4. 모니터링
 ```
 - Google Analytics: 트래픽 분석
 - Google Search Console: SEO 모니터링
 - 에러 로그: 서버 로그 확인
 - 성능 측정: Lighthouse, PageSpeed Insights
 ```
-
 ---
 
 ## 📊 품질 체크리스트
