@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calorie Calculator - Calculate Daily Calorie Needs | CALCULATOR</title>
-    <meta name="description" content="Calculate your daily calorie needs based on age, gender, weight, height, and activity level. Free calorie calculator with BMR and TDEE calculations.">
-    <meta name="keywords" content="calorie calculator, daily calorie needs, BMR calculator, TDEE calculator, calories per day, weight loss calculator">
+    <meta name="description"
+        content="Calculate your daily calorie needs based on age, gender, weight, height, and activity level. Free calorie calculator with BMR and TDEE calculations.">
+    <meta name="keywords"
+        content="calorie calculator, daily calorie needs, BMR calculator, TDEE calculator, calories per day, weight loss calculator">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/style.css?v=20250118mobile">
-    <link rel="stylesheet" href="/css/calculator.css?v=20250118nav">
+    <link rel="stylesheet" href="/calculator/style.css?v=20250118mobile">
+    <link rel="stylesheet" href="/calculator/css/calculator.css?v=20250118nav">
 
-    <link rel="icon" type="image/png" href="/assets/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
-    <link rel="shortcut icon" href="/assets/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/png" href="/calculator/assets/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/calculator/assets/favicon.svg" />
+    <link rel="shortcut icon" href="/calculator/assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/calculator/assets/apple-touch-icon.png" />
+    <link rel="manifest" href="/calculator/manifest.json" />
 </head>
+
 <body>
 
     <div class="container">
@@ -25,7 +29,8 @@
             <div class="nav-left">
                 <a href="/calculator/" class="converter-logo-link">
                     <div class="converter-logo">
-                        <span class="converter-text"><span class="converter-c">C</span><span class="converter-rest">ALCULATOR</span></span>
+                        <span class="converter-text"><span class="converter-c">C</span><span
+                                class="converter-rest">ALCULATOR</span></span>
                     </div>
                 </a>
             </div>
@@ -138,177 +143,186 @@
             </div>
         </nav>
 
-    <!-- Header -->
-    <header class="header">
-        <p class="tagline">Calculate Your Daily Calorie Needs</p>
-    </header>
+        <!-- Header -->
+        <header class="header">
+            <p class="tagline">Calculate Your Daily Calorie Needs</p>
+        </header>
 
-    <main class="main-content">
-        <!-- Calorie Calculator Section -->
-        <section class="upload-section">
-            <div class="upload-container">
-                <h4>Calculate Your Daily Calorie Needs</h4>
+        <main class="main-content">
+            <!-- Calorie Calculator Section -->
+            <section class="upload-section">
+                <div class="upload-container">
+                    <h4 data-i18n-key="calorie.subtitle">Calculate Your Daily Calorie Needs</h4>
 
-                <div class="calculator-inputs">
-                    <!-- Gender Selection -->
-                    <div class="input-group">
-                        <label for="gender">Gender</label>
-                        <div class="gender-toggle">
-                            <button type="button" class="gender-btn active" data-gender="male">
-                                <i class="fas fa-mars"></i> Male
-                            </button>
-                            <button type="button" class="gender-btn" data-gender="female">
-                                <i class="fas fa-venus"></i> Female
-                            </button>
+                    <div class="calculator-inputs">
+                        <!-- Gender Selection -->
+                        <div class="input-group">
+                            <label for="gender" data-i18n-key="calorie.gender">Gender</label>
+                            <div class="gender-toggle">
+                                <button type="button" class="gender-btn active" data-gender="male">
+                                    <i class="fas fa-mars"></i> <span data-i18n-key="bmi.male">Male</span>
+                                </button>
+                                <button type="button" class="gender-btn" data-gender="female">
+                                    <i class="fas fa-venus"></i> <span data-i18n-key="bmi.female">Female</span>
+                                </button>
+                            </div>
+                            <input type="hidden" id="gender" value="male">
                         </div>
-                        <input type="hidden" id="gender" value="male">
-                    </div>
 
-                    <!-- Age -->
-                    <div class="input-group">
-                        <label for="age">Age (years)</label>
-                        <input type="number" id="age" min="15" max="100" value="30" required>
-                    </div>
+                        <!-- Age -->
+                        <div class="input-group">
+                            <label for="age" data-i18n-key="calorie.age">Age (years)</label>
+                            <input type="number" id="age" min="15" max="100" value="30" required>
+                        </div>
 
-                    <!-- Weight -->
-                    <div class="input-group">
-                        <label for="weight">Weight</label>
-                        <div class="input-with-unit">
-                            <input type="number" id="weight" step="0.1" value="70" required>
-                            <select id="weightUnit" class="converter-select">
-                                <option value="kg" selected>kg</option>
-                                <option value="lb">lb</option>
+                        <!-- Weight -->
+                        <div class="input-group">
+                            <label for="weight" data-i18n-key="calorie.weight">Weight</label>
+                            <div class="input-with-unit">
+                                <input type="number" id="weight" step="0.1" value="70" required>
+                                <select id="weightUnit" class="converter-select">
+                                    <option value="kg" selected>kg</option>
+                                    <option value="lb">lb</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Height -->
+                        <div class="input-group">
+                            <label for="height" data-i18n-key="calorie.height">Height</label>
+                            <div class="input-with-unit">
+                                <input type="number" id="height" step="0.1" value="170" required>
+                                <select id="heightUnit" class="converter-select">
+                                    <option value="cm" selected>cm</option>
+                                    <option value="ft">ft/in</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Activity Level -->
+                        <div class="input-group">
+                            <label for="activity" data-i18n-key="calorie.activityLevel">Activity Level</label>
+                            <select id="activity" class="converter-select" required>
+                                <option value="1.2" data-i18n-key="calorie.activitySedentary">Sedentary (no exercise)
+                                </option>
+                                <option value="1.375" data-i18n-key="calorie.activityLight">Light (1-3 days/week)
+                                </option>
+                                <option value="1.55" selected data-i18n-key="calorie.activityModerate">Moderate (3-5
+                                    days/week)</option>
+                                <option value="1.725" data-i18n-key="calorie.activityVery">Very active (6-7 days/week)
+                                </option>
+                                <option value="1.9" data-i18n-key="calorie.activityExtreme">Extreme (2x training/day)
+                                </option>
                             </select>
                         </div>
-                    </div>
 
-                    <!-- Height -->
-                    <div class="input-group">
-                        <label for="height">Height</label>
-                        <div class="input-with-unit">
-                            <input type="number" id="height" step="0.1" value="170" required>
-                            <select id="heightUnit" class="converter-select">
-                                <option value="cm" selected>cm</option>
-                                <option value="ft">ft/in</option>
+                        <!-- Goal -->
+                        <div class="input-group">
+                            <label for="goal" data-i18n-key="calorie.goal">Goal</label>
+                            <select id="goal" class="converter-select" required>
+                                <option value="maintain" selected data-i18n-key="calorie.goalMaintain">Maintain weight
+                                </option>
+                                <option value="mild-loss" data-i18n-key="calorie.goalMildLoss">Mild weight loss (0.25
+                                    kg/week)</option>
+                                <option value="loss" data-i18n-key="calorie.goalLoss">Weight loss (0.5 kg/week)</option>
+                                <option value="extreme-loss" data-i18n-key="calorie.goalExtremeLoss">Extreme weight loss
+                                    (1 kg/week)</option>
+                                <option value="mild-gain" data-i18n-key="calorie.goalMildGain">Mild weight gain (0.25
+                                    kg/week)</option>
+                                <option value="gain" data-i18n-key="calorie.goalGain">Weight gain (0.5 kg/week)</option>
+                                <option value="extreme-gain" data-i18n-key="calorie.goalExtremeGain">Extreme weight gain
+                                    (1 kg/week)</option>
                             </select>
                         </div>
-                    </div>
 
-                    <!-- Activity Level -->
-                    <div class="input-group">
-                        <label for="activity">Activity Level</label>
-                        <select id="activity" class="converter-select" required>
-                            <option value="1.2">Sedentary (no exercise)</option>
-                            <option value="1.375">Light (1-3 days/week)</option>
-                            <option value="1.55" selected>Moderate (3-5 days/week)</option>
-                            <option value="1.725">Very active (6-7 days/week)</option>
-                            <option value="1.9">Extreme (2x training/day)</option>
-                        </select>
-                    </div>
+                        <!-- Calculate Button -->
+                        <button class="calculate-btn" id="calculateBtn">
+                            <i class="fas fa-calculator"></i>
+                            <span data-i18n-key="calorie.calculateBtn">Calculate Calories</span>
+                        </button>
 
-                    <!-- Goal -->
-                    <div class="input-group">
-                        <label for="goal">Goal</label>
-                        <select id="goal" class="converter-select" required>
-                            <option value="maintain" selected>Maintain weight</option>
-                            <option value="mild-loss">Mild weight loss (0.25 kg/week)</option>
-                            <option value="loss">Weight loss (0.5 kg/week)</option>
-                            <option value="extreme-loss">Extreme weight loss (1 kg/week)</option>
-                            <option value="mild-gain">Mild weight gain (0.25 kg/week)</option>
-                            <option value="gain">Weight gain (0.5 kg/week)</option>
-                            <option value="extreme-gain">Extreme weight gain (1 kg/week)</option>
-                        </select>
-                    </div>
-
-                    <!-- Calculate Button -->
-                    <button class="calculate-btn" id="calculateBtn">
-                        <i class="fas fa-calculator"></i>
-                        Calculate Calories
-                    </button>
-
-                    <!-- Error Message -->
-                    <div class="error-message" id="errorMessage" style="display: none;">
-                        <i class="fas fa-exclamation-circle"></i>
-                        <span id="errorText"></span>
-                    </div>
-                </div>
-
-                <!-- Results Display -->
-                <div class="calculator-results" id="resultsSection" style="display: none;">
-                    <!-- Main Results -->
-                    <div class="result-cards-grid">
-                    <div class="result-card highlight">
-                        <div class="result-label">Daily Calories</div>
-                        <div class="result-value" id="dailyCalories">-</div>
-                        <div class="result-sublabel" id="goalDescription">-</div>
-                    </div>
-
-                    <div class="result-card">
-                        <div class="result-label">BMR</div>
-                        <div class="result-value" id="bmr">-</div>
-                        <div class="result-sublabel">Basal Metabolic Rate</div>
-                    </div>
-
-                    <div class="result-card">
-                        <div class="result-label">TDEE</div>
-                        <div class="result-value" id="tdee">-</div>
-                        <div class="result-sublabel">Total Daily Energy Expenditure</div>
-                    </div>
-                </div>
-
-                <!-- Macronutrient Breakdown -->
-                <div class="macro-section">
-                    <h3>Recommended Macronutrients</h3>
-                    <div class="macro-cards">
-                        <div class="macro-card">
-                            <i class="fas fa-drumstick-bite"></i>
-                            <h4>Protein</h4>
-                            <div class="macro-value" id="protein">-</div>
-                            <div class="macro-percentage">30%</div>
-                        </div>
-                        <div class="macro-card">
-                            <i class="fas fa-bread-slice"></i>
-                            <h4>Carbs</h4>
-                            <div class="macro-value" id="carbs">-</div>
-                            <div class="macro-percentage">40%</div>
-                        </div>
-                        <div class="macro-card">
-                            <i class="fas fa-cheese"></i>
-                            <h4>Fats</h4>
-                            <div class="macro-value" id="fats">-</div>
-                            <div class="macro-percentage">30%</div>
+                        <!-- Error Message -->
+                        <div class="error-message" id="errorMessage" style="display: none;">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span id="errorText"></span>
                         </div>
                     </div>
-                </div>
 
-                <!-- Weight Timeline -->
-                <div class="timeline-section">
-                    <h3>Weight Timeline</h3>
-                    <table class="timeline-table">
-                        <thead>
-                            <tr>
-                                <th>Time Period</th>
-                                <th>Weight</th>
-                                <th>Change</th>
-                            </tr>
-                        </thead>
-                        <tbody id="timelineTable">
-                            <!-- Will be populated by JavaScript -->
-                        </tbody>
-                    </table>
-                </div>
+                    <!-- Results Display -->
+                    <div class="calculator-results" id="resultsSection" style="display: none;">
+                        <!-- Main Results -->
+                        <div class="result-cards-grid">
+                            <div class="result-card highlight">
+                                <div class="result-label" data-i18n-key="calorie.dailyCalories">Daily Calories</div>
+                                <div class="result-value" id="dailyCalories">-</div>
+                                <div class="result-sublabel" id="goalDescription">-</div>
+                            </div>
 
-                    <!-- Recalculate Button -->
-                    <button class="recalculate-btn" id="recalculateBtn">
-                        <i class="fas fa-redo"></i>
-                        Calculate Again
-                    </button>
-                </div>
-            </div>
-        </section>
+                            <div class="result-card">
+                                <div class="result-label" data-i18n-key="calorie.bmr">BMR</div>
+                                <div class="result-value" id="bmr">-</div>
+                                <div class="result-sublabel">Basal Metabolic Rate</div>
+                            </div>
 
-        <!-- How to Use Section -->
-        <section class="usage-guide-section">
+                            <div class="result-card">
+                                <div class="result-label" data-i18n-key="calorie.tdee">TDEE</div>
+                                <div class="result-value" id="tdee">-</div>
+                                <div class="result-sublabel">Total Daily Energy Expenditure</div>
+                            </div>
+                        </div>
+
+                        <!-- Macronutrient Breakdown -->
+                        <div class="macro-section">
+                            <h3>Recommended Macronutrients</h3>
+                            <div class="macro-cards">
+                                <div class="macro-card">
+                                    <i class="fas fa-drumstick-bite"></i>
+                                    <h4 data-i18n-key="calorie.protein">Protein</h4>
+                                    <div class="macro-value" id="protein">-</div>
+                                    <div class="macro-percentage">30%</div>
+                                </div>
+                                <div class="macro-card">
+                                    <i class="fas fa-bread-slice"></i>
+                                    <h4 data-i18n-key="calorie.carbs">Carbs</h4>
+                                    <div class="macro-value" id="carbs">-</div>
+                                    <div class="macro-percentage">40%</div>
+                                </div>
+                                <div class="macro-card">
+                                    <i class="fas fa-cheese"></i>
+                                    <h4 data-i18n-key="calorie.fats">Fats</h4>
+                                    <div class="macro-value" id="fats">-</div>
+                                    <div class="macro-percentage">30%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Weight Timeline -->
+                        <div class="timeline-section">
+                            <h3>Weight Timeline</h3>
+                            <table class="timeline-table">
+                                <thead>
+                                    <tr>
+                                        <th>Time Period</th>
+                                        <th>Weight</th>
+                                        <th>Change</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="timelineTable">
+                                    <!-- Will be populated by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Recalculate Button -->
+                        <button class="recalculate-btn" id="recalculateBtn">
+                            <i class="fas fa-redo"></i>
+                            Calculate Again
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How to Use Section -->
+            <section class="usage-guide-section">
                 <h3>사용 방법 (How to Use)</h3>
                 <p class="section-description">이 칼로리 계산기를 사용하여 하루 칼로리 필요량을 계산하는 간단한 단계를 따라하세요.</p>
                 <div class="guide-steps steps-grid-3">
@@ -318,7 +332,8 @@
                             <h4>기본 정보 입력</h4>
                         </div>
                         <div class="step-content">
-                            <p>성별, 나이, 체중, 키를 입력하세요. 정확한 측정값을 사용할수록 더 정확한 칼로리 계산 결과를 얻을 수 있습니다. 체중과 키는 kg/cm 또는 lb/ft-in 단위를 선택할 수 있습니다.</p>
+                            <p>성별, 나이, 체중, 키를 입력하세요. 정확한 측정값을 사용할수록 더 정확한 칼로리 계산 결과를 얻을 수 있습니다. 체중과 키는 kg/cm 또는 lb/ft-in
+                                단위를 선택할 수 있습니다.</p>
                         </div>
                     </div>
                     <div class="step">
@@ -327,7 +342,8 @@
                             <h4>활동량 수준 선택</h4>
                         </div>
                         <div class="step-content">
-                            <p>일상적인 신체 활동 수준을 선택하세요. 운동 빈도와 직업적 활동을 고려하여 가장 적합한 활동량 수준을 선택하는 것이 중요합니다. 과대평가하면 체중 증가, 과소평가하면 피로감을 느낄 수 있습니다.</p>
+                            <p>일상적인 신체 활동 수준을 선택하세요. 운동 빈도와 직업적 활동을 고려하여 가장 적합한 활동량 수준을 선택하는 것이 중요합니다. 과대평가하면 체중 증가,
+                                과소평가하면 피로감을 느낄 수 있습니다.</p>
                         </div>
                     </div>
                     <div class="step">
@@ -336,7 +352,8 @@
                             <h4>목표 설정</h4>
                         </div>
                         <div class="step-content">
-                            <p>체중 유지, 감량, 증량 중 목표를 선택하세요. 각 목표에 따라 권장 칼로리 섭취량이 자동으로 조정됩니다. 안전한 체중 변화 속도는 주당 0.5-1kg입니다.</p>
+                            <p>체중 유지, 감량, 증량 중 목표를 선택하세요. 각 목표에 따라 권장 칼로리 섭취량이 자동으로 조정됩니다. 안전한 체중 변화 속도는 주당 0.5-1kg입니다.
+                            </p>
                         </div>
                     </div>
                     <div class="step">
@@ -345,7 +362,8 @@
                             <h4>결과 확인 및 활용</h4>
                         </div>
                         <div class="step-content">
-                            <p>"Calculate Calories" 버튼을 클릭하면 BMR, TDEE, 목표 칼로리, 영양소 배분(단백질, 탄수화물, 지방)이 표시됩니다. 이 결과를 바탕으로 식단을 계획하고 정기적으로 재측정하세요.</p>
+                            <p>"Calculate Calories" 버튼을 클릭하면 BMR, TDEE, 목표 칼로리, 영양소 배분(단백질, 탄수화물, 지방)이 표시됩니다. 이 결과를 바탕으로
+                                식단을 계획하고 정기적으로 재측정하세요.</p>
                         </div>
                     </div>
                 </div>
@@ -357,42 +375,45 @@
                 <div class="ad-desktop">
                     <script type="text/javascript">
                         atOptions = {
-                            'key' : 'a0109a486ddd226684cfa5934f412a88',
-                            'format' : 'iframe',
-                            'height' : 90,
-                            'width' : 728,
-                            'params' : {}
+                            'key': 'a0109a486ddd226684cfa5934f412a88',
+                            'format': 'iframe',
+                            'height': 90,
+                            'width': 728,
+                            'params': {}
                         };
                     </script>
-                    <script type="text/javascript" src="//annoyingnightmareedit.com/a0109a486ddd226684cfa5934f412a88/invoke.js"></script>
+                    <script type="text/javascript"
+                        src="//annoyingnightmareedit.com/a0109a486ddd226684cfa5934f412a88/invoke.js"></script>
                 </div>
 
                 <!-- Tablet: 468x60 -->
                 <div class="ad-tablet">
                     <script type="text/javascript">
                         atOptions = {
-                            'key' : 'cb93fb1de0136f18561bd497f24daa03',
-                            'format' : 'iframe',
-                            'height' : 60,
-                            'width' : 468,
-                            'params' : {}
+                            'key': 'cb93fb1de0136f18561bd497f24daa03',
+                            'format': 'iframe',
+                            'height': 60,
+                            'width': 468,
+                            'params': {}
                         };
                     </script>
-                    <script type="text/javascript" src="//annoyingnightmareedit.com/cb93fb1de0136f18561bd497f24daa03/invoke.js"></script>
+                    <script type="text/javascript"
+                        src="//annoyingnightmareedit.com/cb93fb1de0136f18561bd497f24daa03/invoke.js"></script>
                 </div>
 
                 <!-- Mobile: 320x50 -->
                 <div class="ad-mobile">
                     <script type="text/javascript">
                         atOptions = {
-                            'key' : '266dce0b2742554614d486d3a6e08060',
-                            'format' : 'iframe',
-                            'height' : 50,
-                            'width' : 320,
-                            'params' : {}
+                            'key': '266dce0b2742554614d486d3a6e08060',
+                            'format': 'iframe',
+                            'height': 50,
+                            'width': 320,
+                            'params': {}
                         };
                     </script>
-                    <script type="text/javascript" src="//annoyingnightmareedit.com/266dce0b2742554614d486d3a6e08060/invoke.js"></script>
+                    <script type="text/javascript"
+                        src="//annoyingnightmareedit.com/266dce0b2742554614d486d3a6e08060/invoke.js"></script>
                 </div>
             </div>
 
@@ -504,7 +525,8 @@
                 <div class="info-content">
                     <h4>BMR (기초대사량) 이란?</h4>
                     <p>
-                        <strong>Basal Metabolic Rate (BMR)</strong>은 신체가 안정 상태에서 기본적인 생리 기능(호흡, 혈액 순환, 세포 생산 등)을 유지하기 위해 소모하는 최소 칼로리입니다.
+                        <strong>Basal Metabolic Rate (BMR)</strong>은 신체가 안정 상태에서 기본적인 생리 기능(호흡, 혈액 순환, 세포 생산 등)을 유지하기 위해
+                        소모하는 최소 칼로리입니다.
                         이 계산기는 가장 정확한 공식 중 하나인 <strong>Mifflin-St Jeor 공식</strong>을 사용합니다.
                     </p>
                     <div class="formula-box">
@@ -514,13 +536,15 @@
 
                     <h4>TDEE (총 일일 에너지 소비량) 이란?</h4>
                     <p>
-                        <strong>Total Daily Energy Expenditure (TDEE)</strong>는 BMR에 활동량 계수를 곱한 값으로, 하루 동안 신체 활동과 운동을 포함하여 소모하는 총 칼로리입니다.
+                        <strong>Total Daily Energy Expenditure (TDEE)</strong>는 BMR에 활동량 계수를 곱한 값으로, 하루 동안 신체 활동과 운동을
+                        포함하여 소모하는 총 칼로리입니다.
                         TDEE는 현재 체중을 유지하는 데 필요한 칼로리입니다.
                     </p>
 
                     <h4>칼로리 적자/잉여</h4>
                     <p>
-                        체중을 감량하려면 <strong>칼로리 적자</strong>(TDEE보다 적게 섭취)가 필요하고, 체중을 증량하려면 <strong>칼로리 잉여</strong>(TDEE보다 많이 섭취)가 필요합니다.
+                        체중을 감량하려면 <strong>칼로리 적자</strong>(TDEE보다 적게 섭취)가 필요하고, 체중을 증량하려면 <strong>칼로리 잉여</strong>(TDEE보다
+                        많이 섭취)가 필요합니다.
                         안전한 체중 변화 속도는 주당 0.5-1kg(1-2파운드)입니다.
                     </p>
 
@@ -635,32 +659,38 @@
                 <div class="faq-grid">
                     <div class="faq-item">
                         <h4><i class="fas fa-question-circle"></i> 이 칼로리 계산기는 얼마나 정확한가요?</h4>
-                        <p>이 계산기는 가장 정확한 공식 중 하나인 Mifflin-St Jeor 공식을 사용합니다. 하지만 개인의 신진대사는 ±10-15% 차이가 날 수 있습니다. 2-3주간 추적한 후 실제 체중 변화를 바탕으로 조정하세요.</p>
+                        <p>이 계산기는 가장 정확한 공식 중 하나인 Mifflin-St Jeor 공식을 사용합니다. 하지만 개인의 신진대사는 ±10-15% 차이가 날 수 있습니다. 2-3주간
+                            추적한 후 실제 체중 변화를 바탕으로 조정하세요.</p>
                     </div>
 
                     <div class="faq-item">
                         <h4><i class="fas fa-question-circle"></i> 운동한 칼로리를 따로 추가해야 하나요?</h4>
-                        <p>아니요, TDEE 계산에 이미 활동량 계수를 통해 운동이 포함되어 있습니다. 추가로 운동 칼로리를 더하면 이중 계산이 되어 과다 섭취하게 됩니다. 선택한 활동량 수준이 운동을 포함한 전체 활동을 반영합니다.</p>
+                        <p>아니요, TDEE 계산에 이미 활동량 계수를 통해 운동이 포함되어 있습니다. 추가로 운동 칼로리를 더하면 이중 계산이 되어 과다 섭취하게 됩니다. 선택한 활동량 수준이
+                            운동을 포함한 전체 활동을 반영합니다.</p>
                     </div>
 
                     <div class="faq-item">
                         <h4><i class="fas fa-question-circle"></i> 얼마나 빨리 체중을 감량할 수 있나요?</h4>
-                        <p>안전한 감량 속도는 주당 0.5-1kg(1-2파운드)입니다. 더 빠른 감량은 근육 손실, 영양 결핍, 요요 현상을 초래할 수 있습니다. 천천히 꾸준히 감량하는 것이 장기적으로 성공 확률이 높습니다.</p>
+                        <p>안전한 감량 속도는 주당 0.5-1kg(1-2파운드)입니다. 더 빠른 감량은 근육 손실, 영양 결핍, 요요 현상을 초래할 수 있습니다. 천천히 꾸준히 감량하는 것이
+                            장기적으로 성공 확률이 높습니다.</p>
                     </div>
 
                     <div class="faq-item">
                         <h4><i class="fas fa-question-circle"></i> 이 칼로리로 체중이 변하지 않으면 어떻게 하나요?</h4>
-                        <p>2-3주간 정확히 칼로리를 추적하세요. 변화가 없다면 칼로리를 10% 줄이고 다시 평가하세요. 신진대사가 평균보다 낮을 수 있으며, 계량 오차나 숨은 칼로리(소스, 음료 등)를 확인하세요.</p>
+                        <p>2-3주간 정확히 칼로리를 추적하세요. 변화가 없다면 칼로리를 10% 줄이고 다시 평가하세요. 신진대사가 평균보다 낮을 수 있으며, 계량 오차나 숨은 칼로리(소스,
+                            음료 등)를 확인하세요.</p>
                     </div>
 
                     <div class="faq-item">
                         <h4><i class="fas fa-question-circle"></i> 영양소 배분(탄단지)도 중요한가요?</h4>
-                        <p>네! 칼로리는 체중 변화를 결정하지만, 영양소 배분은 체구성(근육 vs 지방)에 영향을 줍니다. 체중 감량 시 높은 단백질 섭취(체중 1kg당 1.6-2.2g)는 근육 보존에 도움이 됩니다. 이 계산기는 30% 단백질, 40% 탄수화물, 30% 지방을 권장합니다.</p>
+                        <p>네! 칼로리는 체중 변화를 결정하지만, 영양소 배분은 체구성(근육 vs 지방)에 영향을 줍니다. 체중 감량 시 높은 단백질 섭취(체중 1kg당 1.6-2.2g)는 근육
+                            보존에 도움이 됩니다. 이 계산기는 30% 단백질, 40% 탄수화물, 30% 지방을 권장합니다.</p>
                     </div>
 
                     <div class="faq-item">
                         <h4><i class="fas fa-question-circle"></i> BMR과 TDEE의 차이는 무엇인가요?</h4>
-                        <p>BMR(기초대사량)은 완전히 쉬고 있을 때 소모하는 칼로리이고, TDEE(총 일일 에너지 소비량)는 BMR + 일상 활동 + 운동을 모두 포함한 총 칼로리입니다. 예를 들어 BMR이 1,500 kcal이고 중간 활동량이면 TDEE는 약 2,325 kcal(1,500 × 1.55)입니다.</p>
+                        <p>BMR(기초대사량)은 완전히 쉬고 있을 때 소모하는 칼로리이고, TDEE(총 일일 에너지 소비량)는 BMR + 일상 활동 + 운동을 모두 포함한 총 칼로리입니다. 예를
+                            들어 BMR이 1,500 kcal이고 중간 활동량이면 TDEE는 약 2,325 kcal(1,500 × 1.55)입니다.</p>
                     </div>
                 </div>
             </section>
@@ -669,7 +699,7 @@
             <div class="ad-banner">
                 <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
                 <ins class="eas6a97888e20" data-zoneid="5773292"></ins>
-                <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+                <script>(AdProvider = window.AdProvider || []).push({ "serve": {} });</script>
             </div>
 
             <!-- Features Section -->
@@ -722,17 +752,17 @@
             <section class="related-section">
                 <h3>관련 건강 계산기 (Related Health Calculators)</h3>
                 <div class="related-grid">
-                    <a href="/health/bmi-calculator.html" class="related-card">
+                    <a href="/calculator/health/bmi-calculator.html" class="related-card">
                         <i class="fas fa-weight"></i>
                         <h4>BMI 계산기</h4>
                         <p>체질량지수 계산</p>
                     </a>
-                    <a href="/health/weight-loss-calculator.html" class="related-card">
+                    <a href="/calculator/health/weight-loss-calculator.html" class="related-card">
                         <i class="fas fa-chart-line"></i>
                         <h4>체중 감량 계산기</h4>
                         <p>체중 감량 계획 수립</p>
                     </a>
-                    <a href="/health/protein-calculator.html" class="related-card">
+                    <a href="/calculator/health/protein-calculator.html" class="related-card">
                         <i class="fas fa-drumstick-bite"></i>
                         <h4>단백질 계산기</h4>
                         <p>단백질 필요량 계산</p>
@@ -744,7 +774,7 @@
                     </a>
                 </div>
             </section>
-        </div>
+    </div>
     </main>
 
     <!-- Footer -->
@@ -781,9 +811,10 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="/i18n.js?v=20251101fix"></script>
-    <script src="/js/main.js"></script>
-    <script src="/js/utils/calculator-base.js"></script>
-    <script src="/js/calculators/calorie.js"></script>
+    <script src="/calculator/i18n.js?v=20251101fix"></script>
+    <script src="/calculator/js/main.js"></script>
+    <script src="/calculator/js/utils/calculator-base.js"></script>
+    <script src="/calculator/js/calculators/calorie.js"></script>
 </body>
+
 </html>

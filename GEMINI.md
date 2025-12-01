@@ -6,7 +6,7 @@
 **루트 폴더**: `~/hqmx/calculator`
 **Git 저장소**: https://github.com/hqmx/calculator.git
 **EC2 탄력적 IP**: 3.213.100.223
-**EC2 키**: hqmx-ec2.pem
+**EC2 키**: `../hqmx-ec2.pem` (프로젝트 루트 참조)
 **언어**: 에이전트는 개발자와 한글로 소통
 - **병렬 에이전트 작업을 필요할때마다 자주 사용하도록한다**
 
@@ -568,28 +568,18 @@ https://calculator.hqmx.net/es/bmi-calculator
 
 ## 🚀 배포 및 관리
 
-### 1. 배포 프로세스 (Cloudflare Pages)
-**이 프로젝트는 Cloudflare Pages를 통해 자동으로 배포됩니다.**
+### 1. 배포 프로세스 (EC2 통합 배포)
+**이 프로젝트는 단일 EC2 인스턴스에 통합 배포됩니다.**
 
 1.  **Git 저장소 업데이트**: 로컬에서 변경 사항을 커밋합니다.
     ```bash
     git add .
-    git commit -m "Add [calculator-name] calculator"
+    git commit -m "Update calculator"
     ```
-2.  **배포 트리거**: `main` 브랜치에 푸시하면 Cloudflare Pages가 자동으로 빌드 및 배포를 시작합니다.
+2.  **배포 스크립트 실행**: 프로젝트 루트에서 실행합니다.
     ```bash
-    git push origin main
+    ./deploy.sh calculator
     ```
-    **⚠️ 중요**: `git push`가 실제 배포를 실행하는 유일한 단계입니다.
-
-### 2. 배포 프로세스 (EC2 - 레거시)
-```bash
-# 이 섹션은 레거시 정보이며, 현재는 Cloudflare Pages를 사용합니다.
-# EC2 서버 배포
-ssh -i hqmx-ec2.pem ubuntu@3.213.100.223
-cd /var/www/html
-git pull origin main
-```
 
 ### 3. 성능 최적화
 ```

@@ -186,5 +186,35 @@
   "error": {
     "invalidAmount": "유효한 금액을 입력해주세요.",
     "invalidTaxRate": "유효한 세율을 입력해주세요."
+  },
+  "calorie": {
+    "tagline": "칼로리 계산기",
+    "subtitle": "일일 칼로리 필요량을 계산하세요",
+    "gender": "성별",
+    "age": "나이 (세)",
+    "weight": "체중",
+    "height": "키",
+    "activityLevel": "활동량 수준",
+    "goal": "목표",
+    "calculateBtn": "칼로리 계산하기",
+    "recalculateBtn": "다시 계산하기",
+    "dailyCalories": "일일 칼로리",
+    "bmr": "기초대사량 (BMR)",
+    "tdee": "총 에너지 소비량 (TDEE)",
+    "protein": "단백질",
+    "carbs": "탄수화물",
+    "fats": "지방",
+    "activitySedentary": "좌식 생활 (운동 안 함)",
+    "activityLight": "가벼운 활동 (주 1-3일)",
+    "activityModerate": "중간 활동 (주 3-5일)",
+    "activityVery": "활발한 활동 (주 6-7일)",
+    "activityExtreme": "극도로 활동적 (일 2회 운동)",
+    "goalMaintain": "체중 유지",
+    "goalMildLoss": "가벼운 감량 (주 0.25kg)",
+    "goalLoss": "체중 감량 (주 0.5kg)",
+    "goalExtremeLoss": "급격한 감량 (주 1kg)",
+    "goalMildGain": "가벼운 증량 (주 0.25kg)",
+    "goalGain": "체중 증량 (주 0.5kg)",
+    "goalExtremeGain": "급격한 증량 (주 1kg)"
   }
 }
