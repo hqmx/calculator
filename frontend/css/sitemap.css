@@ -1,0 +1,32 @@
+.sitemap-main {
+    padding: 2rem;
+}
+
+.sitemap-category {
+    margin-bottom: 2rem;
+}
+
+.sitemap-category h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+.sitemap-category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sitemap-category li {
+    margin-bottom: 0.5rem;
+}
+
+.sitemap-category a {
+    text-decoration: none;
+    color: #333;
+}
+
+.sitemap-category a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,327 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #2563EB;
+    --secondary-color: #1D4ED8;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --error-color: #ef4444;
+    --background-color: #f0f2f5;
+    --card-background: rgba(255, 255, 255, 0.5);
+    --text-color: #333;
+    --light-text-color: #666;
+    --border-color: #e0e0e0;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --border-radius: 12px;
+}
+
+body[data-theme="dark"] {
+    --primary-color: #3b82f6;
+    --secondary-color: #60a5fa;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --error-color: #ef4444;
+    --background-color: transparent;
+    /* 그라데이션 사용하므로 투명 */
+    --card-background: rgba(0, 0, 0, 0.6);
+    --text-color: #f9fafb;
+    --light-text-color: #9ca3af;
+    --border-color: #374151;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+body[data-theme="dark"] {
+    background: #000014;
+    /* 다크 모드 배경색 */
+}
+
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/bg.webp?v=20251003');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    z-index: -2;
+    pointer-events: none;
+    opacity: 1;
+}
+
+/* 반투명 오버레이 */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    z-index: -1;
+    pointer-events: none;
+}
+
+body[data-theme="dark"]::after {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+/* 다크 모드 전용 배경 이미지 */
+body[data-theme="dark"]::before {
+    background-image: url('../assets/bgdk.webp?v=20251003');
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+    flex-grow: 1;
+    padding: 2rem;
+    width: 100%;
+}
+
+/* ===== NAVIGATION HEADER ===== */
+.top-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: transparent;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    margin: -2rem -2rem 2rem -2rem;
+    border-bottom: none;
+    transition: backdrop-filter 0.3s ease;
+}
+
+.nav-container {
+    max-width: 900px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    /* Added for absolute positioning of children */
+}
+
+.top-nav.scrolled {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.top-nav>* {
+    margin: 0;
+}
+
+body[data-theme="dark"] .top-nav {
+    background: transparent;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border-bottom: none;
+}
+
+body[data-theme="dark"] .top-nav.scrolled {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 1rem;
+}
+
+.nav-links {
+    display: none;
+    /* Hide old class */
+}
+
+/* 데스크탑에서 네비게이션 메뉴 중앙 정렬 */
+@media (min-width: 1024px) {
+    .nav-center {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+.nav-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-link {
+    color: var(--light-text-color);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.nav-link:hover {
+    color: #3B82F6;
+}
+
+.nav-link.active {
+    color: #3B82F6;
+    background: transparent;
+}
+
+.desktop-app-link {
+    background: transparent;
+    border: 1px solid transparent;
+}
+
+.desktop-app-link:hover {
+    background: transparent;
+    border-color: transparent;
+    transform: translateY(-1px);
+}
+
+.desktop-app-link i {
+    margin-right: 0.25rem;
+}
+
+/* Logo Link Styles */
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    cursor: pointer;
+}
+
+.logo-link:hover {
+    transform: scale(1.05);
+    opacity: 0.85;
+}
+
+.logo-link:active {
+    transform: scale(0.98);
+}
+
+/* Logo styles in nav */
+.hqmx-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.hqmx-logo h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--text-color);
+    margin: 0;
+    margin-left: 1rem;
+}
+
+.hqmx-logo .logo-x {
+    background: linear-gradient(45deg, #8249fe, #5374f4, #2ab2f3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hqmx-logo .tagline {
+    font-size: 0.8rem;
+    color: var(--light-text-color);
+    margin: 0;
+    margin-left: 1rem;
+    /* Align with h1 text */
+    white-space: nowrap;
+}
+
+/* CALCULATOR Logo */
+.calculator-logo {
+    display: flex;
+    align-items: center;
+}
+
+.calculator-logo .calculator-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+}
+
+.calculator-logo .calculator-c-calc {
+    background: linear-gradient(45deg, #8249fe, #5374f4, #2ab2f3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.calculator-logo .calculator-rest {
+    color: var(--text-color);
+    font-weight: 800;
+    font-size: 0.72em;
+    text-transform: uppercase;
+    line-height: 1;
+    position: relative;
+    top: 0.05em;
+}
+
+
+.footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+    color: var(--light-text-color);
+    border-top: 1px solid var(--border-color);
+}

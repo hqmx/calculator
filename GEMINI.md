@@ -722,3 +722,34 @@ A: Google Translate API 또는 전문 번역 서비스를 이용합니다.
 **마지막 업데이트**: 2025-11-23
 **문서 버전**: 1.1
 **작성자**: HQMX Development Team
+---
+
+## 🚨 트러블슈팅 (Troubleshooting)
+
+### ✅ [FIXED] 배포 및 경로 문제 (2025-12-01)
+
+**증상:**
+1.  `/calculator/` 경로에 접속 시 `main` 서비스의 콘텐츠(사이트맵)가 표시됨.
+2.  페이지가 로드되더라도 CSS, JavaScript, 이미지 등 에셋 파일들이 404 오류를 반환하며 깨져 보임.
+
+**원인:**
+1.  **잘못된 배포:** `calculator` 서비스 디렉토리에 `main` 서비스의 `frontend` 파일들이 잘못 배포되어 있었음.
+2.  **잘못된 경로:** 모든 HTML 파일 (`index.html` 및 하위 계산기 페이지) 내의 CSS, JS, 이미지 경로가 `/style.css` 와 같은 루트 절대 경로로 되어 있어, 서브디렉토리(`_`/calculator/`_) 환경에서 올바른 파일을 찾지 못함.
+
+**해결 과정:**
+1.  **재배포:** `./deploy.sh calculator prod` 명령어를 사용하여 올바른 `calculator/frontend` 디렉토리의 콘텐츠를 서버에 다시 배포함.
+2.  **경로 수정 스크립트 작성:** 모든 HTML 파일의 에셋 및 네비게이션 경로에 `_/calculator/`_ 접두사를 추가하는 `fix_calculator_all_paths.py` 스크립트를 작성하여 실행함.
+3.  **최종 배포:** 경로가 수정된 파일들을 다시 서버에 배포하여 모든 문제를 해결함.
+
+### ✅ [FIXED] 네비게이터 언어 설정 문제 (2025-12-01)
+
+**증상:**
+- 페이지 로드 시 네비게이션 바의 언어가 'English'로 기본 설정되어 표시되지 않는 문제.
+
+**원인:**
+- `index.html`에 불필요한 `nav-common.js` 스크립트와 다른 프로젝트에서 복사된 것으로 보이는 관련 없는 스크립트 블록이 포함되어 있어, `i18n.js`의 언어 초기화 기능과 충돌을 일으킴.
+
+**해결 과정:**
+1.  `calculator/frontend/index.html`에서 불필요한 `<script src="/calculator/nav-common.js"></script>` 라인을 제거함.
+2.  `index.html` 하단의 관련 없는 `DOMContentLoaded` 이벤트 리스너 스크립트 블록을 제거함.
+3.  수정된 `index.html` 파일을 서버에 다시 배포하여 문제를 해결함.

@@ -1,14 +1,14 @@
 {
-  "name": "HQMX Converter - 범용 파일 변환기",
-  "short_name": "HQMX Converter",
-  "description": "300개 이상의 파일 형식을 지원하는 완전한 클라이언트 사이드 파일 변환기",
-  "start_url": "/",
+  "name": "HQMX Calculator",
+  "short_name": "HQMX Calculator",
+  "description": "A collection of free online calculators for various purposes.",
+  "start_url": "/calculator/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#0066cc",
   "orientation": "any",
-  "scope": "/",
-  "lang": "ko-KR",
+  "scope": "/calculator/",
+  "lang": "en-US",
   "dir": "ltr",
   "categories": ["productivity", "utilities"],
   "icons": [
@@ -46,10 +46,10 @@
   ],
   "shortcuts": [
     {
-      "name": "파일 변환",
-      "short_name": "변환",
-      "description": "새 파일 변환 시작",
-      "url": "/?shortcut=convert",
+      "name": "New Calculation",
+      "short_name": "Calculate",
+      "description": "Start a new calculation",
+      "url": "/calculator/?shortcut=calculate",
       "icons": [
         {
           "src": "assets/favicon-96x96.png",
