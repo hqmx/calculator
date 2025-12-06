@@ -4,7 +4,7 @@
  * Supports metric (kg/cm) and imperial (lb/in) units
  */
 
-(function() {
+(function () {
     'use strict';
 
     // BMI Calculator Class
@@ -218,11 +218,26 @@
             console.log('BMI Calculator: Category -', category.name);
 
             // Display results
+            if(window.trackUsage) window.trackUsage('calculate_success', true, { duration: Date.now() - _trackStartTime, calculator: 'bmi.js' });
             this.displayResults(bmi, category, age);
             console.log('BMI Calculator: Results displayed');
+
+            // Track Usage
+            if (window.trackUsage) {
+                window.trackUsage('calculate_bmi', true, {
+                    bmi: bmi,
+                    category: category.name,
+                    weight: weightKg,
+                    height: heightCm,
+                    age: age,
+                    gender: this.selectedGender
+                });
+            }
         }
 
         handleRecalculate() {
+        const _trackStartTime = Date.now();
+
             this.resultsSection.style.display = 'none';
             this.weightInput.value = '';
             this.heightInput.value = '';
@@ -238,7 +253,8 @@
         validateInputs(weight, height, age) {
             // Weight validation
             if (isNaN(weight) || weight <= 0) {
-                this.showError('Please enter a valid weight');
+                if(window.trackUsage) window.trackUsage('calculate_error', false, { calculator: 'bmi.js' });
+            this.showError('Please enter a valid weight');
                 this.weightInput.focus();
                 return false;
             }
@@ -487,7 +503,7 @@
     }
 
     // Initialize calculator when DOM is ready
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         new BMICalculator();
     });
 

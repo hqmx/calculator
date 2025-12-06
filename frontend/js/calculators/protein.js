@@ -75,6 +75,8 @@
         }
 
         calculate() {
+        const _trackStartTime = Date.now();
+
             this.hideError();
 
             // Get values
@@ -84,7 +86,8 @@
 
             // Validation
             if (isNaN(weight) || weight <= 0) {
-                this.showError('올바른 체중을 입력해주세요.');
+                if(window.trackUsage) window.trackUsage('calculate_error', false, { calculator: 'protein.js' });
+            this.showError('올바른 체중을 입력해주세요.');
                 return;
             }
 
@@ -143,6 +146,7 @@
             const snacksProtein = dailyProtein * 0.15;
 
             // Update UI
+            if(window.trackUsage) window.trackUsage('calculate_success', true, { duration: Date.now() - _trackStartTime, calculator: 'protein.js' });
             this.displayResults({
                 dailyProtein,
                 proteinPerKg,

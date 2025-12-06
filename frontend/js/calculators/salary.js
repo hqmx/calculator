@@ -49,6 +49,8 @@
         }
 
         calculate() {
+        const _trackStartTime = Date.now();
+
             this.hideError();
 
             // Get values
@@ -59,7 +61,8 @@
 
             // Validation
             if (isNaN(annualSalary) || annualSalary <= 0) {
-                this.showError('올바른 연봉을 입력해주세요.');
+                if(window.trackUsage) window.trackUsage('calculate_error', false, { calculator: 'salary.js' });
+            this.showError('올바른 연봉을 입력해주세요.');
                 return;
             }
 
@@ -112,6 +115,7 @@
             const netRatio = (annualNetSalary / annualSalary) * 100;
 
             // Update UI
+            if(window.trackUsage) window.trackUsage('calculate_success', true, { duration: Date.now() - _trackStartTime, calculator: 'salary.js' });
             this.displayResults({
                 monthlyGross,
                 monthlyNetSalary,

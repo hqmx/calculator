@@ -3,7 +3,7 @@
  * Based on CONVERTER structure
  */
 
-(function() {
+(function () {
     'use strict';
 
     /**
@@ -53,7 +53,7 @@
     let lastScrollTop = 0;
     const scrollThreshold = 50;
 
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
         if (scrollTop > scrollThreshold) {
@@ -74,7 +74,7 @@
 
     if (hamburgerMenu && mobileMenuOverlay) {
         // 햄버거 메뉴 클릭
-        hamburgerMenu.addEventListener('click', function(e) {
+        hamburgerMenu.addEventListener('click', function (e) {
             e.stopPropagation();
             hamburgerMenu.classList.toggle('active');
             mobileMenuOverlay.classList.toggle('active');
@@ -82,7 +82,7 @@
         });
 
         // 오버레이 클릭 (메뉴 박스 외부)
-        mobileMenuOverlay.addEventListener('click', function(e) {
+        mobileMenuOverlay.addEventListener('click', function (e) {
             if (e.target === mobileMenuOverlay) {
                 closeMobileMenu();
             }
@@ -90,13 +90,13 @@
 
         // 모바일 메뉴 링크 클릭
         mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', function() {
+            link.addEventListener('click', function () {
                 closeMobileMenu();
             });
         });
 
         // ESC 키로 메뉴 닫기
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape' && mobileMenuOverlay.classList.contains('active')) {
                 closeMobileMenu();
             }
@@ -113,7 +113,7 @@
      * Smooth Scroll for Anchor Links
      */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
+        anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
             if (href === '#' || href === '#!') return;
 
@@ -145,5 +145,31 @@
 
     // 페이지 로드 시 활성 메뉴 설정
     setActiveNavItem();
+
+    /**
+     * Global Usage Tracking (Centralized)
+     */
+    window.trackUsage = function (action, success, context = {}) {
+        const TRACKING_ENDPOINT = '/api/downloader/track';
+
+        const payload = {
+            service: 'calculator',
+            action: action,
+            platform: context.platform || 'unknown',
+            success: success,
+            context: context,
+            url: window.location.href
+        };
+
+        fetch(TRACKING_ENDPOINT, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        }).then(response => {
+            if (!response.ok) console.warn('Tracking failed');
+        }).catch(e => console.warn('Tracking error', e));
+    };
 
 })();

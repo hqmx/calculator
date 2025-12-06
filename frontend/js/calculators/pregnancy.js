@@ -95,6 +95,8 @@
         }
 
         calculate() {
+        const _trackStartTime = Date.now();
+
             this.hideError();
 
             let lmpDate;
@@ -102,7 +104,8 @@
             if (this.calculationMethod === 'lmp') {
                 const lmpValue = this.lmpDateInput.value;
                 if (!lmpValue) {
-                    this.showError('마지막 생리 시작일을 입력해주세요.');
+                    if(window.trackUsage) window.trackUsage('calculate_error', false, { calculator: 'pregnancy.js' });
+            this.showError('마지막 생리 시작일을 입력해주세요.');
                     return;
                 }
                 lmpDate = new Date(lmpValue);
@@ -130,6 +133,7 @@
             const results = this.calculatePregnancy(lmpDate);
 
             // Display results
+            if(window.trackUsage) window.trackUsage('calculate_success', true, { duration: Date.now() - _trackStartTime, calculator: 'pregnancy.js' });
             this.displayResults(results);
         }
 

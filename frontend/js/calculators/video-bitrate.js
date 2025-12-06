@@ -27,6 +27,8 @@
 
     // Calculate
     function calculate() {
+        const _trackStartTime = Date.now();
+
         hideError();
 
         try {

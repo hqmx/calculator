@@ -108,6 +108,7 @@ class TimeCalculator extends CalculatorBase {
         // Parse start time
         const timeMatch = startTime.match(/^(\d{1,2}):(\d{2})$/);
         if (!timeMatch) {
+            if(window.trackUsage) window.trackUsage('calculate_error', false, { calculator: 'time.js' });
             this.showError('Please enter a valid time (HH:MM format)');
             return;
         }
@@ -148,7 +149,8 @@ class TimeCalculator extends CalculatorBase {
         );
 
         // Display results
-        this.displayResults(result);
+        if(window.trackUsage) window.trackUsage('calculate_success', true, { duration: Date.now() - _trackStartTime, calculator: 'time.js' });
+            this.displayResults(result);
     }
 
     /**
@@ -233,6 +235,8 @@ class TimeCalculator extends CalculatorBase {
      * Handle recalculate button click
      */
     handleRecalculate() {
+        const _trackStartTime = Date.now();
+
         super.handleRecalculate();
 
         // Reset time period inputs

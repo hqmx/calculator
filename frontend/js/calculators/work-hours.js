@@ -100,6 +100,7 @@ class WorkHoursCalculator extends CalculatorBase {
 
         // Validate date order
         if (endDateObj < startDateObj) {
+            if(window.trackUsage) window.trackUsage('calculate_error', false, { calculator: 'work-hours.js' });
             this.showError('End date must be after start date');
             return;
         }
@@ -124,7 +125,8 @@ class WorkHoursCalculator extends CalculatorBase {
         );
 
         // Display results
-        this.displayResults(result);
+        if(window.trackUsage) window.trackUsage('calculate_success', true, { duration: Date.now() - _trackStartTime, calculator: 'work-hours.js' });
+            this.displayResults(result);
     }
 
     /**
@@ -243,6 +245,8 @@ class WorkHoursCalculator extends CalculatorBase {
      * Handle recalculate button click
      */
     handleRecalculate() {
+        const _trackStartTime = Date.now();
+
         super.handleRecalculate();
 
         // Reset to default values

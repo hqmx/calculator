@@ -92,6 +92,8 @@
         }
 
         calculate() {
+        const _trackStartTime = Date.now();
+
             this.hideError();
 
             // Get values
@@ -107,7 +109,8 @@
 
             // Validate inputs
             if (!age || !currentWeight || !goalWeight || !height) {
-                this.showError('모든 필수 항목을 입력해주세요.');
+                if(window.trackUsage) window.trackUsage('calculate_error', false, { calculator: 'weight-loss.js' });
+            this.showError('모든 필수 항목을 입력해주세요.');
                 return;
             }
 
@@ -148,6 +151,7 @@
             );
 
             // Display results
+            if(window.trackUsage) window.trackUsage('calculate_success', true, { duration: Date.now() - _trackStartTime, calculator: 'weight-loss.js' });
             this.displayResults(results, weightUnit);
         }
 

@@ -76,6 +76,8 @@
         }
 
         calculate() {
+        const _trackStartTime = Date.now();
+
             this.hideError();
 
             // Get values
@@ -85,7 +87,8 @@
 
             // Validation
             if (isNaN(billAmount) || billAmount <= 0) {
-                this.showError('올바른 식사 금액을 입력해주세요.');
+                if(window.trackUsage) window.trackUsage('calculate_error', false, { calculator: 'tip.js' });
+            this.showError('올바른 식사 금액을 입력해주세요.');
                 return;
             }
             if (numPeople < 1) {
@@ -103,6 +106,7 @@
             const perPerson = totalAmount / numPeople;
 
             // Update UI
+            if(window.trackUsage) window.trackUsage('calculate_success', true, { duration: Date.now() - _trackStartTime, calculator: 'tip.js' });
             this.displayResults({
                 billAmount,
                 tipPercent,

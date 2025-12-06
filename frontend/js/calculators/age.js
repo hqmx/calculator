@@ -75,6 +75,7 @@ class AgeCalculator extends CalculatorBase {
         // Check if birthdate is in the future
         const today = new Date();
         if (birthDateObj > today) {
+            if(window.trackUsage) window.trackUsage('calculate_error', false, { calculator: 'age.js' });
             this.showError('Birth date cannot be in the future');
             return;
         }
@@ -83,7 +84,8 @@ class AgeCalculator extends CalculatorBase {
         const ageData = this.calculateAge(birthDateObj);
 
         // Display results
-        this.displayResults(ageData);
+        if(window.trackUsage) window.trackUsage('calculate_success', true, { duration: Date.now() - _trackStartTime, calculator: 'age.js' });
+            this.displayResults(ageData);
     }
 
     /**
@@ -230,6 +232,8 @@ class AgeCalculator extends CalculatorBase {
      * Handle recalculate button click
      */
     handleRecalculate() {
+        const _trackStartTime = Date.now();
+
         super.handleRecalculate();
 
         // Reset birthdate input

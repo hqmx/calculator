@@ -146,6 +146,7 @@ class CalorieCalculator extends CalculatorBase {
         if (!this.validateRequired(height, 'Height')) return;
 
         if (age < 15 || age > 100) {
+            if(window.trackUsage) window.trackUsage('calculate_error', false, { calculator: 'calorie.js' });
             this.showError('Age must be between 15 and 100 years');
             return;
         }
@@ -185,7 +186,8 @@ class CalorieCalculator extends CalculatorBase {
         const timeline = this.generateTimeline(weight, goal);
 
         // Display results
-        this.displayResults({
+        if(window.trackUsage) window.trackUsage('calculate_success', true, { duration: Date.now() - _trackStartTime, calculator: 'calorie.js' });
+            this.displayResults({
             bmr: bmr,
             tdee: tdee,
             dailyCalories: targetCalories,
@@ -379,6 +381,8 @@ class CalorieCalculator extends CalculatorBase {
      * Handle recalculate button click
      */
     handleRecalculate() {
+        const _trackStartTime = Date.now();
+
         super.handleRecalculate();
 
         // Reset to default values

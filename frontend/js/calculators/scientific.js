@@ -168,6 +168,8 @@
         }
 
         calculate() {
+        const _trackStartTime = Date.now();
+
             if (!this.display) return;
 
             try {

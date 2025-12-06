@@ -111,6 +111,8 @@
         }
 
         calculate() {
+        const _trackStartTime = Date.now();
+
             this.hideError();
 
             const amount = parseFloat(this.amountInput.value);
@@ -118,7 +120,8 @@
 
             // Validation
             if (isNaN(amount) || amount < 0) {
-                this.showError('error.invalidAmount');
+                if(window.trackUsage) window.trackUsage('calculate_error', false, { calculator: 'tax.js' });
+            this.showError('error.invalidAmount');
                 return;
             }
 
@@ -142,6 +145,7 @@
                 taxAmount = totalAmount - netAmount;
             }
 
+            if(window.trackUsage) window.trackUsage('calculate_success', true, { duration: Date.now() - _trackStartTime, calculator: 'tax.js' });
             this.displayResults(netAmount, taxAmount, totalAmount, rate);
         }
 

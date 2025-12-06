@@ -44,6 +44,8 @@
         }
 
         calculate() {
+        const _trackStartTime = Date.now();
+
             this.hideError();
 
             // Get values
@@ -53,7 +55,8 @@
 
             // Validation
             if (isNaN(loanAmount) || loanAmount <= 0) {
-                this.showError('올바른 대출 금액을 입력해주세요.');
+                if(window.trackUsage) window.trackUsage('calculate_error', false, { calculator: 'loan.js' });
+            this.showError('올바른 대출 금액을 입력해주세요.');
                 return;
             }
             if (isNaN(interestRate) || interestRate <= 0) {
@@ -77,6 +80,7 @@
             const totalInterest = totalPayment - loanAmount;
 
             // Update UI
+            if(window.trackUsage) window.trackUsage('calculate_success', true, { duration: Date.now() - _trackStartTime, calculator: 'loan.js' });
             this.displayResults({
                 loanAmount,
                 loanTerm,

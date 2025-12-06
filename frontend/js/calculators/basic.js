@@ -196,6 +196,8 @@ class BasicCalculator {
      * Calculate result
      */
     calculate() {
+        const _trackStartTime = Date.now();
+
         if (this.operation === null || this.previousValue === null) {
             return;
         }
@@ -215,7 +217,8 @@ class BasicCalculator {
                 break;
             case '/':
                 if (current === 0) {
-                    this.showError('Cannot divide by zero');
+                    if(window.trackUsage) window.trackUsage('calculate_error', false, { calculator: 'basic.js' });
+            this.showError('Cannot divide by zero');
                     return;
                 }
                 result = this.previousValue / current;

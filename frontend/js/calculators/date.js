@@ -127,6 +127,7 @@ class DateCalculator extends CalculatorBase {
 
         // Check if at least one time period is specified
         if (years === 0 && months === 0 && weeks === 0 && days === 0) {
+            if(window.trackUsage) window.trackUsage('calculate_error', false, { calculator: 'date.js' });
             this.showError('Please enter at least one time period');
             return;
         }
@@ -142,7 +143,8 @@ class DateCalculator extends CalculatorBase {
         );
 
         // Display results
-        this.displayResults({
+        if(window.trackUsage) window.trackUsage('calculate_success', true, { duration: Date.now() - _trackStartTime, calculator: 'date.js' });
+            this.displayResults({
             startDate: startDateObj,
             resultDate: resultDate,
             years: years,
@@ -259,6 +261,8 @@ class DateCalculator extends CalculatorBase {
      * Handle recalculate button click
      */
     handleRecalculate() {
+        const _trackStartTime = Date.now();
+
         super.handleRecalculate();
 
         // Reset time period inputs
