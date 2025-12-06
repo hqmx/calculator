@@ -257,7 +257,7 @@ class CalorieCalculator extends CalculatorBase {
      * @param {string} goal - Weight goal
      * @returns {Array} - Timeline data
      */
-    generateTimeline(currentWeight, goal) {
+    generateTimeline(currentWeight, weight) {
         const weeklyChanges = {
             'maintain': 0,
             'mild-loss': -0.25,
@@ -399,6 +399,6 @@ class CalorieCalculator extends CalculatorBase {
 }
 
 // Initialize calculator when DOM is ready
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     new CalorieCalculator();
 });

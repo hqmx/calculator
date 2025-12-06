@@ -82,20 +82,20 @@ class I18n {
     detectLanguage() {
         const browserLang = navigator.language || navigator.userLanguage;
         const langCode = browserLang.split('-')[0];
-        
+
         // Supported languages
         const supportedLangs = [
-            'en', 'de', 'es', 'fr', 'hi', 'id', 'it', 'ko', 'ja', 
-            'my', 'ms', 'fil', 'pt', 'ru', 'th', 'tr', 'vi', 
+            'en', 'de', 'es', 'fr', 'hi', 'id', 'it', 'ko', 'ja',
+            'my', 'ms', 'fil', 'pt', 'ru', 'th', 'tr', 'vi',
             'zh-CN', 'zh-TW', 'ar', 'bn'
         ];
-        
+
         return supportedLangs.includes(langCode) ? langCode : 'en';
     }
 
     async loadTranslations(lang) {
         try {
-            const response = await fetch(`/locales/${lang}.json`);
+            const response = await fetch(`/calculator/locales/${lang}.json`);
             if (response.ok) {
                 this.translations = await response.json();
             } else {
@@ -111,12 +111,12 @@ class I18n {
 
     t(key, params = {}) {
         let translation = this.getNestedValue(this.translations, key) || key;
-        
+
         // Replace parameters in translation
         Object.keys(params).forEach(param => {
             translation = translation.replace(new RegExp(`{${param}}`, 'g'), params[param]);
         });
-        
+
         return translation;
     }
 
@@ -205,25 +205,25 @@ class I18n {
                 'ar': 'عربي',
                 'bn': 'বাঙালি'
             };
-            
+
             currentLanguageElement.textContent = languageNames[this.currentLang] || 'English';
         }
     }
 
     async changeLanguage(lang) {
         if (lang === this.currentLang) return;
-        
+
         this.currentLang = lang;
         localStorage.setItem('language', lang);
-        
+
         await this.loadTranslations(lang);
         this.applyTranslations();
         this.updateDirection();
         this.updateLanguageSelector();
-        
+
         // Emit language change event
-        document.dispatchEvent(new CustomEvent('languageChanged', { 
-            detail: { language: lang } 
+        document.dispatchEvent(new CustomEvent('languageChanged', {
+            detail: { language: lang }
         }));
     }
 
@@ -248,7 +248,7 @@ class I18n {
     // Format file sizes with localized units
     formatFileSize(bytes) {
         if (bytes === 0) return this.t('fileSize.zero');
-        
+
         const k = 1024;
         const sizes = [
             this.t('fileSize.bytes'),
@@ -257,10 +257,10 @@ class I18n {
             this.t('fileSize.gb'),
             this.t('fileSize.tb')
         ];
-        
+
         const i = Math.floor(Math.log(bytes) / Math.log(k));
         const size = parseFloat((bytes / Math.pow(k, i)).toFixed(2));
-        
+
         return `${this.formatNumber(size)} ${sizes[i]}`;
     }
 
@@ -288,7 +288,7 @@ class I18n {
             'ar': 'ar-SA',
             'bn': 'bn-BD'
         };
-        
+
         return localeMap[this.currentLang] || 'en-US';
     }
 

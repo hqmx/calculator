@@ -1,0 +1,12 @@
+.steps-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .steps-grid-3 {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
