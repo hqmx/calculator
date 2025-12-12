@@ -131,5 +131,93 @@
     "taxAmount": "Tax Amount",
     "netAmount": "Net Amount",
     "beforeTax": "Before Tax"
+  },
+  "categories": {
+    "general": {
+      "name": "General",
+      "count": "4 calculators"
+    },
+    "dateTime": {
+      "name": "Date & Time",
+      "count": "4 calculators"
+    },
+    "finance": {
+      "name": "Finance",
+      "count": "8 calculators"
+    },
+    "health": {
+      "name": "Health & Fitness",
+      "count": "5 calculators"
+    },
+    "conversion": {
+      "name": "Unit Conversion",
+      "count": "5 calculators"
+    },
+    "math": {
+      "name": "Math",
+      "count": "3 calculators"
+    },
+    "media": {
+      "name": "Media & Technology",
+      "count": "3 calculators"
+    },
+    "construction": {
+      "name": "Construction & DIY",
+      "count": "4 calculators"
+    }
+  },
+  "calculators": {
+    "general": {
+      "basic": "Basic",
+      "scientific": "Scientific",
+      "percentage": "Percentage",
+      "fraction": "Fraction"
+    },
+    "dateTime": {
+      "age": "Age",
+      "date": "Date",
+      "time": "Time",
+      "workHours": "Work Hours"
+    },
+    "finance": {
+      "mortgage": "Mortgage",
+      "loan": "Loan",
+      "interest": "Interest",
+      "tax": "Tax",
+      "salary": "Salary",
+      "roi": "ROI",
+      "currency": "Currency",
+      "tip": "Tip"
+    },
+    "health": {
+      "bmi": "BMI",
+      "calorie": "Calorie",
+      "weightLoss": "Weight Loss",
+      "pregnancy": "Pregnancy",
+      "protein": "Protein"
+    },
+    "conversion": {
+      "length": "Length",
+      "weight": "Weight",
+      "temperature": "Temperature",
+      "area": "Area",
+      "volume": "Volume"
+    },
+    "math": {
+      "equationSolver": "Equation Solver",
+      "probability": "Probability",
+      "statistics": "Statistics"
+    },
+    "media": {
+      "pixel": "Pixel",
+      "aspectRatio": "Aspect Ratio",
+      "videoBitrate": "Video Bitrate"
+    },
+    "construction": {
+      "paint": "Paint",
+      "tile": "Tile",
+      "wallpaper": "Wallpaper",
+      "concrete": "Concrete"
+    }
   }
 }
