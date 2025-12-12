@@ -4496,3 +4496,9 @@ body[data-theme="dark"] .conversion-category[data-category="archive"] .conversio
         margin: 0 auto;
     }
 }
+
+/* Logo Theme Toggle */
+.logo-dark { display: none; }
+body[data-theme="dark"] .logo-light { display: none; }
+body[data-theme="dark"] .logo-dark { display: block; }
+
